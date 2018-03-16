@@ -3,3 +3,12 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+#missionStatement {
+  text-align: center;
+}
+
+
+.missionParagraphs {
+  text-align: center;
+}
