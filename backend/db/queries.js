@@ -20,8 +20,6 @@ function getAllUsers(req, res, next) {
     });
 }
 
-
-
 function getSingleUser(req, res, next) {
   db
     .any("select * from users where username = ${username}", req.user)
@@ -84,11 +82,22 @@ function createUser(req, res, next) {
   console.log("createuser hash: ", hash);
   db
     .none(
-      "INSERT INTO users (username, firstname, lastname, email, password_digest, ismentor) VALUES (${username}, ${password}, ${ismentor})",
-      { username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, password: hash, ismentor: req.body.ismentor }
+      "INSERT INTO users (username, firstname, lastname, email, password_digest, ismentor) VALUES (${username}, ${firstname},${lastname},${email}, ${password}, ${ismentor})",
+      {
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hash,
+        ismentor: req.body.ismentor
+      }
     )
     .then(() => {
-      res.send(`created user: ${req.body.username} Is this person a mentor?: ${req.body.ismentor}`);
+      res.send(
+        `created user: ${req.body.username} Is this person a mentor?: ${
+          req.body.ismentor
+        }`
+      );
     })
     .catch(err => {
       console.log(err);
@@ -101,6 +110,6 @@ module.exports = {
   getSingleUser: getSingleUser,
   createUser: createUser,
   loginUser: loginUser,
-  logoutuser: logoutUser,
+  logoutuser: logoutUser
 };
 //   updateSingleUser: updateSingleUser,
