@@ -14,55 +14,94 @@ class Home extends Component {
                 
 
 
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
   {/* <!-- Indicators --> */}
-  <ol class="carousel-indicators">
+  {/* <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
     <li data-target="#myCarousel" data-slide-to="4"></li>
 
-  </ol>
+  </ol> */}
 
   {/* <!-- Wrapper for slides --> */}
-  <div class="carousel-inner">
+  <Carousel>
+  <Carousel.Item>
+    <img width={900} height={500} alt="900x500" src="./images/mentor1.jpg" />
+    <Carousel.Caption>
+      <h3>One-On-One</h3>
+      <p>Intimate. Not Intimidating. Meet Without Distraction To Focus On What's Important.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img width={900} height={500} alt="900x500" src="./images/mentor2.jpg" />
+    <Carousel.Caption>
+      <h3>Shared Interests</h3>
+      <p>Meet In A Manner That Is Comfortable For You. Coffee Shop? Library? Skype? The Choice Is Yours.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img width={900} height={500} alt="900x500" src="./images/mentor3.jpg" />
+    <Carousel.Caption>
+      <h3>Time-Tested Experience</h3>
+      <p>Wise And Sage Advice. Not From Novices, But Experts.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img width={900} height={500} alt="900x500" src="./images/mentor4.jpg" />
+    <Carousel.Caption>
+      <h3>Professional Development</h3>
+      <p>Recieve The Best Professional Grooming From Industry Titans.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img width={900} height={500} alt="900x500" src="./images/mentor5.jpg" />
+    <Carousel.Caption>
+      <h3>Hands-On Guidance</h3>
+      <p>Clear, Concise Assistance To Help You Navigate Your Career Goals.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>;
+
+   {/* <div class="carousel-inner">
     <div class="item active">
-      <img src="../images/mentor1.jpg" alt="Los Angeles" />
+      <img src="https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg" alt="Los Angeles" />
     </div>
 
     <div class="item">
-      <img src="../images/mentor1.jpg" alt="Office Meeting" />
+      <img src="http://r.ddmcdn.com/w_830/s_f/o_1/cx_20/cy_1463/cw_2528/ch_1422/APL/uploads/2014/11/puppy-cam-veer-2893191.jpg" alt="Office Meeting" />
     </div>
 
     <div class="item">
-      <img src="../images/mentor2.jpg" alt="Coffee Shop" />
+      <img src="http://dynaimage.cdn.turner.com/gns/gns/e_trim/180213130413-westminster-dog-show-5.jpg" alt="Coffee Shop" />
     </div>
 
      <div class="item">
-      <img src="../images/mentor3.jpg" alt="Group Setting" />
+      <img src="http://www.mamawantsthis.com/wp-content/uploads/2017/06/pexels-photo-67660.jpeg" alt="Group Setting" />
     </div>
 
      <div class="item">
-      <img src="../images/mentor4.jpg" alt="Walk and Talk" />
+      <img src="http://dogsaholic.com/wp-content/uploads/2015/05/Puppy-exercise-and-play-with-ball.jpg" alt="Walk and Talk" />
     </div>
 
      <div class="item">
-      <img src="../images/mentor5.jpg" alt="Tablet Demo" />
+      <img src="https://www.healthypawspetinsurance.com/Images/V3/DogAndPuppyInsurance/Dog_CTA_Desktop_HeroImage.jpg" alt="Tablet Demo" />
     </div>
 
         
-  </div>
+  </div> */}
 
   {/* <!-- Left and right controls --> */}
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+  {/* <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </a> */}
 </div>
 
 <br />
@@ -85,3 +124,4 @@ class Home extends Component {
 }
 
 export default Home;
+
