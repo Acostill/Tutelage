@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Link, Switch } from "react-router-dom";
 
 
 class RegisterUser extends Component {
@@ -37,7 +38,7 @@ class RegisterUser extends Component {
                 {/* Will come back for this */}
                 {" "}
                 <br />
-                <p>Already a Member? Login <a href="/login">HERE</a></p>
+                <p>Already a Member? <Link to="/login"> Log in Here </Link></p>
 
             </div>
                 
