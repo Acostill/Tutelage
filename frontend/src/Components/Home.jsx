@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button, Carousel } from 'react-bootstrap';
+
 
 
 class Home extends Component {
@@ -9,7 +11,65 @@ class Home extends Component {
     render() {
         return (
             <div>
-                Hello World! Carousel Pending...
+                
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  {/* <!-- Indicators --> */}
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+
+  </ol>
+
+  {/* <!-- Wrapper for slides --> */}
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="tutelage/frontend/images/mentor1.jpg" alt="Los Angeles" />
+    </div>
+
+    <div class="item">
+      <img src="mentor1.jpg" alt="Office Meeting" />
+    </div>
+
+    <div class="item">
+      <img src="mentor2.jpg" alt="Coffee Shop" />
+    </div>
+
+     <div class="item">
+      <img src="mentor3.jpg" alt="Group Setting" />
+    </div>
+
+     <div class="item">
+      <img src="mentor4.jpg" alt="Walk and Talk" />
+    </div>
+
+     <div class="item">
+      <img src="mentor5.jpg" alt="Tablet Demo" />
+    </div>
+
+        
+  </div>
+
+  {/* <!-- Left and right controls --> */}
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<br />
+<br />
+<br />
+
+
+
+
                 <div>
                     <h1 id="missionStatement">Mission Statement</h1>
                     <p className="missionParagraphs">Our mission at Tutelage is to serve as a tool to spark a connection, preferably a meaningful, mutually beneficial, long-term one between a mentor with significant experience and a mentee. Whether you are seeking to gain new skills from someone who has already travelled on the road of the journey you are just beginning, or if you are a seasoned professional seeking to give back by donating time, resources, advice and expertise to a younger version of yourself, Tutelage fosters an environment for professional life enrichment. </p>
