@@ -28,15 +28,15 @@ class Home extends Component {
   {/* <!-- Wrapper for slides --> */}
   <div class="carousel-inner">
     <div class="item active">
-      <img src="../mentor1.jpg" alt="Los Angeles" />
+      <img src="../images/mentor1.jpg" alt="Los Angeles" />
     </div>
 
     <div class="item">
-      <img src="../mentor1.jpg" alt="Office Meeting" />
+      <img src="../images/mentor1.jpg" alt="Office Meeting" />
     </div>
 
     <div class="item">
-      <img src="../mentor2.jpg" alt="Coffee Shop" />
+      <img src="../images/mentor2.jpg" alt="Coffee Shop" />
     </div>
 
      <div class="item">

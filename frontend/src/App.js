@@ -4,8 +4,8 @@ import './App.css';
 import Home from './components/Home';
 
 import { Route, Link, Switch } from "react-router-dom";
-import LoginUser from './components/users/login/LoginUser';
-import RegisterUser from './components/users/login/RegisterUser';
+import LoginUser from './components/login/LoginUser';
+import RegisterUser from './components/login/RegisterUser';
 
 class App extends Component {
   render() {
