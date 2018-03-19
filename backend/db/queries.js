@@ -36,9 +36,10 @@ function getSingleUser(req, res, next) {
 }
 
 // function updateSingleUser(req, res, next) {
+//   const hash = authHelpers.createHash(req.body.password);
 //   db
 //     .none(
-//       "update users set username = ${newName} where username = ${username}",
+//       "UPDATE users SET username = ${newName}, firstname = ${newFirstName}, lastname = ${newLastName}, email = ${newEmail}, password_digest = ${ hash }, ismentor = ${newIsMentor} where id = ${id}",
 //       req.body
 //     )
 //     .then(function(data) {
@@ -51,6 +52,40 @@ function getSingleUser(req, res, next) {
 //       return next(err);
 //     });
 // }
+
+const updateSingleUser = (req, res, next) => {
+  console.log("Req is:", req, "is there a req.user?:", req.user)
+  const hash = authHelpers.createHash(req.body.password);
+  console.log("updated password hash: ", hash);
+
+  let { username, firstname, lastname, email, password_digest, ismentor } = req.body;
+
+  let query = "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}"
+  db
+    .none(
+      query,
+      {
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hash,
+        ismentor: req.body.ismentor,
+        id: req.user.id
+      }
+    )
+    .then(() => {
+      res.send(
+        `updated the user: ${req.body.username} Is this person now a mentor?: ${
+          req.body.ismentor
+        }`
+      );
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send("error editing user");
+    });
+}
 
 function loginUser(req, res, next) {
   passport.authenticate("local", {});
@@ -109,7 +144,7 @@ module.exports = {
   getAllUsers: getAllUsers,
   getSingleUser: getSingleUser,
   createUser: createUser,
+  updateSingleUser: updateSingleUser,
   loginUser: loginUser,
   logoutuser: logoutUser
 };
-//   updateSingleUser: updateSingleUser,
