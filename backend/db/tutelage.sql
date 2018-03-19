@@ -8,7 +8,7 @@ CREATE TABLE users (
   username VARCHAR (50) UNIQUE NOT NULL,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
-  email VARCHAR,
+  email VARCHAR UNIQUE,
   password_digest VARCHAR,
   ismentor boolean
 );
@@ -24,4 +24,4 @@ CREATE TABLE users (
 /* tyler, password: 123456 */
 
 INSERT INTO users (username, firstname, lastname, email, password_digest, ismentor)
-  VALUES ('TestMentee1','Greg','Davis','davisgreg1@gmail.com', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','true')
+  values ('TestMentee1','Greg','Davis','davisgreg1@gmail.com', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','true')
