@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,400i,600,600i%7CPlayfair+Display:400,400i,700,700i');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'IBM Plex Serif', serif;
 }
 
 #missionStatement {
@@ -11,6 +13,8 @@ body {
 
 .missionParagraphs {
   text-align: center;
+  font-family: 'IBM Plex Serif', serif;
+
 }
 
 #registerForm {
