@@ -26,3 +26,9 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+#appName {
+  font-size: 44px;
+  font-family: 'Lobster', cursive;
+  color: #f46524ff;
+}
