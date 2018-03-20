@@ -58,9 +58,9 @@ const updateSingleUser = (req, res, next) => {
   const hash = authHelpers.createHash(req.body.password);
   console.log("updated password hash: ", hash);
 
-  let { username, firstname, lastname, email, password_digest, ismentor } = req.body;
+  let { username, firstname, lastname, password_digest, ismentor } = req.body;
 
-  let query = "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}"
+  let query = "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}"
   db
     .none(
       query,
@@ -68,7 +68,6 @@ const updateSingleUser = (req, res, next) => {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        email: req.body.email,
         password: hash,
         ismentor: req.body.ismentor,
         id: req.user.id
@@ -117,12 +116,11 @@ function createUser(req, res, next) {
   console.log("createuser hash: ", hash);
   db
     .none(
-      "INSERT INTO users (username, firstname, lastname, email, password_digest, ismentor) VALUES (${username}, ${firstname},${lastname},${email}, ${password}, ${ismentor})",
+      "INSERT INTO users (username, firstname, lastname, password_digest, ismentor) VALUES (${username}, ${firstname},${lastname}, ${password}, ${ismentor})",
       {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        email: req.body.email,
         password: hash,
         ismentor: req.body.ismentor
       }
