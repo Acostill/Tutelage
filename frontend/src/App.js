@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div>
       <nav>
-        <Link to="/"> Tutelage </Link>
+        <Link id="appName" to="/"> Tutelage </Link>
         {" "}
         <Link to="/login"> Log In </Link>
         {" "}
