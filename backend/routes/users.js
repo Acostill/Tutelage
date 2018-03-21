@@ -11,11 +11,16 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
   res.send(`${req.user.username} is logged in`);
 });
 router.post("/create", db.createUser);
+router.post("/survey", db.getAnswersFromUsers);
 
 /******************PATCH ROUTES********************* */
 router.put("/edit", loginRequired, db.updateSingleUser);
 
 /******************GET ROUTES********************* */
+// router.get("/survey", db.getAllSurveyQuestions);
 router.get("/logout", loginRequired, db.logoutuser);
+router.get("/survey", db.getAllSurveyQuestionsAndAnswers);
+
+
 
 module.exports = router;
