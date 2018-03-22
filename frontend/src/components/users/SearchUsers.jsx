@@ -27,17 +27,22 @@ class SearchUsers extends Component {
 
   render() {
     const { users } = this.state;
+    const style = {
+      width: "128px",
+      height: "128px"
+    };
     return (
       <div>
         {/* ---- Have to find a way for common saying for mentor or mentee /or props to change the title ---- */}
         <h1> Find Your Next Mentor </h1>
 
         {users.map(user => {
+          const { imgurl, firstname, lastname } = user;
           return (
             <div>
-              <img src={user.imgURL} alt="user_pic" />
+              <img src={imgurl} alt="user_pic" style={style} />
               <h3>
-                {user.firstname} {user.lastname}
+                {firstname} {lastname}
               </h3>
               <p> Manhattan, NY </p>
             </div>
