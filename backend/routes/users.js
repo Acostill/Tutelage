@@ -13,6 +13,8 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 router.post("/create", db.createUser);
 router.post("/survey", db.getAnswersFromUsers);
 router.post("/message", loginRequired, db.fetchNewThread);
+router.post("/send_message", db.submitMessage); //WORKS!!
+router.post("/get_messages", db.getAllMessages); //try this one first WORKS!
 
 /******************PATCH ROUTES********************* */
 router.patch("/edit", loginRequired, db.updateSingleUser);
@@ -21,8 +23,7 @@ router.patch("/edit", loginRequired, db.updateSingleUser);
 // router.get("/survey", db.getAllSurveyQuestions);
 router.get("/logout", loginRequired, db.logoutuser);
 router.get("/survey", db.getAllSurveyQuestionsAndAnswers);
-
-
-
+router.get("/getuser/:username", db.getUserByUsername);
+// router.get("/getuser/allusers", db.getAllUsers);
 
 module.exports = router;

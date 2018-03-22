@@ -5,20 +5,6 @@ const db = pgp(connectionString);
 const authHelpers = require("../auth/helpers");
 const passport = require("../auth/local");
 
-const getAllUsers = (req, res, next) => {
-    db
-        .any("select * from users")
-        .then(function(data) {
-            res.status(200).json({
-                status: "success",
-                data: data,
-                message: "Retrieved ALL users"
-            });
-        })
-        .catch(function(err) {
-            return next(err);
-        });
-};
 
 const getSingleUser = (req, res, next) => {
     db
@@ -88,14 +74,18 @@ const updateSingleUser = (req, res, next) => {
 
 const fetchNewThread = (req, res, next) => {
     let query =
-        "INSERT INTO threads (user_1, user_2) VALUES (${username1}, ${username2})";
+        "INSERT INTO threads (user_1, user_2) VALUES (${username1}, ${username2}) RETURNING ID";
     db
-        .none(query, {
+        .any(query, {
             username1: req.body.username1,
             username2: req.body.username2
         })
-        .then(() => {
-            res.send("Got the two users in the thread!");
+        .then(function(data) {
+            res.status(200).json({
+                status: "success",
+                data: data,
+                message: "data is the thread ID."
+            });
         })
         .catch(err => {
             console.log(err);
@@ -103,6 +93,44 @@ const fetchNewThread = (req, res, next) => {
         });
 };
 
+const getAllMessages = (req, res, next) => {
+    let query = "SELECT * FROM messages WHERE (sender=${sender} AND receiver=${receiver}) OR (sender=${receiver} AND receiver=${sender})"
+    db.any(query, {
+            sender: req.body.sender,
+            receiver: req.body.receiver
+        })
+        .then(function(data) {
+            res.status(200).json({
+                status: "success",
+                data: data,
+                message: "Got all the messages."
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("Error getting messages.");
+        });
+}
+const submitMessage = (req, res, next) => {
+    let query =
+        "INSERT INTO messages (thread_id, sender, receiver, body) VALUES (${threadID}, ${sender}, ${receiver}, ${body})";
+    db
+        .any(query, {
+            threadID: req.body.threadID,
+            sender: req.body.sender,
+            receiver: req.body.receiver,
+            body: req.body.body
+        })
+        .then(() => {
+            res.send(
+                "Successfully Submitted Message."
+            )
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("error sending message");
+        });
+};
 // const fetchMessages = (req, res, next) => {
 //     let query = "INSERT INTO threads JOIN"
 // }
@@ -160,6 +188,35 @@ const createUser = (req, res, next) => {
         });
 };
 
+function getUserByUsername(req, res, next) {
+    db
+        .one("SELECT username, firstname, lastname, imgURL, email, ismentor FROM users WHERE LOWER(username) = LOWER(${username})", req.params)
+        .then(function(data) {
+            res.status(200).json({
+                status: "success",
+                data: data,
+                message: `Retrieved user: ${req.params.username}!`
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(`${req.params.username} not found.`);
+        });
+}
+
+function getAllUsers(req, res, next) {
+    db
+        .any("SELECT * FROM users")
+        .then(function(data) {
+            res.status(200).json({
+                status: "success",
+                data: data,
+                message: "Retrieved all users"
+            });
+        })
+        .catch(err => next(err))
+}
+
 // const getAllSurveyQuestions = (req, res, next) => {
 //     db
 //         .any("SELECT the_question FROM questions")
@@ -214,7 +271,7 @@ const getAnswersFromUsers = (req, res, next) => {
 };
 
 module.exports = {
-    getAllUsers: getAllUsers,
+    // getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
     createUser: createUser,
     updateSingleUser: updateSingleUser,
@@ -224,4 +281,7 @@ module.exports = {
     getAnswersFromUsers: getAnswersFromUsers,
     getAllSurveyQuestionsAndAnswers: getAllSurveyQuestionsAndAnswers,
     fetchNewThread: fetchNewThread,
+    submitMessage: submitMessage,
+    getAllMessages: getAllMessages,
+    getUserByUsername: getUserByUsername,
 };
