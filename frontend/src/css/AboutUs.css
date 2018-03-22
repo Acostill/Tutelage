@@ -1,13 +1,49 @@
-.teamPhotos {
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    align-items: center;
+body,html{
+    width: 100%;
+    height: 100%;
 }
 
 #mainDiv {
     display: flex;
-    justify-content: center;
-    justify-content: space-between;
+    flex-direction: row;
+}
 
+.teamMember {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+.teamMemberTitle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.teamMemberPhoto {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.teamMemberCaption {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /*justify-content: space-around;
+    justify-content: space-between;
+    align-items: center; */
+    word-wrap: break-word;
 }
