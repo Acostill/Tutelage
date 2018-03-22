@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router';
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "../../css/SearchUsers.css";
@@ -11,21 +12,33 @@ class SearchUsers extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
-      .get("/users/search")
-      .then(res => {
-        console.log("res.data", res.data.data);
-        this.setState({
-          users: res.data.data
-        });
-      })
-      .catch(err => {
-        console.log("err", err);
-      });
+  handleCardClick = e => {
+    let username = e.target.value;
+    console.log(e.target.value);
   }
 
+  getUserList = () => {
+    axios
+    .get("/users/search")
+    .then(res => {
+      console.log("res.data", res.data.data);
+      this.setState({
+        users: res.data.data
+      });
+    })
+    .catch(err => {
+      console.log("err", err);
+    });
+  }
+
+  componentDidMount() {
+    this.getUserList()
+  }
+
+
+
   render() {
+    const { handleCardClick } = this;
     const { users } = this.state;
     const style = {
       width: "128px",
@@ -37,14 +50,15 @@ class SearchUsers extends Component {
         <h1> Find Your Next Mentor </h1>
 
         {users.map(user => {
-          const { imgurl, firstname, lastname } = user;
+          const { imgurl, firstname, lastname, username, location } = user;
           return (
-            <div>
-              <img src={imgurl} alt="user_pic" style={style} />
+            <div className='profile-card' >
+              <Link to={`/users/${username}`}> <img src={imgurl} alt="user_pic" style={style} /> </Link>
+              <Link to={`/users/${username}`}> <h2>{username}</h2> </Link>
               <h3>
                 {firstname} {lastname}
               </h3>
-              <p> Manhattan, NY </p>
+              <p> {location} </p>
             </div>
           );
         })}
