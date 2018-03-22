@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, Redirect} from "react-router-dom";
 import axios from "axios";
 import "../../css/LoginUser.css";
 
@@ -14,7 +14,7 @@ class LoginUser extends Component {
     };
   }
 
-  handleInput = e => {
+  handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -28,9 +28,8 @@ class LoginUser extends Component {
         password: password
       })
       .then(res => {
-        console.log(res);
-        this.props.user(res.data);
-        this.props.active();
+        console.log(res)
+        // redirect to user's profile 
         this.setState({
             signedIn: true
         })
@@ -52,8 +51,15 @@ class LoginUser extends Component {
   };
 
   render() {
-    const { username, password, message } = this.state;
-    const { handleInput, submitLoginForm } = this;
+    const { username, password, message, signedIn } = this.state;
+    const { handleInputChange, submitLoginForm } = this;
+
+    if(signedIn) {
+      return( <Redirect to="/profile" /> )
+    }
+
+    // can add a cookie/session storage so user doesn't see login page when they are signed in
+
     return (
       <div>
         <div>
@@ -62,7 +68,7 @@ class LoginUser extends Component {
             name="username"
             type="text"
             value={username}
-            onChange={handleInput}
+            onChange={handleInputChange}
             placeholder="Username"
             className="input-box"
           />
@@ -71,7 +77,7 @@ class LoginUser extends Component {
             name="password"
             type="password"
             value={password}
-            onChange={handleInput}
+            onChange={handleInputChange}
             placeholder="Password"
             className="input-box"
           />
