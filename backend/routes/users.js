@@ -20,7 +20,6 @@ router.put("/edit", loginRequired, db.updateSingleUser);
 // router.get("/survey", db.getAllSurveyQuestions);
 router.get("/logout", loginRequired, db.logoutuser);
 router.get("/survey", db.getAllSurveyQuestionsAndAnswers);
-
-
+router.get("/search", db.getAllUsers);
 
 module.exports = router;

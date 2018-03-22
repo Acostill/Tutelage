@@ -6,6 +6,7 @@ import Home from './components/Home';
 import { Route, Link, Switch } from "react-router-dom";
 import LoginUser from './components/login/LoginUser';
 import RegisterUser from './components/login/RegisterUser';
+import SearchUsers from './components/users/SearchUsers';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={LoginUser} />
         <Route path="/register" component={RegisterUser} />
+        <Route path="/search" component={SearchUsers} />
       </Switch>
       </div>
     );
