@@ -3,10 +3,8 @@ import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 
 class RegisterUser extends Component {
-  constructor() {
-    super();
 
-    this.state = {
+    state = {
       firstname: "",
       lastname: "",
       email: "",
@@ -16,7 +14,6 @@ class RegisterUser extends Component {
       ismentor: "",
       message: ""
     };
-  }
 
   handleInputChange = e => {
     this.setState({
