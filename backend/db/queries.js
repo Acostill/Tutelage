@@ -194,7 +194,7 @@ function getUserByUsername(req, res, next) {
         .then(function(data) {
             res.status(200).json({
                 status: "success",
-                data: data,
+                user: data,
                 message: `Retrieved user: ${req.params.username}!`
             });
         })
@@ -274,7 +274,7 @@ const getAnswersFromUsers = (req, res, next) => {
 };
 
 module.exports = {
-    // getAllUsers: getAllUsers,
+    getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
     createUser: createUser,
     updateSingleUser: updateSingleUser,
