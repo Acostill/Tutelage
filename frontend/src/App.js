@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
+import AboutUs from './components/AboutUs';
 
 import { Route, Link, Switch } from "react-router-dom";
 import LoginUser from './components/login/LoginUser';
@@ -17,11 +18,14 @@ class App extends Component {
         <Link to="/login"> Log In </Link>
         {" "}
         <Link to="/register"> Register </Link>
+        {" "}
+        <Link to="/aboutus"> About Us </Link>
       </nav>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={LoginUser} />
         <Route path="/register" component={RegisterUser} />
+        <Route path="/aboutus" component={AboutUs} />
       </Switch>
       </div>
     );
