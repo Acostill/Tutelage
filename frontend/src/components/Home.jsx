@@ -28,36 +28,36 @@ class Home extends Component {
 
   {/* <!-- Wrapper for slides --> */}
   <Carousel>
-  <Carousel.Item>
-    <img width={900} height={500} alt="900x500" src="./images/mentor1.jpg" />
+  <Carousel.Item class="mentorCarousel">
+    <img src="./images/accountingmentor.jpg" alt="Office Meeting" />
     <Carousel.Caption>
       <h3>One-On-One</h3>
       <p>Intimate. Not Intimidating. Meet Without Distraction To Focus On What's Important.</p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
-    <img width={900} height={500} alt="900x500" src="./images/mentor2.jpg" />
+  <Carousel.Item class="mentorCarousel">
+    <img src="./images/coffeeshopmentoring.jpg" alt="Coffee Shop" />
     <Carousel.Caption>
       <h3>Shared Interests</h3>
       <p>Meet In A Manner That Is Comfortable For You. Coffee Shop? Library? Skype? The Choice Is Yours.</p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
-    <img width={900} height={500} alt="900x500" src="./images/mentor3.jpg" />
+  <Carousel.Item class="mentorCarousel">
+    <img src="./images/explaination.jpg" alt="Group Setting" />
     <Carousel.Caption>
       <h3>Time-Tested Experience</h3>
       <p>Wise And Sage Advice. Not From Novices, But Experts.</p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
-    <img width={900} height={500} alt="900x500" src="./images/mentor4.jpg" />
+  <Carousel.Item class="mentorCarousel">
+    <img src="./images/businessmentoring.jpg" alt="Walk And Talk" />
     <Carousel.Caption>
       <h3>Professional Development</h3>
       <p>Recieve The Best Professional Grooming From Industry Titans.</p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
-    <img width={900} height={500} alt="900x500" src="./images/mentor5.jpg" />
+  <Carousel.Item class="mentorCarousel">
+    <img src="./images/computermentoring.jpg" alt="Tablet Demo" />
     <Carousel.Caption>
       <h3>Hands-On Guidance</h3>
       <p>Clear, Concise Assistance To Help You Navigate Your Career Goals.</p>

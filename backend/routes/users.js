@@ -25,5 +25,7 @@ router.get("/logout", loginRequired, db.logoutuser);
 router.get("/survey", db.getAllSurveyQuestionsAndAnswers);
 router.get("/getuser/:username", db.getUserByUsername);
 // router.get("/getuser/allusers", db.getAllUsers);
+router.get("/search", db.getAllUsers);
+
 
 module.exports = router;
