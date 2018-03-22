@@ -274,7 +274,7 @@ const getAnswersFromUsers = (req, res, next) => {
 };
 
 module.exports = {
-    // getAllUsers: getAllUsers,
+    getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
     createUser: createUser,
     updateSingleUser: updateSingleUser,
