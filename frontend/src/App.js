@@ -7,7 +7,6 @@ import LoginUser from './components/login/LoginUser';
 import RegisterUser from './components/login/RegisterUser';
 import SearchUsers from './components/users/SearchUsers';
 import Users from './components/users/Users'
-// import Profile from './components/users/profile/Profile';
 
 class App extends Component {
   render() {
@@ -29,7 +28,6 @@ class App extends Component {
         <Route path="/search" component={SearchUsers} />
         <Route path="/aboutus" component={AboutUs} />
         <Route path="/users" component={Users} />
-        {/* <Route path="/users/:profile" component={Profile} /> */}
       </Switch>
       </div>
     );
