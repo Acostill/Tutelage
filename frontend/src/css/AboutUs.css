@@ -1,0 +1,13 @@
+.teamPhotos {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#mainDiv {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+
+}
