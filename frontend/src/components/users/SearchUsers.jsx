@@ -40,9 +40,9 @@ class SearchUsers extends Component {
           const { imgurl, firstname, lastname } = user;
           return (
             <div>
-              <img src={user.imgurl} alt="user_pic" style={style} />
+              <img src={imgurl} alt="user_pic" style={style} />
               <h3>
-                {user.firstname} {user.lastname}
+                {firstname} {lastname}
               </h3>
               <p> Manhattan, NY </p>
             </div>
