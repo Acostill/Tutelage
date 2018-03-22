@@ -18,7 +18,7 @@ const getAllUsers = (req, res, next) => {
         .catch(function(err) {
             return next(err);
         });
-}
+};
 
 const getSingleUser = (req, res, next) => {
     db
@@ -33,7 +33,7 @@ const getSingleUser = (req, res, next) => {
         .catch(function(err) {
             return next(err);
         });
-}
+};
 
 // function updateSingleUser(req, res, next) {
 //   const hash = authHelpers.createHash(req.body.password);
@@ -86,6 +86,27 @@ const updateSingleUser = (req, res, next) => {
         });
 };
 
+const fetchNewThread = (req, res, next) => {
+    let query =
+        "INSERT INTO threads (user_1, user_2) VALUES (${username1}, ${username2})";
+    db
+        .none(query, {
+            username1: req.body.username1,
+            username2: req.body.username2
+        })
+        .then(() => {
+            res.send("Got the two users in the thread!");
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("Error getting thread.");
+        });
+};
+
+// const fetchMessages = (req, res, next) => {
+//     let query = "INSERT INTO threads JOIN"
+// }
+
 const loginUser = (req, res, next) => {
     passport.authenticate("local", {});
     const authenticate = passport.authenticate("local", (err, user, info) => {
@@ -104,12 +125,12 @@ const loginUser = (req, res, next) => {
         }
     });
     return authenticate(req, res, next);
-}
+};
 
 const logoutUser = (req, res, next) => {
     req.logout();
     res.status(200).send("log out success");
-}
+};
 
 const createUser = (req, res, next) => {
     const hash = authHelpers.createHash(req.body.password);
@@ -137,7 +158,7 @@ const createUser = (req, res, next) => {
             console.log(err);
             res.status(500).send("error creating user");
         });
-}
+};
 
 // const getAllSurveyQuestions = (req, res, next) => {
 //     db
@@ -156,7 +177,9 @@ const createUser = (req, res, next) => {
 
 const getAllSurveyQuestionsAndAnswers = (req, res, next) => {
     db
-        .any("SELECT questions.id, the_question, answer_1, answer_2, answer_3, answer_4 FROM answers JOIN questions ON answers.id = answers.question_id")
+        .any(
+            "SELECT questions.id, the_question, answer_1, answer_2, answer_3, answer_4 FROM answers JOIN questions ON answers.id = answers.question_id"
+        )
         .then(function(data) {
             res.status(200).json({
                 status: "success",
@@ -190,7 +213,6 @@ const getAnswersFromUsers = (req, res, next) => {
         });
 };
 
-
 module.exports = {
     getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
@@ -200,5 +222,6 @@ module.exports = {
     logoutuser: logoutUser,
     // getAllSurveyQuestions: getAllSurveyQuestions,
     getAnswersFromUsers: getAnswersFromUsers,
-    getAllSurveyQuestionsAndAnswers: getAllSurveyQuestionsAndAnswers
+    getAllSurveyQuestionsAndAnswers: getAllSurveyQuestionsAndAnswers,
+    fetchNewThread: fetchNewThread,
 };
