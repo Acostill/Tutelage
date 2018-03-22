@@ -199,8 +199,11 @@ function getUserByUsername(req, res, next) {
             });
         })
         .catch(err => {
-            console.log(err);
-            res.status(500).send(`${req.params.username} not found.`);
+            if (err.code === 0) {
+                res.status(500).send(`${req.params.username} not found.`);
+            } else {
+                res.status(500).send("Oops, something went wrong.")
+            }
         });
 }
 
