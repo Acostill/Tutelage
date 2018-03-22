@@ -8,7 +8,7 @@ CREATE TABLE users (
   username VARCHAR (50) UNIQUE NOT NULL,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
-	imgURL VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png',
+	imgURL VARCHAR,
   email VARCHAR NOT NULL,
   password_digest VARCHAR NOT NULL,
   ismentor boolean
@@ -40,10 +40,10 @@ CREATE TABLE messages(
 	ID SERIAL PRIMARY KEY,
 	thread_id INTEGER REFERENCES threads(ID),
 	sender VARCHAR REFERENCES users(username),
+	receiver VARCHAR REFERENCES users(username),
 	body VARCHAR,
-	date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
-
 
 /* tyler, password: 123456 */
 
@@ -79,6 +79,3 @@ INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
 
 -- INSERT INTO answers (answer_selection, question_id, user_id)
 --   values (1, 1, 1);
-
-INSERT INTO messages (date)
-  values (now());
