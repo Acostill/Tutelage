@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router';
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
+import FilterSideBar from "./FilterSideBar";
 import "../../css/SearchUsers.css";
 
 class SearchUsers extends Component {
@@ -35,8 +36,6 @@ class SearchUsers extends Component {
     this.getUserList()
   }
 
-
-
   render() {
     const { handleCardClick } = this;
     const { users } = this.state;
@@ -48,6 +47,8 @@ class SearchUsers extends Component {
       <div>
         {/* ---- Have to find a way for common saying for mentor or mentee /or props to change the title ---- */}
         <h1> Find Your Next Mentor </h1>
+
+        <FilterSideBar />
 
         {users.map(user => {
           const { imgurl, firstname, lastname, username, location } = user;
