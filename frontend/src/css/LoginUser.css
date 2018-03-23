@@ -1,0 +1,29 @@
+#login-form {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 7px 0px #353535;
+    align-items: center;
+}
+
+legend {
+    text-align: center;
+}
+
+.input-box {
+    margin-bottom: 15px;
+    width: 230px;
+    height: 33px;
+}
+
+.text-indent {
+    text-indent: 10px;
+}
+
+.message {
+    color: red;
+    font-weight: bold;
+}

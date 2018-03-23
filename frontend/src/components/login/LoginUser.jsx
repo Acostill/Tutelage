@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, Link, Switch, Redirect} from "react-router-dom";
+import React, { Component } from "react";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import "../../css/LoginUser.css";
 
@@ -21,6 +21,7 @@ class LoginUser extends Component {
   };
 
   submitLoginForm = e => {
+    e.preventDefault();
     const { username, password, message } = this.state;
     axios
       .post("/users/login", {
@@ -28,23 +29,23 @@ class LoginUser extends Component {
         password: password
       })
       .then(res => {
-        console.log(res)
-        // redirect to user's profile 
+        console.log(res);
+        // redirect to user's profile
         this.setState({
-            signedIn: true
-        })
+          signedIn: true
+        });
       })
       .catch(err => {
         console.log(err);
-        if(username === "" && password === ""){
+        if (username === "" && password === "") {
           this.setState({
-            message: "Fill out Username & Password"
-          })
-        } else {   
+            message: "* Fill out Username & Password"
+          });
+        } else {
           this.setState({
             username: "",
             password: "",
-            message: "Username / Password Incorrect"
+            message: "* Username / Password Incorrect"
           });
         }
       });
@@ -54,48 +55,40 @@ class LoginUser extends Component {
     const { username, password, message, signedIn } = this.state;
     const { handleInputChange, submitLoginForm } = this;
 
-    if(signedIn) {
-      return( <Redirect to="/profile" /> )
+    if (signedIn) {
+      return <Redirect to="/profile" />;
     }
 
     // can add a cookie/session storage so user doesn't see login page when they are signed in
 
     return (
-      <div>
-        <div>
-          <h1> Welcome Back! </h1>
+      <div id="login-form">
+        <legend> Welcome Back! </legend>
+
           <input
             name="username"
             type="text"
             value={username}
             onChange={handleInputChange}
             placeholder="Username"
-            className="input-box"
+            className="input-box text-indent"
           />
-          <br />
           <input
             name="password"
             type="password"
             value={password}
             onChange={handleInputChange}
             placeholder="Password"
-            className="input-box"
+            className="input-box text-indent"
           />
-          <br />
-          <button onClick={submitLoginForm}>
-            Log in
-          </button>
-    
-          {message}
-          
-        </div>
+  
+          <button onClick={submitLoginForm} className="input-box" > Log in </button>
 
-        <div>
+          <p className="message">{message}</p>
+
           <p>
-            {" "}
             Not a member? <Link to="/register"> Register here. </Link>
           </p>
-        </div>
       </div>
     );
   }
