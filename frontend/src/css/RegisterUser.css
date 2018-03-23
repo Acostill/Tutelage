@@ -1,0 +1,39 @@
+#registerForm {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    justify-content: center;
+}
+
+fieldset,
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 10pt;
+}
+
+form > .input-box {
+    margin-bottom: 15px;
+    width: 230px;
+    height: 33px;
+}
+
+.text-indent {
+    text-indent: 10px;
+}
+
+.radio-button {
+    margin-bottom: 15px;
+    height: 33px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    justify-content: space-evenly;
+}
