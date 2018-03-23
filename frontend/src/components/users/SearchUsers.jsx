@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import Map from "./MapContainer";
+import FilterSideBar from "./FilterSideBar";
 import "../../css/SearchUsers.css";
 import zipcodes from "zipcodes";
 
@@ -66,6 +67,8 @@ class SearchUsers extends Component {
       <div>
         {/* ---- Have to find a way for common saying for mentor or mentee /or props to change the title ---- */}
         <h1> Find Your Next Mentor </h1>
+
+        <FilterSideBar />
 
         {users.map(user => {
           const { imgurl, firstname, lastname, username, location } = user;
