@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Inbox from './Inbox';
 
 class Profile extends Component {
-  state = {
-    user: {}
+  constructor() {
+    super();
+    this.state = {
+      user: {}
+    }
   }
 
   getUser = () => {
@@ -32,17 +36,11 @@ class Profile extends Component {
     const { user } = this.state;
     console.log({ user })
 
-    let profilePic = 'http://www.diaglobal.org/_Images/member/Generic_Image_Missing-Profile.jpg';
-    let fullName = 'John Cloud';
-    let location = 'Mid Manhattan, NY';
-    let gender = 'Male';
-    let occupation = 'Full Stack Developer';
-    let commonInterests = ['Basketball', 'CSS Enthusiast'];
-    let hobbies = ['Basketball', 'CSS Enthusiast', 'Pottery Barn'];
-    let bio = 'This is my bio';
-    let credentials = ['C4Q Full Stack Fellowship', 'Front End Engineer at Esty', 'Front End Engineer at Blue Apron']
+    let commonInterests = '';
+
     return (
       <div>
+        <Inbox />
         <div className="imageHeader" >
           <img src={user.imgurl} alt="profile picture" />
           {`${user.firstname} ${user.lastname}`}

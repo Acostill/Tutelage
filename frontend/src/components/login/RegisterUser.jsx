@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
+import "../../css/RegisterUser.css";
 
-class RegisterUser extends React.Component {
+class RegisterUser extends Component {
+  constructor() {
+    super();
 
-    state = {
+    this.state = {
       firstname: "",
       lastname: "",
       email: "",
@@ -14,7 +17,8 @@ class RegisterUser extends React.Component {
       ismentor: "",
       message: ""
     };
-  
+  }
+
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -61,7 +65,6 @@ class RegisterUser extends React.Component {
           email: email,
           username: username,
           password: password,
-          // passwordConfirmation: passwordConfirmation,
           ismentor: eval(ismentor)
         })
         .then(res => {
@@ -96,24 +99,25 @@ class RegisterUser extends React.Component {
         <fieldset>
           <legend>Register New User:</legend>
           <form onSubmit={registerNewUserForm}>
-            Are you a:{" "}
+          <div className="radio-button" >
+          Are you a: 
             <input
               type="radio"
               name="ismentor"
               value="true"
               onChange={handleRadioChange}
             />
-            Mentor{" "}
+            Mentor
+            
             <input
               type="radio"
               name="ismentor"
               value="false"
               onChange={handleRadioChange}
-            />{" "}
+            />
             Mentee
-            <br />
-            <br />
-            <input
+            </div>
+            <input className="input-box text-indent"
               type="text"
               placeholder="First Name"
               name="firstname"
@@ -121,9 +125,7 @@ class RegisterUser extends React.Component {
               onChange={handleInputChange}
               required
             />
-            <br />
-            <br />
-            <input
+            <input className="input-box text-indent"
               type="text"
               placeholder="Last Name"
               name="lastname"
@@ -131,9 +133,7 @@ class RegisterUser extends React.Component {
               onChange={handleInputChange}
               required
             />{" "}
-            <br />
-            <br />
-            <input
+            <input className="input-box text-indent"
               type="email"
               placeholder="Email"
               name="email"
@@ -141,9 +141,7 @@ class RegisterUser extends React.Component {
               onChange={handleInputChange}
               required
             />
-            <br />
-            <br />
-            <input
+            <input className="input-box text-indent"
               type="text"
               placeholder="Username"
               name="username"
@@ -153,9 +151,7 @@ class RegisterUser extends React.Component {
               maxLength="12"
               required
             />
-            <br />
-            <br />
-            <input
+            <input className="input-box text-indent"
               type="password"
               placeholder="Password"
               name="password"
@@ -163,9 +159,7 @@ class RegisterUser extends React.Component {
               onChange={handleInputChange}
               required
             />
-            <br />
-            <br />
-            <input
+            <input className="input-box text-indent"
               type="password"
               placeholder="Confirm Password"
               name="passwordConfirmation"
@@ -173,16 +167,12 @@ class RegisterUser extends React.Component {
               onChange={handleInputChange}
               required
             />
-            <br />
-            <br />
             {message}
-            <br />
-            <input type="submit" value="Create Account" />
+            <input className="input-box" type="submit" value="Create Account" />
           </form>
         </fieldset>
 
         <div>
-        <br />
           <p>
             Already a Member? <Link to="/login"> Log in Here </Link>
           </p>

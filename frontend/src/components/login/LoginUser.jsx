@@ -55,8 +55,8 @@ class LoginUser extends Component {
     const { username, password, message, signedIn } = this.state;
     const { handleInputChange, submitLoginForm } = this;
 
-    if (signedIn) {
-      return <Redirect to="/profile" />;
+    if(signedIn) {
+      return( <Redirect to= {`/users/${username}`}/>)
     }
 
     // can add a cookie/session storage so user doesn't see login page when they are signed in
