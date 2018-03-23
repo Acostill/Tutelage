@@ -9,22 +9,24 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user;
     res.send(`${req.user.username} is logged in`);
-});
-router.post("/create", db.createUser);
-router.post("/survey", db.getAnswersFromUsers);
-router.post("/message", loginRequired, db.fetchNewThread);
-router.post("/send_message", db.submitMessage); //WORKS!!
-router.post("/get_messages", db.getAllMessages); //try this one first WORKS!
+}); //** Greg */
+router.post("/create", db.createUser); //** Greg */
+router.post("/survey", db.getAnswersFromUsers); //** Greg */
+router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
+router.post("/send_message", db.submitMessage); //** Greg */
+router.post("/get_messages", db.getAllMessages); //** Greg */
 
 /******************PATCH ROUTES********************* */
-router.patch("/edit", loginRequired, db.updateSingleUser);
+router.patch("/edit", loginRequired, db.updateSingleUser); //** Greg */
 
 /******************GET ROUTES********************* */
 // router.get("/survey", db.getAllSurveyQuestions);
-router.get("/logout", loginRequired, db.logoutuser);
-router.get("/survey", db.getAllSurveyQuestionsAndAnswers);
+router.get("/logout", loginRequired, db.logoutuser); //** Greg */
+router.get("/survey", db.getAllSurveyQuestionsAndAnswers); //** Greg */
 router.get("/getuser/:username", db.getUserByUsername); //** Gerson */
 router.get("/search", db.getAllUsers); //** Carolina */
+router.get("/all_zipcodes", db.getAllLocations); //** Greg */
+
 
 
 module.exports = router;
