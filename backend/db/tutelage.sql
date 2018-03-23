@@ -29,6 +29,7 @@ CREATE TABLE answers (
 	question_id INTEGER REFERENCES questions(ID),
 	user_id INTEGER REFERENCES users(ID),
 	answer_selection INTEGER
+  -- accepted_answer_selection INTEGER REFERENCES answers(answer_selection) 
 );
 
 CREATE TABLE threads(
