@@ -8,7 +8,7 @@ CREATE TABLE users (
   username VARCHAR (50) UNIQUE NOT NULL,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
-	zipcode VARCHAR NOT NULL,
+	zipcode VARCHAR,
 	imgURL VARCHAR,
   email VARCHAR NOT NULL,
   password_digest VARCHAR NOT NULL,

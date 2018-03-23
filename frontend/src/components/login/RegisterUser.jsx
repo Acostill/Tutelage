@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 
-class RegisterUser extends Component {
+class RegisterUser extends React.Component {
 
     state = {
       firstname: "",
@@ -14,7 +14,7 @@ class RegisterUser extends Component {
       ismentor: "",
       message: ""
     };
-
+  
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -43,6 +43,7 @@ class RegisterUser extends Component {
       this.setState({
         message: "Please choose if your a Mentor or Mentee"
       });
+      return
     } else if (password !== passwordConfirmation) {
       this.setState({
         message: "Passwords do not match"
@@ -52,6 +53,7 @@ class RegisterUser extends Component {
       this.setState({
         message: "Passwords match"
       });
+    }
       axios
         .post("/users/create", {
           firstname: firstname,
@@ -73,7 +75,6 @@ class RegisterUser extends Component {
             message: "Account Exists Already"
           });
         });
-    }
   };
 
   render() {
