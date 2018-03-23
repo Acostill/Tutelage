@@ -10,3 +10,32 @@
       height:auto;
     }
 }
+
+#signUpChoice {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  background-color: #f46524ff;
+  color: white;
+  text-align: center;
+  font-size: 26px;
+  padding: 15px 32px;
+  margin: 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.buttons:hover {
+  background-color: white;
+  color: black;
+}
+
+.buttons:active {
+  background-color: #E0583A;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
