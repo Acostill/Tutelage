@@ -8,7 +8,7 @@ const passport = require("../auth/local");
 
 const getSingleUser = (req, res, next) => {
     db
-        .any("select * from users where username = ${username}", req.user)
+        .any("SELECT * FROM users WHERE username = ${username}", req.user)
         .then(function(data) {
             res.status(200).json({
                 status: "success",
@@ -44,15 +44,16 @@ const updateSingleUser = (req, res, next) => {
     const hash = authHelpers.createHash(req.body.password);
     console.log("updated password hash: ", hash);
 
-    let { username, firstname, lastname, password_digest, ismentor } = req.body;
+    let { username, firstname, lastname, zipcode, password_digest, ismentor } = req.body;
 
     let query =
-        "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, imgURL = ${imgURL}, email = ${email}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}";
+        "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, zipcode=${zipcode}, imgURL = ${imgURL}, email = ${email}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}";
     db
         .none(query, {
             username: req.body.username,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
+            zipcode: req.body.zipcode,
             imgURL: req.body.imgURL,
             email: req.body.email,
             password: hash,
@@ -165,10 +166,11 @@ const createUser = (req, res, next) => {
     console.log("createuser hash: ", hash);
     db
         .none(
-            "INSERT INTO users (username, firstname, lastname, imgURL, email, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${imgURL}, ${email}, ${password}, ${ismentor})", {
+            "INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${password}, ${ismentor})", {
                 username: req.body.username,
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
+                zipcode: req.body.zipcode,
                 imgURL: req.body.imgURL,
                 email: req.body.email,
                 password: hash,
@@ -190,7 +192,7 @@ const createUser = (req, res, next) => {
 
 function getUserByUsername(req, res, next) {
     db
-        .one("SELECT username, firstname, lastname, imgURL, email, ismentor FROM users WHERE LOWER(username) = LOWER(${username})", req.params)
+        .one("SELECT username, firstname, lastname, zipcode, imgURL, email, ismentor FROM users WHERE LOWER(username) = LOWER(${username})", req.params)
         .then(function(data) {
             res.status(200).json({
                 status: "success",
@@ -273,6 +275,24 @@ const getAnswersFromUsers = (req, res, next) => {
         });
 };
 
+const getAllLocations = (req, res, next) => {
+    let query = "SELECT username, zipcode FROM users"
+    db.any(query, )
+        .then(function(data) {
+            res.status(200).json({
+                status: "success",
+                data: data,
+                message: `Retrieved all ${data.length} usernames and zipcodes!`
+            });
+        })
+        .catch(err => {
+            if (err.code === 0) {
+                res.status(500).send(`Information not found.`);
+            } else {
+                res.status(500).send("Oops, something went wrong.")
+            }
+        });
+}
 module.exports = {
     getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
@@ -287,4 +307,5 @@ module.exports = {
     submitMessage: submitMessage,
     getAllMessages: getAllMessages,
     getUserByUsername: getUserByUsername,
+    getAllLocations: getAllLocations,
 };

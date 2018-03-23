@@ -59,7 +59,7 @@ class RegisterUser extends Component {
           email: email,
           username: username,
           password: password,
-          passwordConfirmation: passwordConfirmation,
+          // passwordConfirmation: passwordConfirmation,
           ismentor: eval(ismentor)
         })
         .then(res => {
