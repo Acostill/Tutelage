@@ -196,7 +196,7 @@ function getUserByUsername(req, res, next) {
         .then(function(data) {
             res.status(200).json({
                 status: "success",
-                data: data,
+                user: data,
                 message: `Retrieved user: ${req.params.username}!`
             });
         })
