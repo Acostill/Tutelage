@@ -4,16 +4,20 @@ import axios from "axios";
 import "../../css/RegisterUser.css";
 
 class RegisterUser extends Component {
-  state = {
-    firstname: "",
-    lastname: "",
-    email: "",
-    username: "",
-    password: "",
-    passwordConfirmation: "",
-    ismentor: "",
-    message: ""
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      firstname: "",
+      lastname: "",
+      email: "",
+      username: "",
+      password: "",
+      passwordConfirmation: "",
+      ismentor: "",
+      message: ""
+    };
+  }
 
   handleInputChange = e => {
     this.setState({
@@ -43,6 +47,7 @@ class RegisterUser extends Component {
       this.setState({
         message: "Please choose if your a Mentor or Mentee"
       });
+      return
     } else if (password !== passwordConfirmation) {
       this.setState({
         message: "Passwords do not match"
@@ -52,6 +57,7 @@ class RegisterUser extends Component {
       this.setState({
         message: "Passwords match"
       });
+    }
       axios
         .post("/users/create", {
           firstname: firstname,
@@ -59,7 +65,6 @@ class RegisterUser extends Component {
           email: email,
           username: username,
           password: password,
-          // passwordConfirmation: passwordConfirmation,
           ismentor: eval(ismentor)
         })
         .then(res => {
@@ -73,7 +78,6 @@ class RegisterUser extends Component {
             message: "Account Exists Already"
           });
         });
-    }
   };
 
   render() {

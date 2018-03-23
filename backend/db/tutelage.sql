@@ -8,7 +8,7 @@ CREATE TABLE users (
   username VARCHAR (50) UNIQUE NOT NULL,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
-	zipcode VARCHAR NOT NULL,
+	zipcode VARCHAR,
 	imgURL VARCHAR,
   email VARCHAR NOT NULL,
   password_digest VARCHAR NOT NULL,
@@ -77,6 +77,27 @@ INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
   values ('Do you like to exercise?','a little bit', 'Im learning to like it', 'yes I like it', 'I love love Exercising');
 INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
   values ('Are you a psychopathic murderer lacking remorse and empathy?','a little bit', 'Im learning to like it', 'yes I like it', 'I love love Evility');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('What is your level of proficiency in the subject at hand?','Novice', 'Intermediate', 'Advanced', 'Expert');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('What is your previous mentoring experience level?','This is my first time', 'I have mentored once before in the past', 'I have a few mentoring experiences under my belt', 'I have several years extensively mentoring others');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('Do you see your role as a mentor as more of a(n):','Advisor', 'Supporter', 'Coach', 'Role-Model');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('What is your preferred mentoring style?','Face-to-Face', 'Virtual (Skype, Google Hangouts, etc.)', 'Phone Calls', 'Text Messaging');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('What level of privacy do you expect to give and receive while utilizing the app?','Full Disclosure (Nothing Off Limits)', 'I Agree To Only Mention Details To Close Friends', 'It Depends On The Situation', 'Total Discretion (Nothing Should Be Discussed With Anyone Outside App)');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('How long does the ideal mentoring relationship last?','A Few Hours', 'A Few Days', 'A Few Weeks', 'As Long As It Takes');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('In your opinion, what is the most important attribute of a mentor?','Empathy', 'Patience', 'Accuracy', 'Reliability');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('What do you feel is the most important value for a mentee to have?','Eagerness To Learn', 'Punctuality', 'Consistency', 'Ability To Listen');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('What is your main motivation for joining Tutelage?','It’s A Good Way To Spend Free Time', 'I Wanted To Give Back And Serve Others', 'Volunteer Experience For My Resume/Job', 'Great Way To Improve My Own Understanding Of The Subject Matter');
+INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
+  values ('Who do you teach best?','Visual Learners', 'Auditory Learners', 'Hands-On Learners', 'All Of The Above');
+
 
 -- INSERT INTO answers (answer_selection, question_id, user_id)
 --   values (1, 1, 1);
