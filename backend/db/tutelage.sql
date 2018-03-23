@@ -72,17 +72,17 @@ INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, passwo
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
   values ('test9','Johny9','Test9', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we9','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
-  values ('carolina1','Carolina','Restrepo', NULL, 'https://i.imgur.com/pZ9jX8v.png', 'carolina@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+  values ('carolina1','Carolina','Restrepo', NULL, '../images/CarolinaPic.jpeg', 'carolina@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
-  values ('eddie1','Eddie','Harmon', NULL, 'https://i.imgur.com/pZ9jX8v.png', 'eddie@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+  values ('eddie1','Eddie','Harmon', NULL, '../images/EddieCropped.jpg', 'eddie@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
-  values ('nick1','Nicholas','Chavez', NULL, 'https://i.imgur.com/pZ9jX8v.png', 'nick@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+  values ('nick1','Nicholas','Chavez', NULL, '../images/NickCropped.jpg', 'nick@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
-  values ('gerson1','Gerson','Castillo', NULL, 'https://i.imgur.com/pZ9jX8v.png', 'gerson@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+  values ('gerson1','Gerson','Castillo', NULL, '../images/GersonCropped.jpg', 'gerson@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
-  values ('greg1','Gregory','Davis', NULL, 'https://i.imgur.com/pZ9jX8v.png', 'greg@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+  values ('greg1','Gregory','Davis', NULL, '../images/gregcropped.jpg', 'greg@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
-  values ('jcrest','Jason','Crest', NULL, 'https://i.imgur.com/pZ9jX8v.png', 'jason@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+  values ('jcrest','Jason','Crest', NULL, 'https://upload.wikimedia.org/wikipedia/commons/c/cd/MFettes-headshot.jpg', 'jason@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 
  
 INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
