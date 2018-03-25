@@ -48,6 +48,7 @@ div > nav {
 }
 
 .nav-right {
+  font-size: 15px;
   width: 300px;
   padding: 10px;
   flex-direction: row;
