@@ -1,5 +1,5 @@
 /* -- Styling side bar displayed in Search Page -- */
-ul {
+ul#qualities_list {
     list-style-type: none;
     font-size: 13pt;
     margin: 0;
@@ -8,22 +8,39 @@ ul {
     width: 230px;
     background-color: rgb(232, 241, 242);
     height: 100%;
-    position: fixed;
     overflow: auto;
 }
 
-li {
+li.statement1,
+li.statement2,
+li.statement3,
+li.statement4,
+li.statement5,
+li.statement6,
+li.statement7 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 10px;
 }
 
-li > p {
+li.statement1 > p,
+li.statement2 > p,
+li.statement3 > p,
+li.statement4 > p,
+li.statement5 > p,
+li.statement6 > p,
+li.statement7 > p {
     margin-bottom: 0;
 }
 
-li > div.choices {
+li.statement1 > div.choices,
+li.statement2 > div.choices,
+li.statement3 > div.choices,
+li.statement4 > div.choices,
+li.statement5 > div.choices,
+li.statement6 > div.choices,
+li.statement7 > div.choices {
     width: 100%;
     padding: 10px;
     display: flex;

@@ -60,8 +60,8 @@ class SearchUsers extends Component {
     const { handleCardClick } = this;
     const { users, lat_longs, zip_codes } = this.state;
     const style = {
-      width: "128px",
-      height: "128px"
+      width: "200px",
+      height: "200px"
     };
     return (
       <div id="search-page">
@@ -69,7 +69,7 @@ class SearchUsers extends Component {
         <h1 id="search-header"> Find Your Next Mentor </h1>
 
         <div id="filter-results-map">
-        
+
           <FilterSideBar id="filter-sidebar" />
 
           <div id="results-map">
@@ -101,9 +101,9 @@ class SearchUsers extends Component {
               })}
             </div>
 
-            <div className="gmap">
+            {/* <div className="gmap">
               <Map arrOfLatLongs={lat_longs} />
-            </div>
+            </div> */}
 
           </div>
         </div>

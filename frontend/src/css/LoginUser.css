@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-legend {
+legend#login-title {
     text-align: center;
 }
 

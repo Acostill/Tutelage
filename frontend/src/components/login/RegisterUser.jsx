@@ -96,9 +96,9 @@ class RegisterUser extends Component {
 
     return (
       <div id="registerForm">
-        <fieldset>
-          <legend>Register New User:</legend>
-          <form onSubmit={registerNewUserForm}>
+        <fieldset id="register-container">
+          <legend id="register-title">Register New User:</legend>
+          <form onSubmit={registerNewUserForm} id="input-container">
           <div className="radio-button" >
           Are you a: 
             <input
@@ -172,7 +172,7 @@ class RegisterUser extends Component {
           </form>
         </fieldset>
 
-        <div>
+        <div id="is-member-link">
           <p>
             Already a Member? <Link to="/login"> Log in Here </Link>
           </p>

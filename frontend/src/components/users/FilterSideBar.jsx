@@ -8,11 +8,10 @@ class FilterSideBar extends Component {
     return (
       <div>
         <ul id="qualities_list">
-          {/* <li> */}
+
           <legend>
             <h2> Filter By: </h2>
           </legend>
-          {/* </li> */}
 
           <li id="statement1">
             <p> Gender: </p>
@@ -60,6 +59,10 @@ class FilterSideBar extends Component {
               <div>
                 <input type="radio" id="state2choice6" />
                 46 - 50
+              </div>
+              <div>
+                <input type="radio" id="state2choice7" />
+                50+
               </div>
             </div>
           </li>
