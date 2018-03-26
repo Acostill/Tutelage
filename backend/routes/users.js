@@ -15,6 +15,8 @@ router.post("/survey", db.getAnswersFromUsers); //** Greg */
 router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
 router.post("/send_message", db.submitMessage); //** Greg */
 router.post("/get_messages", db.getAllMessages); //** Greg */
+router.post("/threadmessages", loginRequired, db.getThreadMessages); /** Gerson */
+
 
 /******************PATCH ROUTES********************* */
 router.patch("/edit", loginRequired, db.updateSingleUser); //** Greg */
@@ -26,6 +28,7 @@ router.get("/survey", db.getAllSurveyQuestionsAndAnswers); //** Greg */
 router.get("/getuser/:username", db.getUserByUsername); //** Gerson */
 router.get("/search", db.getAllUsers); //** Carolina */
 router.get("/all_zipcodes", db.getAllLocations); //** Greg */
+router.get("/userthreads", loginRequired, db.getUserThreads); //** Gerson */
 
 
 
