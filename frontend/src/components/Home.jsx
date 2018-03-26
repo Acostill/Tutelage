@@ -106,10 +106,7 @@ class Home extends Component {
   </a> */}
         </div>
 
-        <br />
-        <br />
-        <br />
-
+     
         <div id="signUpChoice">
           <button class="buttons" type="button">Become A Mentor</button>
           <button class="buttons" type="button">Become A Mentee</button>
