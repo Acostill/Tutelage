@@ -15,11 +15,13 @@ class App extends Component {
       <nav>
         <Link id="appName" to="/"> Tutelage </Link>
         {" "}
-        <Link to="/login"> Log In </Link>
+        <div className="nav-right">
+        <Link to="/login"  > Log In </Link>
         {" "}
-        <Link to="/register"> Register </Link>
+        <Link to="/register" > Register </Link>
         {" "}
-        <Link to="/aboutus"> About Us </Link>
+        <Link to="/aboutus" > About Us </Link>
+        </div>
       </nav>
       <Switch>
         <Route exact path="/" component={Home} />
