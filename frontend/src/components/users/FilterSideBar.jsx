@@ -10,7 +10,7 @@ class FilterSideBar extends Component {
         <ul id="qualities_list">
           {/* <li> */}
           <legend>
-            <h2> Filter By Similarities: </h2>
+            <h2> Filter By: </h2>
           </legend>
           {/* </li> */}
 
