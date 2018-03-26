@@ -1,10 +1,48 @@
+/* -- Styling side bar displayed in Search Page -- */
 ul {
     list-style-type: none;
+    font-size: 13pt;
     margin: 0;
-    padding: 0;
-    width: 25%;
-    background-color: #f1f1f1;
-    height: 100%; /* Full height */
-    position: fixed; /* Make it stick, even on scroll */
-    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    padding: 15px;
+    padding-left: 25px;
+    width: 230px;
+    background-color: rgb(232, 241, 242);
+    height: 100%;
+    position: fixed;
+    overflow: auto;
 }
+
+li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+li > p {
+    margin-bottom: 0;
+}
+
+li > div.choices {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ---- align radio buttons with text ---- */
+.choices > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.choices > div > input {
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+
+
