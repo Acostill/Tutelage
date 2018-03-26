@@ -27,13 +27,16 @@ body,html{
 
 .teamMemberCaption {
     margin-top: 20px;
+    font-size: 14px;
 }
 
-.teamMemberTitle {
-    margin-bottom: 
-}
+ .teamMemberTitle {
+     display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+} 
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     #mainDiv {
        flex-direction: column;
     }
@@ -81,11 +84,19 @@ body,html{
     /* justify-content: space-around;
     justify-content: space-between;
     align-items: center; */
-#missionStatementSection {
+/* #missionStatementSection {
     
-}
+} */
 
 #missionStatement {
     color: #f46524ff;
     font-size: 30px;
+    text-align: center;
 }
+  
+  
+  .missionParagraphs {
+    text-align: center;
+    font-family: 'IBM Plex Serif', serif;
+  
+  }
