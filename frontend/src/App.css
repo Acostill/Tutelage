@@ -27,14 +27,14 @@
   to { transform: rotate(360deg); }
 }
 
-#appName {
+#app-name {
   font-size: 44px;
   font-family: 'Lobster', cursive;
   color: #f46524ff;
 }
 
 /*---- Navigation bar ---- */
-div > nav {
+#navigation-bar {
   width: 100%;
   padding: 10px;
   display: flex;
@@ -42,15 +42,16 @@ div > nav {
   justify-content: space-between;
 }
 
-#appName {
+#app-name {
   margin-left: 20px;
   align-self: flex-start;
 }
 
-.nav-right {
+div.nav-right {
   font-size: 15px;
   width: 300px;
   padding: 10px;
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
   justify-content: space-around;

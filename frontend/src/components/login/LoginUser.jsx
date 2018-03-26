@@ -63,7 +63,7 @@ class LoginUser extends Component {
 
     return (
       <div id="login-form">
-        <legend> Welcome Back! </legend>
+        <legend id="login-title"> Welcome Back! </legend>
 
           <input
             name="username"

@@ -12,8 +12,8 @@ class App extends Component {
   render() {
     return (
       <div>
-      <nav>
-        <Link id="appName" to="/"> Tutelage </Link>
+      <nav id="navigation-bar">
+        <Link id="app-name" to="/"> Tutelage </Link>
         {" "}
         <div className="nav-right">
         <Link to="/login"  > Log In </Link>

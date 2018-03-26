@@ -9,8 +9,8 @@
     justify-content: center;
 }
 
-fieldset,
-div {
+#register-container,
+#is-member-link {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -18,7 +18,7 @@ div {
     font-size: 10pt;
 }
 
-form > .input-box {
+#input-container > .input-box {
     margin-bottom: 15px;
     width: 230px;
     height: 33px;
