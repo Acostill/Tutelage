@@ -8,6 +8,8 @@ body,html{
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 100px;
+    /* border:solid; */
+
 }
 
 #missionStatementSection {
@@ -16,10 +18,20 @@ body,html{
 }
 
 .teamMember {
+    flex-basis: 0;
+    flex-grow: 1;
     margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    /* border:solid;
+    border-color: springgreen; */
+
 }
 
 .teamMemberPhoto {
+    /* border:solid; */
+    flex-shrink: 0;
     margin-bottom: 10px;
 }
 .teamMemberPhoto > img {
@@ -33,16 +45,22 @@ body,html{
 .teamMemberCaption {
     margin-top: 20px;
     font-size: 14px;
+    padding: 2px;
     /* set a width */
 }
 
  .teamMemberTitle {
-     display: flex;
+    /* display: flex; */
     margin-bottom: 20px;
-    justify-content: center;
+    /* justify-content: center; */
+    text-align: center;
+    color: #f46524ff;
 } 
 
 @media (max-width: 480px) {
+    .teamMember {
+        flex-basis: auto;
+    }
     #mainDiv {
        flex-direction: column;
     }

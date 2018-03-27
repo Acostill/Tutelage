@@ -86,6 +86,12 @@
   transform: translateY(4px);
 }
 
+/* This removes the blue outline appearing around a clicked button */
+.buttons:focus {
+  outline:0;
+}
+
+
 ol.carousel-indicators {
   margin: auto;
 }
@@ -105,12 +111,14 @@ ol.carousel-indicators {
   height: 12px;
 }
 
+/* This handles the Main Caption. */
 .captionOne {
   font-size: 40px;
   color: white;
   text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue
 }
 
+/* This handles the sub-caption */
 .captionTwo {
 color: white;
 }
