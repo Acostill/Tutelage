@@ -1,0 +1,51 @@
+#user-profile {
+    background-color: powderblue;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.img-banner {
+    background-color: rgb(253, 143, 38);
+    border-radius: 50px;
+    text-align: center;
+}
+/* ---- faux crop image of user ---- */
+.image-header-container {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    margin: 10px auto;
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+    margin: auto;
+}
+
+.user-info-content {
+    background-color: pink;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+#quick-user-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+#chat-box {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
