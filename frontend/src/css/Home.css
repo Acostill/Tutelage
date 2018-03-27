@@ -6,6 +6,12 @@
     /* background-color: black; */
   }
 
+  /* This can change the carousel height to allow button visability without scrolling. */
+  
+  .mentorCarousel {
+    height: 600px;
+  }
+
   @media (max-width: 900px) {
     #myCarousel {
       width:auto;

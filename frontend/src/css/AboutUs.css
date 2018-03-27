@@ -33,6 +33,7 @@ body,html{
 .teamMemberCaption {
     margin-top: 20px;
     font-size: 14px;
+    /* set a width */
 }
 
  .teamMemberTitle {
