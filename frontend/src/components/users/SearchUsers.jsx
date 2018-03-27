@@ -6,7 +6,8 @@ import Map from "./MapContainer";
 import FilterSideBar from "./FilterSideBar";
 import "../../css/SearchUsers.css";
 import zipcodes from "zipcodes";
-import ProfileCardList from "./ProfileCardList";
+import ProfileCard from './ProfileCard';
+
 class SearchUsers extends Component {
   constructor() {
     super();
@@ -73,7 +74,7 @@ class SearchUsers extends Component {
 
           <div id="results-map">
             <div id="search-results">
-              <ProfileCardList users={users} />
+              {users.map(user => <ProfileCard user={user} />)}
             </div>
 
             {/* <div className="gmap">
