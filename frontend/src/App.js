@@ -7,12 +7,14 @@ import LoginUser from './components/login/LoginUser';
 import RegisterUser from './components/login/RegisterUser';
 import SearchUsers from './components/users/SearchUsers';
 import Users from './components/users/Users'
+import NavBar from './components/NavBar';
 
 class App extends Component {
   render() {
     return (
       <div>
-      <nav id="navigation-bar">
+        <NavBar />
+      {/* <nav id="navigation-bar">
         <Link id="app-name" to="/"> Tutelage </Link>
         {" "}
         <div className="nav-right">
@@ -22,7 +24,7 @@ class App extends Component {
         {" "}
         <Link to="/aboutus" > About Us </Link>
         </div>
-      </nav>
+      </nav> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={LoginUser} />
