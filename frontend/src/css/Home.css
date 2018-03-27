@@ -2,6 +2,8 @@
     /* width:900px; */
     height:500px;
     margin: auto;
+    /* overflow: hidden; */
+    /* background-color: black; */
   }
 
   @media (max-width: 900px) {
@@ -11,10 +13,48 @@
     }
 }
 
+/* .carousel-caption {
+  top: 36%;
+} */
+
+@media only screen and (min-width : 1200px) {
+  .carousel-caption
+  {
+    top: 43%;
+  }
+}
+
 #signUpChoice {
   display: flex;
   justify-content: center;
+  justify-content: space-around;
+  margin: 0 300px;
 }
+
+#enticerSection {
+  display: flex;
+  justify-content: center;
+}
+
+#mentorButton {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+#menteeButton {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+
+}
+
+/* .signUpEnticers {
+  text-align-last: right;
+} */
 
 .buttons {
   background-color: #f46524ff;
@@ -38,4 +78,33 @@
   background-color: #E0583A;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+ol.carousel-indicators {
+  margin: auto;
+}
+
+.carousel-indicators--round li {
+  border-radius: 10px;
+  margin: 1px 3px;
+  height: 10px;
+  max-width: 10px;
+  border: 1px solid #FFF;
+  background-color: orangered;
+}
+.carousel-indicators .active {
+  background-color: #fff;
+  max-width: 12px;
+  margin: 0 3px;
+  height: 12px;
+}
+
+.captionOne {
+  font-size: 40px;
+  color: white;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue
+}
+
+.captionTwo {
+color: white;
 }
