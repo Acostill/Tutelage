@@ -11,36 +11,36 @@ ul#qualities_list {
     overflow: auto;
 }
 
-li.statement1,
-li.statement2,
-li.statement3,
-li.statement4,
-li.statement5,
-li.statement6,
-li.statement7 {
+li#statement1,
+li#statement2,
+li#statement3,
+li#statement4,
+li#statement5,
+li#statement6,
+li#statement7 {
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 10px;
 }
 
-li.statement1 > p,
-li.statement2 > p,
-li.statement3 > p,
-li.statement4 > p,
-li.statement5 > p,
-li.statement6 > p,
-li.statement7 > p {
+li#statement1 > p,
+li#statement2 > p,
+li#statement3 > p,
+li#statement4 > p,
+li#statement5 > p,
+li#statement6 > p,
+li#statement7 > p {
     margin-bottom: 0;
 }
 
-li.statement1 > div.choices,
-li.statement2 > div.choices,
-li.statement3 > div.choices,
-li.statement4 > div.choices,
-li.statement5 > div.choices,
-li.statement6 > div.choices,
-li.statement7 > div.choices {
+li#statement1 > div.choices,
+li#statement2 > div.choices,
+li#statement3 > div.choices,
+li#statement4 > div.choices,
+li#statement5 > div.choices,
+li#statement6 > div.choices,
+li#statement7 > div.choices {
     width: 100%;
     padding: 10px;
     display: flex;
@@ -60,6 +60,3 @@ li.statement7 > div.choices {
     margin-right: 15px;
     margin-bottom: 10px;
 }
-
-
-

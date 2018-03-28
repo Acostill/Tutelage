@@ -8,11 +8,11 @@ const passport = require("../auth/local");
 
 const getSingleUser = (req, res, next) => {
   db
-    .any("SELECT * FROM users WHERE username = ${username}", req.user)
+    .one("SELECT * FROM users WHERE username = ${username}", req.user)
     .then(function (data) {
       res.status(200).json({
         status: "success",
-        data: data,
+        userInfo: data,
         message: "Fetched one user"
       });
     })
@@ -148,7 +148,7 @@ const loginUser = (req, res, next) => {
         if (err) {
           res.status(500).send("error");
         } else {
-          res.status(200).send(req.user);
+          res.status(200).send({...req.user, password_digest: null});
         }
       });
     }
@@ -322,7 +322,8 @@ const getUserThreads = (req, res, next) => {
  */
 const getThreadMessages = (req, res, next) => {
   db
-    .any('SELECT * FROM messages WHERE thread_id = ${thread_id}', req.body)
+    .any('SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})', 
+    {username: req.user.username, thread_id: req.body.thread_id})
     .then(data => {
       res.status(200).json({
         status: "success",

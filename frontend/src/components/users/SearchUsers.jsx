@@ -6,6 +6,7 @@ import Map from "./MapContainer";
 import FilterSideBar from "./FilterSideBar";
 import "../../css/SearchUsers.css";
 import zipcodes from "zipcodes";
+import ProfileCard from './ProfileCard';
 
 class SearchUsers extends Component {
   constructor() {
@@ -66,45 +67,19 @@ class SearchUsers extends Component {
     return (
       <div id="search-page">
         {/* ---- Have to find a way for common saying for mentor or mentee /or props to change the title ---- */}
-        <h1 id="search-header"> Find Your Next Mentor </h1>
+        <div id="search-header" className="font-large"> Find Your Next Mentor </div>
 
         <div id="filter-results-map">
-
           <FilterSideBar id="filter-sidebar" />
 
           <div id="results-map">
             <div id="search-results">
-              {users.map(user => {
-                const {
-                  imgurl,
-                  firstname,
-                  lastname,
-                  username,
-                  location
-                } = user;
-                return (
-                  <div className="profile-card">
-                    <Link to={`/users/${username}`}>
-                      {" "}
-                      <img src={imgurl} alt="user_pic" style={style} />{" "}
-                    </Link>
-                    <Link to={`/users/${username}`}>
-                      {" "}
-                      <h2>{username}</h2>{" "}
-                    </Link>
-                    <h3>
-                      {firstname} {lastname}
-                    </h3>
-                    <p> {location} </p>
-                  </div>
-                );
-              })}
+              {users.map(user => <ProfileCard user={user} />)}
             </div>
 
             {/* <div className="gmap">
               <Map arrOfLatLongs={lat_longs} />
             </div> */}
-
           </div>
         </div>
       </div>
