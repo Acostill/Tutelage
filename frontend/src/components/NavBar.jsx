@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from "react-router-dom";
-import '../css/NavBar.css';
+import '../css/temp.css';
 import axios from 'axios';
 import Home from './Home';
 // import Profile from './Profile';
