@@ -7,13 +7,13 @@ import LoginUser from './components/login/LoginUser';
 import RegisterUser from './components/login/RegisterUser';
 import SearchUsers from './components/users/SearchUsers';
 import Users from './components/users/Users'
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        {/* <NavBar /> */}
       {/* <nav id="navigation-bar">
         <Link id="app-name" to="/"> Tutelage </Link>
         {" "}
