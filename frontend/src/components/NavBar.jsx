@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from "react-router-dom";
-import '../css/Navbar.css';
+import '../css/temp.css';
 import axios from 'axios';
 import Home from './Home';
 // import Profile from './Profile';
@@ -55,17 +55,17 @@ class NavBar extends Component {
   loggedInNav = () => {
     const { user, logOut } = this.props
     return (
-      <nav>
-      <Link id="appName" to="/"> Tutelage </Link>
+      <nav id='navigation-bar'>
+      <Link id="app-name" to="/"> Tutelage </Link>
       {" "}
-      <div className="nav-right">
+      <div className="nav-right-loggedin">
         <Link to="/search"  > Search </Link>
         {" "}
         <Link to="/inbox"  > Messages </Link>
         {" "}
         <Link to={`/users/${user.username}`} > Profile </Link>
         {" "}
-        <button type="button" onClick={logOut}> Log Out </button>
+        <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
       </div>
     </nav>
     ) 
