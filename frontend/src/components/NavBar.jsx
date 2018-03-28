@@ -8,73 +8,86 @@ import SearchUsers from './users/SearchUsers';
 import { Redirect } from 'react-router';
 
 
-class Navbar extends Component {
+class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      signedIn: true
+      signedIn: true,
+      user: {}
     };
   }
 
-  logOut = () => {
+  // getUserInfo = () => {
+  //   axios
+  //     .get('/user/userinfo')
+  //     .then(res => {
+  //       this.setState({
+  //         user: res.data.userInfo
+  //       })
+  //     })
+  // }
 
-    axios.get(`/users/logout`)
-      .then(res => {
-        this.setState({
-          // redirect to home page
-          signedIn: false
-        })
-      })
-      .catch(err => {
-        this.setState({
-          message: err
-        })
-      })
+  // logOut = () => {
+  //   axios.get(`/users/logout`)
+  //     .then(res => {
+  //       this.setState({
+  //         // redirect to home page
+  //         signedIn: false
+  //       })
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         message: err
+  //       })
+  //     })
+  // }
+
+  componentDidMount() {
+    this.props.getUserInfo();
   }
 
-
   render() {
-    const { signedIn } = this.state;
-    const { logOut } = this;
-
+    // const { signedIn } = this.state;
+    // const { logOut } = this;
+    const { user, signedIn, getUserInfo, logOut } = this.props;
     if (!signedIn) {
-      return (<Redirect to={`/`} />)
+      return (
+        <div>
+          <nav id="navigation-bar">
+            <Link id="app-name" to="/"> Tutelage </Link>
+            {" "}
+            <div className="nav-right">
+            <Link to="/login"  > Log In </Link>
+            {" "}
+            <Link to="/register" > Register </Link>
+            {" "}
+            <Link to="/aboutus" > About Us </Link>
+            </div>
+          </nav>
+          <Redirect to={`/`} />
+        </div>
+      )
     }
 
     return (
-      <div>
+      <div >
         {/* ---------- Nicks's Nav Bar Below ---------- */}
-        {/* <nav>
+        <nav>
           <Link id="appName" to="/"> Tutelage </Link>
           {" "}
           <div className="nav-right">
             <Link to="/search"  > Search </Link>
             {" "}
-            <Link to="/profile"  > Profile </Link>
+            <Link to={`/users/${user.username}`} > Profile </Link>
             {" "}
             <button type="button" onClick={logOut}> Log Out </button>
           </div>
-        </nav> */}
+        </nav>
         {/* ----- End of Nick's Nav Bar ----- */}
-
-
-        {/* ---------- Current App.js Nav Bar Below ---------- */}
-        {/* <nav id="navigation-bar">
-        <Link id="app-name" to="/"> Tutelage </Link>
-        {" "}
-        <div className="nav-right">
-        <Link to="/login"  > Log In </Link>
-        {" "}
-        <Link to="/register" > Register </Link>
-        {" "}
-        <Link to="/aboutus" > About Us </Link>
-        </div>
-        </nav> */}
-        {/* ----- End of Current App.js Nav Bar ----- */}
       </div>
     );
   }
 }
 
-export default Navbar;
+export default NavBar;
 
