@@ -8,58 +8,35 @@ import SearchUsers from './users/SearchUsers';
 import { Redirect } from 'react-router';
 
 
-class Navbar extends Component {
+class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      signedIn: true
+      signedIn: true,
+      user: {}
     };
   }
 
-  logOut = () => {
-
-    axios.get(`/users/logout`)
-      .then(res => {
-        this.setState({
-          // redirect to home page
-          signedIn: false
-        })
-      })
-      .catch(err => {
-        this.setState({
-          message: err
-        })
-      })
+  onLoadNav = () => {
+    return (
+      <nav id="navigation-bar">
+        <Link id="app-name" to="/"> Tutelage </Link>
+        {" "}
+        <div className="nav-right">
+          <Link to="/login"  > Log In </Link>
+          {" "}
+          <Link to="/register" > Register </Link>
+          {" "}
+          <Link to="/aboutus" > About Us </Link>
+        </div>
+      </nav>
+    )
   }
 
-
-  render() {
-    const { signedIn } = this.state;
-    const { logOut } = this;
-
-    if (!signedIn) {
-      return (<Redirect to={`/`} />)
-    }
-
+  loggedOutNav = () => {
     return (
       <div>
-        {/* ---------- Nicks's Nav Bar Below ---------- */}
-        {/* <nav>
-          <Link id="appName" to="/"> Tutelage </Link>
-          {" "}
-          <div className="nav-right">
-            <Link to="/search"  > Search </Link>
-            {" "}
-            <Link to="/profile"  > Profile </Link>
-            {" "}
-            <button type="button" onClick={logOut}> Log Out </button>
-          </div>
-        </nav> */}
-        {/* ----- End of Nick's Nav Bar ----- */}
-
-
-        {/* ---------- Current App.js Nav Bar Below ---------- */}
-        {/* <nav id="navigation-bar">
+      <nav id="navigation-bar">
         <Link id="app-name" to="/"> Tutelage </Link>
         {" "}
         <div className="nav-right">
@@ -69,12 +46,49 @@ class Navbar extends Component {
         {" "}
         <Link to="/aboutus" > About Us </Link>
         </div>
-        </nav> */}
-        {/* ----- End of Current App.js Nav Bar ----- */}
+      </nav>
+      <Redirect to={`/`} />
       </div>
-    );
+    )
+  }
+
+  loggedInNav = () => {
+    const { user, logOut } = this.props
+    return (
+      <nav>
+      <Link id="appName" to="/"> Tutelage </Link>
+      {" "}
+      <div className="nav-right">
+        <Link to="/search"  > Search </Link>
+        {" "}
+        <Link to="/inbox"  > Messages </Link>
+        {" "}
+        <Link to={`/users/${user.username}`} > Profile </Link>
+        {" "}
+        <button type="button" onClick={logOut}> Log Out </button>
+      </div>
+    </nav>
+    ) 
+  }
+
+  componentDidMount() {
+    this.props.getUserInfo();
+  }
+
+  render() {
+    // const { signedIn } = this.state;
+    const { onLoadNav, loggedInNav, loggedOutNav } = this;
+    const { user, signedIn, getUserInfo, logOut } = this.props;
+    if (signedIn === null) {
+      return onLoadNav()
+    }
+    if (!signedIn) {
+      console.log('NOT SIGNED IN!')
+      return loggedOutNav()
+    }
+    return loggedInNav()
   }
 }
 
-export default Navbar;
+export default NavBar;
 

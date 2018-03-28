@@ -5,11 +5,12 @@ const { loginRequired } = require("../auth/helpers");
 const passport = require("../auth/local");
 
 /******************POST ROUTES********************* */
-router.post("/login", passport.authenticate("local"), (req, res) => {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user;
-    res.send(`${req.user.username} is logged in`);
-}); //** Greg */
+// router.post("/login", passport.authenticate("local"), (req, res) => {
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user;
+//     res.send(`${req.user.username} is logged in`);
+// }); //** Greg */
+router.post("/login", db.loginUser) //** Gerson - I commented out the other '/login' route */
 router.post("/create", db.createUser); //** Greg */
 router.post("/survey", db.getAnswersFromUsers); //** Greg */
 router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
@@ -25,6 +26,7 @@ router.patch("/edit", loginRequired, db.updateSingleUser); //** Greg */
 // router.get("/survey", db.getAllSurveyQuestions);
 router.get("/logout", loginRequired, db.logoutuser); //** Greg */
 router.get("/survey", db.getAllSurveyQuestionsAndAnswers); //** Greg */
+router.get("/userinfo", loginRequired, db.getSingleUser) //** Gerson */
 router.get("/getuser/:username", db.getUserByUsername); //** Gerson */
 router.get("/search", db.getAllUsers); //** Carolina */
 router.get("/all_zipcodes", db.getAllLocations); //** Greg */
