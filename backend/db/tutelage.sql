@@ -28,7 +28,7 @@ CREATE TABLE answers (
 	ID SERIAL PRIMARY KEY,
 	question_id INTEGER REFERENCES questions(ID),
 	user_id INTEGER REFERENCES users(ID),
-	answer_selection INTEGER
+	answer_selection VARCHAR
   -- accepted_answer_selection INTEGER REFERENCES answers(answer_selection) 
 );
 
@@ -165,8 +165,3 @@ INSERT INTO  messages (thread_id, sender, body)
   values ('2', 'nick1', 'Message Seven');
 INSERT INTO  messages (thread_id, sender, body)
   values ('3', 'gerson1', 'Message Seven');
-
-
-
--- INSERT INTO answers (answer_selection, question_id, user_id)
---   values (1, 1, 1);

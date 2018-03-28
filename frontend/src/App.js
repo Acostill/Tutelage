@@ -9,6 +9,7 @@ import SearchUsers from './components/users/SearchUsers';
 import Users from './components/users/Users'
 import NavBar from './components/NavBar';
 import Inbox from './components/inbox/Inbox';
+import Survey from './components/survey/Survey';
 import axios from 'axios';
 
 class App extends Component {
@@ -129,6 +130,7 @@ class App extends Component {
           <Route path="/search" component={SearchUsers} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/users" component={Users} />
+          <Route path="/survey" component={Survey} />
         </Switch>
       </div>
     );

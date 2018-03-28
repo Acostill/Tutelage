@@ -5,7 +5,6 @@ import Profile from './Profile';
 class Users extends Component {
 
   render() {
-    console.log('Hello!')
     return (
       <Switch>
         <Route path='/users/:username' component={Profile}/>
