@@ -1,13 +1,71 @@
 body,html{
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
 }
 
 #mainDiv {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    /* border:solid; */
+
 }
 
+#missionStatementSection {
+    margin-top: 40px;
+    margin-bottom: 13px;
+}
+
+.teamMember {
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    /* border:solid;
+    border-color: springgreen; */
+
+}
+
+.teamMemberPhoto {
+    /* border:solid; */
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+.teamMemberPhoto > img {
+    max-width: 100%;
+}
+
+.teamMemberCaption, .teamMemberTitle, .missionParagraphs {
+    color: #353535;
+}
+
+.teamMemberCaption {
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 2px;
+    /* set a width */
+}
+
+ .teamMemberTitle {
+    /* display: flex; */
+    margin-bottom: 20px;
+    /* justify-content: center; */
+    text-align: center;
+    color: #f46524ff;
+} 
+
+@media (max-width: 480px) {
+    .teamMember {
+        flex-basis: auto;
+    }
+    #mainDiv {
+       flex-direction: column;
+    }
+}
+/* 
 .teamMember {
     display: flex;
     justify-content: center;
@@ -16,8 +74,8 @@ body,html{
     justify-content: space-between;
     align-items: center;
     width: 20%;
-}
-
+} */
+/* 
 .teamMemberTitle {
     display: flex;
     justify-content: center;
@@ -25,8 +83,8 @@ body,html{
     justify-content: space-around;
     justify-content: space-between;
     align-items: center;
-}
-
+} */
+/* 
 .teamMemberPhoto {
     display: flex;
     justify-content: center;
@@ -34,20 +92,36 @@ body,html{
     justify-content: space-around;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
-
+/* 
 .teamMemberCaption {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /*justify-content: space-around;
+
+    word-wrap: break-word;
+} 
+*/
+
+    /* justify-content: space-around;
     justify-content: space-between;
     align-items: center; */
-    word-wrap: break-word;
-}
-
-#missionStatementSection {
+/* #missionStatementSection {
     
+} */
+
+#missionStatement {
+    color: #f46524ff;
+    font-size: 30px;
+    text-align: center;
 }
+  
+  
+  .missionParagraphs {
+    text-align: center;
+    font-family: 'IBM Plex Serif', serif;
+    /* font-style: italic; */
+  
+  }
