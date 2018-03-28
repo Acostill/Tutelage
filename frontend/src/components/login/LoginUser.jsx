@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
+import Footer from '../Footer';
 import "../../css/LoginUser.css";
 
 class LoginUser extends Component {
@@ -93,11 +94,8 @@ class LoginUser extends Component {
 
           </div>
 
-
-        <div class="footer">
-          <p>Tutelage&trade; Copyright © 2018 Until Infinity</p>
-          <p>All Rights Reserved</p>
-        </div>
+        <Footer />
+        
 
       </div>
 
