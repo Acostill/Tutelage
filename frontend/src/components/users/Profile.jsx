@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Inbox from './Inbox';
 
 class Profile extends Component {
   constructor() {
@@ -12,7 +11,7 @@ class Profile extends Component {
 
   getUser = () => {
 
-    let username = this.props.match.params.profile;
+    let username = this.props.match.params.username;
     console.log({username})
     axios.get(`/users/getuser/${username}`)
       .then(res => {
@@ -34,13 +33,10 @@ class Profile extends Component {
 
   render() {
     const { user } = this.state;
-    console.log({ user })
-
     let commonInterests = '';
 
     return (
       <div>
-        <Inbox />
         <div className="imageHeader" >
           <img src={user.imgurl} alt="profile picture" />
           {`${user.firstname} ${user.lastname}`}

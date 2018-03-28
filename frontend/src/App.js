@@ -6,7 +6,8 @@ import AboutUs from './components/AboutUs';
 import LoginUser from './components/login/LoginUser';
 import RegisterUser from './components/login/RegisterUser';
 import SearchUsers from './components/users/SearchUsers';
-import Users from './components/users/Users'
+import Users from './components/users/Users';
+import Inbox from './components/inbox/Inbox';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
       </nav>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/inbox" component={Inbox} />
         <Route path="/login" component={LoginUser} />
         <Route path="/register" component={RegisterUser} />
         <Route path="/search" component={SearchUsers} />
