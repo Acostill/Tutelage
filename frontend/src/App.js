@@ -12,11 +12,12 @@ import Inbox from './components/inbox/Inbox';
 import Survey from './components/survey/Survey';
 import axios from 'axios';
 
+
 class App extends Component {
   constructor () {
     super();
     this.state = {
-      user: {username: null},
+      user: "",
       signedIn: null,
       username: '',
       password: '',
@@ -25,7 +26,6 @@ class App extends Component {
   }
 
   getUserInfo = () => {
-    console.log('Hello getUserInfo')
     axios
       .get('/users/userinfo')
       .then(res => {
@@ -51,7 +51,7 @@ class App extends Component {
         password: password
       })
       .then(res => {
-        console.log(res);
+        console.log('peep this:', res);
         // redirect to user's profile
         this.setState({
           signedIn: true,
@@ -103,7 +103,6 @@ class App extends Component {
     const { user, signedIn, username, password, message } = this.state;
     const { getUserInfo, logOut, handleInputChange, submitLoginForm } = this;
 
-    console.log('App State', this.state)
     return (
       <div>
         <NavBar
@@ -130,7 +129,7 @@ class App extends Component {
           <Route path="/search" component={SearchUsers} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/users" component={Users} />
-          <Route path="/survey" component={Survey} />
+          <Route path="/survey" component={ () => <Survey user={user}/> } />
         </Switch>
       </div>
     );

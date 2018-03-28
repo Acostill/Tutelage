@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Redirect } from "react-router-dom";
+
 import InlineRadioGroup from "./InlineRadio";
 import axios from "axios";
-import Question from "./Question";
-
 import "../../css/Survey.css";
 
 class Survey extends React.Component {
@@ -13,7 +13,8 @@ class Survey extends React.Component {
       answers: [],
       user: "",
       questionid: "",
-      questions: []
+      questions: [],
+      submitted: false
     };
   }
 
@@ -59,7 +60,7 @@ class Survey extends React.Component {
       let answerObj = {
         answer_selection: e.target.value,
         question_id: parseInt(e.target.name),
-        user_id: parseInt(this.state.user.id)
+        user_id: parseInt(this.props.user.id)
       }
 
     this.setState({
@@ -78,29 +79,39 @@ class Survey extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("THE STATE ANSWERS:", this.state.answers)
+    console.log("THE STATE:", this.state)
     axios
       .post("/users/survey", {
         answers: this.state.answers
       })
       .then(function(response) {
-        console.log(response);
+        console.log("Response:",response);
       })
       .catch(function(error) {
         console.log(error);
       });
+      
+      this.setState({
+        submitted: !this.state.submmitted
+      })
   };
 
   componentDidMount() {
     console.log("Component about to Mount");
     this.getSurvey();
-    this.getUserInfo();
+    // this.getUserInfo();
   }
 
   render() {
+    console.log("PROPZZZZ:", this.props)
     console.log("Component Mounted here first in the Render:", this.state);
-    const { questions, questionid } = this.state;
+    const { questions, questionid, submitted } = this.state;
+    const { user } = this.props;
 
+    if (submitted) {
+      return( 
+      <Redirect to= {`/users/${user.username}`}/>)
+    }
     return (
       <form className="survey-form" onSubmit={this.handleSubmit}>
         <div id="questions">

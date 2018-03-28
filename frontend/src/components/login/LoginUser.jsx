@@ -20,41 +20,43 @@ class LoginUser extends Component {
     });
   };
 
-  submitLoginForm = e => {
-    e.preventDefault();
-    const { username, password, message } = this.state;
-    axios
-      .post("/users/login", {
-        username: username,
-        password: password
-      })
-      .then(res => {
-        console.log(res);
-        // redirect to user's profile
-        this.setState({
-          signedIn: true
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        if (username === "" && password === "") {
-          this.setState({
-            message: "* Fill out Username & Password"
-          });
-        } else {
-          this.setState({
-            username: "",
-            password: "",
-            message: "* Username / Password Incorrect"
-          });
-        }
-      });
-  };
+  // submitLoginForm = e => {
+  //   e.preventDefault();
+  //   const { username, password, message } = this.state;
+  //   axios
+  //     .post("/users/login", {
+  //       username: username,
+  //       password: password
+  //     })
+  //     .then(res => {
+  //       console.log(res);
+  //       // redirect to user's profile
+  //       this.setState({
+  //         signedIn: true
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //       if (username === "" && password === "") {
+  //         this.setState({
+  //           message: "* Fill out Username & Password"
+  //         });
+  //       } else {
+  //         this.setState({
+  //           username: "",
+  //           password: "",
+  //           message: "* Username / Password Incorrect"
+  //         });
+  //       }
+  //     });
+  // };
 
   render() {
     // const { username, password, message, signedIn } = this.state;
     const { handleInputChange, submitLoginForm, username, password, message, signedIn, user } = this.props;
-
+    console.log("USERRR PLEEEASE:", user)
+    console.log("USERNAME? PLLLEEEASE:", user.username)
+    
     if (signedIn) {
       return( <Redirect to= {`/users/${user.username}`}/>)
     }

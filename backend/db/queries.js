@@ -155,17 +155,40 @@ const submitMessage = (req, res, next) => {
  * @function loginUser Logs in a user.
  * @arg {array of objects}
  */
+
 const loginUser = (req, res, next) => {
     passport.authenticate("local", {});
     const authenticate = passport.authenticate("local", (err, user, info) => {
         if (err) {
-            res.status(500).send("error");
-        } else {
-            res.status(200).send({...req.user, password_digest: null });
+            res.status(500).send("error while trying to log in");
+        } else if (!user) {
+            res.status(401).send("invalid username/password");
+        } else if (user) {
+            req.logIn(user, function(err) {
+                if (err) {
+                    res.status(500).send("error");
+                } else {
+                    res.status(200).send({...req.user, password_digest: null });
+                }
+            });
         }
     });
     return authenticate(req, res, next);
 };
+
+//WRONG BELOW:
+// const loginUser = (req, res, next) => {
+//     passport.authenticate("local", {});
+//     const authenticate = passport.authenticate("local", (err, user, info) => {
+//         if (err) {
+//             res.status(500).send("error");
+//         } else {
+//             console.log("REQQQ", req.body)
+//             res.status(200).send({...req.body, password_digest: null });
+//         }
+//     });
+//     return authenticate(req, res, next);
+// };
 
 /**
  * @author Greg
@@ -187,7 +210,7 @@ const createUser = (req, res, next) => {
     console.log("createuser hash: ", hash);
     db
         .none(
-            "INSERT INTO users (username, firstname, lastname, zipcode, email, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${password}, ${ismentor})", {
+            "INSERT INTO users (username, firstname, lastname, zipcode, email, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${email}, ${password}, ${ismentor})", {
                 username: req.body.username,
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
