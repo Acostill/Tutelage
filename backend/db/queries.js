@@ -322,7 +322,8 @@ const getUserThreads = (req, res, next) => {
  */
 const getThreadMessages = (req, res, next) => {
   db
-    .any('SELECT * FROM messages WHERE thread_id = ${thread_id}', req.body)
+    .any('SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})', 
+    {username: req.user.username, thread_id: req.body.thread_id})
     .then(data => {
       res.status(200).json({
         status: "success",

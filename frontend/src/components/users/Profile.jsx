@@ -12,7 +12,7 @@ class Profile extends Component {
   }
 
   getUser = () => {
-    let username = this.props.match.params.profile;
+    let username = this.props.match.params.username;
     console.log({ username });
     axios
       .get(`/users/getuser/${username}`)
@@ -62,7 +62,7 @@ class Profile extends Component {
             {`${user.firstname} ${user.lastname}`}
           </h1>
         </div>
-
+          
         <div className="user-info-content">
           <div id="quick-user-info" className="margin-top">
             <div> location: {user.location} </div>
