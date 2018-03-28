@@ -67,7 +67,7 @@ class SearchUsers extends Component {
     return (
       <div id="search-page">
         {/* ---- Have to find a way for common saying for mentor or mentee /or props to change the title ---- */}
-        <h1 id="search-header"> Find Your Next Mentor </h1>
+        <div id="search-header" className="font-large"> Find Your Next Mentor </div>
 
         <div id="filter-results-map">
           <FilterSideBar id="filter-sidebar" />
