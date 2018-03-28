@@ -17,30 +17,59 @@ class NavBar extends Component {
     };
   }
 
-  // getUserInfo = () => {
-  //   axios
-  //     .get('/user/userinfo')
-  //     .then(res => {
-  //       this.setState({
-  //         user: res.data.userInfo
-  //       })
-  //     })
-  // }
+  onLoadNav = () => {
+    return (
+      <nav id="navigation-bar">
+        <Link id="app-name" to="/"> Tutelage </Link>
+        {" "}
+        <div className="nav-right">
+          <Link to="/login"  > Log In </Link>
+          {" "}
+          <Link to="/register" > Register </Link>
+          {" "}
+          <Link to="/aboutus" > About Us </Link>
+        </div>
+      </nav>
+    )
+  }
 
-  // logOut = () => {
-  //   axios.get(`/users/logout`)
-  //     .then(res => {
-  //       this.setState({
-  //         // redirect to home page
-  //         signedIn: false
-  //       })
-  //     })
-  //     .catch(err => {
-  //       this.setState({
-  //         message: err
-  //       })
-  //     })
-  // }
+  loggedOutNav = () => {
+    return (
+      <div>
+      <nav id="navigation-bar">
+        <Link id="app-name" to="/"> Tutelage </Link>
+        {" "}
+        <div className="nav-right">
+        <Link to="/login"  > Log In </Link>
+        {" "}
+        <Link to="/register" > Register </Link>
+        {" "}
+        <Link to="/aboutus" > About Us </Link>
+        </div>
+      </nav>
+      <Redirect to={`/`} />
+      </div>
+    )
+  }
+
+  loggedInNav = () => {
+    const { user, logOut } = this.props
+    return (
+      <nav>
+      <Link id="appName" to="/"> Tutelage </Link>
+      {" "}
+      <div className="nav-right">
+        <Link to="/search"  > Search </Link>
+        {" "}
+        <Link to="/inbox"  > Messages </Link>
+        {" "}
+        <Link to={`/users/${user.username}`} > Profile </Link>
+        {" "}
+        <button type="button" onClick={logOut}> Log Out </button>
+      </div>
+    </nav>
+    ) 
+  }
 
   componentDidMount() {
     this.props.getUserInfo();
@@ -48,44 +77,16 @@ class NavBar extends Component {
 
   render() {
     // const { signedIn } = this.state;
-    // const { logOut } = this;
+    const { onLoadNav, loggedInNav, loggedOutNav } = this;
     const { user, signedIn, getUserInfo, logOut } = this.props;
-    if (!signedIn) {
-      return (
-        <div>
-          <nav id="navigation-bar">
-            <Link id="app-name" to="/"> Tutelage </Link>
-            {" "}
-            <div className="nav-right">
-            <Link to="/login"  > Log In </Link>
-            {" "}
-            <Link to="/register" > Register </Link>
-            {" "}
-            <Link to="/aboutus" > About Us </Link>
-            </div>
-          </nav>
-          <Redirect to={`/`} />
-        </div>
-      )
+    if (signedIn === null) {
+      return onLoadNav()
     }
-
-    return (
-      <div >
-        {/* ---------- Nicks's Nav Bar Below ---------- */}
-        <nav>
-          <Link id="appName" to="/"> Tutelage </Link>
-          {" "}
-          <div className="nav-right">
-            <Link to="/search"  > Search </Link>
-            {" "}
-            <Link to={`/users/${user.username}`} > Profile </Link>
-            {" "}
-            <button type="button" onClick={logOut}> Log Out </button>
-          </div>
-        </nav>
-        {/* ----- End of Nick's Nav Bar ----- */}
-      </div>
-    );
+    if (!signedIn) {
+      console.log('NOT SIGNED IN!')
+      return loggedOutNav()
+    }
+    return loggedInNav()
   }
 }
 

@@ -15,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       user: {username: null},
-      signedIn: false,
+      signedIn: null,
       username: '',
       password: '',
       message: ''
