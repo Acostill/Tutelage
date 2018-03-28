@@ -95,6 +95,7 @@ class RegisterUser extends Component {
     const { handleInputChange, handleRadioChange, registerNewUserForm } = this;
 
     return (
+        <div>
       <div id="registerForm">
         <fieldset id="register-container">
           <legend id="register-title">Register New User:</legend>
@@ -168,7 +169,7 @@ class RegisterUser extends Component {
               required
             />
             {message}
-            <input className="input-box" type="submit" value="Create Account" />
+            <input className="input-box" id="createAccountButton" type="submit" value="Create Account" />
           </form>
         </fieldset>
 
@@ -177,6 +178,15 @@ class RegisterUser extends Component {
             Already a Member? <Link to="/login"> Log in Here </Link>
           </p>
         </div>
+
+        
+      </div>
+
+      <div class="footer">
+          <p>Tutelage&trade; Copyright © 2018 Until Infinity</p>
+          <p>All Rights Reserved</p>
+        </div>
+
       </div>
     );
   }

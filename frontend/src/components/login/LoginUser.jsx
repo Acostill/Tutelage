@@ -62,6 +62,7 @@ class LoginUser extends Component {
     // can add a cookie/session storage so user doesn't see login page when they are signed in
 
     return (
+      <div>
       <div id="login-form">
         <legend id="login-title"> Welcome Back! </legend>
 
@@ -89,7 +90,17 @@ class LoginUser extends Component {
           <p>
             Not a member? <Link to="/register"> Register here. </Link>
           </p>
+
+          </div>
+
+
+        <div class="footer">
+          <p>Tutelage&trade; Copyright © 2018 Until Infinity</p>
+          <p>All Rights Reserved</p>
+        </div>
+
       </div>
+
     );
   }
 }
