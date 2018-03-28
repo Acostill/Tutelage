@@ -52,11 +52,11 @@ class LoginUser extends Component {
   };
 
   render() {
-    const { username, password, message, signedIn } = this.state;
-    const { handleInputChange, submitLoginForm } = this;
+    // const { username, password, message, signedIn } = this.state;
+    const { handleInputChange, submitLoginForm, username, password, message, signedIn, user } = this.props;
 
-    if(signedIn) {
-      return( <Redirect to= {`/users/${username}`}/>)
+    if (signedIn) {
+      return( <Redirect to= {`/users/${user.username}`}/>)
     }
 
     // can add a cookie/session storage so user doesn't see login page when they are signed in

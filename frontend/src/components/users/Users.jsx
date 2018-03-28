@@ -8,7 +8,7 @@ class Users extends Component {
     console.log('Hello!')
     return (
       <Switch>
-        <Route path='/users/:profile' component={Profile}/>
+        <Route path='/users/:username' component={Profile}/>
       </Switch>
     )
   }
