@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
+import Footer from '../Footer';
 import "../../css/LoginUser.css";
 
 class LoginUser extends Component {
@@ -62,6 +63,7 @@ class LoginUser extends Component {
     // can add a cookie/session storage so user doesn't see login page when they are signed in
 
     return (
+      <div>
       <div id="login-form">
         <legend id="login-title"> Welcome Back! </legend>
 
@@ -89,7 +91,14 @@ class LoginUser extends Component {
           <p>
             Not a member? <Link to="/register"> Register here. </Link>
           </p>
+
+          </div>
+
+        <Footer />
+        
+
       </div>
+
     );
   }
 }
