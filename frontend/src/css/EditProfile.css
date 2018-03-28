@@ -1,0 +1,120 @@
+.margin {
+    margin: 20px;
+  }
+  
+  #user-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .background-banner {
+    width: 850px;
+    border: 3px solid rgba(253, 170, 62, 0.63);
+    border-radius: 50px;
+    margin: auto;
+  }
+  
+  #user-banner {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  /* ---- faux crop image of user ---- */
+  
+  .image-crop {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0px 0px 7px 0px lightgray;
+  }
+  
+  .img {
+    width: 100%;
+    margin: auto;
+  }
+  
+  #user-basic-info {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .user-info-content {
+    width: 850px;
+    margin: auto;
+    padding: 20px;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .margin-top {
+    margin-top: 20px;
+  }
+  
+  #chat-box {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  #message-box,
+  #message-box::placeholder {
+    font-size: 16px;
+    text-indent: 10px;
+  }
+  
+  .chat-buttons {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+  }
+  
+  .button-size {
+    width: 230px;
+    height: 45px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .submit {
+    background-color: lightgreen;
+    border: 2px solid lightgreen;
+  }
+  
+  .clear {
+    background-color: lightcoral;
+    border: 2px solid lightcoral;
+  }
+  
+  .submit:hover,
+  .clear:hover {
+    background-color: #fff;
+    color: rgb(53, 53, 53);
+  }
+  
+  .orange-background {
+    background-color: rgba(253, 170, 62, 0.63);
+    border: rgba(253, 170, 62, 0.63);
+  }
+  
+  h1,
+  h2,
+  h3 {
+    font-family: "Playfair Display", serif;
+  }
+  
