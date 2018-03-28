@@ -1,12 +1,12 @@
 #user-profile {
-    background-color: powderblue;
+    /* background-color: powderblue; */
     display: flex;
     flex-direction: column;
     margin: 20px;
 }
 
 .img-banner {
-    background-color: rgb(253, 143, 38);
+    background-color: rgba(253, 142, 38, 0.432);
     border-radius: 50px;
     text-align: center;
 }
@@ -45,7 +45,51 @@
 }
 
 #chat-box {
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#message-box,
+#message-box::placeholder {
+    font-size: 16px;
+    text-indent: 10px;
+}
+
+.chat-buttons {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.button-size {
+    width: 230px;
+    height: 45px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.submit{
+    background-color: lightgreen;
+    border: 2px solid lightgreen;
+}
+
+.clear {
+    background-color: lightcoral;
+    border: 2px solid lightcoral;
+}
+
+.submit:hover,
+.clear:hover {
+    background-color: #fff;
+    color: rgb(53, 53, 53);
 }
