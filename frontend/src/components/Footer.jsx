@@ -12,24 +12,22 @@ class Footer extends Component {
     render() {
         return (
                     <div className="footerSection">
-                        <div>Tutelage Inc.&trade; Copyright © 2018 Until Infinity</div>
-                        <div>Reach out to your full potential.&trade;</div>
+                        <div id="copyright">Tutelage Inc.&trade; Copyright © 2018 Until Infinity</div>
+                        <div id="tagline">Reach out to your full potential.&trade;</div>
                         <div>All Rights Reserved</div>
-                        {/* <div className="hqSection">
-                            <div>Headquarters</div>
-                            <div>527 Innovation Parkway, Suite 7</div>
-                            <div>New York, NY 10001</div>
+                        <div className="hqSection">
+                            <div>527 Innovation Parkway, Suite 7, New York, NY 10001</div>
                         </div>
                         <div className="linkSection">
                             <div>
                                 
-                            <a href="default.asp">
-                                <img src="./images/Octocat.png" alt="Github Repository" />
+                            <a href="https://github.com/Acostill/Tutelage">
+                                <img id="githubLogo" src="./images/Octocat.png" alt="Github Repository"/>
                             </a>
 
 
                             </div>
-                        </div> */}
+                        </div>
                     </div>
         )
     }

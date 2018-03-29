@@ -3,7 +3,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 80px; 
+    height: 150px; 
     font-size: 16px;
     border-top: 14px;
     border-top-style: groove;
@@ -18,5 +18,22 @@
 }
 
 .hqSection {
-    text-align: left;
+    text-align: center;
+}
+
+.linkSection {
+    text-align: center;
+}
+
+#copyright {
+    font-weight: bold;
+}
+
+#tagline {
+    color: #f46524ff;
+}
+
+#githubLogo {
+    width: 42px;
+    height: 42px;
 }

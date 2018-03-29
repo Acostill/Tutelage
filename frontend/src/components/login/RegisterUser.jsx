@@ -192,7 +192,7 @@ class RegisterUser extends Component {
               required
             />
             {message}
-            <input className="input-box" id="createAccountButton"  type="submit" value="Create Account" />
+            <input className="input-box createAccountButton"  type="submit" value="Create Account" />
           </form>
         </fieldset>
 
