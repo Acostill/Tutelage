@@ -24,6 +24,16 @@
     height: 33px;
 }
 
+.register-message {
+    width: 290;
+    height: 20px;
+    margin:auto;
+    margin-top: -10px;
+    margin-bottom: 3px;
+    padding: 2px;
+    color: red;
+}
+
 #createAccountButton {
     background-color: #f46524ff; 
     color: white;

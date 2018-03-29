@@ -60,7 +60,7 @@ class Profile extends Component {
         <div className="background-banner">
           <div id="user-banner">
             <div className="image-crop margin">
-              <img src={user.imgurl} alt="profile picture" className="img" />
+              <img src={user.imgurl} alt="profile picture" className="img-profile" />
             </div>
             <div id="user-basic-info">
               <h1 className="user-header">
@@ -74,11 +74,6 @@ class Profile extends Component {
         </div>
           
         <div className="user-info-content">
-          <div id="quick-user-info" className="margin-top">
-            <div> location: {user.location} </div>
-            <div> gender: {user.gender} </div>
-            <div> occupation: {user.occupation} </div>
-          </div>
           <div className="margin-top">
             Common Interests: {commonInterests}
           </div>

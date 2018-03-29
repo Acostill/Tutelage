@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import ThreadMessages from './ThreadMessages';
 import { Link, Route, Switch } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import axios from 'axios';
+import ThreadMessages from './ThreadMessages';
+import SingleMessage from "./SingleMessage";
+import "../../css/Inbox.css";
 
 class Inbox extends Component {
   constructor() {
     super();
     this.state = {
-      userThreads: []
+      userThreads: [],
+      username: ""
     }
   }
 
@@ -24,7 +27,7 @@ class Inbox extends Component {
         })
       })
   }
-  
+
   renderInbox = () => {
     const { userThreads } = this.state;
     return (
