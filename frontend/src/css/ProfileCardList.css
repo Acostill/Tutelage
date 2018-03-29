@@ -4,7 +4,7 @@
     justify-content: center;
     margin: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 7px 0px rgb(253, 170, 62);
+    box-shadow: 0px 0px 7px 0px lightgray;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
