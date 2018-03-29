@@ -56,12 +56,12 @@ class RegisterUser extends Component {
 
     if (!ismentor) {
       this.setState({
-        message: "Please choose if you're a Mentor or Mentee"
+        message: "* Please choose: Mentor or Mentee"
       });
       return
     } else if (password !== passwordConfirmation) {
       this.setState({
-        message: "Passwords do not match"
+        message: "* Passwords do not match"
       });
       return;
     } else if (password === passwordConfirmation) {
@@ -88,7 +88,7 @@ class RegisterUser extends Component {
         .catch(err => {
           console.log(err);
           this.setState({
-            message: "Account Exists Already"
+            message: "* Account Exists Already"
           });
         });
   };
@@ -187,7 +187,7 @@ class RegisterUser extends Component {
               onChange={handleInputChange}
               required
             />
-            {message}
+            <div className="register-message">{message}</div>
             <input className="input-box" id="createAccountButton"  type="submit" value="Create Account" />
           </form>
         </fieldset>
