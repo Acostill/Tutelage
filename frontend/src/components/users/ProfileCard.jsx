@@ -18,7 +18,7 @@ const ProfileCard = ({ user }) => {
             <Link to={`/users/${username}`}>
               {" "}
               <div className="img-container">
-                <img src={imgurl} alt="user_pic" className="img" />{" "}
+                <img src={imgurl} alt="user_pic" className="img-profile-card" />{" "}
               </div>
             </Link>
             <div className="user-info">

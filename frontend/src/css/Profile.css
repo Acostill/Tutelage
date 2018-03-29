@@ -32,9 +32,11 @@
   box-shadow: 0px 0px 7px 0px lightgray;
 }
 
-.img {
-  width: 100%;
+.img-profile {
+  width: 300px;
+  height: 300px;
   margin: auto;
+  object-fit: cover;
 }
 
 #user-basic-info {
