@@ -175,8 +175,6 @@ INSERT INTO  messages (thread_id, sender, body)
   values ('2', 'nick1', 'Message Seven');
 INSERT INTO  messages (thread_id, sender, body)
   values ('3', 'gerson1', 'Message Seven');
-<<<<<<< HEAD
-=======
 
 
 INSERT INTO interests (username, interest)
@@ -219,4 +217,3 @@ INSERT INTO interests (username, interest)
 
 -- INSERT INTO answers (answer_selection, question_id, user_id)
 --   values (1, 1, 1);
->>>>>>> 1107351055500e42507b1b89741e6b7de74ff191
