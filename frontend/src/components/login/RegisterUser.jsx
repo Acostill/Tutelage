@@ -21,7 +21,7 @@ class RegisterUser extends Component {
       passwordConfirmation: "",
       ismentor: "",
       message: "",
-      confetti: ""
+      showConfetti: false
     };
 
     this.size = { 
@@ -81,7 +81,7 @@ class RegisterUser extends Component {
         .then(res => {
           this.setState({
             message: "Account Created",
-            confetti: <div id="confetti"> <Confetti {...this.size} /></div>
+            showConfetti: true
 
           });
         })
@@ -106,7 +106,8 @@ class RegisterUser extends Component {
       password,
       passwordConfirmation,
       message,
-      ismentor
+      ismentor,
+      showConfetti
     } = this.state;
 
    
@@ -115,6 +116,9 @@ class RegisterUser extends Component {
 
     return (
         <div>
+          {showConfetti ? <div id="confetti"> 
+            <Confetti {...this.size} />
+        </div>: ""}
       <div id="registerForm">
         <fieldset id="register-container">
           <legend id="register-title">Register New User:</legend>

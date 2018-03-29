@@ -104,7 +104,7 @@ class App extends Component {
 
     console.log('App State', this.state)
     return (
-      <div>
+      <div className="App">
         <NavBar
           user={user} 
           signedIn={signedIn} 

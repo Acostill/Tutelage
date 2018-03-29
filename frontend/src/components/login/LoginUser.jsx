@@ -63,7 +63,7 @@ class LoginUser extends Component {
     // can add a cookie/session storage so user doesn't see login page when they are signed in
 
     return (
-      <div>
+      <div className="login-form-container">
       <div id="login-form">
         <legend id="login-title"> Welcome Back! </legend>
 
@@ -94,9 +94,9 @@ class LoginUser extends Component {
 
           </div>
 
-        <Footer />
         
 
+        <Footer />
       </div>
 
     );
