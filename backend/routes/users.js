@@ -31,6 +31,7 @@ router.get("/getuser/:username", db.getUserByUsername); //** Gerson */
 router.get("/search", db.getAllUsers); //** Carolina */
 router.get("/all_zipcodes", db.getAllLocations); //** Greg */
 router.get("/userthreads", loginRequired, db.getUserThreads); //** Gerson */
+router.get("/interests", loginRequired, db.getUserInterests); //** nick */
 
 
 
