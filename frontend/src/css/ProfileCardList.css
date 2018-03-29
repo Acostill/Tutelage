@@ -10,7 +10,11 @@
 .profile-card {
     margin: 10px 10px;
     box-shadow: 0px 0px 7px 0px rgb(253, 170, 62);
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
+
+
 
 .horizontal {
     width: 280px;
@@ -27,10 +31,22 @@
     align-items: center;
 }
 
+.profile-content a {
+    color: rgb(53, 53, 53);
+    font-variant: small-caps;
+    font-style: italic;
+}
+
+.profile-card:hover,
+.profile-content a:hover {
+    background-color: #FD8F26;
+    color: #fff;
+}
+
 .img-container {
     width: 150px;
     height: 150px;
-    box-shadow: 0px 0px 7px 0px rgb(253, 170, 62);
+    box-shadow: 0px 0px 7px 0px lightgray;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -38,6 +54,7 @@
 .img-profile-card {
     width: 150px;
     height: 150px;
+    background-color: rgb(232, 241, 242);
     object-fit: cover;
 }
 

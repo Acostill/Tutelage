@@ -71,11 +71,6 @@ class Profile extends Component {
         </div>
           
         <div className="user-info-content">
-          <div id="quick-user-info" className="margin-top">
-            <div> location: {user.location} </div>
-            <div> gender: {user.gender} </div>
-            <div> occupation: {user.occupation} </div>
-          </div>
           <div className="margin-top">
             Common Interests: {commonInterests}
           </div>
