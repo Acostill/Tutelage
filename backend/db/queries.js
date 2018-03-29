@@ -406,21 +406,42 @@ const getThreadMessages = (req, res, next) => {
             res.status(500).send("error retrieving threads");
         })
 }
+/**
+ * @author nick
+ */
+const getUserInterests = (req, res, next) => {
+  db
+    .any('SELECT interest FROM interests WHERE username = ${username}',
+     req.user)
+    .then (data => {
+      res.status(200).json({
+        status: "success",
+        interests: data,
+        message: `Retrieved all user interests`
+      })
+      .catch(err => {
+        res.status(500).send("error retrieving interests");
+      })
+    })
+}
+
 module.exports = {
-    getAllUsers: getAllUsers,
-    getSingleUser: getSingleUser,
-    createUser: createUser,
-    updateSingleUser: updateSingleUser,
-    loginUser: loginUser,
-    logoutuser: logoutUser,
-    // getAllSurveyQuestions: getAllSurveyQuestions,
-    getAnswersFromUsers: getAnswersFromUsers,
-    getAllSurveyQuestionsAndAnswers: getAllSurveyQuestionsAndAnswers,
-    fetchNewThread: fetchNewThread,
-    submitMessage: submitMessage,
-    getAllMessages: getAllMessages,
-    getUserByUsername: getUserByUsername,
-    getAllLocations: getAllLocations,
-    getUserThreads: getUserThreads,
-    getThreadMessages: getThreadMessages
+
+  getAllUsers: getAllUsers,
+  getSingleUser: getSingleUser,
+  createUser: createUser,
+  updateSingleUser: updateSingleUser,
+  loginUser: loginUser,
+  logoutuser: logoutUser,
+  // getAllSurveyQuestions: getAllSurveyQuestions,
+  getAnswersFromUsers: getAnswersFromUsers,
+  getAllSurveyQuestionsAndAnswers: getAllSurveyQuestionsAndAnswers,
+  fetchNewThread: fetchNewThread,
+  submitMessage: submitMessage,
+  getAllMessages: getAllMessages,
+  getUserByUsername: getUserByUsername,
+  getAllLocations: getAllLocations,
+  getUserThreads: getUserThreads,
+  getThreadMessages: getThreadMessages,
+  getUserInterests: getUserInterests
 };

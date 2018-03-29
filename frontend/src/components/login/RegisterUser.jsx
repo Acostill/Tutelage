@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "../../css/RegisterUser.css";
+import Footer from '../Footer';
+import Confetti from 'react-confetti'
+
+// import drawConfetti from '../../Scripts/randomFunctions'
+
 
 class RegisterUser extends Component {
   constructor() {
@@ -15,8 +20,14 @@ class RegisterUser extends Component {
       password: "",
       passwordConfirmation: "",
       ismentor: "",
-      message: ""
+      message: "",
+      confetti: ""
     };
+
+    this.size = { 
+      width: window.innerWidth,
+      height: window.innerHeight 
+    }
   }
 
   handleInputChange = e => {
@@ -45,7 +56,7 @@ class RegisterUser extends Component {
 
     if (!ismentor) {
       this.setState({
-        message: "Please choose if your a Mentor or Mentee"
+        message: "Please choose if you're a Mentor or Mentee"
       });
       return
     } else if (password !== passwordConfirmation) {
@@ -69,7 +80,9 @@ class RegisterUser extends Component {
         })
         .then(res => {
           this.setState({
-            message: "Account Created"
+            message: "Account Created",
+            confetti: <div id="confetti"> <Confetti {...this.size} /></div>
+
           });
         })
         .catch(err => {
@@ -79,6 +92,10 @@ class RegisterUser extends Component {
           });
         });
   };
+
+  drawConfetti = () => {
+    // drawConfetti()
+  }
 
   render() {
     const {
@@ -92,9 +109,12 @@ class RegisterUser extends Component {
       ismentor
     } = this.state;
 
+   
+    console.log("window size: ", this.size)
     const { handleInputChange, handleRadioChange, registerNewUserForm } = this;
 
     return (
+        <div>
       <div id="registerForm">
         <fieldset id="register-container">
           <legend id="register-title">Register New User:</legend>
@@ -168,7 +188,7 @@ class RegisterUser extends Component {
               required
             />
             {message}
-            <input className="input-box" type="submit" value="Create Account" />
+            <input className="input-box" id="createAccountButton"  type="submit" value="Create Account" />
           </form>
         </fieldset>
 
@@ -177,6 +197,14 @@ class RegisterUser extends Component {
             Already a Member? <Link to="/login"> Log in Here </Link>
           </p>
         </div>
+
+        
+      </div>
+
+        <Footer />
+
+      
+
       </div>
     );
   }
