@@ -76,6 +76,7 @@ const updateSingleUser = (req, res, next) => {
  * @function fetchNewThread Initiates a new thread between two users and returns their ID.
  * @arg {array of objects}
  */
+
 const fetchNewThread = (req, res, next) => {
     let query =
         "INSERT INTO threads (user_1, user_2) VALUES (${username1}, ${username2}) RETURNING ID";
@@ -233,6 +234,29 @@ const createUser = (req, res, next) => {
         });
 };
 
+function registerUser(req, res, next) {
+    return authHelpers
+        .createUser(req)
+        .then(response => {
+            passport.authenticate("local", (err, user, info) => {
+                if (user) {
+                    res.status(200).json({
+                        status: "success",
+                        data: user,
+                        message: "Registered one user"
+                    });
+                }
+            })(req, res, next);
+        })
+        .catch(err => {
+            console.log(error)
+            res.status(500).json({
+                status: "error",
+                error: err
+            });
+        });
+}
+
 /**
  * @author Gerson
  * @function getUserByUsername Grabs a user according to their username.
@@ -321,9 +345,10 @@ const getAnswersFromUsers = (req, res, next) => {
 
         db
             .none(
-                "INSERT INTO answers (answer_selection, question_id, user_id) VALUES (${answer_selection}, ${question_id}, ${user_id})", {
+                "INSERT INTO answers (answer_selection, question_id, username, user_id) VALUES (${answer_selection}, ${question_id}, ${username}, ${user_id})", {
                     answer_selection: answer.answer_selection,
                     question_id: answer.question_id,
+                    username: answer.username,
                     user_id: answer.user_id
                 }
             )
@@ -413,7 +438,6 @@ module.exports = {
     updateSingleUser: updateSingleUser,
     loginUser: loginUser,
     logoutuser: logoutUser,
-    // getAllSurveyQuestions: getAllSurveyQuestions,
     getAnswersFromUsers: getAnswersFromUsers,
     getAllSurveyQuestionsAndAnswers: getAllSurveyQuestionsAndAnswers,
     fetchNewThread: fetchNewThread,
@@ -422,5 +446,6 @@ module.exports = {
     getUserByUsername: getUserByUsername,
     getAllLocations: getAllLocations,
     getUserThreads: getUserThreads,
-    getThreadMessages: getThreadMessages
+    getThreadMessages: getThreadMessages,
+    registerUser: registerUser
 };

@@ -50,6 +50,7 @@ class Survey extends React.Component {
      *                  questionID: e.target.name
      * 
     */
+    console.log("userNAMEMEMEME", this.props.user.username)
     const {
       user,
       answers,
@@ -60,6 +61,7 @@ class Survey extends React.Component {
       let answerObj = {
         answer_selection: e.target.value,
         question_id: parseInt(e.target.name),
+        username: this.props.user.username,
         user_id: parseInt(this.props.user.id)
       }
 
@@ -69,13 +71,13 @@ class Survey extends React.Component {
     });
   };
 
-  getUserInfo = () => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      this.setState({ user: JSON.parse(loggedInUser) });
-      return;
-    }
-  };
+  // getUserInfo = () => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     this.setState({ user: JSON.parse(loggedInUser) });
+  //     return;
+  //   }
+  // };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -106,12 +108,14 @@ class Survey extends React.Component {
     console.log("PROPZZZZ:", this.props)
     console.log("Component Mounted here first in the Render:", this.state);
     const { questions, questionid, submitted } = this.state;
-    const { user } = this.props;
+    const user = this.props.user;
+    console.log("userrr", user)
 
     if (submitted) {
       return( 
-      <Redirect to= {`/users/${user.username}`}/>)
+      <Redirect to={`/users/${user.username}`}/>)
     }
+
     return (
       <form className="survey-form" onSubmit={this.handleSubmit}>
         <div id="questions">

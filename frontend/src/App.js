@@ -29,6 +29,7 @@ class App extends Component {
     axios
       .get('/users/userinfo')
       .then(res => {
+        console.log("IS ID HERE?",res.data.userInfo)
         this.setState({
           signedIn: true,
           user: res.data.userInfo
@@ -75,6 +76,12 @@ class App extends Component {
           });
         }
       });
+  }
+
+  frontendRegister = (user) => {
+    this.setState({
+      user: {username: user.username}
+    })
   }
 
   appLogIn = () => {
@@ -125,7 +132,12 @@ class App extends Component {
               signedIn={signedIn}
             />
           )} />
-          <Route path="/register" component={RegisterUser} />
+          <Route path="/register" render={() => {
+            return( 
+            <RegisterUser
+              frontendRegister={this.frontendRegister} appLogIn={this.appLogIn}/>)
+          }}
+             />
           <Route path="/search" component={SearchUsers} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/users" component={Users} />

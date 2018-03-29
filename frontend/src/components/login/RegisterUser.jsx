@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import "../../css/RegisterUser.css";
 
@@ -15,7 +15,8 @@ class RegisterUser extends Component {
       password: "",
       passwordConfirmation: "",
       ismentor: "",
-      message: ""
+      message: "",
+      newUserSignedIn: false
     };
   }
 
@@ -47,7 +48,7 @@ class RegisterUser extends Component {
       this.setState({
         message: "Please choose if your a Mentor or Mentee"
       });
-      return
+      return;
     } else if (password !== passwordConfirmation) {
       this.setState({
         message: "Passwords do not match"
@@ -58,29 +59,47 @@ class RegisterUser extends Component {
         message: "Passwords match"
       });
     }
-      axios
-        .post("/users/create", {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          username: username,
-          password: password,
-          ismentor: eval(ismentor)
-        })
-        .then(res => {
-          this.setState({
-            message: "Account Created"
-          });
-        })
-        .catch(err => {
-          console.log(err);
-          this.setState({
-            message: "Account Exists Already"
-          });
+    axios
+      .post("/users/create", {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        username: username,
+        password: password,
+        ismentor: eval(ismentor)
+      })
+      .then(res => {
+        this.setState({
+          message: "Account Created"
         });
+        axios
+          .post("/users/login", {
+            username: username,
+            password: password
+          })
+          .then(res => {
+            // redirect to user's profile
+            this.props.frontendRegister(this.state);
+            this.setState({
+              newUserSignedIn: true
+            });
+            this.props.appLogIn();
+          });
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({
+          message: "Account Exists Already"
+        });
+      });
   };
 
   render() {
+    if (this.state.newUserSignedIn) {
+      console.log("hey");
+      return <Redirect to="/survey" />;
+    }
+
     const {
       firstname,
       lastname,
@@ -89,7 +108,8 @@ class RegisterUser extends Component {
       password,
       passwordConfirmation,
       message,
-      ismentor
+      ismentor,
+      newUserSignedIn
     } = this.state;
 
     const { handleInputChange, handleRadioChange, registerNewUserForm } = this;
@@ -99,25 +119,25 @@ class RegisterUser extends Component {
         <fieldset id="register-container">
           <legend id="register-title">Register New User:</legend>
           <form onSubmit={registerNewUserForm} id="input-container">
-          <div className="radio-button" >
-          Are you a: 
-            <input
-              type="radio"
-              name="ismentor"
-              value="true"
-              onChange={handleRadioChange}
-            />
-            Mentor
-            
-            <input
-              type="radio"
-              name="ismentor"
-              value="false"
-              onChange={handleRadioChange}
-            />
-            Mentee
+            <div className="radio-button">
+              Are you a:
+              <input
+                type="radio"
+                name="ismentor"
+                value="true"
+                onChange={handleRadioChange}
+              />
+              Mentor
+              <input
+                type="radio"
+                name="ismentor"
+                value="false"
+                onChange={handleRadioChange}
+              />
+              Mentee
             </div>
-            <input className="input-box text-indent"
+            <input
+              className="input-box text-indent"
               type="text"
               placeholder="First Name"
               name="firstname"
@@ -125,7 +145,8 @@ class RegisterUser extends Component {
               onChange={handleInputChange}
               required
             />
-            <input className="input-box text-indent"
+            <input
+              className="input-box text-indent"
               type="text"
               placeholder="Last Name"
               name="lastname"
@@ -133,7 +154,8 @@ class RegisterUser extends Component {
               onChange={handleInputChange}
               required
             />{" "}
-            <input className="input-box text-indent"
+            <input
+              className="input-box text-indent"
               type="email"
               placeholder="Email"
               name="email"
@@ -141,7 +163,8 @@ class RegisterUser extends Component {
               onChange={handleInputChange}
               required
             />
-            <input className="input-box text-indent"
+            <input
+              className="input-box text-indent"
               type="text"
               placeholder="Username"
               name="username"
@@ -151,7 +174,8 @@ class RegisterUser extends Component {
               maxLength="12"
               required
             />
-            <input className="input-box text-indent"
+            <input
+              className="input-box text-indent"
               type="password"
               placeholder="Password"
               name="password"
@@ -159,7 +183,8 @@ class RegisterUser extends Component {
               onChange={handleInputChange}
               required
             />
-            <input className="input-box text-indent"
+            <input
+              className="input-box text-indent"
               type="password"
               placeholder="Confirm Password"
               name="passwordConfirmation"
