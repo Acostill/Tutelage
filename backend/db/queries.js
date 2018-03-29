@@ -418,19 +418,38 @@ const getUserThreads = (req, res, next) => {
  * @arg {object} req.user
  */
 const getThreadMessages = (req, res, next) => {
+        db
+            .any('SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})', { username: req.user.username, thread_id: req.body.thread_id })
+            .then(data => {
+                res.status(200).json({
+                    status: "success",
+                    threadMessages: data,
+                    message: `Retrieved all messages within thread`
+                })
+            })
+            .catch(err => {
+                res.status(500).send("error retrieving threads");
+            })
+    }
+    /**
+     * @author nick
+     */
+const getUserInterests = (req, res, next) => {
     db
-        .any('SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})', { username: req.user.username, thread_id: req.body.thread_id })
+        .any('SELECT interest FROM interests WHERE username = ${username}',
+            req.user)
         .then(data => {
             res.status(200).json({
-                status: "success",
-                threadMessages: data,
-                message: `Retrieved all messages within thread`
-            })
-        })
-        .catch(err => {
-            res.status(500).send("error retrieving threads");
+                    status: "success",
+                    interests: data,
+                    message: `Retrieved all user interests`
+                })
+                .catch(err => {
+                    res.status(500).send("error retrieving interests");
+                })
         })
 }
+
 module.exports = {
     getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
@@ -447,5 +466,6 @@ module.exports = {
     getAllLocations: getAllLocations,
     getUserThreads: getUserThreads,
     getThreadMessages: getThreadMessages,
-    registerUser: registerUser
+    registerUser: registerUser,
+    getUserInterests: getUserInterests
 };

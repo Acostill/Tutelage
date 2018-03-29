@@ -1,0 +1,22 @@
+.footerSection {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px; 
+    font-size: 16px;
+    border-top: 14px;
+    border-top-style: groove;
+    border-top-color:#f46524ff;
+    /* background: #E8F1F2; */
+    /* background: -webkit-linear-gradient(#E0583A, #353535);
+    background:    -moz-linear-gradient(#E0583A, #353535);
+    background:         linear-gradient(#E0583A, #353535); */
+    /* background: linear-gradient( #E0583A, #ff9000); */
+    color: black;
+    text-align: center;
+}
+
+.hqSection {
+    text-align: left;
+}

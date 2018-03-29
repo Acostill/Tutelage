@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import "../../css/RegisterUser.css";
+import Footer from "../Footer";
+import Confetti from "react-confetti";
+
+// import drawConfetti from '../../Scripts/randomFunctions'
 
 class RegisterUser extends Component {
   constructor() {
@@ -16,7 +20,13 @@ class RegisterUser extends Component {
       passwordConfirmation: "",
       ismentor: "",
       message: "",
-      newUserSignedIn: false
+      newUserSignedIn: false,
+      showConfetti: false
+    };
+
+    this.size = {
+      width: window.innerWidth,
+      height: window.innerHeight
     };
   }
 
@@ -46,7 +56,7 @@ class RegisterUser extends Component {
 
     if (!ismentor) {
       this.setState({
-        message: "Please choose if your a Mentor or Mentee"
+        message: "Please choose if you're a Mentor or Mentee"
       });
       return;
     } else if (password !== passwordConfirmation) {
@@ -70,7 +80,8 @@ class RegisterUser extends Component {
       })
       .then(res => {
         this.setState({
-          message: "Account Created"
+          message: "Account Created",
+          showConfetti: true
         });
         axios
           .post("/users/login", {
@@ -84,14 +95,18 @@ class RegisterUser extends Component {
               newUserSignedIn: true
             });
             this.props.appLogIn();
+          })
+          .catch(err => {
+            console.log(err);
+            this.setState({
+              message: "Account Exists Already"
+            });
           });
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          message: "Account Exists Already"
-        });
       });
+  };
+
+  drawConfetti = () => {
+    // drawConfetti()
   };
 
   render() {
@@ -109,99 +124,117 @@ class RegisterUser extends Component {
       passwordConfirmation,
       message,
       ismentor,
-      newUserSignedIn
+      newUserSignedIn,
+      showConfetti
     } = this.state;
 
+    console.log("window size: ", this.size);
     const { handleInputChange, handleRadioChange, registerNewUserForm } = this;
 
     return (
-      <div id="registerForm">
-        <fieldset id="register-container">
-          <legend id="register-title">Register New User:</legend>
-          <form onSubmit={registerNewUserForm} id="input-container">
-            <div className="radio-button">
-              Are you a:
+      <div>
+        {showConfetti ? (
+          <div id="confetti">
+            <Confetti {...this.size} />
+          </div>
+        ) : (
+          ""
+        )}
+        <div id="registerForm">
+          <fieldset id="register-container">
+            <legend id="register-title">Register New User:</legend>
+            <form onSubmit={registerNewUserForm} id="input-container">
+              <div className="radio-button">
+                Are you a:
+                <input
+                  type="radio"
+                  name="ismentor"
+                  value="true"
+                  onChange={handleRadioChange}
+                />
+                Mentor
+                <input
+                  type="radio"
+                  name="ismentor"
+                  value="false"
+                  onChange={handleRadioChange}
+                />
+                Mentee
+              </div>
               <input
-                type="radio"
-                name="ismentor"
-                value="true"
-                onChange={handleRadioChange}
+                className="input-box text-indent"
+                type="text"
+                placeholder="First Name"
+                name="firstname"
+                value={firstname}
+                onChange={handleInputChange}
+                required
               />
-              Mentor
               <input
-                type="radio"
-                name="ismentor"
-                value="false"
-                onChange={handleRadioChange}
+                className="input-box text-indent"
+                type="text"
+                placeholder="Last Name"
+                name="lastname"
+                value={lastname}
+                onChange={handleInputChange}
+                required
+              />{" "}
+              <input
+                className="input-box text-indent"
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={handleInputChange}
+                required
               />
-              Mentee
-            </div>
-            <input
-              className="input-box text-indent"
-              type="text"
-              placeholder="First Name"
-              name="firstname"
-              value={firstname}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              className="input-box text-indent"
-              type="text"
-              placeholder="Last Name"
-              name="lastname"
-              value={lastname}
-              onChange={handleInputChange}
-              required
-            />{" "}
-            <input
-              className="input-box text-indent"
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              className="input-box text-indent"
-              type="text"
-              placeholder="Username"
-              name="username"
-              value={username}
-              onChange={handleInputChange}
-              minLength="6"
-              maxLength="12"
-              required
-            />
-            <input
-              className="input-box text-indent"
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={password}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              className="input-box text-indent"
-              type="password"
-              placeholder="Confirm Password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
-              onChange={handleInputChange}
-              required
-            />
-            {message}
-            <input className="input-box" type="submit" value="Create Account" />
-          </form>
-        </fieldset>
+              <input
+                className="input-box text-indent"
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={username}
+                onChange={handleInputChange}
+                minLength="6"
+                maxLength="12"
+                required
+              />
+              <input
+                className="input-box text-indent"
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                className="input-box text-indent"
+                type="password"
+                placeholder="Confirm Password"
+                name="passwordConfirmation"
+                value={passwordConfirmation}
+                onChange={handleInputChange}
+                required
+              />
+              {message}
+              <input
+                className="input-box"
+                id="createAccountButton"
+                type="submit"
+                value="Create Account"
+              />
+            </form>
+          </fieldset>
 
-        <div id="is-member-link">
-          <p>
-            Already a Member? <Link to="/login"> Log in Here </Link>
-          </p>
+          <div id="is-member-link">
+            <p>
+              Already a Member? <Link to="/login"> Log in Here </Link>
+            </p>
+          </div>
         </div>
+
+        <Footer />
       </div>
     );
   }

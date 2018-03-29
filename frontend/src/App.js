@@ -111,7 +111,7 @@ class App extends Component {
     const { getUserInfo, logOut, handleInputChange, submitLoginForm } = this;
 
     return (
-      <div>
+      <div className="App">
         <NavBar
           user={user} 
           signedIn={signedIn} 

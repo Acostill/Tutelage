@@ -8,11 +8,20 @@ CREATE TABLE users (
   username VARCHAR (50) UNIQUE NOT NULL,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
+  gender VARCHAR,
+  occupation VARCHAR,
+  bio VARCHAR,
 	zipcode VARCHAR,
 	imgURL VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png',
   email VARCHAR UNIQUE NOT NULL,
   password_digest VARCHAR NOT NULL,
   ismentor boolean
+);
+
+CREATE TABLE interests (
+	ID SERIAL PRIMARY KEY,
+	username VARCHAR REFERENCES users(username),
+	interest VARCHAR
 );
 
 CREATE TABLE questions (
@@ -166,3 +175,48 @@ INSERT INTO  messages (thread_id, sender, body)
   values ('2', 'nick1', 'Message Seven');
 INSERT INTO  messages (thread_id, sender, body)
   values ('3', 'gerson1', 'Message Seven');
+<<<<<<< HEAD
+=======
+
+
+INSERT INTO interests (username, interest)
+  values('gerson1', 'coding');
+INSERT INTO interests (username, interest)
+  values('gerson1', 'music');
+INSERT INTO interests (username, interest)
+  values('gerson1', 'fishing');
+INSERT INTO interests (username, interest)
+  values('nick1', 'driving');
+INSERT INTO interests (username, interest)
+  values('nick1', 'music');
+INSERT INTO interests (username, interest)
+  values('nick1', 'hangout');
+INSERT INTO interests (username, interest)
+  values('eddie1', 'reading');
+INSERT INTO interests (username, interest)
+  values('eddie1', 'basketball');
+INSERT INTO interests (username, interest)
+  values('eddie1', 'archery');
+INSERT INTO interests (username, interest)
+  values('greg1', 'coding');
+INSERT INTO interests (username, interest)
+  values('greg1', 'sports');
+INSERT INTO interests (username, interest)
+  values('greg1', 'motorcycles');
+INSERT INTO interests (username, interest)
+  values('carolina1', 'roasting');
+INSERT INTO interests (username, interest)
+  values('carolina1', 'camping');
+INSERT INTO interests (username, interest)
+  values('carolina1', 'swimming');
+INSERT INTO interests (username, interest)
+  values('jcrest', 'business');
+INSERT INTO interests (username, interest)
+  values('jcrest', 'finance');
+INSERT INTO interests (username, interest)
+  values('jcrest', 'fishing');
+
+
+-- INSERT INTO answers (answer_selection, question_id, user_id)
+--   values (1, 1, 1);
+>>>>>>> 1107351055500e42507b1b89741e6b7de74ff191

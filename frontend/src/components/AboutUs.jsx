@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import '../css/AboutUs.css';
+import Footer from './Footer';
+
 
 class AboutUs extends Component {
     constructor() {
         super();
     }
-
+    
     render() {
+   
+
         return (
-            <div>
+            <div className="aboutUs-container">
 
                 <div id="missionStatementSection">
                     <h1 id="missionStatement">Mission Statement</h1>
@@ -17,7 +21,7 @@ class AboutUs extends Component {
                     <p></p>
 
                     <h2 className="missionParagraphs">We enjoy when people enjoy the instruction,teaching and training they receive in conjunction with personalized coaching, guidance, nurturance, and encouragement from those they receive it from.</h2>
-                    
+
                     <p></p>
 
                     <h2 className="missionParagraphs">We specialize in creating "win-win" scenarios for both sides. The mentee recieves the crucial assistance needed to "level-up" their skills to improve their income, gain promotions that better their career trajectory, and helps them to navigate around the "potholes" of mistakes that others have encountered. The mentor, on the other hand, much more than intrinsic value, not only experiences the joys of altruism by selflessly giving to others in need, but also reinforces their own learning by way of teaching others, and may also even find themselves grooming the dream candidate that they were seeking to hire at their own business. </h2>
@@ -50,11 +54,11 @@ class AboutUs extends Component {
                             <h2>Product Manager</h2>
                         </div>
                         <div className="teamMemberPhoto">
-                            <img  src="./images/gregcropped2.jpg" alt="Product Manager" />
+                            <img src="./images/gregcropped2.jpg" alt="Product Manager" />
                         </div>
                         <div className="teamMemberCaption">
-                            <p><em><strong>"To me, mentorship encompasses someone I can confide in. It means someone I can model my thinking after, look up to and aspire to be."</strong></em></p> 
-                            
+                            <p><em><strong>"To me, mentorship encompasses someone I can confide in. It means someone I can model my thinking after, look up to and aspire to be."</strong></em></p>
+
                             <p>Greg is a Software Engineer from Harlem, NY. When he is not failing miserably, he can usually be found grinding and hustling to reach his full potential, taking care of his beautiful family, and leading by example... all whilst browsing Stack Overflow.</p>
                         </div>
                     </div>
@@ -78,12 +82,12 @@ class AboutUs extends Component {
                             <h2>Demo Lead</h2>
                         </div>
                         <div className="teamMemberPhoto">
-                            <img  src="./images/EddiePic2.jpg" alt="Demo Lead" />
+                            <img src="./images/EddiePic2.jpg" alt="Demo Lead" />
                         </div>
                         <div className="teamMemberCaption">
-                        <p><em><strong>“Having a solid, positive mentor in one’s life can literally change a person’s view of the world and not having one can potentially even be a life or death situation. Good mentors from a young age can make all the difference in the world."</strong></em><p>
-                                
-                                </p>An avid reader who also appreciates the craft of writing (both prose and programming languages), Eddie is a big kid at heart who loves basketball (the greatest sport in the world), eclectic music from all genres, and enjoys reading great, soul-stirring books (Pilgrim’s Progress, anyone?). When Eddie is not reading books, the self-described “movie buff” may be found possibly watching “Shawshank Redemption” (for the hundredth time) or roaming the streets searching for his next foodie adventure in the boroughs of New York City where he currently resides.</p>
+                            <p><em><strong>“Having a solid, positive mentor in one’s life can literally change a person’s view of the world and not having one can potentially even be a life or death situation. Good mentors from a young age can make all the difference in the world."</strong></em><p>
+
+                            </p>An avid reader who also appreciates the craft of writing (both prose and programming languages), Eddie is a big kid at heart who loves basketball (the greatest sport in the world), eclectic music from all genres, and enjoys reading great, soul-stirring books (Pilgrim’s Progress, anyone?). When Eddie is not reading books, the self-described “movie buff” may be found possibly watching “Shawshank Redemption” (for the hundredth time) or roaming the streets searching for his next foodie adventure in the boroughs of New York City where he currently resides.</p>
                         </div>
                     </div>
 
@@ -100,8 +104,8 @@ class AboutUs extends Component {
                         </div>
                     </div>
 
-{/* Why does this render a different color (pink?) */}
-{/* <font color="#f46524ff"></font> */}
+                    {/* Why does this render a different color (pink?) */}
+                    {/* <font color="#f46524ff"></font> */}
 
 
 
@@ -126,7 +130,6 @@ class AboutUs extends Component {
 
 
                 </div>
-
 
 
             </div>

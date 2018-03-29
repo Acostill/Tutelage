@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Carousel } from 'react-bootstrap';
+// import { Ally } from '..//Scripts/randomFunctions'
 import '../css/Home.css';
 
 
@@ -111,11 +112,13 @@ class Home extends Component {
               <h3 className="signUpEnticers">Make A Significant Impact</h3>
             </div>
           <div id="menteeButton">
-          <button className="buttons" type="button">Become A Mentee</button>
+          <button className="buttons" type="button" >Become A Mentee</button>
               <h3 className="signUpEnticers">Get Expert Career Guidance</h3>
             </div>
             
         </div>
+
+
 
       </div>
     )
