@@ -56,12 +56,12 @@ class RegisterUser extends Component {
 
     if (!ismentor) {
       this.setState({
-        message: "Please choose if you're a Mentor or Mentee"
+        message: "* Please choose: Mentor or Mentee"
       });
       return;
     } else if (password !== passwordConfirmation) {
       this.setState({
-        message: "Passwords do not match"
+        message: "* Passwords do not match"
       });
       return;
     } else if (password === passwordConfirmation) {
@@ -69,19 +69,27 @@ class RegisterUser extends Component {
         message: "Passwords match"
       });
     }
-    axios
-      .post("/users/create", {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        username: username,
-        password: password,
-        ismentor: eval(ismentor)
-      })
-      .then(res => {
-        this.setState({
-          message: "Account Created",
-          showConfetti: true
+
+      axios
+        .post("/users/create", {
+          firstname: firstname,
+          lastname: lastname,
+          email: email,
+          username: username,
+          password: password,
+          ismentor: eval(ismentor)
+        })
+        .then(res => {
+          this.setState({
+            message: "Account Created",
+            showConfetti: true
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({
+            message: "* Account Exists Already"
+          });
         });
         axios
           .post("/users/login", {
@@ -136,102 +144,88 @@ class RegisterUser extends Component {
         {showConfetti ? (
           <div id="confetti">
             <Confetti {...this.size} />
-          </div>
-        ) : (
-          ""
-        )}
-        <div id="registerForm">
-          <fieldset id="register-container">
-            <legend id="register-title">Register New User:</legend>
-            <form onSubmit={registerNewUserForm} id="input-container">
-              <div className="radio-button">
-                Are you a:
-                <input
-                  type="radio"
-                  name="ismentor"
-                  value="true"
-                  onChange={handleRadioChange}
-                />
-                Mentor
-                <input
-                  type="radio"
-                  name="ismentor"
-                  value="false"
-                  onChange={handleRadioChange}
-                />
-                Mentee
-              </div>
-              <input
-                className="input-box text-indent"
-                type="text"
-                placeholder="First Name"
-                name="firstname"
-                value={firstname}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="text"
-                placeholder="Last Name"
-                name="lastname"
-                value={lastname}
-                onChange={handleInputChange}
-                required
-              />{" "}
-              <input
-                className="input-box text-indent"
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={email}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={username}
-                onChange={handleInputChange}
-                minLength="6"
-                maxLength="12"
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="password"
-                placeholder="Confirm Password"
-                name="passwordConfirmation"
-                value={passwordConfirmation}
-                onChange={handleInputChange}
-                required
-              />
-              {message}
-              <input
-                className="input-box"
-                id="createAccountButton"
-                type="submit"
-                value="Create Account"
-              />
-            </form>
-          </fieldset>
+        </div>: ""}
+      <div id="registerForm">
+        <fieldset id="register-container">
+          <legend id="register-title">Register New User:</legend>
+          <form onSubmit={registerNewUserForm} id="input-container">
+          <div className="radio-button" >
+          Are you a: 
+            <input
+              type="radio"
+              name="ismentor"
+              value="true"
+              onChange={handleRadioChange}
+            />
+            Mentor
+            
+            <input
+              type="radio"
+              name="ismentor"
+              value="false"
+              onChange={handleRadioChange}
+            />
+            Mentee
+            </div>
+            <input className="input-box text-indent"
+              type="text"
+              placeholder="First Name"
+              name="firstname"
+              value={firstname}
+              onChange={handleInputChange}
+              required
+            />
+            <input className="input-box text-indent"
+              type="text"
+              placeholder="Last Name"
+              name="lastname"
+              value={lastname}
+              onChange={handleInputChange}
+              required
+            />{" "}
+            <input className="input-box text-indent"
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+              required
+            />
+            <input className="input-box text-indent"
+              type="text"
+              placeholder="Username"
+              name="username"
+              value={username}
+              onChange={handleInputChange}
+              minLength="6"
+              maxLength="12"
+              required
+            />
+            <input className="input-box text-indent"
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+              required
+            />
+            <input className="input-box text-indent"
+              type="password"
+              placeholder="Confirm Password"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={handleInputChange}
+              required
+            />
+            <div className="register-message">{message}</div>
+            <input className="input-box" id="createAccountButton"  type="submit" value="Create Account" />
+          </form>
+        </fieldset>
 
-          <div id="is-member-link">
-            <p>
-              Already a Member? <Link to="/login"> Log in Here </Link>
-            </p>
-          </div>
+        <div id="is-member-link">
+          <p>
+            Already a Member? <Link to="/login"> Log in Here </Link>
+          </p>
         </div>
 
         <Footer />

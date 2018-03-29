@@ -25,6 +25,7 @@ div.nav-right {
   flex-direction: row;
   justify-content: flex-end;
   justify-content: space-around;
+  align-items: baseline;
 }
 
 .nav-right > a {
@@ -49,6 +50,7 @@ div.nav-right-loggedin {
   flex-direction: row;
   justify-content: flex-end;
   justify-content: space-around;
+  align-items: baseline;
 }
 
 .nav-right-loggedin > a {
