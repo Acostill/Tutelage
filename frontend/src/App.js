@@ -17,7 +17,7 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
-      user: "",
+      user: {},
       signedIn: null,
       username: '',
       password: '',
@@ -108,7 +108,7 @@ class App extends Component {
 
   render() {
     const { user, signedIn, username, password, message } = this.state;
-    const { getUserInfo, logOut, handleInputChange, submitLoginForm } = this;
+    const { getUserInfo, logOut, handleInputChange, submitLoginForm, frontendRegister, appLogIn } = this;
 
     return (
       <div className="App">
@@ -135,7 +135,7 @@ class App extends Component {
           <Route path="/register" render={() => {
             return( 
             <RegisterUser
-              frontendRegister={this.frontendRegister} appLogIn={this.appLogIn}/>)
+              frontendRegister={frontendRegister} appLogIn={appLogIn}/>)
           }}
              />
           <Route path="/search" component={SearchUsers} />
