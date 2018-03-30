@@ -55,7 +55,9 @@ class LoginUser extends Component {
   render() {
     // const { username, password, message, signedIn } = this.state;
     const { handleInputChange, submitLoginForm, username, password, message, signedIn, user } = this.props;
-
+    console.log("USERRR PLEEEASE:", user)
+    console.log("USERNAME? PLLLEEEASE:", user.username)
+    
     if (signedIn) {
       return( <Redirect to= {`/users/${user.username}`}/>)
     }
