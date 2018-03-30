@@ -217,10 +217,9 @@ class RegisterUser extends Component {
                 onChange={handleInputChange}
                 required
               />
-              {message}
+              <div className="register-message">{message}</div>
               <input
-                className="input-box"
-                id="createAccountButton"
+                className="input-box createAccountButton"
                 type="submit"
                 value="Create Account"
               />
