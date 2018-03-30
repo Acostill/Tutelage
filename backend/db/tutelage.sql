@@ -94,6 +94,8 @@ INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, passwo
   values ('greg1','Gregory','Davis', NULL, '../images/gregcropped.jpg', 'greg@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
   values ('jcrest','Jason','Crest', NULL, 'https://upload.wikimedia.org/wikipedia/commons/c/cd/MFettes-headshot.jpg', 'jason@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  values ('adelle1','Adelle','Anderson', '90210', '../images/adelleprofilepic.jpeg', 'adelle@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 
  
 INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
