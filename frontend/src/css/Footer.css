@@ -1,11 +1,58 @@
 .footerSection {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 100px; 
+    height: 90px; 
     font-size: 16px;
-    background-color: #f46524ff;
-    color: white;
+    border-top-color: #e1e4e8;
+    border-top-style: solid;
+    border-top-width: 1px;
+
+    /* background: #E8F1F2; */
+    /* background: -webkit-linear-gradient(#E0583A, #353535);
+    background:    -moz-linear-gradient(#E0583A, #353535);
+    background:         linear-gradient(#E0583A, #353535); */
+    /* background: linear-gradient( #E0583A, #ff9000); */
+    color: black;
     text-align: center;
+}
+
+.hqSection {
+    text-align: left;
+    margin-left: 60px;
+    /* border: solid; */
+}
+
+.linkSection {
+    text-align: right;
+    margin-right: 50%;
+    /* border: solid; */
+}
+
+#copyright {
+    font-weight: bold;
+    text-align: left;
+    margin-left: 60px;
+    margin-top: 30px;
+    /* border: solid; */
+}
+
+#tagline {
+    color: #f46524ff;
+    text-align: right;
+    margin: auto;
+    text-align: center;
+    /* border: solid; */
+}
+
+#rights {
+    text-align: left;
+    margin-left: 60px;
+    /* border: solid; */
+}
+
+#githubLogo {
+    width: 42px;
+    height: 42px;
 }

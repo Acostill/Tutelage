@@ -24,11 +24,39 @@
     height: 33px;
 }
 
-#createAccountButton {
+.register-message {
+    width: 290;
+    height: 20px;
+    margin:auto;
+    margin-top: -10px;
+    margin-bottom: 3px;
+    padding: 2px;
+    color: red;
+}
+
+.createAccountButton {
     background-color: #f46524ff; 
+    background: linear-gradient( #E0583A, #ff9000);
     color: white;
     font-weight: bold;   
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0), 0 3px 10px 0 rgba(0,0,0,0.19);
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
 }
+
+.createAccountButton:hover {
+    background-color: white;
+    /* why isn't this working? */
+}
+
+.createAccountButton:focus {
+    outline:0;
+  }
+
+.createAccountButton:active {
+    transform: translateY(4px);
+}
+
 
 .text-indent {
     text-indent: 10px;

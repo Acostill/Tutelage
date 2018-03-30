@@ -13,16 +13,20 @@ class Profile extends Component {
 
   getUser = () => {
     let username = this.props.match.params.username;
-    console.log({ username });
+    console.log('props:', this.props)
+    console.log('I AM BEING CALLED')
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
         let user = res.data.user;
+        console.log('user:', user)
+        console.log('response: ', res)
         this.setState({
           user: user
         });
       })
       .catch(err => {
+        console.log("Your shit ain't work:", err)
         this.setState({
           message: err
         });
@@ -64,7 +68,7 @@ class Profile extends Component {
         <div className="background-banner">
           <div id="user-banner">
             <div className="image-crop margin">
-              <img src={user.imgurl} alt="profile picture" className="img" />
+              <img src={user.imgurl} alt="profile picture" className="img-profile" />
             </div>
             <div id="user-basic-info">
               <h1 className="user-header">
@@ -78,11 +82,6 @@ class Profile extends Component {
         </div>
           
         <div className="user-info-content">
-          <div id="quick-user-info" className="margin-top">
-            <div> location: {user.location} </div>
-            <div> gender: {user.gender} </div>
-            <div> occupation: {user.occupation} </div>
-          </div>
           <div className="margin-top">
             Common Interests: {commonInterests}
           </div>

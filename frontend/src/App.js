@@ -9,13 +9,15 @@ import SearchUsers from './components/users/SearchUsers';
 import Users from './components/users/Users'
 import NavBar from './components/NavBar';
 import Inbox from './components/inbox/Inbox';
+import Survey from './components/survey/Survey';
 import axios from 'axios';
+
 
 class App extends Component {
   constructor () {
     super();
     this.state = {
-      user: {username: null},
+      user: {},
       signedIn: null,
       username: '',
       password: '',
@@ -24,10 +26,10 @@ class App extends Component {
   }
 
   getUserInfo = () => {
-    console.log('Hello getUserInfo')
     axios
       .get('/users/userinfo')
       .then(res => {
+        console.log("IS ID HERE?",res.data.userInfo)
         this.setState({
           signedIn: true,
           user: res.data.userInfo
@@ -50,7 +52,7 @@ class App extends Component {
         password: password
       })
       .then(res => {
-        console.log(res);
+        console.log('peep this:', res);
         // redirect to user's profile
         this.setState({
           signedIn: true,
@@ -74,6 +76,12 @@ class App extends Component {
           });
         }
       });
+  }
+
+  frontendRegister = (user) => {
+    this.setState({
+      user: {username: user.username}
+    })
   }
 
   appLogIn = () => {
@@ -100,11 +108,10 @@ class App extends Component {
 
   render() {
     const { user, signedIn, username, password, message } = this.state;
-    const { getUserInfo, logOut, handleInputChange, submitLoginForm } = this;
+    const { getUserInfo, logOut, handleInputChange, submitLoginForm, frontendRegister, appLogIn } = this;
 
-    console.log('App State', this.state)
     return (
-      <div>
+      <div className="App">
         <NavBar
           user={user} 
           signedIn={signedIn} 
@@ -125,10 +132,16 @@ class App extends Component {
               signedIn={signedIn}
             />
           )} />
-          <Route path="/register" component={RegisterUser} />
+          <Route path="/register" render={() => {
+            return( 
+            <RegisterUser
+              frontendRegister={frontendRegister} appLogIn={appLogIn}/>)
+          }}
+             />
           <Route path="/search" component={SearchUsers} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/users" component={Users} />
+          <Route path="/survey" component={ () => <Survey user={user}/> } />
         </Switch>
       </div>
     );

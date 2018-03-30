@@ -11,13 +11,23 @@ class Footer extends Component {
 
     render() {
         return (
-            <div>
-                <div className="footerSection">
-                    <p>Tutelage&trade; Copyright © 2018 Until Infinity</p>
-                    <p>Reach out to your full potential.&trade;</p>
-                    <p>All Rights Reserved</p>
-                </div>
-            </div>
+                    <span className="footerSection">
+                        <span id="copyright">Tutelage Inc.&trade; Copyright © 2018 Until Infinity</span>
+                        <span id="rights">All Rights Reserved</span>
+                        <span className="hqSection">
+                            <span>527 Innovation Parkway, Suite 7, New York, NY 10001</span>
+                        </span>
+                        <div className="linkSection">
+                            <div> 
+                                <a href="https://github.com/Acostill/Tutelage">
+                                    <img id="githubLogo" src="./images/githubplainlogo.svg" alt="Github Repository"/>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div id="tagline">Reach out to your full potential.&trade;</div>
+
+                    </span>
         )
     }
 

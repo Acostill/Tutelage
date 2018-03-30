@@ -55,7 +55,9 @@ class LoginUser extends Component {
   render() {
     // const { username, password, message, signedIn } = this.state;
     const { handleInputChange, submitLoginForm, username, password, message, signedIn, user } = this.props;
-
+    console.log("USERRR PLEEEASE:", user)
+    console.log("USERNAME? PLLLEEEASE:", user.username)
+    
     if (signedIn) {
       return( <Redirect to= {`/users/${user.username}`}/>)
     }
@@ -63,7 +65,7 @@ class LoginUser extends Component {
     // can add a cookie/session storage so user doesn't see login page when they are signed in
 
     return (
-      <div>
+      <div className="login-form-container">
       <div id="login-form">
         <legend id="login-title"> Welcome Back! </legend>
 
@@ -84,7 +86,7 @@ class LoginUser extends Component {
             className="input-box text-indent"
           />
   
-          <button onClick={submitLoginForm} className="input-box" > Log in </button>
+          <button className="loginButton input-box" onClick={submitLoginForm} > Log in </button>
 
           <p className="message">{message}</p>
 
@@ -94,9 +96,9 @@ class LoginUser extends Component {
 
           </div>
 
-        <Footer />
         
 
+        <Footer />
       </div>
 
     );

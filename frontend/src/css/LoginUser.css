@@ -1,3 +1,8 @@
+.login-form-container{
+    height: 100%;
+
+}
+
 #login-form {
     width: 300px;
     margin: auto;
@@ -7,6 +12,33 @@
     flex-direction: column;
     box-shadow: 0px 0px 7px 0px #353535;
     align-items: center;
+}
+
+
+
+
+.loginButton {
+    background-color: #f46524ff; 
+    background: linear-gradient( #E0583A, #ff9000);
+    color: white;
+    font-weight: bold;   
+    font-size: 14px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.0), 0 3px 10px 0 rgba(0,0,0,0.19);
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.loginButton:hover {
+    background-color: white;
+    /* why isn't this working? */
+}
+
+.loginButton:focus {
+    outline:0;
+  }
+
+.loginButton:active {
+    transform: translateY(4px);
 }
 
 legend#login-title {
@@ -39,3 +71,4 @@ legend#login-title {
     color: white;
     text-align: center;
 }
+

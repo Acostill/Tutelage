@@ -11,7 +11,7 @@ const passport = require("../auth/local");
 //     res.send(`${req.user.username} is logged in`);
 // }); //** Greg */
 router.post("/login", db.loginUser) //** Gerson - I commented out the other '/login' route */
-router.post("/create", db.createUser); //** Greg */
+router.post("/create", db.registerUser); //** Greg */
 router.post("/survey", db.getAnswersFromUsers); //** Greg */
 router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
 router.post("/send_message", loginRequired, db.submitMessage); //** Greg */
