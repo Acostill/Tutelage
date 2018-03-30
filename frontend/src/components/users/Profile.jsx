@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../../css/Profile.css";
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+import cloudinary from 'cloudinary-core';
+const cloudinaryCore = new cloudinary.Cloudinary({cloud_name: 'tutelage'});
+
 
 class Profile extends Component {
   constructor() {
@@ -10,6 +14,16 @@ class Profile extends Component {
       userMessage: ""
     };
   }
+ 
+  makeWidget = () => {
+    window.cloudinary.openUploadWidget( 
+        { cloud_name: 'tutelage', public_id: 'newUser', upload_preset: 'wpcjhnmk', tags:['users']},
+        function(error, result) {
+          console.log(result);
+        }
+      );
+  }
+  
 
   getUser = () => {
     let username = this.props.match.params.username;
@@ -33,8 +47,18 @@ class Profile extends Component {
       });
   };
 
+  getPhotos = () => {
+    axios.get
+    ('http://res.cloudinary.com/tutelage')
+            .then(res => {
+                console.log(res);
+                // this.setState({gallery: res.data.resources});
+            })
+    }
+
   componentDidMount() {
     this.getUser();
+    // this.getPhotos();
   }
 
   handleTextarea = e => {
@@ -61,7 +85,13 @@ class Profile extends Component {
         <div className="background-banner">
           <div id="user-banner">
             <div className="image-crop margin">
-              <img src={user.imgurl} alt="profile picture" className="img-profile" />
+           
+            <button id="upload_widget_opener" onClick = {this.makeWidget}> 
+              <Image cloudName="tutelage" publicId="sample" width="300" crop="scale">
+                <Transformation width="900" height="900" background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black" crop="pad"/>
+              </Image>
+            </button> }
+              {/* <img src={user.imgurl} alt="profile picture" className="img-profile" /> */}
             </div>
             <div id="user-basic-info">
               <h1 className="user-header">
