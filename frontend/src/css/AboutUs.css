@@ -1,20 +1,21 @@
-body,html{
+body,
+html {
     /* width: 100%; */
     height: 100%;
 }
-.aboutUs-container{
+
+.aboutUs-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
 }
+
 #mainDiv {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 100px;
-    /* border:solid; */
-
 }
 
 #missionStatementSection {
@@ -31,7 +32,6 @@ body,html{
     /* justify-content: space-around; */
     /* border:solid;
     border-color: springgreen; */
-
 }
 
 .teamMemberPhoto {
@@ -39,37 +39,86 @@ body,html{
     flex-shrink: 0;
     margin-bottom: 10px;
 }
-.teamMemberPhoto > img {
+
+.teamMemberPhoto>img {
     max-width: 100%;
 }
 
-.teamMemberCaption, .teamMemberTitle, .missionParagraphs {
+.teamMemberCaption,
+.teamMemberTitle,
+.missionParagraphs {
     color: #353535;
 }
 
 .teamMemberCaption {
+    /* The line below (position: relative) allows the github link to be placed at the very bottom */
+    position: relative;
     margin-top: 20px;
     font-size: 14px;
     padding: 2px;
+    /* border-style: dashed; */
+   /* The line below (height: 575) gives an equal div length to all caption divs, bringing them closer to the longest caption */
+    height: 575px;
     /* set a width */
 }
 
- .teamMemberTitle {
+.teamMemberTitle {
     /* display: flex; */
     margin-bottom: 20px;
     /* justify-content: center; */
     text-align: center;
     color: #f46524ff;
-} 
+}
+
+.personalGithubLink {
+    text-align: center;
+    /* (bottom: 0)moves the logo to the bottom of the outer div */
+    bottom: 0;
+    /* The position: absolute and margin: 0 auto are both used to move the inner div inside the outer div */
+    position: absolute;
+    margin: 0 auto;
+    width: 100px;
+    /* (margin-left: 80px) Allows for more centering of the element  */
+    margin-left: 80px;
+    
+}
+
+#githubLogo:hover {
+    /* background-color: #f46524ff; */
+}
+
+.gersonGithub {
+    /* margin-top: 80px; */
+}
+
+.gregGithub {
+    /* text-align-last: center; */
+    /* margin-top: 280px; */
+
+}
+
+.carolinaGithub {
+    
+}
+
+.eddieGithub {
+    
+}
+
+.nickGithub {
+    
+}
 
 @media (max-width: 480px) {
     .teamMember {
         flex-basis: auto;
     }
     #mainDiv {
-       flex-direction: column;
+        flex-direction: column;
     }
 }
+
+
 /* 
 .teamMember {
     display: flex;
@@ -80,6 +129,8 @@ body,html{
     align-items: center;
     width: 20%;
 } */
+
+
 /* 
 .teamMemberTitle {
     display: flex;
@@ -89,6 +140,8 @@ body,html{
     justify-content: space-between;
     align-items: center;
 } */
+
+
 /* 
 .teamMemberPhoto {
     display: flex;
@@ -98,6 +151,7 @@ body,html{
     justify-content: space-between;
     align-items: center;
 } */
+
 
 /* 
 .teamMemberCaption {
@@ -110,9 +164,12 @@ body,html{
 } 
 */
 
-    /* justify-content: space-around;
+
+/* justify-content: space-around;
     justify-content: space-between;
     align-items: center; */
+
+
 /* #missionStatementSection {
     
 } */
@@ -122,11 +179,9 @@ body,html{
     font-size: 30px;
     text-align: center;
 }
-  
-  
-  .missionParagraphs {
+
+.missionParagraphs {
     text-align: center;
     font-family: 'IBM Plex Serif', serif;
     /* font-style: italic; */
-  
-  }
+}

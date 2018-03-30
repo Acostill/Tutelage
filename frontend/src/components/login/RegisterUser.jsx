@@ -132,7 +132,7 @@ class RegisterUser extends Component {
     const { handleInputChange, handleRadioChange, registerNewUserForm } = this;
 
     return (
-      <div>
+      <div id="cofetti-container">
         {showConfetti ? (
           <div id="confetti">
             <Confetti {...this.size} />

@@ -24,6 +24,7 @@ router.patch("/edit", loginRequired, db.updateSingleUser); //** Greg */
 
 /******************GET ROUTES********************* */
 // router.get("/survey", db.getAllSurveyQuestions);
+router.get("/getSingleUser", loginRequired, db.getSingleUser); //** Greg */
 router.get("/logout", loginRequired, db.logoutuser); //** Greg */
 router.get("/survey", db.getAllSurveyQuestionsAndAnswers); //** Greg */
 router.get("/userinfo", loginRequired, db.getSingleUser) //** Gerson */
