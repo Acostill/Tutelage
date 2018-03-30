@@ -40,24 +40,47 @@ const getSingleUser = (req, res, next) => {
 // }
 
 const updateSingleUser = (req, res, next) => {
-  console.log("Req is:", req, "is there a req.user?:", req.user);
-  const hash = authHelpers.createHash(req.body.password);
-  console.log("updated password hash: ", hash);
-
-  let { username, firstname, lastname, zipcode, password_digest, ismentor } = req.body;
+  let { username, email, firstname, lastname, bio, occupation, zipcode, gender, ismentor } = req.body;
 
   let query =
-    "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, zipcode=${zipcode}, imgURL = ${imgURL}, email = ${email}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}";
+    `UPDATE users SET username = ${newUserName ?
+                                '${newUsername}' : '${username}'}, 
+                         email = ${email ? 
+                                '${newEmail}' : '${email}'}, 
+                     firstname = ${newFirstname ?
+                                '${newFirstname}' : '${firstname}'}, 
+                      lastname = ${lastname ?
+                                '${newLastname}' : '${lastname}'},
+                           bio = ${bio ?
+                                '${newBio}' : '${bio}'}, 
+                    occupation = ${occupation ? 
+                                '${newOccupation}' : '${occupation}'},
+                         zipcode=${zipcode ?
+                                '${newZipCode}' : '${zipcode}'}, 
+                        gender = ${gender ? 
+                                '${newGender}' : '${gender}'},
+                      ismentor = ${ismentor ? 
+                                '${newIsMentor}' : '${ismentor}'},
+                  WHERE id = ${id}`;
   db
     .none(query, {
-      username: req.body.username,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      zipcode: req.body.zipcode,
-      imgURL: req.body.imgURL,
-      email: req.body.email,
-      password: hash,
-      ismentor: req.body.ismentor,
+      newUsername: req.body.newUsername,
+      newEmail: req.body.newEmail,
+      newFirstname: req.body.newFirstname,
+      newLastname: req.body.newLastname,
+      newBio: req.body.newBio,
+      newOccupation: req.body.newOccupation,
+      newZipCode: req.body.newZipCode,
+      newGender: req.body.newGender,
+      username: req.user.username,
+      email: req.user.email,
+      firstname: req.user.firstname,
+      lastname: req.user.lastname,
+      bio: req.user.bio,
+      occupation: req.user.occupation,
+      zipcode: req.user.zipcode,
+      gender: req.user.gender,
+      ismentor: req.user.ismentor,
       id: req.user.id
     })
     .then(() => {
