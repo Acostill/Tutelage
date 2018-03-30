@@ -139,7 +139,7 @@ class App extends Component {
               frontendRegister={frontendRegister} appLogIn={appLogIn}/>)
           }}
              />
-          <Route path="/search" component={SearchUsers} />
+          <Route path="/search" component={ ()=> <SearchUsers currentUser={user}/>} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/users" component={Users} />
           <Route path="/aboutMe" component={AboutMe} />

@@ -175,7 +175,7 @@ INSERT INTO  messages (thread_id, sender, body)
   values ('1', 'carolina1', 'Message Seven');
 INSERT INTO  messages (thread_id, sender, body)
   values ('2', 'nick1', 'Message Seven');
-INSERT INTO  messages (thread_id, sender, body)
+-- INSERT INTO  messages (thread_id, sender, body)
   values ('3', 'gerson1', 'Message Seven');
 
 
