@@ -1,0 +1,24 @@
+.tellUsAboutYourselfHeader {
+    text-emphasis: center;
+    color: #f46524ff;
+}
+
+.aboutMeQuestionAndAnswerSection {
+    text-emphasis: center;
+}
+
+.saveButtons {
+    background-color: #f46524ff; 
+    background: linear-gradient( #E0583A, #ff9000);
+    color: white;
+    font-weight: bold;   
+    font-size: 14px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.0), 0 3px 10px 0 rgba(0,0,0,0.19);
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.saveButtons:hover {
+    background-color: white;
+    color: black;
+}
