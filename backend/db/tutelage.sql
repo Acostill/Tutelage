@@ -37,7 +37,8 @@ CREATE TABLE answers (
 	ID SERIAL PRIMARY KEY,
 	question_id INTEGER REFERENCES questions(ID),
 	user_id INTEGER REFERENCES users(ID),
-	answer_selection INTEGER
+  username VARCHAR REFERENCES users(username),
+	answer_selection VARCHAR
   -- accepted_answer_selection INTEGER REFERENCES answers(answer_selection) 
 );
 
