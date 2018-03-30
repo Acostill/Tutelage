@@ -70,7 +70,6 @@ class SearchUsers extends Component {
     };
     return (
       <div id="search-page">
-        {/* ---- Have to find a way for common saying for mentor or mentee /or props to change the title ---- */}
         {this.props.currentUser.ismentor
           ?  (<div id="search-header" className="font-large"> Find Your Next Mentee </div>) 
           :  (<div id="search-header" className="font-large"> Find Your Next Mentor </div>)}
