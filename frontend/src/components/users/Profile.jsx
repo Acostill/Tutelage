@@ -87,12 +87,12 @@ class Profile extends Component {
           <div id="user-banner">
             <div className="image-crop margin">
            
-            <button id="upload_widget_opener" onClick = {this.makeWidget}> 
+            {/* <button id="upload_widget_opener" onClick = {this.makeWidget}> 
               <Image cloudName="tutelage" publicId="sample" width="300" crop="scale">
                 <Transformation width="900" height="900" background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black" crop="pad"/>
               </Image>
-            </button> }
-              {/* <img src={user.imgurl} alt="profile picture" className="img-profile" /> */}
+            </button> } */}
+              <img src={user.imgurl} alt="profile picture" className="img-profile" />
             </div>
             <div id="user-basic-info">
               <h1 className="user-header">
