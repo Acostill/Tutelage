@@ -12,6 +12,7 @@ class Survey extends React.Component {
     this.state = {
       answers: [],
       user: "",
+      userID:"",
       questionid: "",
       questions: [],
       submitted: false
@@ -53,6 +54,7 @@ class Survey extends React.Component {
     console.log("userNAMEMEMEME", this.props.user.username)
     const {
       user,
+      userID,
       answers,
       questionid,
       questions
@@ -62,7 +64,7 @@ class Survey extends React.Component {
         answer_selection: e.target.value,
         question_id: parseInt(e.target.name),
         username: this.props.user.username,
-        user_id: parseInt(this.props.user.id)
+        user_id: userID
       }
 
     this.setState({
@@ -71,17 +73,25 @@ class Survey extends React.Component {
     });
   };
 
-  // getUserInfo = () => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     this.setState({ user: JSON.parse(loggedInUser) });
-  //     return;
-  //   }
-  // };
+  getUserInfo = () => {
+    axios
+      .get('/users/userinfo')
+      .then(res => {
+        console.log("IS ID HERE?",res.data.userInfo)
+        this.setState({
+          user: res.data.userInfo,
+          userID: res.data.userInfo.id
+        })
+      })
+    .catch(err => {
+      console.log("err", err);
+    });
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     console.log("THE STATE:", this.state)
+    console.log("the user", this.props.user)
     axios
       .post("/users/survey", {
         answers: this.state.answers
@@ -101,12 +111,12 @@ class Survey extends React.Component {
   componentDidMount() {
     console.log("Component about to Mount");
     this.getSurvey();
-    // this.getUserInfo();
+    this.getUserInfo();
   }
 
   render() {
     console.log("PROPZZZZ:", this.props)
-    console.log("Component Mounted here first in the Render:", this.state);
+    console.log("Component Mounted here first in the Render IN SURVEYY:", this.state);
     const { questions, questionid, submitted } = this.state;
     const user = this.props.user;
     console.log("userrr", user)

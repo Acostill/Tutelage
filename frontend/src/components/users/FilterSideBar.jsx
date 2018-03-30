@@ -130,31 +130,31 @@ class FilterSideBar extends Component {
           </li>
 
           <li id="statement5">
-            <p> Availbility: </p>
+            <p> Availability: </p>
 
             <div className="choices">
               <div>
-                <input type="radio" id="state5choice1" />
+                <input type="radio" id="state5choice1" name="availability"/>
                 Once a month
               </div>
               <div>
-                <input type="radio" id="state5choice2" />
+                <input type="radio" id="state5choice2" name="availability"/>
                 Once every two weeks
               </div>
               <div>
-                <input type="radio" id="state5choice3" />
+                <input type="radio" id="state5choice3" name="availability"/>
                 Once a week
               </div>
               <div>
-                <input type="radio" id="state5choice4" />
+                <input type="radio" id="state5choice4" name="availability"/>
                 Twice a week
               </div>
               <div>
-                <input type="radio" id="state5choice5" />
+                <input type="radio" id="state5choice5" name="availability"/>
                 Weekdays
               </div>
               <div>
-                <input type="radio" id="state5choice6" />
+                <input type="radio" id="state5choice6" name="availability"/>
                 Weekends
               </div>
             </div>
@@ -165,27 +165,27 @@ class FilterSideBar extends Component {
 
             <div className="choices">
               <div>
-                <input type="radio" id="state6choice1" />
+                <input type="radio" id="state6choice1" name="religion"/>
                 None
               </div>
               <div>
-                <input type="radio" id="state6choice2" />
+                <input type="radio" id="state6choice2" name="religion"/>
                 Christianity
               </div>
               <div>
-                <input type="radio" id="state6choice3" />
+                <input type="radio" id="state6choice3" name="religion"/>
                 Buddhism
               </div>
               <div>
-                <input type="radio" id="state6choice4" />
+                <input type="radio" id="state6choice4" name="religion"/>
                 Judaism
               </div>
               <div>
-                <input type="radio" id="state6choice5" />
+                <input type="radio" id="state6choice5" name="religion"/>
                 Islam
               </div>
               <div>
-                <input type="radio" id="state6choice6" />
+                <input type="radio" id="state6choice6" name="religion"/>
                 Hinduism
               </div>
             </div>
@@ -196,27 +196,27 @@ class FilterSideBar extends Component {
 
             <div className="choices">
               <div>
-                <input type="radio" id="state7choice1" />
+                <input type="radio" id="state7choice1" name="languages"/>
                 English
               </div>
               <div>
-                <input type="radio" id="state7choice2" />
+                <input type="radio" id="state7choice2" name="languages"/>
                 Spanish
               </div>
               <div>
-                <input type="radio" id="state7choice3" />
+                <input type="radio" id="state7choice3" name="languages"/>
                 Chinese
               </div>
               <div>
-                <input type="radio" id="state7choice4" />
+                <input type="radio" id="state7choice4" name="languages"/>
                 Tagalog
               </div>
               <div>
-                <input type="radio" id="state7choice5" />
+                <input type="radio" id="state7choice5" name="languages"/>
                 Arabic
               </div>
               <div>
-                <input type="radio" id="state7choice6" />
+                <input type="radio" id="state7choice6" name="languages"/>
                 Korean
               </div>
             </div>
