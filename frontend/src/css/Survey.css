@@ -1,0 +1,45 @@
+#App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#questions {
+    display: flex;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+}
+
+#questionsPTag {
+    flex-direction: column;
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
+    align-items: center;
+    border: 5px solid red;
+    display: flex;
+    list-style-type: none;
+    font-size: 13pt;
+    margin: 0;
+    padding: 15px;
+    padding-left: 25px;
+    width: 230px;
+    background-color: rgb(232, 241, 242);
+    height: 100%;
+}
+
+.question-card {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    flex-direction: row;
+    border: 2px solid black;
+}
+
+#questionsItem {}
+
+.survey-form {
+    display: flex;
+    justify-content: center;
+}

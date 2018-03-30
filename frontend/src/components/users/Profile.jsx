@@ -13,16 +13,20 @@ class Profile extends Component {
 
   getUser = () => {
     let username = this.props.match.params.username;
-    console.log({ username });
+    console.log('props:', this.props)
+    console.log('I AM BEING CALLED')
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
         let user = res.data.user;
+        console.log('user:', user)
+        console.log('response: ', res)
         this.setState({
           user: user
         });
       })
       .catch(err => {
+        console.log("Your shit ain't work:", err)
         this.setState({
           message: err
         });
@@ -47,7 +51,7 @@ class Profile extends Component {
 
   render() {
     const { user, userMessage } = this.state;
-    console.log({ user });
+    console.log("useree", this.state.user)
     const { clearMessage, handleTextarea } = this;
 
     let commonInterests = "";

@@ -15,8 +15,6 @@ class Home extends Component {
 
       // <div>
 
-
-
       <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
         {/* <!-- Indicators --> */}

@@ -1,124 +1,129 @@
 #myCarousel {
     /* width:900px; */
-    height:500px;
+    height: 500px;
     margin: auto;
     /* overflow: hidden; */
     /* background-color: black; */
-  }
+}
 
-  /* This can change the carousel height to allow button visability without scrolling. */
-  
-  .mentorCarousel {
+
+/* This can change the carousel height to allow button visability without scrolling. */
+
+.mentorCarousel {
     height: 600px;
-  }
+}
 
-  @media (max-width: 900px) {
+@media (max-width: 900px) {
     #myCarousel {
-      width:auto;
-      height:auto;
+        width: auto;
+        height: auto;
     }
 }
+
 
 /* .carousel-caption {
   top: 36%;
 } */
 
-@media only screen and (min-width : 1200px) {
-  .carousel-caption
-  {
-    top: 43%;
-  }
+@media only screen and (min-width: 1200px) {
+    .carousel-caption {
+        top: 43%;
+    }
 }
 
 #signUpChoice {
-  display: flex;
-  justify-content: center;
-  justify-content: space-around;
-  margin: 0 300px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    margin: 0 300px;
 }
 
 #enticerSection {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #mentorButton {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
-
 
 #menteeButton {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-
-
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
+
 
 /* .signUpEnticers {
   text-align-last: right;
 } */
 
 .buttons {
-  background-color: #f46524ff;
-  color: white;
-  text-align: center;
-  font-size: 26px;
-  padding: 15px 32px;
-  margin: 24px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-transition-duration: 0.4s; 
-  transition-duration: 0.4s;
+    background-color: #f46524ff;
+    color: white;
+    text-align: center;
+    font-size: 26px;
+    padding: 15px 32px;
+    margin: 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
 
 .buttons:hover {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
 
 .buttons:active {
-  background-color: #E0583A;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    background-color: #E0583A;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
+
 
 /* This removes the blue outline appearing around a clicked button */
+
 .buttons:focus {
-  outline:0;
+    outline: 0;
 }
 
-
 ol.carousel-indicators {
-  margin: auto;
+    margin: auto;
 }
 
 .carousel-indicators--round li {
-  border-radius: 10px;
-  margin: 1px 3px;
-  height: 10px;
-  max-width: 10px;
-  border: 1px solid #FFF;
-  background-color: orangered;
+    border-radius: 10px;
+    margin: 1px 3px;
+    height: 10px;
+    max-width: 10px;
+    border: 1px solid #FFF;
+    background-color: orangered;
 }
+
 .carousel-indicators .active {
-  background-color: #fff;
-  max-width: 12px;
-  margin: 0 3px;
-  height: 12px;
+    background-color: #fff;
+    max-width: 12px;
+    margin: 0 3px;
+    height: 12px;
 }
+
 
 /* This handles the Main Caption. */
+
 .captionOne {
-  font-size: 40px;
-  color: white;
-  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue
+    font-size: 40px;
+    color: white;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue
 }
 
+
 /* This handles the sub-caption */
+
 .captionTwo {
-color: white;
+    color: white;
 }

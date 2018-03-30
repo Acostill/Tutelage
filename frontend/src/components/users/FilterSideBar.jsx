@@ -18,15 +18,15 @@ class FilterSideBar extends Component {
 
             <div className="choices">
               <div>
-                <input type="radio" id="state1choice1" />
+                <input type="radio" id="state1choice1" name="gender"/>
                 No preference
               </div>
               <div>
-                <input type="radio" id="state1choice2" />
+                <input type="radio" id="state1choice2" name="gender"/>
                 Male
               </div>
               <div>
-                <input type="radio" id="state1choice3" />
+                <input type="radio" id="state1choice3" name="gender"/>
                 Female
               </div>
             </div>
@@ -37,31 +37,31 @@ class FilterSideBar extends Component {
 
             <div className="choices">
               <div>
-                <input type="radio" id="state2choice1" />
+                <input type="radio" id="state2choice1" name="age"/>
                 18 - 25
               </div>
               <div>
-                <input type="radio" id="state2choice2" />
+                <input type="radio" id="state2choice2" name="age"/>
                 26 - 30
               </div>
               <div>
-                <input type="radio" id="state2choice3" />
+                <input type="radio" id="state2choice3" name="age"/>
                 31 - 35
               </div>
               <div>
-                <input type="radio" id="state2choice4" />
+                <input type="radio" id="state2choice4" name="age"/>
                 36 - 40
               </div>
               <div>
-                <input type="radio" id="state2choice5" />
+                <input type="radio" id="state2choice5" name="age"/>
                 41 - 45
               </div>
               <div>
-                <input type="radio" id="state2choice6" />
+                <input type="radio" id="state2choice6" name="age"/>
                 46 - 50
               </div>
               <div>
-                <input type="radio" id="state2choice7" />
+                <input type="radio" id="state2choice7" name="age"/>
                 50+
               </div>
             </div>
@@ -72,27 +72,27 @@ class FilterSideBar extends Component {
 
             <div className="choices">
               <div>
-                <input type="radio" id="state3choice1" />
+                <input type="radio" id="state3choice1" name="business"/>
                 Corporate Business
               </div>
               <div>
-                <input type="radio" id="state3choice2" />
+                <input type="radio" id="state3choice2" name="business"/>
                 Design
               </div>
               <div>
-                <input type="radio" id="state3choice3" />
+                <input type="radio" id="state3choice3" name="business"/>
                 Engineers
               </div>
               <div>
-                <input type="radio" id="state3choice4" />
+                <input type="radio" id="state3choice4" name="business"/>
                 Development
               </div>
               <div>
-                <input type="radio" id="state3choice5" />
+                <input type="radio" id="state3choice5" name="business"/>
                 Entrepreneur
               </div>
               <div>
-                <input type="radio" id="state3choice6" />
+                <input type="radio" id="state3choice6" name="business"/>
                 Social Service
               </div>
             </div>
@@ -103,27 +103,27 @@ class FilterSideBar extends Component {
 
             <div className="choices">
               <div>
-                <input type="radio" id="state4choice1" />
+                <input type="radio" id="state4choice1" name="experience"/>
                 1 - 2 years
               </div>
               <div>
-                <input type="radio" id="state4choice2" />
+                <input type="radio" id="state4choice2" name="experience"/>
                 3 - 6 years
               </div>
               <div>
-                <input type="radio" id="state4choice3" />
+                <input type="radio" id="state4choice3" name="experience"/>
                 7 - 9 years
               </div>
               <div>
-                <input type="radio" id="state4choice4" />
+                <input type="radio" id="state4choice4" name="experience"/>
                 10 - 14 years
               </div>
               <div>
-                <input type="radio" id="state4choice5" />
+                <input type="radio" id="state4choice5" name="experience"/>
                 15 - 20 years
               </div>
               <div>
-                <input type="radio" id="state4choice6" />
+                <input type="radio" id="state4choice6" name="experience"/>
                 20+ years
               </div>
             </div>

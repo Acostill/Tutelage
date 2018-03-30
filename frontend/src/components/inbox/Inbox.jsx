@@ -31,7 +31,7 @@ class Inbox extends Component {
   renderInbox = () => {
     const { userThreads } = this.state;
     return (
-      <div>
+      <div className="inbox-container">
         Inbox
         {userThreads.map(thread => {
           return (         
