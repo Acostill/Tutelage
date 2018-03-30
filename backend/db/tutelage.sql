@@ -216,3 +216,7 @@ INSERT INTO interests (username, interest)
 
 -- INSERT INTO answers (answer_selection, question_id, user_id)
 --   values (1, 1, 1);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29ea3c2613c190d21178a9fc0277d56db5a489b4

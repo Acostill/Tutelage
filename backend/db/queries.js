@@ -451,6 +451,7 @@ const getUserInterests = (req, res, next) => {
 }
 
 module.exports = {
+<<<<<<< HEAD
     getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
     createUser: createUser,
@@ -468,4 +469,24 @@ module.exports = {
     getThreadMessages: getThreadMessages,
     registerUser: registerUser,
     getUserInterests: getUserInterests
+=======
+
+  getAllUsers: getAllUsers,
+  getSingleUser: getSingleUser,
+  createUser: createUser,
+  updateSingleUser: updateSingleUser,
+  loginUser: loginUser,
+  logoutuser: logoutUser,
+  // getAllSurveyQuestions: getAllSurveyQuestions,
+  getAnswersFromUsers: getAnswersFromUsers,
+  getAllSurveyQuestionsAndAnswers: getAllSurveyQuestionsAndAnswers,
+  fetchNewThread: fetchNewThread,
+  submitMessage: submitMessage,
+  getAllMessages: getAllMessages,
+  getUserByUsername: getUserByUsername,
+  getAllLocations: getAllLocations,
+  getUserThreads: getUserThreads,
+  getThreadMessages: getThreadMessages,
+  getUserInterests: getUserInterests
+>>>>>>> 29ea3c2613c190d21178a9fc0277d56db5a489b4
 };
