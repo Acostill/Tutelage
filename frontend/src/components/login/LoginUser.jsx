@@ -97,7 +97,6 @@ class LoginUser extends Component {
           </div>
 
         
-
         <Footer />
       </div>
 

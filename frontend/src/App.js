@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
+import AboutMe from './components/users/AboutMe';
 import LoginUser from './components/login/LoginUser';
 import RegisterUser from './components/login/RegisterUser';
 import SearchUsers from './components/users/SearchUsers';
@@ -141,6 +142,7 @@ class App extends Component {
           <Route path="/search" component={ ()=> <SearchUsers currentUser={user}/>} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/users" component={Users} />
+          <Route path="/aboutMe" component={AboutMe} />
           <Route path="/survey" component={ () => <Survey user={user}/> } />
         </Switch>
       </div>
