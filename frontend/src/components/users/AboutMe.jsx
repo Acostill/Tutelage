@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../css/AboutMe.css';
+import Footer from '../Footer';
 
 
 class AboutMe extends Component {
@@ -38,6 +39,7 @@ class AboutMe extends Component {
                     <textarea name="" id="interests" cols="50" rows="10"></textarea><br/>
                     <button className="saveButtons" type="button">Save</button>
                 </div>
+
             </div>
         )
     }
