@@ -3,6 +3,18 @@
     color: #f46524ff;
 }
 
+textarea {
+    /* this gives a beveled outline look */
+    border: outset 4px #E0583A;
+}
+
+/* removes the blue outline */
+textarea:focus {
+    outline: 0;
+}
+
+
+
 .aboutMeQuestionAndAnswerSection {
     display: flex;
     flex-direction: column;
