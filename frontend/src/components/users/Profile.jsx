@@ -51,6 +51,7 @@ class Profile extends Component {
 
   render() {
     const { user, userMessage } = this.state;
+    console.log("useree", this.state.user)
     const { clearMessage, handleTextarea } = this;
 
     let commonInterests = "";

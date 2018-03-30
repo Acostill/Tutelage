@@ -19,6 +19,7 @@ class NavBar extends Component {
 
   onLoadNav = () => {
     return (
+
       <nav id="navigation-bar">
         <Link id="app-name" to="/"> Tutelage </Link>
         {" "}
