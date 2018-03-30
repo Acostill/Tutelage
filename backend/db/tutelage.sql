@@ -176,7 +176,6 @@ INSERT INTO  messages (thread_id, sender, body)
 INSERT INTO  messages (thread_id, sender, body)
   values ('3', 'gerson1', 'Message Seven');
 
-
 INSERT INTO interests (username, interest)
   values('gerson1', 'coding');
 INSERT INTO interests (username, interest)
