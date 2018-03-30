@@ -112,13 +112,14 @@ const getAllMessages = (req, res, next) => {
       res.status(500).send("Error getting messages.");
     });
 }
+
 const submitMessage = (req, res, next) => {
   let query =
     "INSERT INTO messages (thread_id, sender, receiver, body) VALUES (${threadID}, ${sender}, ${receiver}, ${body})";
   db
     .any(query, {
       threadID: req.body.threadID,
-      sender: req.body.sender,
+      sender: req.user.username,
       receiver: req.body.receiver,
       body: req.body.body
     })

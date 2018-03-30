@@ -45,13 +45,20 @@ class Profile extends Component {
     });
   };
 
+  checkReload = () => {
+    if(this.props.match.params.username !== this.state.user.username) {
+      this.getUser();
+    }
+  }
+
   render() {
     const { user, userMessage } = this.state;
     console.log({ user });
-    const { clearMessage, handleTextarea } = this;
+    const { clearMessage, handleTextarea, checkReload} = this;
 
     let commonInterests = "";
 
+    checkReload();
     return (
       <div id="user-profile" className="margin">
         <div className="background-banner">

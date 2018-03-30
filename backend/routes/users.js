@@ -14,7 +14,7 @@ router.post("/login", db.loginUser) //** Gerson - I commented out the other '/lo
 router.post("/create", db.createUser); //** Greg */
 router.post("/survey", db.getAnswersFromUsers); //** Greg */
 router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
-router.post("/send_message", db.submitMessage); //** Greg */
+router.post("/send_message", loginRequired, db.submitMessage); //** Greg */
 router.post("/get_messages", db.getAllMessages); //** Greg */
 router.post("/threadmessages", loginRequired, db.getThreadMessages); /** Gerson */
 
