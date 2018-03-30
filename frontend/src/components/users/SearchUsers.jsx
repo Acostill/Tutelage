@@ -57,9 +57,13 @@ class SearchUsers extends Component {
   }
 
   render() {
+    console.log("CURRENT USER PROP?", this.props)
     console.log("state:", this.state);
+    console.log("USER TO SEE IF MENTEE", this.state.users)
+    console.log("IS MENTOR?!!!!!!!!!", this.props.currentUser.ismentor)
     const { handleCardClick } = this;
     const { users, lat_longs, zip_codes } = this.state;
+    const { currentUser } = this.props;
     const style = {
       width: "200px",
       height: "200px"
@@ -67,7 +71,9 @@ class SearchUsers extends Component {
     return (
       <div id="search-page">
         {/* ---- Have to find a way for common saying for mentor or mentee /or props to change the title ---- */}
-        <div id="search-header" className="font-large"> Find Your Next Mentor </div>
+        {this.props.currentUser.ismentor
+          ?  (<div id="search-header" className="font-large"> Find Your Next Mentee </div>) 
+          :  (<div id="search-header" className="font-large"> Find Your Next Mentor </div>)}
 
         <div id="filter-results-map">
           <FilterSideBar id="filter-sidebar" />
