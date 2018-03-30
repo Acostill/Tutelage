@@ -1,11 +1,11 @@
-.margin {
-    margin: 20px;
-}
-
 #user-profile {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.margin {
+    margin: 20px;
 }
 
 .background-banner {

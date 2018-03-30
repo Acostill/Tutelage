@@ -8,14 +8,15 @@
 /*---- Navigation bar ---- */
 
 #navigation-bar {
-    z-index: 9999;
-    background-color: white;
-    overflow: auto;
     width: 100%;
-    position: fixed;
-    align-items: center;
-    justify-content: space-between;
-    top: 0;
+    background-color: #fff;
+    /* display: flex; */
+    /* z-index: 9999; */
+    /* overflow: auto; */
+    /* position: relative; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* top: 0; */
 }
 
 #navigation-bar-loggedin {
