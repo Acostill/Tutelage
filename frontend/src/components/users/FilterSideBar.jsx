@@ -4,14 +4,27 @@ import axios from "axios";
 import "../../css/FilterSideBar.css";
 
 class FilterSideBar extends Component {
+  constructor(props){
+    super(props)
+  }
+
+
+
   render() {
+    const {currentUser, handleSubmit}=this.props
     return (
       <div>
         <ul id="qualities_list">
-
           <legend>
             <h2> Filter By: </h2>
           </legend>
+          <legend>
+            <h2> Tutelage Custom Filter: </h2>
+            {this.props.currentUser.ismentor
+          ?  (<button id="custom-search-btn" className="search-btn" onClick={this.props.handleSubmit}> Find Your Tutelage Mentee </button>) 
+          :  (<button id="custom-search-btn" className="search-btn" onClick={this.props.handleSubmit}> Find Your Tutelage Mentor </button>)}
+          </legend>
+
 
           <li id="statement1">
             <p> Gender: </p>

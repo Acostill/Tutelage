@@ -24,6 +24,20 @@ const getSingleUser = (req, res, next) => {
       return next(err);
     });
 };
+const getSingleUserById = (req, res, next) => {
+  db
+    .one("SELECT * FROM users WHERE ID = ${id}", req.body)
+    .then(data => {
+      res.status(200).json({
+        status: "success",
+        userInfo: data,
+        message: "Fetched one user by ID"
+      });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+};
 
 /**
  * @author Greg
@@ -249,7 +263,7 @@ function registerUser(req, res, next) {
       })(req, res, next);
     })
     .catch(err => {
-      console.log(error)
+      console.log(error);
       res.status(500).json({
         status: "error",
         error: err
@@ -340,9 +354,8 @@ const getAllSurveyQuestionsAndAnswers = (req, res, next) => {
  * @arg {array of objects} answers:[{answerBody, questionID, userID}]
  */
 const getAnswersFromUsers = (req, res, next) => {
-  console.log(req.body.answers)
+  console.log(req.body.answers);
   req.body.answers.forEach(answer => {
-
     db
       .none(
         "INSERT INTO answers (answer_selection, question_id, username, user_id) VALUES (${answer_selection}, ${question_id}, ${username}, ${user_id})", {
@@ -418,71 +431,67 @@ const getUserThreads = (req, res, next) => {
  */
 const getThreadMessages = (req, res, next) => {
   db
-    .any('SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})', { username: req.user.username, thread_id: req.body.thread_id })
+    .any(
+      "SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})", { username: req.user.username, thread_id: req.body.thread_id }
+    )
     .then(data => {
       res.status(200).json({
         status: "success",
         threadMessages: data,
         message: `Retrieved all messages within thread`
-      })
+      });
     })
     .catch(err => {
       res.status(500).send("error retrieving threads");
-    })
-}
+    });
+};
 /**
  * @author nick
  */
 const getUserInterests = (req, res, next) => {
   db
-    .any('SELECT interest FROM interests WHERE username = ${username}',
-      req.user)
+    .any(
+      "SELECT interest FROM interests WHERE username = ${username}",
+      req.user
+    )
     .then(data => {
-      res.status(200).json({
-        status: "success",
-        interests: data,
-        message: `Retrieved all user interests`
-      })
-    })
-    .catch(err => {
-      res.status(500).send("error retrieving interests");
-    })
-}
-
+      res
+        .status(200)
+        .json({
+          status: "success",
+          interests: data,
+          message: `Retrieved all user interests`
+        })
+        .catch(err => {
+          res.status(500).send("error retrieving interests");
+        });
+    });
+};
 /**
- * @author Gerson
- * @func getUnreadMessages gets messages from the messages table with a false isread value
+ * @author Greg
+ * @func getSameAnswers Gets all the users with the same answers to questions!
+ * @return {array of objects}
  */
-const getUnreadMessages = (req, res, next) => {
-  const query = 'SELECT * FROM messages JOIN threads on thread_id = threads.id WHERE (threads.user_1 = ${username} OR threads.user_2 = ${username}) AND sender != ${username} AND isread = FALSE'
-  db
-    .any(query, req.user)
-    .then(data => {
-      res.status(200).json({
-        status: "success",
-        unreadMessages: res.data,
-        message: 'Retrieved available unread messages'
-      })
-    })
-}
 
-/**
- * @author Gerson
- * @func confirmRead updates message isread value to true
- */
-const confirmRead = (req, res, next) => {
+const getSameAnswers = (req, res, next) => {
   db
-    .none('UPDATE messages SET isread = TRUE WHERE id = ${id}', req.body)
+    .any(
+      "SELECT questions.the_question, a.id, b.id, a.answer_selection AS answer FROM answers a INNER JOIN answers b ON a.question_id = b.question_id AND a.username != b.username AND a.username = ${username} AND a.answer_selection = b.answer_selection INNER JOIN questions ON a.question_id = questions.id",
+      req.user
+    )
     .then(data => {
-      res.status(200).json({
-        status: "success",
-        message: "Message isread updated to true"
-      })
-    })
-    .catch(err => {
-      res.status(500).send("error updating messages");
-    })
-}
+      res
+        .status(200)
+        .json({
+          status: "success",
+          data: data,
+          message: `Retrieved all user with same answers to questions`
+        })
+        .catch(err => {
+          res.status(500).send("error retrieving users");
+        });
+    });
+};
 
 module.exports = {
   getAllUsers: getAllUsers,
@@ -502,5 +511,6 @@ module.exports = {
   getThreadMessages: getThreadMessages,
   registerUser: registerUser,
   getUserInterests: getUserInterests,
-  getUnreadMessages: getUnreadMessages
+  getSameAnswers: getSameAnswers,
+  getSingleUserById: getSingleUserById
 };

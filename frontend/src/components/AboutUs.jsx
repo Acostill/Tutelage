@@ -9,8 +9,6 @@ class AboutUs extends Component {
     }
     
     render() {
-   
-
         return (
             <div className="aboutUs-container">
 
