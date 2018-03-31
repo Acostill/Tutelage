@@ -128,7 +128,7 @@ class App extends Component {
           <Route path="/register" component={RegisterUser} />
           <Route path="/search" component={SearchUsers} />
           <Route path="/aboutus" component={AboutUs} />
-          <Route path="/users" component={Users} />
+          <Route path="/users" component={() => <Users user={user} />} />
         </Switch>
       </div>
     );

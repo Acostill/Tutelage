@@ -8,19 +8,20 @@ CREATE TABLE users (
   username VARCHAR (50) UNIQUE NOT NULL,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
-  gender VARCHAR,
-  occupation VARCHAR,
-  bio VARCHAR,
-	zipcode VARCHAR,
-	imgURL VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png',
   email VARCHAR UNIQUE NOT NULL,
   password_digest VARCHAR NOT NULL,
-  ismentor boolean
+  ismentor boolean,
+  age INTEGER,
+  bio VARCHAR,
+  occupation VARCHAR,
+	zipcode VARCHAR,
+  gender VARCHAR,
+	imgurl VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png'
 );
 
 CREATE TABLE interests (
 	ID SERIAL PRIMARY KEY,
-	username VARCHAR REFERENCES users(username),
+	username VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
 	interest VARCHAR
 );
 
@@ -43,15 +44,15 @@ CREATE TABLE answers (
 
 CREATE TABLE threads(
 	ID SERIAL PRIMARY KEY,
-	user_1 VARCHAR REFERENCES users(username),
-	user_2 VARCHAR REFERENCES users(username)
+	user_1 VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
+	user_2 VARCHAR REFERENCES users(username) ON UPDATE CASCADE
 );
 
 CREATE TABLE messages(
 	ID SERIAL PRIMARY KEY,
 	thread_id INTEGER REFERENCES threads(ID),
-	sender VARCHAR REFERENCES users(username),
-	receiver VARCHAR REFERENCES users(username),
+	sender VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
+	receiver VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
 	body VARCHAR,
 	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
@@ -61,37 +62,37 @@ CREATE TABLE messages(
   Hash: $2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS 
 */
 
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test0','Johny0','Test0', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we0','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test1','Johny1','Test1', '91932', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we1','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','true');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test2','Johny2','Test2', '10001','https://i.imgur.com/pZ9jX8v.png', 'me@u.we2', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','true');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test3','Johny3','Test3', '11219', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we3','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','true');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test4','Johny4','Test4', '10023', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we4','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','true');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test5','Johny5','Test5', '10002', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we5','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test6','Johny6','Test6', '10028', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we6','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test7','Johny7','Test7', '10456', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we7','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test8','Johny8','Test8', '10192', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we8','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('test9','Johny9','Test9', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we9','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('carolina1','Carolina','Restrepo', NULL, '../images/CarolinaPic.jpeg', 'carolina@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('eddie1','Eddie','Harmon', NULL, '../images/EddieCropped.jpg', 'eddie@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('nick1','Nicholas','Chavez', NULL, '../images/NickCropped.jpg', 'nick@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('gerson1','Gerson','Castillo', NULL, '../images/GersonCropped.jpg', 'gerson@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('greg1','Gregory','Davis', NULL, '../images/gregcropped.jpg', 'greg@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
-INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, password_digest, ismentor)
   values ('jcrest','Jason','Crest', NULL, 'https://upload.wikimedia.org/wikipedia/commons/c/cd/MFettes-headshot.jpg', 'jason@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 
  

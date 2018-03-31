@@ -21,80 +21,40 @@ const getSingleUser = (req, res, next) => {
     });
 };
 
-// function updateSingleUser(req, res, next) {
-//   const hash = authHelpers.createHash(req.body.password);
-//   db
-//     .none(
-//       "UPDATE users SET username = ${newName}, firstname = ${newFirstName}, lastname = ${newLastName}, email = ${newEmail}, password_digest = ${ hash }, ismentor = ${newIsMentor} where id = ${id}",
-//       req.body
-//     )
-//     .then(function(data) {
-//       res.status(200).json({
-//         status: "success",
-//         message: "Changed one user"
-//       });
-//     })
-//     .catch(function(err) {
-//       return next(err);
-//     });
-// }
-
-const updateSingleUser = (req, res, next) => {
-  let { username, email, firstname, lastname, bio, occupation, zipcode, gender, ismentor } = req.body;
-
-  let query =
-    `UPDATE users SET username = ${newUserName ?
-                                '${newUsername}' : '${username}'}, 
-                         email = ${email ? 
-                                '${newEmail}' : '${email}'}, 
-                     firstname = ${newFirstname ?
-                                '${newFirstname}' : '${firstname}'}, 
-                      lastname = ${lastname ?
-                                '${newLastname}' : '${lastname}'},
-                           bio = ${bio ?
-                                '${newBio}' : '${bio}'}, 
-                    occupation = ${occupation ? 
-                                '${newOccupation}' : '${occupation}'},
-                         zipcode=${zipcode ?
-                                '${newZipCode}' : '${zipcode}'}, 
-                        gender = ${gender ? 
-                                '${newGender}' : '${gender}'},
-                      ismentor = ${ismentor ? 
-                                '${newIsMentor}' : '${ismentor}'},
-                  WHERE id = ${id}`;
+updateSingleUser = (req, res, next) => {
+  // const hash = authHelpers.createHash(req.body.password);
   db
-    .none(query, {
-      newUsername: req.body.newUsername,
-      newEmail: req.body.newEmail,
-      newFirstname: req.body.newFirstname,
-      newLastname: req.body.newLastname,
-      newBio: req.body.newBio,
-      newOccupation: req.body.newOccupation,
-      newZipCode: req.body.newZipCode,
-      newGender: req.body.newGender,
-      username: req.user.username,
-      email: req.user.email,
-      firstname: req.user.firstname,
-      lastname: req.user.lastname,
-      bio: req.user.bio,
-      occupation: req.user.occupation,
-      zipcode: req.user.zipcode,
-      gender: req.user.gender,
-      ismentor: req.user.ismentor,
-      id: req.user.id
+    .none(
+      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, ageGroup = ${ageGroup}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl} WHERE id = ${id}",
+      {
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        // password: hash,
+        ismentor: req.body.ismentor,
+        ageGroup: req.body.ageGroup,
+        bio: req.body.bio,
+        occupation: req.body.occupation,
+        zipcode: req.body.zipcode,
+        gender: req.body.gender,
+        imgurl: req.body.imgurl,
+        id: req.user.id
+
+      }
+    )
+    .then((data) => {
+      res.status(200).json({
+        status: "success",
+        message: "Changed one user"
+      });
     })
-    .then(() => {
-      res.send(
-        `updated the user: ${req.body.username} Is this person now a mentor?: ${
-        req.body.ismentor
-        }`
-      );
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).send("error editing user");
+    .catch((err) => {
+      console.log("got here bro")
+      return next(err);
     });
-};
+}
+
 
 const fetchNewThread = (req, res, next) => {
   let query =
@@ -171,7 +131,7 @@ const loginUser = (req, res, next) => {
         if (err) {
           res.status(500).send("error");
         } else {
-          res.status(200).send({...req.user, password_digest: null});
+          res.status(200).send({ ...req.user, password_digest: null });
         }
       });
     }
@@ -189,15 +149,19 @@ const createUser = (req, res, next) => {
   console.log("createuser hash: ", hash);
   db
     .none(
-      "INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${password}, ${ismentor})", {
+      "INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, ageGroup, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${ageGroup}, ${bio}, ${occupation}, ${password}, ${gender}, ${ismentor})", {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        zipcode: req.body.zipcode,
-        imgURL: req.body.imgURL,
         email: req.body.email,
         password: hash,
-        ismentor: req.body.ismentor
+        ismentor: req.body.ismentor,
+        ageGroup: req.body.ageGroup,
+        bio: req.body.bio,
+        occupation: req.body.occupation,
+        zipcode: req.body.zipcode,
+        gender: req.body.gender,
+        imgurl: req.body.imgurl,
       }
     )
     .then(() => {
@@ -215,7 +179,7 @@ const createUser = (req, res, next) => {
 
 function getUserByUsername(req, res, next) {
   db
-    .one("SELECT username, firstname, lastname, zipcode, imgURL, email, ismentor FROM users WHERE LOWER(username) = LOWER(${username})", req.params)
+    .one("SELECT username, firstname, lastname, zipcode, imgurl, email, ismentor FROM users WHERE LOWER(username) = LOWER(${username})", req.params)
     .then(function (data) {
       res.status(200).json({
         status: "success",
@@ -345,8 +309,8 @@ const getUserThreads = (req, res, next) => {
  */
 const getThreadMessages = (req, res, next) => {
   db
-    .any('SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})', 
-    {username: req.user.username, thread_id: req.body.thread_id})
+    .any('SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})',
+      { username: req.user.username, thread_id: req.body.thread_id })
     .then(data => {
       res.status(200).json({
         status: "success",
@@ -364,16 +328,16 @@ const getThreadMessages = (req, res, next) => {
 const getUserInterests = (req, res, next) => {
   db
     .any('SELECT interest FROM interests WHERE username = ${username}',
-     req.user)
-    .then (data => {
+      req.user)
+    .then(data => {
       res.status(200).json({
         status: "success",
         interests: data,
         message: `Retrieved all user interests`
       })
-      .catch(err => {
-        res.status(500).send("error retrieving interests");
-      })
+        .catch(err => {
+          res.status(500).send("error retrieving interests");
+        })
     })
 }
 

@@ -6,20 +6,19 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      user: {},
+      profileUser: {},
       userMessage: ""
     };
   }
 
-  getUser = () => {
+  getProfileUser = () => {
     let username = this.props.match.params.username;
-    console.log({ username });
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
-        let user = res.data.user;
+        let profileUser = res.data.user;
         this.setState({
-          user: user
+          profileUser: profileUser
         });
       })
       .catch(err => {
@@ -30,7 +29,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    this.getUser();
+    this.getProfileUser();
   }
 
   handleTextarea = e => {
@@ -46,9 +45,9 @@ class Profile extends Component {
   };
 
   render() {
-    const { user, userMessage } = this.state;
-    console.log({ user });
     const { clearMessage, handleTextarea } = this;
+    const { profileUser, userMessage } = this.state;
+    const { user } = this.props;
 
     let commonInterests = "";
 
@@ -57,31 +56,31 @@ class Profile extends Component {
         <div className="background-banner">
           <div id="user-banner">
             <div className="image-crop margin">
-              <img src={user.imgurl} alt="profile picture" className="img" />
+              <img src={profileUser.imgurl} alt="profile picture" className="img" />
             </div>
             <div id="user-basic-info">
               <h1 className="user-header">
-                {`${user.firstname} ${user.lastname}`}
+                {`${profileUser.firstname} ${profileUser.lastname}`}
               </h1>
-              <h3> gender: {user.gender} </h3>
-              <h3> location: {user.location} </h3>
-              <h3> occupation: {user.occupation} </h3>
+              <h3> gender: {profileUser.gender} </h3>
+              <h3> location: {profileUser.location} </h3>
+              <h3> occupation: {profileUser.occupation} </h3>
             </div>
           </div>
         </div>
           
         <div className="user-info-content">
           <div id="quick-user-info" className="margin-top">
-            <div> location: {user.location} </div>
-            <div> gender: {user.gender} </div>
-            <div> occupation: {user.occupation} </div>
+            <div> location: {profileUser.location} </div>
+            <div> gender: {profileUser.gender} </div>
+            <div> occupation: {profileUser.occupation} </div>
           </div>
           <div className="margin-top">
             Common Interests: {commonInterests}
           </div>
-          <div className="margin-top"> Hobbies: {user.hobbies} </div>
-          <div className="margin-top"> Bio: {user.bio} </div>
-          <div className="margin-top"> Credentials: {user.credentials} </div>
+          <div className="margin-top"> Hobbies: {profileUser.hobbies} </div>
+          <div className="margin-top"> Bio: {profileUser.bio} </div>
+          <div className="margin-top"> Credentials: {profileUser.credentials} </div>
         </div>
 
         <div className="background-banner orange-background">
