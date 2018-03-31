@@ -24,6 +24,20 @@ const getSingleUser = (req, res, next) => {
             return next(err);
         });
 };
+const getSingleUserById = (req, res, next) => {
+    db
+        .one("SELECT * FROM users WHERE ID = ${id}", req.body)
+        .then(function(data) {
+            res.status(200).json({
+                status: "success",
+                userInfo: data,
+                message: "Fetched one user"
+            });
+        })
+        .catch(function(err) {
+            return next(err);
+        });
+};
 
 /**
  * @author Greg
@@ -463,7 +477,7 @@ const getUserInterests = (req, res, next) => {
 const getSameAnswers = (req, res, next) => {
     db
         .any(
-            "SELECT questions.the_question, a.username, b.username, a.answer_selection AS answer FROM answers a INNER JOIN answers b ON a.question_id = b.question_id AND a.username != b.username AND a.username = ${username} AND a.answer_selection = b.answer_selection INNER JOIN questions ON a.question_id = questions.id",
+            "SELECT questions.the_question, a.id, b.id, a.answer_selection AS answer FROM answers a INNER JOIN answers b ON a.question_id = b.question_id AND a.username != b.username AND a.username = ${username} AND a.answer_selection = b.answer_selection INNER JOIN questions ON a.question_id = questions.id",
             req.user
         )
         .then(data => {
@@ -498,5 +512,6 @@ module.exports = {
     getThreadMessages: getThreadMessages,
     registerUser: registerUser,
     getUserInterests: getUserInterests,
-    getSameAnswers: getSameAnswers
+    getSameAnswers: getSameAnswers,
+    getSingleUserById: getSingleUserById
 };
