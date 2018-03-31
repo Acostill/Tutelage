@@ -17,6 +17,7 @@ router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
 router.post("/send_message", db.submitMessage); //** Greg */
 router.post("/get_messages", db.getAllMessages); //** Greg */
 router.post("/threadmessages", loginRequired, db.getThreadMessages); /** Gerson */
+router.post("/getUserById", loginRequired, db.getSingleUserById); /**Greg */
 
 
 /******************PATCH ROUTES********************* */
@@ -33,6 +34,8 @@ router.get("/search", db.getAllUsers); //** Carolina */
 router.get("/all_zipcodes", db.getAllLocations); //** Greg */
 router.get("/userthreads", loginRequired, db.getUserThreads); //** Gerson */
 router.get("/interests", loginRequired, db.getUserInterests); //** nick */
+router.get("/magic", loginRequired, db.getSameAnswers) /**Greg */
+
 
 
 

@@ -6,15 +6,18 @@ import Map from "./MapContainer";
 import FilterSideBar from "./FilterSideBar";
 import "../../css/SearchUsers.css";
 import zipcodes from "zipcodes";
-import ProfileCard from './ProfileCard';
+import ProfileCard from "./ProfileCard";
 
 class SearchUsers extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       users: [],
+      stolenUsers: [],
+      tutelegeUserList: [],
       zip_codes: [],
-      lat_longs: []
+      lat_longs: [],
+      isFiltering: false
     };
   }
 
@@ -23,11 +26,40 @@ class SearchUsers extends Component {
     console.log(e.target.value);
   };
 
+  getBestUsers = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const { isFiltering, tutelegeUserList } = this.state;
+    let theUsers = [];
+    axios
+      .get("/users/magic")
+      .then(res => {
+        res.data.data.map(elem => {
+          axios
+            .post("/users/getUserById", {
+              id: elem.id
+            })
+            .then((res)=> {
+              theUsers.push(res.data.userInfo);
+              this.setState({
+                tutelegeUserList: theUsers,
+                isFiltering: !this.state.isFiltering
+              });
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        });
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
+  };
+
   getUserList = () => {
     axios
       .get("/users/search")
       .then(res => {
-        console.log("res.data", res.data.data);
         let zipz = res.data.data.map(elem => {
           return elem.zipcode;
         });
@@ -57,12 +89,16 @@ class SearchUsers extends Component {
   }
 
   render() {
-    console.log("CURRENT USER PROP?", this.props)
-    console.log("state:", this.state);
-    console.log("USER TO SEE IF MENTEE", this.state.users)
-    console.log("IS MENTOR?!!!!!!!!!", this.props.currentUser.ismentor)
-    const { handleCardClick } = this;
-    const { users, lat_longs, zip_codes } = this.state;
+    const { handleCardClick, stealUsers } = this;
+    const {
+      stolenUsers,
+      users,
+      lat_longs,
+      zip_codes,
+      getBestUsers,
+      tutelegeUserList,
+      isFiltering
+    } = this.state;
     const { currentUser } = this.props;
     const style = {
       width: "200px",
@@ -70,17 +106,35 @@ class SearchUsers extends Component {
     };
     return (
       <div id="search-page">
-        {this.props.currentUser.ismentor
-          ?  (<div id="search-header" className="font-large"> Find Your Next Mentee </div>) 
-          :  (<div id="search-header" className="font-large"> Find Your Next Mentor </div>)}
+        {this.props.currentUser.ismentor ? (
+          <div id="search-header" className="font-large">
+            {" "}
+            Find Your Next Mentee{" "}
+          </div>
+        ) : (
+          <div id="search-header" className="font-large">
+            {" "}
+            Find Your Next Mentor{" "}
+          </div>
+        )}
 
         <div id="filter-results-map">
-          <FilterSideBar id="filter-sidebar" />
+          <FilterSideBar
+            id="filter-sidebar"
+            currentUser={currentUser}
+            handleSubmit={this.getBestUsers}
+          />
 
           <div id="results-map">
-            <div id="search-results">
-              {users.map(user => <ProfileCard user={user} />)}
-            </div>
+            {!isFiltering ? (
+              <div id="search-results">
+                {users.map(user => <ProfileCard user={user} />)}
+              </div>
+            ) : (
+              <div id="search-results">
+                {tutelegeUserList.map(user => <ProfileCard user={user} />)}
+              </div>
+            )}
 
             {/* <div className="gmap">
               <Map arrOfLatLongs={lat_longs} />
