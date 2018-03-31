@@ -27,11 +27,11 @@ const getSingleUser = (req, res, next) => {
 const getSingleUserById = (req, res, next) => {
     db
         .one("SELECT * FROM users WHERE ID = ${id}", req.body)
-        .then(function(data) {
+        .then(data => {
             res.status(200).json({
                 status: "success",
                 userInfo: data,
-                message: "Fetched one user"
+                message: "Fetched one user by ID"
             });
         })
         .catch(function(err) {

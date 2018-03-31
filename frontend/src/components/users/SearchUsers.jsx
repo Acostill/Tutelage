@@ -26,10 +26,9 @@ class SearchUsers extends Component {
     console.log(e.target.value);
   };
 
-  getBestUsers = () => {
-    this.setState({
-      isFiltering: !isFiltering
-    })
+  getBestUsers = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     const { isFiltering, tutelegeUserList } = this.state;
     let theUsers = [];
     axios
