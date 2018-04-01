@@ -7,15 +7,18 @@ import FilterSideBar from "./FilterSideBar";
 import "../../css/SearchUsers.css";
 import zipcodes from "zipcodes";
 import ProfileCard from "./ProfileCard";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 class SearchUsers extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      stolenUsers: [],
+      allMentors: [],
+      allMentees: [],
       tutelegeUserList: [],
+      tutMentors: [],
+      tutMentees: [],
       zip_codes: [],
       lat_longs: [],
       message: "",
@@ -27,42 +30,56 @@ class SearchUsers extends Component {
     let username = e.target.value;
   };
 
-  getBestUsers = (e) => {
+  getBestUsers = e => {
     e.stopPropagation();
     e.preventDefault();
-    const { isFiltering, tutelegeUserList } = this.state;
+    const {
+      isFiltering,
+      tutelegeUserList,
+      tutMentors,
+      tutMentees
+    } = this.state;
     const { currentUser } = this.props;
     let theUsers = [];
     axios
       .get("/users/magic")
       .then(res => {
-        console.log("REZZY AGIAN", res)
-        if(res.data.data.length > 0){
+        if (res.data.data.length > 0) {
           res.data.data.map(elem => {
             axios
               .post("/users/getUserById", {
                 id: elem.matches
               })
               .then(res => {
-                theUsers.push(res.data.userInfo)
+                theUsers.push(res.data.userInfo);
+                let tutMentors = theUsers.filter(elem => {
+                  return !elem.ismentor;
+                });
+                let tutMentees = theUsers.filter(elem => {
+                  return elem.ismentor;
+                });
                 this.setState({
+                  tutMentors: tutMentors,
+                  tutMentees: tutMentees,
                   tutelegeUserList: theUsers,
                   isFiltering: !this.state.isFiltering
                 });
               })
               .catch(error => {
                 console.log("Error getting user by ID:", error);
-              })
-          })
+              });
+          });
         } else {
           Swal({
-            title: `Hey ${currentUser.firstname}, did you fill out the survey? 🤔 Try again later for a Tutelage Match. Alternatively, use our filter below!`,
+            title: `Hey ${
+              currentUser.firstname
+            }, did you fill out the survey? 🤔 Try again later for a Tutelage Match. Alternatively, use our filter below!`,
             width: 600,
             padding: 100,
             background: `#fff`,
             confirmButtonText: `OK`,
             confirmButtonColor: `#FD8F26`
-          })
+          });
         }
       })
       .catch(err => {
@@ -77,8 +94,16 @@ class SearchUsers extends Component {
         let zipz = res.data.data.map(elem => {
           return elem.zipcode;
         });
+        let allMentors = res.data.data.filter(elem => {
+          return elem.ismentor;
+        });
+        let allMentees = res.data.data.filter(elem => {
+          return !elem.ismentor;
+        });
         this.setState({
           users: res.data.data,
+          allMentees: allMentees,
+          allMentors: allMentors,
           zip_codes: zipz
         });
       })
@@ -100,13 +125,17 @@ class SearchUsers extends Component {
 
   componentDidMount() {
     this.getUserList();
+    // this.getAllMentorsOrMentees();
   }
 
   render() {
     const { handleCardClick, stealUsers } = this;
     const {
-      stolenUsers,
       users,
+      allMentors,
+      allMentees,
+      tutMentors,
+      tutMentees,
       lat_longs,
       zip_codes,
       getBestUsers,
@@ -114,7 +143,7 @@ class SearchUsers extends Component {
       isFiltering
     } = this.state;
     const { currentUser } = this.props;
-    console.log("current:", currentUser)
+
     const style = {
       width: "200px",
       height: "200px"
@@ -143,11 +172,15 @@ class SearchUsers extends Component {
           <div id="results-map">
             {!isFiltering ? (
               <div id="search-results">
-                {users.map(user => <ProfileCard user={user} />)}
+                {this.props.currentUser.ismentor
+                  ? allMentees.map(user => <ProfileCard user={user} />)
+                  : allMentors.map(user => <ProfileCard user={user} />)}
               </div>
             ) : (
               <div id="search-results">
-                {tutelegeUserList.map(user => <ProfileCard user={user} />)}
+                {this.props.currentUser.ismentor
+                  ? tutMentees.map(user => <ProfileCard user={user} />)
+                  : tutMentees.map(user => <ProfileCard user={user} />)}
               </div>
             )}
 

@@ -62,43 +62,43 @@ CREATE TABLE messages
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test0', 'Johny0', 'Test0', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we0', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'false');
+  ('test0', 'Johny0', 'Test0', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we0', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test1', 'Johny1', 'Test1', '91932', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we1', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'true');
+  ('test1', 'Johny1', 'Test1', '91932', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we1', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test2', 'Johny2', 'Test2', '10001', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we2', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'true');
+  ('test2', 'Johny2', 'Test2', '10001', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we2', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test3', 'Johny3', 'Test3', '11219', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we3', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'true');
+  ('test3', 'Johny3', 'Test3', '11219', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we3', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test4', 'Johny4', 'Test4', '10023', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we4', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'true');
+  ('test4', 'Johny4', 'Test4', '10023', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we4', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test5', 'Johny5', 'Test5', '10002', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we5', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'false');
+  ('test5', 'Johny5', 'Test5', '10002', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we5', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test6', 'Johny6', 'Test6', '10028', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we6', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'false');
+  ('test6', 'Johny6', 'Test6', '10028', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we6', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test7', 'Johny7', 'Test7', '10456', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we7', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'false');
+  ('test7', 'Johny7', 'Test7', '10456', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we7', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test8', 'Johny8', 'Test8', '10192', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we8', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'false');
+  ('test8', 'Johny8', 'Test8', '10192', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('test9', 'Johny9', 'Test9', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we9', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'false');
+  ('test9', 'Johny9', 'Test9', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we9', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
