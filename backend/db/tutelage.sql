@@ -102,11 +102,11 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('carolina1', 'Carolina', 'Restrepo', NULL, '../images/CarolinaPic2.jpeg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('carolina1', 'Carolina', 'Restrepo', NULL, '../images/CarolinaPic2.jpeg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('eddie1', 'Eddie', 'Harmon', NULL, '../images/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('eddie1', 'Eddie', 'Harmon', NULL, '../images/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
@@ -114,7 +114,7 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('gerson1', 'Gerson', 'Castillo', NULL, '../images/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('gerson1', 'Gerson', 'Castillo', NULL, '../images/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
