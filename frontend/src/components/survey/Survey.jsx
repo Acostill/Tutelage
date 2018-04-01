@@ -84,7 +84,7 @@ class Survey extends React.Component {
         })
       })
     .catch(err => {
-      console.log("err", err);
+      console.log("GET USER INFO ERROR", err);
     });
   };
 
@@ -100,7 +100,7 @@ class Survey extends React.Component {
         console.log("Response:",response);
       })
       .catch(function(error) {
-        console.log(error);
+        console.log("HANDLESUBMIT Error", error);
       });
       
       this.setState({

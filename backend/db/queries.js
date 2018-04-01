@@ -336,7 +336,7 @@ const getAllSurveyQuestionsAndAnswers = (req, res, next) => {
         .any(
             "SELECT questions.id, the_question, answer_1, answer_2, answer_3, answer_4 FROM questions"
         )
-        .then(function(data) {
+        .then(data => {
             res.status(200).json({
                 status: "success",
                 data: data,
@@ -477,9 +477,9 @@ const getUserInterests = (req, res, next) => {
 const getSameAnswers = (req, res, next) => {
     db
         .any(
-            "SELECT questions.the_question, a.id, b.id, a.answer_selection AS answer FROM answers a INNER JOIN answers b ON a.question_id = b.question_id AND a.username != b.username AND a.username = ${username} AND a.answer_selection = b.answer_selection INNER JOIN questions ON a.question_id = questions.id",
+            "SELECT DISTINCT b.user_id AS matches FROM answers a INNER JOIN answers b ON a.question_id = b.question_id AND a.user_id != b.user_id AND a.user_id = ${id} AND a.answer_selection = b.answer_selection INNER JOIN questions ON a.question_id = questions.id",
             req.user
-        )
+        ) /**b.user_id AS answer  */
         .then(data => {
             res
                 .status(200)
@@ -489,7 +489,7 @@ const getSameAnswers = (req, res, next) => {
                     message: `Retrieved all user with same answers to questions`
                 })
                 .catch(err => {
-                    res.status(500).send("error retrieving users");
+                    res.status(500).send("Error retrieving users");
                 });
         });
 };

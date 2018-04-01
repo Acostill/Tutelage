@@ -7,6 +7,7 @@ import FilterSideBar from "./FilterSideBar";
 import "../../css/SearchUsers.css";
 import zipcodes from "zipcodes";
 import ProfileCard from "./ProfileCard";
+import Swal from 'sweetalert2';
 
 class SearchUsers extends Component {
   constructor(props) {
@@ -17,42 +18,55 @@ class SearchUsers extends Component {
       tutelegeUserList: [],
       zip_codes: [],
       lat_longs: [],
+      message: "",
       isFiltering: false
     };
   }
 
   handleCardClick = e => {
     let username = e.target.value;
-    console.log(e.target.value);
   };
 
   getBestUsers = (e) => {
     e.stopPropagation();
     e.preventDefault();
     const { isFiltering, tutelegeUserList } = this.state;
+    const { currentUser } = this.props;
     let theUsers = [];
     axios
       .get("/users/magic")
       .then(res => {
-        res.data.data.map(elem => {
-          axios
-            .post("/users/getUserById", {
-              id: elem.id
-            })
-            .then((res)=> {
-              theUsers.push(res.data.userInfo);
-              this.setState({
-                tutelegeUserList: theUsers,
-                isFiltering: !this.state.isFiltering
-              });
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-        });
+        console.log("REZZY AGIAN", res)
+        if(res.data.data.length > 0){
+          res.data.data.map(elem => {
+            axios
+              .post("/users/getUserById", {
+                id: elem.matches
+              })
+              .then(res => {
+                theUsers.push(res.data.userInfo)
+                this.setState({
+                  tutelegeUserList: theUsers,
+                  isFiltering: !this.state.isFiltering
+                });
+              })
+              .catch(error => {
+                console.log("Error getting user by ID:", error);
+              })
+          })
+        } else {
+          Swal({
+            title: `Hey ${currentUser.firstname}, go complete our survey to find your special Tutelege Match!`,
+            width: 600,
+            padding: 100,
+            background: `#fff`,
+            confirmButtonText: `OK`,
+            confirmButtonColor: `#FD8F26`
+          })
+        }
       })
       .catch(err => {
-        console.log("err", err);
+        console.log("The getBestUsers ", err);
       });
   };
 
@@ -100,6 +114,7 @@ class SearchUsers extends Component {
       isFiltering
     } = this.state;
     const { currentUser } = this.props;
+    console.log("current:", currentUser)
     const style = {
       width: "200px",
       height: "200px"

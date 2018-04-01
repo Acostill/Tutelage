@@ -42,7 +42,7 @@ class NavBar extends Component {
         <div className="nav-right">
         <Link to="/login"  > Log In </Link>
         {" "}
-        <Link to="/register" > Register </Link>
+        {/* <Link to="/register" > Register </Link> */}
         {" "}
         <Link to="/aboutus" > About Us </Link>
         </div>
