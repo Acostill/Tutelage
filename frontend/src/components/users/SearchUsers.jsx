@@ -56,7 +56,7 @@ class SearchUsers extends Component {
           })
         } else {
           Swal({
-            title: `Hey ${currentUser.firstname}, go complete our survey to find your special Tutelege Match!`,
+            title: `Hey ${currentUser.firstname}, go complete our survey to find your special Tutelage Match!`,
             width: 600,
             padding: 100,
             background: `#fff`,
