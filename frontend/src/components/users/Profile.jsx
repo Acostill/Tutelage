@@ -102,7 +102,7 @@ class Profile extends Component {
               <h3> Male/Female {user.gender} </h3>
               <h3> 90210 {user.location} </h3>
               <h3> Software Developer {user.occupation} </h3>
-            <Link to='/survey'>Click here to edit your survey questions</Link>
+            {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
             </div>
           </div>
         </div>

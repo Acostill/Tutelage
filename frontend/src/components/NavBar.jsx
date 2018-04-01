@@ -65,6 +65,9 @@ class NavBar extends Component {
         {" "}
         <Link to={`/users/${user.username}`} > Profile </Link>
         {" "}
+        {" "}
+        <Link to={`/survey`} > Tutelage Survey </Link>
+        {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
       </div>
     </nav>
