@@ -16,6 +16,24 @@
         @import url('https://fonts.googleapis.com/css?family=Lobster');
     </style>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMySR4qXxtMWeAhlQVz5IzFwOPoG7dBO0&callback=initMap" type="text/javascript"></script>
+
+    <!-- <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script> -->
+
+    <script async defer src="//https:widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <script>
+        cloudinary.setCloudName('tutelage');
+    </script>
+    <script async defer type="text/javascript">
+        document.getElementById("upload_widget_opener").addEventListener("click", function() {
+            cloudinary.openUploadWidget({
+                    cloud_name: 'tutelage',
+                    upload_preset: 'wpcjhnmk'
+                },
+                function(error, result) {
+                    console.log(error, result)
+                });
+        }, false);
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,6 +47,7 @@
 </head>
 
 <body>
+    <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>

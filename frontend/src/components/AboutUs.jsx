@@ -9,8 +9,6 @@ class AboutUs extends Component {
     }
     
     render() {
-   
-
         return (
             <div className="aboutUs-container">
 
@@ -45,6 +43,11 @@ class AboutUs extends Component {
                         </div>
                         <div className="teamMemberCaption">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lobortis ac sapien vitae interdum. Fusce mattis metus at vehicula volutpat. Nulla porttitor sed ipsum vel scelerisque. Phasellus elementum quam in dapibus feugiat. Nulla sed dolor non lectus sagittis varius. Praesent tincidunt, nisi id feugiat porta, risus purus luctus velit, quis tincidunt nunc dui sit amet metus. Donec efficitur interdum est, elementum sollicitudin odio tristique eget. Nunc consequat congue blandit. In hac habitasse platea dictumst. Suspendisse euismod ipsum tellus, id tristique eros tristique eget. Donec vel fermentum risus. Aliquam commodo mi et mauris pretium consectetur nec a purus. Quisque efficitur massa massa, nec imperdiet nulla pellentesque sit amet. Phasellus blandit purus et justo posuere, tincidunt egestas odio sollicitudin. Etiam non suscipit metus.</p>
+                                <div className="personalGithubLink">
+                                    <a href="https://github.com/Acostill">
+                                        <img id="githubLogo" className="gersonGithub" src="./images/githubplainlogo.svg" alt="Gerson's Github Repository"/>
+                                    </a>
+                                </div>
                         </div>
                     </div>
 
@@ -58,8 +61,12 @@ class AboutUs extends Component {
                         </div>
                         <div className="teamMemberCaption">
                             <p><em><strong>"To me, mentorship encompasses someone I can confide in. It means someone I can model my thinking after, look up to and aspire to be."</strong></em></p>
-
                             <p>Greg is a Software Engineer from Harlem, NY. When he is not failing miserably, he can usually be found grinding and hustling to reach his full potential, taking care of his beautiful family, and leading by example... all whilst browsing Stack Overflow.</p>
+                                <div className="personalGithubLink">
+                                    <a href="https://github.com/davisgreg1">
+                                        <img id="githubLogo" className="gregGithub"src="./images/githubplainlogo.svg" alt="Greg's Github Repository"/>
+                                    </a>
+                                </div>
                         </div>
                     </div>
 
@@ -73,6 +80,11 @@ class AboutUs extends Component {
                         </div>
                         <div className="teamMemberCaption">
                             <p>Carolina had a curiosity of tech since she was a teen. She wasn’t sure what she could do with tech, but Carolina did know she wanted to help others. Through her career in social services, Carolina still felt like she was missing something. After various talks with her brothers, they helped her realize that she had the capability to help others on a larger scale. Learning all these skills to be the best web developer/problem solver she could be has been the one of the greatest and most fulfilling experiences of Carolina's life.</p>
+                            <div className="personalGithubLink">
+                                <a href="https://github.com/crestrepo12">
+                                    <img id="githubLogo" className="carolinaGithub"src="./images/githubplainlogo.svg" alt="Carolina's Github Repository"/>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -88,6 +100,11 @@ class AboutUs extends Component {
                             <p><em><strong>“Having a solid, positive mentor in one’s life can literally change a person’s view of the world and not having one can potentially even be a life or death situation. Good mentors from a young age can make all the difference in the world."</strong></em><p>
 
                             </p>An avid reader who also appreciates the craft of writing (both prose and programming languages), Eddie is a big kid at heart who loves basketball (the greatest sport in the world), eclectic music from all genres, and enjoys reading great, soul-stirring books (Pilgrim’s Progress, anyone?). When Eddie is not reading books, the self-described “movie buff” may be found possibly watching “Shawshank Redemption” (for the hundredth time) or roaming the streets searching for his next foodie adventure in the boroughs of New York City where he currently resides.</p>
+                            <div className="personalGithubLink">
+                                <a href="https://github.com/EddieHarmonJr">
+                                    <img id="githubLogo" className="eddieGithub"src="./images/githubplainlogo.svg" alt="Eddie's Github Repository"/>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -100,7 +117,13 @@ class AboutUs extends Component {
                             <img src="./images/NickCropped.jpg" alt="Scrum Master" />
                         </div>
                         <div className="teamMemberCaption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lobortis ac sapien vitae interdum. Fusce mattis metus at vehicula volutpat. Nulla porttitor sed ipsum vel scelerisque. Phasellus elementum quam in dapibus feugiat. Nulla sed dolor non lectus sagittis varius. Praesent tincidunt, nisi id feugiat porta, risus purus luctus velit, quis tincidunt nunc dui sit amet metus. Donec efficitur interdum est, elementum sollicitudin odio tristique eget. Nunc consequat congue blandit. In hac habitasse platea dictumst. Suspendisse euismod ipsum tellus, id tristique eros tristique eget. Donec vel fermentum risus. Aliquam commodo mi et mauris pretium consectetur nec a purus. Quisque efficitur massa massa, nec imperdiet nulla pellentesque sit amet. Phasellus blandit purus et justo posuere, tincidunt egestas odio sollicitudin. Etiam non suscipit metus.</p>
+                            <p><em><strong>Mentors are like guardians. They take you under their wings. It's about having guidance to a new skill or lifestyle to achieve greatness in oneself.</strong></em></p>
+                            <p>Born and raised in Queens, NY, Nick can always be found playing video games. Nick has been taught to treat others with respect and to be willing to experience everything and to be unafraid to try new things. A food junkie who would rather go out and have dinner with friends and family then to participate in the nightlife party scene, Nick began to explore what the tech world had to offer.  Nick got into coding because he desired to pursue his core interests and dreamed of being in a company that focused on building video games.</p>
+                            <div className="personalGithubLink">
+                                <a href="https://github.com/nickst3r610">
+                                    <img id="githubLogo" className="nickGithub" src="./images/githubplainlogo.svg" alt="Nick's Github Repository"/>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -131,7 +154,7 @@ class AboutUs extends Component {
 
                 </div>
 
-
+                
             </div>
 
 

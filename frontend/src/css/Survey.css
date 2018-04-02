@@ -1,44 +1,30 @@
-#App {
+.survey-form {
+    margin: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+}
+
+#survey-title {
+    color: rgb(242, 101, 49);
+    font-size: 30px;
 }
 
 #questions {
     display: flex;
-    width: 300px;
     justify-content: center;
-    align-items: center;
-}
-
-#questionsPTag {
-    flex-direction: column;
-    /* justify-content: space-around; */
-    /* flex-wrap: wrap; */
-    align-items: center;
-    border: 5px solid red;
-    display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
-    font-size: 13pt;
-    margin: 0;
-    padding: 15px;
-    padding-left: 25px;
-    width: 230px;
-    background-color: rgb(232, 241, 242);
-    height: 100%;
 }
 
 .question-card {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-content: space-between;
-    flex-direction: row;
-    border: 2px solid black;
-}
-
-#questionsItem {}
-
-.survey-form {
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    width: 500px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(232, 241, 242);
+    border: 10px double rgb(253, 170, 62)
 }

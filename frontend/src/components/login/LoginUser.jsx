@@ -86,7 +86,7 @@ class LoginUser extends Component {
             className="input-box text-indent"
           />
   
-          <button onClick={submitLoginForm} className="input-box" > Log in </button>
+          <button className="loginButton input-box" onClick={submitLoginForm} > Log in </button>
 
           <p className="message">{message}</p>
 
@@ -97,7 +97,6 @@ class LoginUser extends Component {
           </div>
 
         
-
         <Footer />
       </div>
 

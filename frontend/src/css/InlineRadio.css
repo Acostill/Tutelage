@@ -1,0 +1,18 @@
+.choices-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-choice {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-content: baseline;
+    align-items: center;
+    font-size: 15px;
+}
+
+.answer-content {
+    margin: 0;
+    margin-left: 10px;
+}
