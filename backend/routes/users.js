@@ -14,7 +14,7 @@ router.post("/login", db.loginUser) //** Gerson - I commented out the other '/lo
 router.post("/create", db.registerUser); //** Greg */
 router.post("/survey", db.getAnswersFromUsers); //** Greg */
 router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
-router.post("/send_message", db.submitMessage); //** Greg */
+router.post("/send_message", loginRequired, db.submitMessage); //** Greg */
 router.post("/get_messages", db.getAllMessages); //** Greg */
 router.post("/threadmessages", loginRequired, db.getThreadMessages); /** Gerson */
 router.post("/getUserById", loginRequired, db.getSingleUserById); /**Greg */
@@ -30,6 +30,7 @@ router.get("/logout", loginRequired, db.logoutuser); //** Greg */
 router.get("/survey", db.getAllSurveyQuestionsAndAnswers); //** Greg */
 router.get("/userinfo", loginRequired, db.getSingleUser) //** Gerson */
 router.get("/getuser/:username", db.getUserByUsername); //** Gerson */
+// router.get("/unread_messages", db.getUnreadMessages) //** Gerson */
 router.get("/search", db.getAllUsers); //** Carolina */
 router.get("/all_zipcodes", db.getAllLocations); //** Greg */
 router.get("/userthreads", loginRequired, db.getUserThreads); //** Gerson */

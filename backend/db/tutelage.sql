@@ -46,14 +46,15 @@ CREATE TABLE threads
   user_1 VARCHAR REFERENCES users(username),
   user_2 VARCHAR REFERENCES users(username)
 );
-CREATE TABLE messages
-(
-  ID SERIAL PRIMARY KEY,
-  thread_id INTEGER REFERENCES threads(ID),
-  sender VARCHAR REFERENCES users(username),
-  receiver VARCHAR REFERENCES users(username),
-  body VARCHAR,
-  date_sent TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+
+CREATE TABLE messages(
+	ID SERIAL PRIMARY KEY,
+	thread_id INTEGER REFERENCES threads(ID),
+	sender VARCHAR REFERENCES users(username),
+	receiver VARCHAR REFERENCES users(username),
+	body VARCHAR,
+	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  isread BOOLEAN DEFAULT FALSE
 );
 /** 
   Default Password: testpass

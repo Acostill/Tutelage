@@ -143,7 +143,7 @@ class SearchUsers extends Component {
       isFiltering
     } = this.state;
     const { currentUser } = this.props;
-    
+
     const style = {
       width: "200px",
       height: "200px"

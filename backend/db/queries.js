@@ -75,7 +75,7 @@ const updateSingleUser = (req, res, next) => {
         .then(() => {
             res.send(
                 `updated the user: ${req.body.username} Is this person now a mentor?: ${
-          req.body.ismentor
+        req.body.ismentor
         }`
             );
         })
@@ -238,7 +238,7 @@ const createUser = (req, res, next) => {
         .then(() => {
             res.send(
                 `created user: ${req.body.username} Is this person a mentor?: ${
-          req.body.ismentor
+        req.body.ismentor
         }`
             );
         })
@@ -274,7 +274,7 @@ function registerUser(req, res, next) {
 /**
  * @author Gerson
  * @function getUserByUsername Grabs a user according to their username.
- * @arg {array of objects}
+ * @returns {user object}
  */
 function getUserByUsername(req, res, next) {
     db
@@ -427,8 +427,7 @@ const getUserThreads = (req, res, next) => {
 
 /**
  * @author Gerson
- * @function getThreadMessages Gets all messages associated with the given thread id
- * @arg {object} req.user
+ * @func getThreadMessages Gets all messages associated with the given thread id
  */
 const getThreadMessages = (req, res, next) => {
     db
@@ -492,7 +491,7 @@ const getSameAnswers = (req, res, next) => {
                     res.status(500).send("Error retrieving users");
                 });
         });
-};
+}
 
 module.exports = {
     getAllUsers: getAllUsers,
