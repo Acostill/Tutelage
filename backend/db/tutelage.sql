@@ -99,14 +99,7 @@ INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, passwo
   values ('adelle1','Adelle','Anderson', '90210', '../images/adelleprofilepic.jpeg', 'adelle@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 
  
-INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
-  values ('Do you like Math?','a little bit', 'Im learning to like it', 'yes I like it', 'I love love Math');
-INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
-  values ('Do you like Reading?','a little bit', 'Im learning to like it', 'yes I like it', 'I love love Reading');
-INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
-  values ('Do you like to exercise?','a little bit', 'Im learning to like it', 'yes I like it', 'I love love Exercising');
-INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
-  values ('Are you a psychopathic murderer lacking remorse and empathy?','a little bit', 'Im learning to like it', 'yes I like it', 'I love love Evility');
+
 INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
   values ('What is your level of proficiency in the subject at hand?','Novice', 'Intermediate', 'Advanced', 'Expert');
 INSERT INTO questions (the_question, answer_1, answer_2, answer_3, answer_4)
