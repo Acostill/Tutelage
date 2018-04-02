@@ -8,18 +8,17 @@ class EditProfile extends Component {
     this.state = {
       user: {},
       userMessage: "",
-      newUserName: "",
-      newFirstName: "",
-      newLastName: "",
-      newEmail: "",
-      newIsmentor: "",
-      newAge: "",
-      newBio: "",
-      newOccupation: "",
-      newZipcode: "",
-      newGender: "",
-      newImgURL: ""
-
+      newUserName: this.props.user.username,
+      newFirstName: this.props.user.firstname,
+      newLastName: this.props.user.lastname,
+      newEmail: this.props.user.email,
+      newIsmentor: this.props.user.ismentor,
+      newAge: this.props.user.age,
+      newBio: this.props.user.bio,
+      newOccupation: this.props.user.occupation,
+      newZipcode: this.props.user.zipcode,
+      newGender: this.props.user.gender,
+      newImgURL: this.props.user.imgurl
     };
   }
 
@@ -53,12 +52,16 @@ class EditProfile extends Component {
   };
 
   handleInputChange = e => {
+    console.log("changing values:", e.target.value)
+    console.log("original values:", this.props.user.firstname)
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-
+  
   handleRadioChange = e => {
+    console.log("changing genders:", e.target.value)
+    
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -66,22 +69,24 @@ class EditProfile extends Component {
 
   editProfileSubmitForm = e => {
     e.preventDefault();
+    e.stopPropagation();
     const { user } = this.props
 
     //finish defining vars from state
-    const { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
+    let { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
+    console.log("STATE IN EDITPROOOOFILEE", this.state)
     //finish this part
-    const username = newUserName ? newUserName : username;
-    const firstname = newFirstName ? newFirstName : firstname
-    const lastname = newLastName ? newLastName : lastname
-    const email = newEmail ? newEmail : email
-    const ismentor = newIsmentor ? newIsmentor : ismentor
-    const age = newAge ? newAge : age
-    const bio = newBio ? newBio : bio
-    const occupation = newOccupation ? newOccupation : occupation
-    const zipcode = newZipcode ? newZipcode : zipcode
-    const gender = newGender ? newGender : gender
-    const imgurl = newImgURL ? newImgURL : imgurl
+    let username = newUserName ? newUserName : username;
+    let firstname = newFirstName ? newFirstName : firstname
+    let lastname = newLastName ? newLastName : lastname
+    let email = newEmail ? newEmail : email
+    let ismentor = newIsmentor ? newIsmentor : ismentor
+    let age = newAge ? newAge : age
+    let bio = newBio ? newBio : bio
+    let occupation = newOccupation ? newOccupation : occupation
+    let zipcode = newZipcode ? newZipcode : zipcode
+    let gender = newGender ? newGender : gender
+    let imgurl = newImgURL ? newImgURL : imgurl
 
     axios
       .patch('/users/edit', {
