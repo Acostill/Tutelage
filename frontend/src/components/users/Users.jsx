@@ -4,7 +4,6 @@ import Profile from './Profile';
 import EditProfile from './EditProfile'
 
 class Users extends Component {
-
   render() {
     const { user } = this.props
     console.log('Hello!')
@@ -13,7 +12,7 @@ class Users extends Component {
         <Route exact path='/users/:username' component={Profile}/>
         <Route path='/users/:username/edit' component={() => <EditProfile user={user} />}/>
       </Switch>
-    )
+    );
   }
 }
 

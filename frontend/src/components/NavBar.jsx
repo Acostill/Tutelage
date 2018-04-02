@@ -42,7 +42,7 @@ class NavBar extends Component {
         <div className="nav-right">
         <Link to="/login"  > Log In </Link>
         {" "}
-        <Link to="/register" > Register </Link>
+        {/* <Link to="/register" > Register </Link> */}
         {" "}
         <Link to="/aboutus" > About Us </Link>
         </div>
@@ -64,6 +64,9 @@ class NavBar extends Component {
         <Link to="/inbox"  > Messages </Link>
         {" "}
         <Link to={`/users/${user.username}`} > Profile </Link>
+        {" "}
+        {" "}
+        <Link to={`/survey`} > Tutelage Survey </Link>
         {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
       </div>

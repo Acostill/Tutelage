@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "../../css/Profile.css";
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+import cloudinary from 'cloudinary-core';
+const cloudinaryCore = new cloudinary.Cloudinary({cloud_name: 'tutelage'});
+
 
 class Profile extends Component {
   constructor() {
@@ -10,6 +15,16 @@ class Profile extends Component {
       userMessage: ""
     };
   }
+ 
+  makeWidget = () => {
+    window.cloudinary.openUploadWidget( 
+        { cloud_name: 'tutelage', public_id: 'newUser', upload_preset: 'wpcjhnmk', tags:['users']},
+        function(error, result) {
+          console.log(result);
+        }
+      );
+  }
+  
 
   getProfileUser = () => {
     let username = this.props.match.params.username;
@@ -22,11 +37,21 @@ class Profile extends Component {
         });
       })
       .catch(err => {
+        console.log("Your shit ain't work:", err)
         this.setState({
           message: err
         });
       });
   };
+
+  getPhotos = () => {
+    axios.get
+    ('http://res.cloudinary.com/tutelage')
+            .then(res => {
+                console.log(res);
+                // this.setState({gallery: res.data.resources});
+            })
+    }
 
   componentDidMount() {
     this.getProfileUser();
@@ -44,31 +69,46 @@ class Profile extends Component {
     });
   };
 
+  checkReload = () => {
+    if(this.props.match.params.username !== this.state.profileUser.username) {
+      this.getProfileUser();
+    }
+  }
+
   render() {
-    const { clearMessage, handleTextarea } = this;
+    const { clearMessage, handleTextarea, checkReload } = this;
     const { profileUser, userMessage } = this.state;
     const { user } = this.props;
 
     let commonInterests = "";
 
+    checkReload();
     return (
       <div id="user-profile" className="margin">
         <div className="background-banner">
+          <div className="sq2" />
           <div id="user-banner">
             <div className="image-crop margin">
-              <img src={profileUser.imgurl} alt="profile picture" className="img" />
+           
+            {/* <button id="upload_widget_opener" onClick = {this.makeWidget}> 
+              <Image cloudName="tutelage" publicId="sample" width="300" crop="scale">
+                <Transformation width="900" height="900" background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black" crop="pad"/>
+              </Image>
+            </button> } */}
+              <img src={profileUser.imgurl} alt="profile picture" className="img-profile" />
             </div>
             <div id="user-basic-info">
               <h1 className="user-header">
-                {`${profileUser.firstname} ${profileUser.lastname}`}
+                <strong>{`${profileUser.firstname} ${profileUser.lastname}`}</strong>
               </h1>
-              <h3> gender: {profileUser.gender} </h3>
-              <h3> location: {profileUser.location} </h3>
-              <h3> occupation: {profileUser.occupation} </h3>
+              <h3> Male/Female {profileUser.gender} </h3>
+              <h3> 90210 {profileUser.location} </h3>
+              <h3> Software Developer {profileUser.occupation} </h3>
+            {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
             </div>
           </div>
         </div>
-          
+
         <div className="user-info-content">
           <div id="quick-user-info" className="margin-top">
             <div> location: {profileUser.location} </div>
@@ -83,31 +123,31 @@ class Profile extends Component {
           <div className="margin-top"> Credentials: {profileUser.credentials} </div>
         </div>
 
-        <div className="background-banner orange-background">
-          <div id="chat-box" className="margin-top">
-            <label>
-              <h2> Let's chat: </h2>
-            </label>
-            <textarea
-              name="message"
-              id="message-box"
-              cols="30"
-              rows="5"
-              placeholder="Write your message here ..."
-              value={userMessage}
-              onChange={handleTextarea}
+        <div className="center">
+        <div id="chat-box" className="margin-top">
+          <label>
+            <h2> Let's connect: </h2>
+          </label>
+          <textarea
+            name="message"
+            id="message-box"
+            cols="30"
+            rows="5"
+            placeholder="Write your message here ..."
+            value={userMessage}
+            onChange={handleTextarea}
+          />
+          <div className="chat-buttons">
+            <input
+              type="submit"
+              value="Submit Message"
+              className="submit button-size"
             />
-            <div className="chat-buttons">
-              <input
-                type="submit"
-                value="Submit Message"
-                className="submit button-size"
-              />
-              <button className="clear button-size" onClick={clearMessage}>
-                {" "}
-                Clear{" "}
-              </button>
-            </div>
+            <button className="clear button-size" onClick={clearMessage}>
+              {" "}
+              Clear{" "}
+            </button>
+          </div>
           </div>
         </div>
       </div>

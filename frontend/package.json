@@ -6,6 +6,8 @@
     "ajv": "^6.3.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
+    "cloudinary-core": "^2.5.0",
+    "cloudinary-react": "^1.0.6",
     "google-maps-react": "^1.1.6",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.1",
@@ -15,6 +17,7 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
+    "sweetalert2": "^7.18.0",
     "zipcodes": "^6.0.0"
   },
   "scripts": {
