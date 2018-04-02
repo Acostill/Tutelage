@@ -54,7 +54,8 @@ CREATE TABLE messages(
 	sender VARCHAR REFERENCES users(username),
 	receiver VARCHAR REFERENCES users(username),
 	body VARCHAR,
-	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  isread BOOLEAN DEFAULT FALSE
 );
 
 /** 
