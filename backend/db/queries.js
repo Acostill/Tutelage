@@ -39,6 +39,22 @@ const getSingleUserById = (req, res, next) => {
         });
 };
 
+// Eddie's function to grab user bio info:
+// const updateUserBio = (req, res, next) => {
+//     let {
+//         bio,
+//         occupation,
+//         credentials,
+//         hobbies,
+//         interests
+//     } = req.body;
+
+//     let query = 
+//         "UPDATE"
+
+// }
+
+
 /**
  * @author Greg
  * @function updateSingleUser Edits the profile of a user.
