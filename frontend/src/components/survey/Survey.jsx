@@ -75,9 +75,9 @@ class Survey extends React.Component {
           userID: res.data.userInfo.id
         });
       })
-      .catch(err => {
-        console.log("err", err);
-      });
+    .catch(err => {
+      console.log("GET USER INFO ERROR", err);
+    });
   };
 
   handleSubmit = e => {
@@ -92,7 +92,7 @@ class Survey extends React.Component {
         console.log("Response:", response);
       })
       .catch(function(error) {
-        console.log(error);
+        console.log("HANDLESUBMIT Error", error);
       });
 
     this.setState({

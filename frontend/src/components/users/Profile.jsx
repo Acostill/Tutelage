@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "../../css/Profile.css";
 import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
@@ -107,6 +108,7 @@ class Profile extends Component {
               <h3> Male/Female {user.gender} </h3>
               <h3> 90210 {user.location} </h3>
               <h3> Software Developer {user.occupation} </h3>
+            {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
             </div>
           </div>
         </div>
