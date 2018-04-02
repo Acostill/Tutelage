@@ -5,9 +5,9 @@ const SelectGroup = ({ categories, selectedOptions, handleSelect }) => {
   return (
     <div>
       <hr/>
-      <h2 style={{"text-align": "center"}}> Or </h2>
+      <h2 className="separate-or" > Or </h2>
       <hr/>
-      <h2> Filter By: </h2>
+      <h2 className="filter-title"> Filter By: </h2>
       {categories.map(category => {
         return (
           <form className="styled-select">

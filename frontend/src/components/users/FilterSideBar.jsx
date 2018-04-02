@@ -13,30 +13,27 @@ class FilterSideBar extends Component {
         id: "1",
         title: "Gender",
         name: "gender",
-        options: ["no preference", "male", "female"]
+        options: ["Male", "Female"]
       },
       {
         id: "2",
         title: "Age-group",
         name: "age_group",
         options: [
-          "18 - 25",
-          "26 - 30",
-          "31 - 35",
-          "36 - 40",
-          "41 - 45",
-          "46 - 50",
-          "50+"
+          "18 - 28",
+          "29 - 39",
+          "40 - 49",
+          "50 +",
         ]
       },
       {
         id: "3",
-        title: "Expertise",
-        name: "expertise",
+        title: "Area of Expertise",
+        name: "occupation",
         options: [
-          "Corporate Business",
+          "Business",
           "Design",
-          "Engineers",
+          "Engineer",
           "Development",
           "Entrepreneur",
           "Social Service"
@@ -44,56 +41,21 @@ class FilterSideBar extends Component {
       },
       {
         id: "4",
-        title: "Years In Field",
-        name: "years_in_field",
+        title: "Language Spoken",
+        name: "language",
         options: [
-          "1 - 2 years",
-          "3 - 6 years",
-          "7 - 9 years",
-          "10 - 14 years",
-          "15 - 20 years",
-          "20+ years"
+          "English",
+          "Spanish",
+          "Chinese",
+          "Tagalog",
+          "Vietnamese",
+          "Arabic",
+          "French",
+          "Korean",
+          "Russian",
+          "Other"
         ]
-      },
-      {
-        id: "5",
-        title: "Blank",
-        name: "years_in_field",
-        options: [
-          "1 - 2 years",
-          "3 - 6 years",
-          "7 - 9 years",
-          "10 - 14 years",
-          "15 - 20 years",
-          "20+ years"
-        ]
-      },
-      {
-        id: "6",
-        title: "Blank",
-        name: "years_in_field",
-        options: [
-          "1 - 2 years",
-          "3 - 6 years",
-          "7 - 9 years",
-          "10 - 14 years",
-          "15 - 20 years",
-          "20+ years"
-        ]
-      },
-      {
-        id: "7",
-        title: "Blank",
-        name: "years_in_field",
-        options: [
-          "1 - 2 years",
-          "3 - 6 years",
-          "7 - 9 years",
-          "10 - 14 years",
-          "15 - 20 years",
-          "20+ years"
-        ]
-      },
+      }
     ];
 
     this.state = {
@@ -134,7 +96,7 @@ class FilterSideBar extends Component {
               className="search-btn"
               onClick={this.props.handleSubmit}
             >
-              <p className="find-statement">Find Your Tutelage Mentee </p>
+             Find Your Tutelage Mentee
             </button>
           ) : (
             <button
@@ -142,7 +104,7 @@ class FilterSideBar extends Component {
               className="search-btn"
               onClick={this.props.handleSubmit}
             >
-              <p className="find-statement">Find Your Tutelage Mentor</p>
+              Find Your Tutelage Mentor
             </button>
           )}
         </div>

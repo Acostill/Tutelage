@@ -1,6 +1,16 @@
+.separate-or {
+  margin:  0 0 10px 10px;
+  text-align: center;
+}
+
+.filter-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .styled-select select {
     color: rgb(53, 53, 53);
-    width: 230px;
+    width: 200px;
     padding: 5px;
     margin-bottom: 20px;
     font-size: 16px;
