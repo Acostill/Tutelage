@@ -25,7 +25,7 @@ updateSingleUser = (req, res, next) => {
   // const hash = authHelpers.createHash(req.body.password);
   db
     .none(
-      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, ageGroup = ${ageGroup}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl} WHERE id = ${id}",
+      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, age = ${age}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl} WHERE id = ${id}",
       {
         username: req.body.username,
         firstname: req.body.firstname,
@@ -33,7 +33,7 @@ updateSingleUser = (req, res, next) => {
         email: req.body.email,
         // password: hash,
         ismentor: req.body.ismentor,
-        ageGroup: req.body.ageGroup,
+        age: req.body.age,
         bio: req.body.bio,
         occupation: req.body.occupation,
         zipcode: req.body.zipcode,
@@ -149,14 +149,14 @@ const createUser = (req, res, next) => {
   console.log("createuser hash: ", hash);
   db
     .none(
-      "INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, ageGroup, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${ageGroup}, ${bio}, ${occupation}, ${password}, ${gender}, ${ismentor})", {
+      "INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, age, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${age}, ${bio}, ${occupation}, ${password}, ${gender}, ${ismentor})", {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
         password: hash,
         ismentor: req.body.ismentor,
-        ageGroup: req.body.ageGroup,
+        age: req.body.age,
         bio: req.body.bio,
         occupation: req.body.occupation,
         zipcode: req.body.zipcode,

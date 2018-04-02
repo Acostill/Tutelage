@@ -3,8 +3,8 @@ import axios from "axios";
 import "../../css/EditProfile.css";
 
 class EditProfile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       user: {},
       userMessage: "",
@@ -24,8 +24,7 @@ class EditProfile extends Component {
   }
 
   getUser = () => {
-    let username = this.props.match.params.username;
-    console.log({ username });
+    let username = this.props.user.username
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
@@ -70,11 +69,11 @@ class EditProfile extends Component {
     const { user } = this.props
 
     //finish defining vars from state
-    const { username, firstname, lastname, email, ismentor, age, bio, occupation, zipcode, gender, imgurl } = this.state;
+    const { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
     //finish this part
     const username = newUserName ? newUserName : username;
     const firstname = newFirstName ? newFirstName : firstname
-    const lastname = newLastName ? newLastName : lastName
+    const lastname = newLastName ? newLastName : lastname
     const email = newEmail ? newEmail : email
     const ismentor = newIsmentor ? newIsmentor : ismentor
     const age = newAge ? newAge : age
@@ -88,7 +87,7 @@ class EditProfile extends Component {
       .patch('/users/edit', {
         username: username,
         firstname: firstname,
-        lastname: lastName,
+        lastname: lastname,
         email: email,
         ismentor: ismentor,
         age: age,
@@ -121,6 +120,7 @@ class EditProfile extends Component {
     const { userMessage, newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
     const { user } = this.props
 
+
     let Interests = "";
 
     return (
@@ -131,7 +131,7 @@ class EditProfile extends Component {
 
             <div id="user-banner">
               <div className="image-crop margin">
-                <img src={user.imgurl} alt="profile picture" className="img" />
+                <img src={`../${user.imgurl}`} alt="profile picture" className="img" />
               </div>
               <div id="user-basic-info">
                 <h1 className="user-header">
@@ -139,14 +139,14 @@ class EditProfile extends Component {
                   <input
                     type="text"
                     placeholder="First Name"
-                    name="firstname"
+                    name="newFirstName"
                     value={newFirstName}
                     onChange={handleInputChange}
                   />
                   <input
                     type="text"
                     placeholder="Last Name"
-                    name="lastname"
+                    name="newLastName"
                     value={newLastName}
                     onChange={handleInputChange}
                   />
@@ -171,7 +171,7 @@ class EditProfile extends Component {
               <input
                 type="text"
                 placeholder="Zipcode"
-                name="zipcode"
+                name="newZipcode"
                 value={newZipcode}
                 onChange={handleInputChange}
               />
@@ -196,7 +196,7 @@ class EditProfile extends Component {
               <input
                 type="text"
                 placeholder="Occupation"
-                name="occupation"
+                name="newOccupation"
                 value={newOccupation}
                 onChange={handleInputChange}
               />
@@ -207,7 +207,7 @@ class EditProfile extends Component {
             <input
               type="text"
               placeholder="Bio"
-              name="bio"
+              name="newBio"
               value={newBio}
               onChange={handleInputChange}
             />
