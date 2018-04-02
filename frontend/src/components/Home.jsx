@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Button, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 // import { Ally } from '..//Scripts/randomFunctions'
 import '../css/Home.css';
 
 
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
-
       // <div>
 
       <div id="myCarousel" className="carousel slide" data-ride="carousel">
@@ -108,11 +108,11 @@ class Home extends Component {
 
         <div id="signUpChoice">
           <div id="mentorButton">
-          <button className="buttons" type="button">Become A Mentor</button>
+          <Link to="/register" ><button className="buttons" type="button">Become A Mentor</button></Link>
               <h3 className="signUpEnticers">Make A Significant Impact</h3>
             </div>
           <div id="menteeButton">
-          <button className="buttons" type="button" >Become A Mentee</button>
+          <Link to="/register" ><button className="buttons" type="button">Become A Mentee</button></Link>
               <h3 className="signUpEnticers">Get Expert Career Guidance</h3>
             </div>
             

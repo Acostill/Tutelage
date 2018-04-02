@@ -39,51 +39,40 @@ const getSingleUserById = (req, res, next) => {
     });
 };
 
-/**
- * @author Greg
- * @function updateSingleUser Edits the profile of a user.
- * @arg {array of objects}
- */
-const updateSingleUser = (req, res, next) => {
-  console.log("Req is:", req, "is there a req.user?:", req.user);
-  const hash = authHelpers.createHash(req.body.password);
-  console.log("updated password hash: ", hash);
-
-  let {
-    username,
-    firstname,
-    lastname,
-    zipcode,
-    password_digest,
-    ismentor
-  } = req.body;
-
-  let query =
-    "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, zipcode=${zipcode}, imgURL = ${imgURL}, email = ${email}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}";
+updateSingleUser = (req, res, next) => {
+  // const hash = authHelpers.createHash(req.body.password);
   db
-    .none(query, {
-      username: req.body.username,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      zipcode: req.body.zipcode,
-      imgURL: req.body.imgURL,
-      email: req.body.email,
-      password: hash,
-      ismentor: req.body.ismentor,
-      id: req.user.id
+    .none(
+      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, age = ${age}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl} WHERE id = ${id}",
+      {
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        // password: hash,
+        ismentor: req.body.ismentor,
+        age: req.body.age,
+        bio: req.body.bio,
+        occupation: req.body.occupation,
+        zipcode: req.body.zipcode,
+        gender: req.body.gender,
+        imgurl: req.body.imgurl,
+        id: req.user.id
+
+      }
+    )
+    .then((data) => {
+      res.status(200).json({
+        status: "success",
+        message: "Changed one user"
+      });
     })
-    .then(() => {
-      res.send(
-        `updated the user: ${req.body.username} Is this person now a mentor?: ${
-        req.body.ismentor
-        }`
-      );
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).send("error editing user");
+    .catch((err) => {
+      console.log("got here bro")
+      return next(err);
     });
-};
+}
+
 
 /**
  * @author Greg
@@ -225,14 +214,19 @@ const createUser = (req, res, next) => {
   console.log("createuser hash: ", hash);
   db
     .none(
-      "INSERT INTO users (username, firstname, lastname, zipcode, email, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${email}, ${password}, ${ismentor})", {
+      "INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, age, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${age}, ${bio}, ${occupation}, ${password}, ${gender}, ${ismentor})", {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        zipcode: req.body.zipcode,
         email: req.body.email,
         password: hash,
-        ismentor: req.body.ismentor
+        ismentor: req.body.ismentor,
+        age: req.body.age,
+        bio: req.body.bio,
+        occupation: req.body.occupation,
+        zipcode: req.body.zipcode,
+        gender: req.body.gender,
+        imgurl: req.body.imgurl,
       }
     )
     .then(() => {
@@ -336,7 +330,7 @@ const getAllSurveyQuestionsAndAnswers = (req, res, next) => {
     .any(
       "SELECT questions.id, the_question, answer_1, answer_2, answer_3, answer_4 FROM questions"
     )
-    .then(function (data) {
+    .then(data => {
       res.status(200).json({
         status: "success",
         data: data,
@@ -354,7 +348,6 @@ const getAllSurveyQuestionsAndAnswers = (req, res, next) => {
  * @arg {array of objects} answers:[{answerBody, questionID, userID}]
  */
 const getAnswersFromUsers = (req, res, next) => {
-  console.log(req.body.answers);
   req.body.answers.forEach(answer => {
     db
       .none(
@@ -448,7 +441,7 @@ const getThreadMessages = (req, res, next) => {
 
 const updateMessageRead = (req, res, next) => {
   db
-    .none("UPDATE messages SET isread = TRUE WHERE id = ${id}", {id: req.body.messageId})
+    .none("UPDATE messages SET isread = TRUE WHERE id = ${id}", { id: req.body.messageId })
     .then(() => {
       res.send("Message marked as read")
     })
@@ -498,9 +491,9 @@ const getUserInterests = (req, res, next) => {
 const getSameAnswers = (req, res, next) => {
   db
     .any(
-      "SELECT questions.the_question, a.id, b.id, a.answer_selection AS answer FROM answers a INNER JOIN answers b ON a.question_id = b.question_id AND a.username != b.username AND a.username = ${username} AND a.answer_selection = b.answer_selection INNER JOIN questions ON a.question_id = questions.id",
+      "SELECT DISTINCT b.user_id AS matches FROM answers a INNER JOIN answers b ON a.question_id = b.question_id AND a.user_id != b.user_id AND a.user_id = ${id} AND a.answer_selection = b.answer_selection INNER JOIN questions ON a.question_id = questions.id",
       req.user
-    )
+    ) /**b.user_id AS answer  */
     .then(data => {
       res
         .status(200)
@@ -510,10 +503,10 @@ const getSameAnswers = (req, res, next) => {
           message: `Retrieved all user with same answers to questions`
         })
         .catch(err => {
-          res.status(500).send("error retrieving users");
+          res.status(500).send("Error retrieving users");
         });
     });
-};
+}
 
 module.exports = {
   getAllUsers: getAllUsers,

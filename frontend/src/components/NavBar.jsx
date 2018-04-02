@@ -58,7 +58,7 @@ class NavBar extends Component {
         <div className="nav-right">
         <Link to="/login"  > Log In </Link>
         {" "}
-        <Link to="/register" > Register </Link>
+        {/* <Link to="/register" > Register </Link> */}
         {" "}
         <Link to="/aboutus" > About Us </Link>
         </div>
@@ -102,6 +102,9 @@ class NavBar extends Component {
         <Link to="/inbox"  > <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/423449-200.png" height="40px" /> {unreadMessages.length ? unreadMessages.length : ''} </Link>
         {" "}
         <Link to={`/users/${user.username}`} > Profile </Link>
+        {" "}
+        {" "}
+        <Link to={`/survey`} > Tutelage Survey </Link>
         {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
       </div>
