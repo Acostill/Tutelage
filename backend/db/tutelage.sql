@@ -8,21 +8,21 @@ CREATE TABLE users
   username VARCHAR (50) UNIQUE NOT NULL,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
-  gender VARCHAR,
-  occupation VARCHAR,
-  bio VARCHAR,
-  zipcode VARCHAR,
-  imgURL VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png',
   email VARCHAR UNIQUE NOT NULL,
   password_digest VARCHAR NOT NULL,
-  ismentor boolean
+  ismentor boolean,
+  age INTEGER,
+  bio VARCHAR,
+  occupation VARCHAR,
+	zipcode VARCHAR,
+  gender VARCHAR,
+	imgurl VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png'
 );
 
-CREATE TABLE interests
-(
-  ID SERIAL PRIMARY KEY,
-  username VARCHAR REFERENCES users(username),
-  interest VARCHAR
+CREATE TABLE interests (
+	ID SERIAL PRIMARY KEY,
+	username VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
+	interest VARCHAR
 );
 CREATE TABLE questions
 (
@@ -42,18 +42,18 @@ CREATE TABLE answers
   answer_selection VARCHAR
   -- accepted_answer_selection INTEGER REFERENCES answers(answer_selection) 
 );
-CREATE TABLE threads
-(
-  ID SERIAL PRIMARY KEY,
-  user_1 VARCHAR REFERENCES users(username),
-  user_2 VARCHAR REFERENCES users(username)
+
+CREATE TABLE threads(
+	ID SERIAL PRIMARY KEY,
+	user_1 VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
+	user_2 VARCHAR REFERENCES users(username) ON UPDATE CASCADE
 );
 
 CREATE TABLE messages(
 	ID SERIAL PRIMARY KEY,
 	thread_id INTEGER REFERENCES threads(ID),
-	sender VARCHAR REFERENCES users(username),
-	receiver VARCHAR REFERENCES users(username),
+	sender VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
+	receiver VARCHAR REFERENCES users(username) ON UPDATE CASCADE,
 	body VARCHAR,
 	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   isread BOOLEAN DEFAULT FALSE

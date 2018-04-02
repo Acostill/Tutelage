@@ -39,51 +39,40 @@ const getSingleUserById = (req, res, next) => {
         });
 };
 
-/**
- * @author Greg
- * @function updateSingleUser Edits the profile of a user.
- * @arg {array of objects}
- */
-const updateSingleUser = (req, res, next) => {
-    console.log("Req is:", req, "is there a req.user?:", req.user);
-    const hash = authHelpers.createHash(req.body.password);
-    console.log("updated password hash: ", hash);
+updateSingleUser = (req, res, next) => {
+  // const hash = authHelpers.createHash(req.body.password);
+  db
+    .none(
+      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, age = ${age}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl} WHERE id = ${id}",
+      {
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        // password: hash,
+        ismentor: req.body.ismentor,
+        age: req.body.age,
+        bio: req.body.bio,
+        occupation: req.body.occupation,
+        zipcode: req.body.zipcode,
+        gender: req.body.gender,
+        imgurl: req.body.imgurl,
+        id: req.user.id
 
-    let {
-        username,
-        firstname,
-        lastname,
-        zipcode,
-        password_digest,
-        ismentor
-    } = req.body;
+      }
+    )
+    .then((data) => {
+      res.status(200).json({
+        status: "success",
+        message: "Changed one user"
+      });
+    })
+    .catch((err) => {
+      console.log("got here bro")
+      return next(err);
+    });
+}
 
-    let query =
-        "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, zipcode=${zipcode}, imgURL = ${imgURL}, email = ${email}, password_digest = ${password}, ismentor = ${ismentor} WHERE id = ${id}";
-    db
-        .none(query, {
-            username: req.body.username,
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            zipcode: req.body.zipcode,
-            imgURL: req.body.imgURL,
-            email: req.body.email,
-            password: hash,
-            ismentor: req.body.ismentor,
-            id: req.user.id
-        })
-        .then(() => {
-            res.send(
-                `updated the user: ${req.body.username} Is this person now a mentor?: ${
-        req.body.ismentor
-        }`
-            );
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).send("error editing user");
-        });
-};
 
 /**
  * @author Greg
@@ -221,23 +210,28 @@ const logoutUser = (req, res, next) => {
  * @arg {array of objects}
  */
 const createUser = (req, res, next) => {
-    const hash = authHelpers.createHash(req.body.password);
-    console.log("createuser hash: ", hash);
-    db
-        .none(
-            "INSERT INTO users (username, firstname, lastname, zipcode, email, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${email}, ${password}, ${ismentor})", {
-                username: req.body.username,
-                firstname: req.body.firstname,
-                lastname: req.body.lastname,
-                zipcode: req.body.zipcode,
-                email: req.body.email,
-                password: hash,
-                ismentor: req.body.ismentor
-            }
-        )
-        .then(() => {
-            res.send(
-                `created user: ${req.body.username} Is this person a mentor?: ${
+  const hash = authHelpers.createHash(req.body.password);
+  console.log("createuser hash: ", hash);
+  db
+    .none(
+      "INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, age, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${age}, ${bio}, ${occupation}, ${password}, ${gender}, ${ismentor})", {
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hash,
+        ismentor: req.body.ismentor,
+        age: req.body.age,
+        bio: req.body.bio,
+        occupation: req.body.occupation,
+        zipcode: req.body.zipcode,
+        gender: req.body.gender,
+        imgurl: req.body.imgurl,
+      }
+    )
+    .then(() => {
+      res.send(
+        `created user: ${req.body.username} Is this person a mentor?: ${
         req.body.ismentor
         }`
             );
