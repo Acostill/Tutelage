@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS tutelage;
 CREATE DATABASE tutelage;
 \c tutelage;
+
 CREATE TABLE users
 (
   ID SERIAL PRIMARY KEY,
@@ -16,6 +17,7 @@ CREATE TABLE users
   password_digest VARCHAR NOT NULL,
   ismentor boolean
 );
+
 CREATE TABLE interests
 (
   ID SERIAL PRIMARY KEY,
