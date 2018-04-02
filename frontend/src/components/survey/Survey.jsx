@@ -75,15 +75,9 @@ class Survey extends React.Component {
           userID: res.data.userInfo.id
         });
       })
-<<<<<<< HEAD
     .catch(err => {
       console.log("GET USER INFO ERROR", err);
     });
-=======
-      .catch(err => {
-        console.log("err", err);
-      });
->>>>>>> fce8c953f040d82021ff0cfeb47a3506e7b54d20
   };
 
   handleSubmit = e => {

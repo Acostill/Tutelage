@@ -53,10 +53,10 @@ class SearchUsers extends Component {
               .then(res => {
                 theUsers.push(res.data.userInfo);
                 let tutMentors = theUsers.filter(elem => {
-                  return !elem.ismentor;
+                  return elem.ismentor;
                 });
                 let tutMentees = theUsers.filter(elem => {
-                  return elem.ismentor;
+                  return !elem.ismentor;
                 });
                 this.setState({
                   tutMentors: tutMentors,
@@ -143,7 +143,7 @@ class SearchUsers extends Component {
       isFiltering
     } = this.state;
     const { currentUser } = this.props;
-
+    
     const style = {
       width: "200px",
       height: "200px"
@@ -180,7 +180,7 @@ class SearchUsers extends Component {
               <div id="search-results">
                 {this.props.currentUser.ismentor
                   ? tutMentees.map(user => <ProfileCard user={user} />)
-                  : tutMentees.map(user => <ProfileCard user={user} />)}
+                  : tutMentors.map(user => <ProfileCard user={user} />)}
               </div>
             )}
 
