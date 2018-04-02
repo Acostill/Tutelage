@@ -2,188 +2,253 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../../css/EditProfile.css";
 
-class Profile extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: {},
-            userMessage: ""
-        };
-    }
+class EditProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      userMessage: "",
+      newUserName: "",
+      newFirstName: "",
+      newLastName: "",
+      newEmail: "",
+      newIsmentor: "",
+      newAge: "",
+      newBio: "",
+      newOccupation: "",
+      newZipcode: "",
+      newGender: "",
+      newImgURL: ""
 
-    getUser = () => {
-        let username = this.props.match.params.username;
-        console.log({ username });
-        axios
-            .get(`/users/getuser/${username}`)
-            .then(res => {
-                let user = res.data.user;
-                this.setState({
-                    user: user
-                });
-            })
-            .catch(err => {
-                this.setState({
-                    message: err
-                });
-            });
     };
+  }
 
-    componentDidMount() {
-        this.getUser();
-    }
-
-    handleTextarea = e => {
+  getUser = () => {
+    let username = this.props.user.username
+    axios
+      .get(`/users/getuser/${username}`)
+      .then(res => {
+        let user = res.data.user;
         this.setState({
-            userMessage: e.target.value
+          user: user
         });
-    };
-
-    clearMessage = () => {
+      })
+      .catch(err => {
         this.setState({
-            userMessage: ""
+          message: err
         });
-    };
+      });
+  };
 
-    handleInputChange = e => {
+  handleTextArea = e => {
+    this.setState({
+      userMessage: e.target.value
+    });
+  };
+
+  clearMessage = () => {
+    this.setState({
+      userMessage: ""
+    });
+  };
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleRadioChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  editProfileSubmitForm = e => {
+    e.preventDefault();
+    const { user } = this.props
+
+    //finish defining vars from state
+    const { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
+    //finish this part
+    const username = newUserName ? newUserName : username;
+    const firstname = newFirstName ? newFirstName : firstname
+    const lastname = newLastName ? newLastName : lastname
+    const email = newEmail ? newEmail : email
+    const ismentor = newIsmentor ? newIsmentor : ismentor
+    const age = newAge ? newAge : age
+    const bio = newBio ? newBio : bio
+    const occupation = newOccupation ? newOccupation : occupation
+    const zipcode = newZipcode ? newZipcode : zipcode
+    const gender = newGender ? newGender : gender
+    const imgurl = newImgURL ? newImgURL : imgurl
+
+    axios
+      .patch('/users/edit', {
+        username: username,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        ismentor: ismentor,
+        age: age,
+        bio: bio,
+        occupation: occupation,
+        zipcode: zipcode,
+        gender: gender,
+        imgurl: imgurl
+
+      })
+      .then(res => {
         this.setState({
-            [e.target.name]: e.target.value
-        });
-    };
-
-    handleRadioChange = e => {
+          message: 'User Profile updated!'
+        })
+      })
+      .catch(e => {
+        console.log(e)
         this.setState({
-          [e.target.name]: e.target.value
-        });
-      };
+          message: 'Error updating profile'
+        })
+      })
+  }
 
-    render() {
-        const { user, userMessage } = this.state;
-        console.log({ user });
-        const { clearMessage, handleTextarea, handleInputChange, handleRadioChange } = this;
+  componentDidMount() {
+    this.getUser();
+  }
 
-        let commonInterests = "";
+  render() {
+    const { clearMessage, handleTextArea, handleInputChange, handleRadioChange, editProfileSubmitForm } = this;
+    const { userMessage, newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
+    const { user } = this.props
 
-        return (
-            <div id="user-profile" className="margin">
-                <div className="background-banner">
-                    <div id="user-banner">
-                        <div className="image-crop margin">
-                            <img src={user.imgurl} alt="profile picture" className="img" />
-                            <input type="file" name="pic" accept="image/*" />
-                        </div>
-                        <div id="user-basic-info">
-                            <h1 className="user-header">
-                                {`${user.firstname} ${user.lastname}`}
-                            </h1>
-                            <h3> Gender: {user.gender} </h3>
-                            <h3> Location: {user.location} </h3>
-                            <h3> Occupation: {user.occupation} </h3>
-                        </div>
-                    </div>
-                </div>
 
-                <div className="user-info-content">
-                    <div id="quick-user-info" className="margin-top">
-                        <div> Location: {user.location} </div>
-                        <input
-                            type="text"
-                            placeholder="Location"
-                            name="location"
-                            value={location}
-                            onChange={handleInputChange}
-                        />
-                        <div> Gender: {user.gender} </div>
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Male"
-                            onChange={handleRadioChange}
-                        />
-                        Male
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Female"
-                            onChange={handleRadioChange}
-                        />
-                        Female
-                        <div> Occupation: {user.occupation} </div>
-                        <input
-                            type="text"
-                            placeholder="Occupation"
-                            name="occupation"
-                            value={occupation}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div className="margin-top">
-                        Common Interests: {commonInterests}
-                        <input
-                            type="text"
-                            placeholder="Common Interests"
-                            name="commonInterests"
-                            value={commonInterests}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div className="margin-top"> Hobbies: {user.hobbies} </div>
-                    <input
-                            type="text"
-                            placeholder="Hobbies"
-                            name="hobbies"
-                            value={hobbies}
-                            onChange={handleInputChange}
-                        />
-                    <div className="margin-top"> Bio: {user.bio} </div>
-                    <input
-                            type="text"
-                            placeholder="Bio"
-                            name="bio"
-                            value={bio}
-                            onChange={handleInputChange}
-                        />
-                    <div className="margin-top"> Credentials: {user.credentials} </div>
-                    <input
-                            type="text"
-                            placeholder="Credentials"
-                            name="credentials"
-                            value={credentials}
-                            onChange={handleInputChange}
-                        />
-                </div>
+    let Interests = "";
 
-                <div className="background-banner orange-background">
-                    <div id="chat-box" className="margin-top">
-                        <label>
-                            <h2> Let's chat: </h2>
-                        </label>
-                        <textarea
-                            name="message"
-                            id="message-box"
-                            cols="30"
-                            rows="5"
-                            placeholder="Write your message here ..."
-                            value={userMessage}
-                            onChange={handleTextarea}
-                        />
-                        <div className="chat-buttons">
-                            <input
-                                type="submit"
-                                value="Submit Message"
-                                className="submit button-size"
-                            />
-                            <button className="clear button-size" onClick={clearMessage}>
-                                {" "}
-                                Clear{" "}
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    return (
+
+      <div id="user-profile" className="margin">
+        <form onSubmit={editProfileSubmitForm} id="input-container">
+          <div className="background-banner">
+
+            <div id="user-banner">
+              <div className="image-crop margin">
+                <img src={`../${user.imgurl}`} alt="profile picture" className="img" />
+              </div>
+              <div id="user-basic-info">
+                <h1 className="user-header">
+                  {`${user.firstname} ${user.lastname}`}
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    name="newFirstName"
+                    value={newFirstName}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    name="newLastName"
+                    value={newLastName}
+                    onChange={handleInputChange}
+                  />
+                </h1>
+                <h3> Gender: {user.gender} </h3>
+                <h3> Zipcode: {user.zipcode} </h3>
+                <h3> Occupation: {user.occupation} </h3>
+                <input
+                  type="text"
+                  name="imgURL"
+                  placeholder="Link of Image"
+                  value={newImgURL}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
-        );
-    }
+          </div>
+
+          <div className="user-info-content">
+            <div id="quick-user-info" className="margin-top">
+              <div> Zipcode: {user.zipcode} </div>
+              <input
+                type="text"
+                placeholder="Zipcode"
+                name="newZipcode"
+                value={newZipcode}
+                onChange={handleInputChange}
+              />
+              <div> Gender: {user.gender}
+                < br />
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Male"
+                  onChange={handleRadioChange}
+                />
+                {" "}Male {" "}
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Female"
+                  onChange={handleRadioChange}
+                />
+
+                {" "}Female </div>
+              <div> Occupation: {user.occupation} </div>
+              <input
+                type="text"
+                placeholder="Occupation"
+                name="newOccupation"
+                value={newOccupation}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="margin-top">
+              Interests: {Interests} </div>
+            <div className="margin-top"> Bio: {user.bio} </div>
+            <input
+              type="text"
+              placeholder="Bio"
+              name="newBio"
+              value={newBio}
+              onChange={handleInputChange}
+            />
+          </div>
+          <input type="submit" />
+
+        </form>
+        <div className="background-banner orange-background">
+          <div id="chat-box" className="margin-top">
+            <label>
+              <h2> Let's chat: </h2>
+            </label>
+            <textarea
+              name="message"
+              id="message-box"
+              cols="30"
+              rows="5"
+              placeholder="Write your message here ..."
+              value={userMessage}
+              onChange={handleTextArea}
+            />
+            <div className="chat-buttons">
+              <input
+                type="submit"
+                value="Submit Message"
+                className="submit button-size"
+              />
+              <button className="clear button-size" onClick={clearMessage}>
+                {" "}
+                Clear{" "}
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    );
+  }
 }
 
-export default Profile;
+export default EditProfile;
 
