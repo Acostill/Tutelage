@@ -1,19 +1,21 @@
-import React from 'react';
+import React from "react";
+import "../../css/InlineRadio.css";
 
 const InlineRadioGroup = props => {
   const { name, values, handleSelect } = props;
   const displayValues = [...values];
   return (
-    <div>
+    <div className="choices-container">
       {displayValues.map(optionScale => (
-        <span>
-          <h5>{optionScale}</h5>
+        <span className="radio-choice">
           <input
             type="radio"
             name={name}
             value={optionScale}
             onChange={handleSelect}
+            className="radio-button"
           />
+          <p className="answer-content"> {optionScale} </p>
         </span>
       ))}
     </div>

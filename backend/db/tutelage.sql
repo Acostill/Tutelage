@@ -54,7 +54,8 @@ CREATE TABLE messages(
 	sender VARCHAR REFERENCES users(username),
 	receiver VARCHAR REFERENCES users(username),
 	body VARCHAR,
-	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+	date_sent  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  isread BOOLEAN DEFAULT FALSE
 );
 
 /** 
@@ -83,7 +84,7 @@ INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, passwo
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
   values ('test9','Johny9','Test9', '11215', 'https://i.imgur.com/pZ9jX8v.png', 'me@u.we9','$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
-  values ('carolina1','Carolina','Restrepo', NULL, '../images/CarolinaPic.jpeg', 'carolina@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
+  values ('carolina1','Carolina','Restrepo', NULL, '../images/CarolinaPic2.jpeg', 'carolina@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
   values ('eddie1','Eddie','Harmon', NULL, '../images/EddieCropped.jpg', 'eddie@up.start','$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS','false');
 INSERT INTO users (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)

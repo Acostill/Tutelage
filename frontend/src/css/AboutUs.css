@@ -16,13 +16,11 @@ html {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 100px;
-    /* border:solid; */
 }
 
 #missionStatementSection {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 13px;
-    padding-top: 50px;
 }
 
 .teamMember {
