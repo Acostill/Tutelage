@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Carousel } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+// import { browserHistory } from 'react-router';
+import { withRouter } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
+
 // import { Ally } from '..//Scripts/randomFunctions'
 import '../css/Home.css';
 
@@ -9,6 +14,24 @@ class Home extends Component {
   constructor() {
     super();
   }
+
+
+  handleMentorButton = (event) => {
+    // console.log('The next stop on this train is the register page');
+    // browserHistory.push('/register');
+    this.props.history.push("/register");
+
+  }
+
+  
+  handleMenteeButton = (event) => {
+    // console.log("mentee button pressed");
+    this.props.history.push("/register");
+
+
+  }
+
+
 
   render() {
     return (
@@ -108,11 +131,12 @@ class Home extends Component {
 
         <div id="signUpChoice">
           <div id="mentorButton">
-          <button className="buttons" type="button">Become A Mentor</button>
+          <button className="buttons" type="button" onClick={this.handleMentorButton}
+>Become A Mentor</button>
               <h3 className="signUpEnticers">Make A Significant Impact</h3>
             </div>
           <div id="menteeButton">
-          <button className="buttons" type="button" >Become A Mentee</button>
+          <button className="buttons" type="button" onClick={this.handleMenteeButton}>Become A Mentee</button>
               <h3 className="signUpEnticers">Get Expert Career Guidance</h3>
             </div>
             
