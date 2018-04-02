@@ -432,7 +432,7 @@ const getUserThreads = (req, res, next) => {
 const getThreadMessages = (req, res, next) => {
   db
     .any(
-      "SELECT * FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username})", { username: req.user.username, thread_id: req.body.thread_id }
+      "SELECT messages.id, sender, body, date_sent, isread FROM messages JOIN threads ON thread_id = threads.id WHERE thread_id = ${thread_id} AND (user_1 = ${username} OR user_2 = ${username}) ORDER BY date_sent", { username: req.user.username, thread_id: req.body.thread_id }
     )
     .then(data => {
       res.status(200).json({
@@ -444,7 +444,29 @@ const getThreadMessages = (req, res, next) => {
     .catch(err => {
       res.status(500).send("error retrieving threads");
     });
-};
+}
+
+const updateMessageRead = (req, res, next) => {
+  db
+    .none("UPDATE messages SET isread = TRUE WHERE id = ${id}", {id: req.body.messageId})
+    .then(() => {
+      res.send("Message marked as read")
+    })
+}
+
+const getUnreadMessages = (req, res, next) => {
+  let query = "SELECT * FROM messages JOIN threads on thread_id = threads.id WHERE (threads.user_1 = ${username} OR threads.user_2 = ${username}) AND sender != ${username} AND isread = FALSE ORDER BY date_sent";
+  db
+    .any(query, req.user)
+    .then(data => {
+      res.status(200).json({
+        status: "Success",
+        unreadMessages: data,
+        message: "Retrieved unread messages"
+      })
+    })
+}
+
 /**
  * @author nick
  */
@@ -509,6 +531,8 @@ module.exports = {
   getAllLocations: getAllLocations,
   getUserThreads: getUserThreads,
   getThreadMessages: getThreadMessages,
+  updateMessageRead: updateMessageRead,
+  getUnreadMessages: getUnreadMessages,
   registerUser: registerUser,
   getUserInterests: getUserInterests,
   getSameAnswers: getSameAnswers,

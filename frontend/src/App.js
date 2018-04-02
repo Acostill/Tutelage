@@ -30,10 +30,14 @@ class App extends Component {
     axios
       .get('/users/userinfo')
       .then(res => {
-        console.log("IS ID HERE?",res.data.userInfo)
         this.setState({
           signedIn: true,
           user: res.data.userInfo
+        })
+      })
+      .catch(err => {
+        this.setState({
+          signedIn: false
         })
       })
   }
@@ -53,7 +57,6 @@ class App extends Component {
         password: password
       })
       .then(res => {
-        console.log('peep this:', res);
         // redirect to user's profile
         this.setState({
           signedIn: true,
@@ -64,7 +67,6 @@ class App extends Component {
         });
       })
       .catch(err => {
-        console.log(err);
         if (username === "" && password === "") {
           this.setState({
             message: "* Fill out Username & Password"

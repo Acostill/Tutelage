@@ -10,31 +10,32 @@ const passport = require("../auth/local");
 //     // `req.user` contains the authenticated user;
 //     res.send(`${req.user.username} is logged in`);
 // }); //** Greg */
-router.post("/login", db.loginUser) //** Gerson - I commented out the other '/login' route */
-router.post("/create", db.registerUser); //** Greg */
-router.post("/survey", db.getAnswersFromUsers); //** Greg */
-router.post("/message", loginRequired, db.fetchNewThread); //** Greg */
+router.post("/login", db.loginUser) /** Gerson - I commented out the other '/login' route */
+router.post("/create", db.registerUser); /** Greg */
+router.post("/survey", db.getAnswersFromUsers); /** Greg */
+router.post("/message", loginRequired, db.fetchNewThread); /** Greg */
 router.post("/send_message", loginRequired, db.submitMessage); //** Greg */
-router.post("/get_messages", db.getAllMessages); //** Greg */
+router.post("/get_messages", db.getAllMessages); /** Greg */
 router.post("/threadmessages", loginRequired, db.getThreadMessages); /** Gerson */
 router.post("/getUserById", loginRequired, db.getSingleUserById); /**Greg */
 
 
 /******************PATCH ROUTES********************* */
-router.patch("/edit", loginRequired, db.updateSingleUser); //** Greg */
+router.patch("/edit", loginRequired, db.updateSingleUser); /** Greg */
+router.patch("/confirm_read", loginRequired, db.updateMessageRead)  /** Gerson */
 
 /******************GET ROUTES********************* */
 // router.get("/survey", db.getAllSurveyQuestions);
-router.get("/getSingleUser", loginRequired, db.getSingleUser); //** Greg */
-router.get("/logout", loginRequired, db.logoutuser); //** Greg */
-router.get("/survey", db.getAllSurveyQuestionsAndAnswers); //** Greg */
-router.get("/userinfo", loginRequired, db.getSingleUser) //** Gerson */
-router.get("/getuser/:username", db.getUserByUsername); //** Gerson */
-router.get("/unread_messages", db.getUnreadMessages) //** Gerson */
-router.get("/search", db.getAllUsers); //** Carolina */
-router.get("/all_zipcodes", db.getAllLocations); //** Greg */
-router.get("/userthreads", loginRequired, db.getUserThreads); //** Gerson */
-router.get("/interests", loginRequired, db.getUserInterests); //** nick */
+router.get("/getSingleUser", loginRequired, db.getSingleUser); /** Greg */
+router.get("/logout", loginRequired, db.logoutuser); /** Greg */
+router.get("/survey", db.getAllSurveyQuestionsAndAnswers); /** Greg */
+router.get("/userinfo", loginRequired, db.getSingleUser) /** Gerson */
+router.get("/getuser/:username", db.getUserByUsername); /** Gerson */
+router.get("/unread_messages", loginRequired, db.getUnreadMessages) //** Gerson */
+router.get("/search", db.getAllUsers); /** Carolina */
+router.get("/all_zipcodes", db.getAllLocations); /** Greg */
+router.get("/userthreads", loginRequired, db.getUserThreads); /** Gerson */
+router.get("/interests", loginRequired, db.getUserInterests); /** nick */
 router.get("/magic", loginRequired, db.getSameAnswers) /**Greg */
 
 
