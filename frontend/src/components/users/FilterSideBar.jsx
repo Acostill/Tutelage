@@ -12,6 +12,7 @@ class FilterSideBar extends Component {
 
   render() {
     const {currentUser, handleSubmit}=this.props
+    console.log("maaan",currentUser.ismentor)
     return (
       <div>
         <ul id="qualities_list">
