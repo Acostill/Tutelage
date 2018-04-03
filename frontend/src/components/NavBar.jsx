@@ -67,7 +67,9 @@ class NavBar extends Component {
         <FontAwesomeIcon icon={["fas", "user-circle"]} size="2x" />
         </Link>
         
-        <Link to={`/survey`} > Tutelage Survey </Link>
+        <Link to={`/survey`} >
+        <FontAwesomeIcon icon={["fas", "clipboard-list"]} size="2x" />
+        </Link>
         {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
       </div>
