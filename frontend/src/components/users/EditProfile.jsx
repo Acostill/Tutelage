@@ -18,7 +18,9 @@ class EditProfile extends Component {
       newOccupation: this.props.user.occupation,
       newZipcode: this.props.user.zipcode,
       newGender: this.props.user.gender,
-      newImgURL: this.props.user.imgurl
+      newImgURL: this.props.user.imgurl,
+      Male: "",
+      Female: ""
     };
   }
 
@@ -73,35 +75,22 @@ class EditProfile extends Component {
     const { user } = this.props
 
     //finish defining vars from state
-    let { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
+    let { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL, Male, Female } = this.state;
     console.log("STATE IN EDITPROOOOFILEE", this.state)
-    //finish this part
-    let username = newUserName ? newUserName : username;
-    let firstname = newFirstName ? newFirstName : firstname
-    let lastname = newLastName ? newLastName : lastname
-    let email = newEmail ? newEmail : email
-    let ismentor = newIsmentor ? newIsmentor : ismentor
-    let age = newAge ? newAge : age
-    let bio = newBio ? newBio : bio
-    let occupation = newOccupation ? newOccupation : occupation
-    let zipcode = newZipcode ? newZipcode : zipcode
-    let gender = newGender ? newGender : gender
-    let imgurl = newImgURL ? newImgURL : imgurl
 
     axios
       .patch('/users/edit', {
-        username: username,
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        ismentor: ismentor,
-        age: age,
-        bio: bio,
-        occupation: occupation,
-        zipcode: zipcode,
-        gender: gender,
-        imgurl: imgurl
-
+        username: newUserName,
+        firstname: newFirstName,
+        lastname: newLastName,
+        email: newEmail,
+        ismentor: newIsmentor,
+        age: newAge,
+        bio: newBio,
+        occupation: newOccupation,
+        zipcode: newZipcode,
+        gender: Male ? Male : Female,
+        imgurl: newImgURL
       })
       .then(res => {
         this.setState({
@@ -123,8 +112,9 @@ class EditProfile extends Component {
   render() {
     const { clearMessage, handleTextArea, handleInputChange, handleRadioChange, editProfileSubmitForm } = this;
     const { userMessage, newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
+    console.log("the state here in edit:", this.state)
     const { user } = this.props
-
+    console.log("props in the render:", this.props)
 
     let Interests = "";
 
@@ -184,14 +174,14 @@ class EditProfile extends Component {
                 < br />
                 <input
                   type="radio"
-                  name="gender"
+                  name="Male"
                   value="Male"
                   onChange={handleRadioChange}
                 />
                 {" "}Male {" "}
                 <input
                   type="radio"
-                  name="gender"
+                  name="Female"
                   value="Female"
                   onChange={handleRadioChange}
                 />

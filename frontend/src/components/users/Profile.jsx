@@ -2,29 +2,37 @@ import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "../../css/Profile.css";
-import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
-import cloudinary from 'cloudinary-core';
-const cloudinaryCore = new cloudinary.Cloudinary({cloud_name: 'tutelage'});
-
+import {
+  Image,
+  Video,
+  Transformation,
+  CloudinaryContext
+} from "cloudinary-react";
+import cloudinary from "cloudinary-core";
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: "tutelage" });
 
 class Profile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       profileUser: {},
       userMessage: ""
     };
   }
- 
+
   makeWidget = () => {
-    window.cloudinary.openUploadWidget( 
-        { cloud_name: 'tutelage', public_id: 'newUser', upload_preset: 'wpcjhnmk', tags:['users']},
-        function(error, result) {
-          console.log(result);
-        }
-      );
-  }
-  
+    window.cloudinary.openUploadWidget(
+      {
+        cloud_name: "tutelage",
+        public_id: "newUser",
+        upload_preset: "wpcjhnmk",
+        tags: ["users"]
+      },
+      function(error, result) {
+        console.log(result);
+      }
+    );
+  };
 
   getProfileUser = () => {
     let username = this.props.match.params.username;
@@ -37,7 +45,7 @@ class Profile extends Component {
         });
       })
       .catch(err => {
-        console.log("Your shit ain't work:", err)
+        console.log("Your shit ain't work:", err);
         this.setState({
           message: err
         });
@@ -45,13 +53,11 @@ class Profile extends Component {
   };
 
   getPhotos = () => {
-    axios.get
-    ('http://res.cloudinary.com/tutelage')
-            .then(res => {
-                console.log(res);
-                // this.setState({gallery: res.data.resources});
-            })
-    }
+    axios.get("http://res.cloudinary.com/tutelage").then(res => {
+      console.log(res);
+      // this.setState({gallery: res.data.resources});
+    });
+  };
 
   componentDidMount() {
     this.getProfileUser();
@@ -70,16 +76,19 @@ class Profile extends Component {
   };
 
   checkReload = () => {
-    if(this.props.match.params.username !== this.state.profileUser.username) {
+    if (this.props.match.params.username !== this.state.profileUser.username) {
       this.getProfileUser();
     }
-  }
+  };
 
   render() {
     const { clearMessage, handleTextarea, checkReload } = this;
     const { profileUser, userMessage } = this.state;
     const { user } = this.props;
-
+    let currentURL = this.props.match.url
+    console.log("THIS.PROPS...SMH", this.props)
+    console.log("profiel USER:::", profileUser)
+    console.log("profiel USER occupaion:::", profileUser.occupation)
     let commonInterests = "";
 
     checkReload();
@@ -88,66 +97,72 @@ class Profile extends Component {
         <div className="background-banner">
           <div className="sq2" />
           <div id="user-banner">
+            { 
             <div className="image-crop margin">
-           
-            {/* <button id="upload_widget_opener" onClick = {this.makeWidget}> 
-              <Image cloudName="tutelage" publicId="sample" width="300" crop="scale">
-                <Transformation width="900" height="900" background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black" crop="pad"/>
-              </Image>
-            </button> } */}
-              <img src={profileUser.imgurl} alt="profile picture" className="img-profile" />
+              <Link to = {`/users/${profileUser.username}/edit`}>
+                <img
+                  src={profileUser.imgurl}
+                  alt="profile picture"
+                  className="img-profile"
+                />
+              </Link>
             </div>
+            }
             <div id="user-basic-info">
               <h1 className="user-header">
-                <strong>{`${profileUser.firstname} ${profileUser.lastname}`}</strong>
+                <strong>{`${profileUser.firstname} ${
+                  profileUser.lastname
+                }`}
+                </strong>
               </h1>
-              <h3> Male/Female {profileUser.gender} </h3>
-              <h3> 90210 {profileUser.location} </h3>
-              <h3> Software Developer {profileUser.occupation} </h3>
-            {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
+              <h3> {profileUser.gender} </h3>
+              <h3> zipcode: {profileUser.zipcode} </h3>
+              <h3> Occupation: {profileUser.occupation} </h3>
+              <div className="margin-top"> Bio: {profileUser.bio} </div>
+              {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
             </div>
           </div>
         </div>
 
         <div className="user-info-content">
           <div id="quick-user-info" className="margin-top">
-            <div> location: {profileUser.location} </div>
+            <div> location: {profileUser.zipcode} </div>
             <div> gender: {profileUser.gender} </div>
             <div> occupation: {profileUser.occupation} </div>
           </div>
-          <div className="margin-top">
-            Common Interests: {commonInterests}
-          </div>
+          <div className="margin-top">Common Interests: {commonInterests}</div>
           <div className="margin-top"> Hobbies: {profileUser.hobbies} </div>
-          <div className="margin-top"> Bio: {profileUser.bio} </div>
-          <div className="margin-top"> Credentials: {profileUser.credentials} </div>
+          <div className="margin-top">
+            {" "}
+            Credentials: {profileUser.credentials}{" "}
+          </div>
         </div>
 
         <div className="center">
-        <div id="chat-box" className="margin-top">
-          <label>
-            <h2> Let's connect: </h2>
-          </label>
-          <textarea
-            name="message"
-            id="message-box"
-            cols="30"
-            rows="5"
-            placeholder="Write your message here ..."
-            value={userMessage}
-            onChange={handleTextarea}
-          />
-          <div className="chat-buttons">
-            <input
-              type="submit"
-              value="Submit Message"
-              className="submit button-size"
+          <div id="chat-box" className="margin-top">
+            <label>
+              <h2> Let's connect: </h2>
+            </label>
+            <textarea
+              name="message"
+              id="message-box"
+              cols="30"
+              rows="5"
+              placeholder="Write your message here ..."
+              value={userMessage}
+              onChange={handleTextarea}
             />
-            <button className="clear button-size" onClick={clearMessage}>
-              {" "}
-              Clear{" "}
-            </button>
-          </div>
+            <div className="chat-buttons">
+              <input
+                type="submit"
+                value="Submit Message"
+                className="submit button-size"
+              />
+              <button className="clear button-size" onClick={clearMessage}>
+                {" "}
+                Clear{" "}
+              </button>
+            </div>
           </div>
         </div>
       </div>
