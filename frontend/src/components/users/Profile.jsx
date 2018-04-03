@@ -20,19 +20,19 @@ class Profile extends Component {
     };
   }
 
-  makeWidget = () => {
-    window.cloudinary.openUploadWidget(
-      {
-        cloud_name: "tutelage",
-        public_id: "newUser",
-        upload_preset: "wpcjhnmk",
-        tags: ["users"]
-      },
-      function(error, result) {
-        console.log(result);
-      }
-    );
-  };
+  // makeWidget = () => {
+  //   window.cloudinary.openUploadWidget(
+  //     {
+  //       cloud_name: "tutelage",
+  //       public_id: "newUser",
+  //       upload_preset: "wpcjhnmk",
+  //       tags: ["users"]
+  //     },
+  //     function(error, result) {
+  //       console.log(result);
+  //     }
+  //   );
+  // };
 
   getProfileUser = () => {
     let username = this.props.match.params.username;
@@ -52,12 +52,12 @@ class Profile extends Component {
       });
   };
 
-  getPhotos = () => {
-    axios.get("http://res.cloudinary.com/tutelage").then(res => {
-      console.log(res);
-      // this.setState({gallery: res.data.resources});
-    });
-  };
+  // getPhotos = () => {
+  //   axios.get("http://res.cloudinary.com/tutelage").then(res => {
+  //     console.log(res);
+  //     // this.setState({gallery: res.data.resources});
+  //   });
+  // };
 
   componentDidMount() {
     this.getProfileUser();
@@ -100,11 +100,12 @@ class Profile extends Component {
             { 
             <div className="image-crop margin">
               <Link to = {`/users/${profileUser.username}/edit`} refresh = "true">
-                <img
+              <Image cloudName="tutelage" publicId={`${profileUser.username}.jpg`} /*width="300" crop="scale" */ className="img-profile"/>
+                {/* <img
                   src={profileUser.imgurl}
                   alt="profile picture"
                   className="img-profile"
-                />
+                /> */}
               </Link>
             </div>
             }
