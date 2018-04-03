@@ -6,6 +6,7 @@ import Home from './Home';
 // import Profile from './Profile';
 import SearchUsers from './users/SearchUsers';
 import { Redirect } from 'react-router';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 
 class NavBar extends Component {
@@ -57,9 +58,7 @@ class NavBar extends Component {
         {" "}
         <div className="nav-right">
         <Link to="/login"  > Log In </Link>
-        {" "}
-        {/* <Link to="/register" > Register </Link> */}
-        {" "}
+
         <Link to="/aboutus" > About Us </Link>
         </div>
       </nav>
@@ -97,13 +96,19 @@ class NavBar extends Component {
       <Link id="app-name" to="/"> Tutelage </Link>
       {" "}
       <div className="nav-right-loggedin">
-        <Link to="/search"  > Search </Link>
-        {" "}
-        <Link to="/inbox"  > <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/423449-200.png" height="40px" /> {unreadMessages.length ? unreadMessages.length : ''} </Link>
-        {" "}
-        <Link to={`/users/${user.username}`} > Profile </Link>
-        {" "}
-        {" "}
+        <Link to="/search"  >
+        <FontAwesomeIcon icon={["fas", "search"]} size="2x" />
+        </Link>
+
+        <Link to="/inbox" className="inbox-link" > 
+        <FontAwesomeIcon icon={["fas", "envelope"]} size="2x" />
+         { unreadMessages.length ? <div className="red">{ unreadMessages.length } </div> : ''} 
+         </Link>
+      
+        <Link to={`/users/${user.username}`} > 
+        <FontAwesomeIcon icon={["fas", "user-circle"]} size="2x" />
+        </Link>
+        
         <Link to={`/survey`} > Tutelage Survey </Link>
         {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
