@@ -45,7 +45,6 @@ class Profile extends Component {
         });
       })
       .catch(err => {
-        console.log("Your shit ain't work:", err);
         this.setState({
           message: err
         });
@@ -86,9 +85,6 @@ class Profile extends Component {
     const { profileUser, userMessage } = this.state;
     const { user } = this.props;
     let currentURL = this.props.match.url
-    console.log("THIS.PROPS...SMH", this.props)
-    console.log("profiel USER:::", profileUser)
-    console.log("profiel USER occupaion:::", profileUser.occupation)
     let commonInterests = "";
 
     checkReload();
