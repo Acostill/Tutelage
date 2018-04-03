@@ -5,7 +5,7 @@ import axios from "axios";
 import "../../css/ProfileCardList.css";
 
 const ProfileCard = ({ user }) => {
-  const { imgurl, firstname, lastname, username, location } = user;
+  const { imgurl, firstname, lastname, username, location, gender } = user;
   return (
     <div className="profile-card square">
       <Link to={`/users/${username}`}>

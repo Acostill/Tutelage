@@ -17,6 +17,7 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       user: {},
+      public_id: "",
       userMessage: "",
       newUserName: this.props.user.username,
       newFirstName: this.props.user.firstname,
@@ -49,23 +50,27 @@ class EditProfile extends Component {
     window.cloudinary.openUploadWidget(
       {
         cloud_name: "tutelage",
-        public_id: this.props.user.username,
+        public_id: this.state.public_id,
         upload_preset: "wpcjhnmk",
         tags: ["users", "tutelage"]
       },
-      function(error, result) {
-        // console.log("REZULTTT:", result[0].secure_url);
-        console.log("REZULTTT:", result);
+      (error, result) => {
+        console.log("public id REZULTTT of make widget:", result[0].public_id);
+        console.log("REZULTTT img of make widget:", result[0].url);
+        this.setState({
+          newImgURL: result[0].url,
+          public_id: result[0].public_id
+        })
       }
     );
   };
 
-  getPhotos = () => {
-    axios.get("http://res.cloudinary.com/tutelage").then(res => {
-      console.log(res);
-      // this.setState({gallery: res.data.resources});
-    });
-  };
+  // getPhotos = () => {
+  //   axios.get("https://api.cloudinary.com/v1_1/tutelage")
+  //     .then(res => {
+  //     console.log("REZPONZE in get PHotos:", res);
+  //   });
+  // };
 
   getUser = () => {
     let username = this.props.user.username;
@@ -184,7 +189,7 @@ class EditProfile extends Component {
 
   componentDidMount() {
     this.getUser();
-    this.getPhotos();
+    // this.getPhotos();
   }
 
   render() {
@@ -216,7 +221,8 @@ class EditProfile extends Component {
       credentials,
       doneEditing
     } = this.state;
-    // console.log("the state here in edit PROFILE IS:", this.state);
+    console.log("user", user)
+    // console.log("the IMG here in edit PROFILE IS:", this.state.newImgURL);
     const { user } = this.props;
     let Interests = "";
 
@@ -233,7 +239,7 @@ class EditProfile extends Component {
                 <button id="upload_widget_opener" onClick={makeWidget}>
                   <Image
                     cloudName="tutelage"
-                    publicId={user.username}
+                    publicId={this.state.public_id}
                     width="300"
                     // crop="scale"
                   >
