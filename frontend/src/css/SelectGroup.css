@@ -1,0 +1,39 @@
+.separate-or {
+  margin:  0 0 10px 10px;
+  text-align: center;
+}
+
+.filter-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.styled-select select {
+    color: rgb(53, 53, 53);
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 34px;
+    -webkit-appearance: none;
+  }
+  
+  .styled-select select option::selection {
+    background-color: purple;
+  }
+  
+  .styled-select > select:target {
+    background-color: purple;
+  }
+  
+  .select-container {
+    float: left;
+  }
+  
+  .category-label,
+  .category-select {
+    display: block;
+  }
