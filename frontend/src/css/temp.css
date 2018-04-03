@@ -35,13 +35,13 @@
 
 div.nav-right {
     font-size: 15px;
-    width: 300px;
+    width: 200px;
     padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     justify-content: space-around;
-    align-items: baseline;
+    align-items: center;
 }
 
 .nav-right>a {
@@ -60,13 +60,13 @@ div.nav-right {
 
 div.nav-right-loggedin {
     font-size: 15px;
-    width: 500px;
+    width: 550px;
     padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     justify-content: space-around;
-    align-items: baseline;
+    align-items: center;
 }
 
 .nav-right-loggedin>a {
@@ -97,4 +97,27 @@ div.nav-right-loggedin {
 #logout-button:hover {
     background-color: #fff;
     color: rgb(53, 53, 53);
+}
+
+.inbox-link {
+    display: inline-flex;
+    justify-content: baseline;
+    align-self: baseline;
+}
+
+.red {
+    width: 100%;
+    height: 22px;
+    margin: 2px;
+    padding: 2px;
+    font-size: 16px;
+    margin-left: -6px;
+    margin-top:-5px;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
