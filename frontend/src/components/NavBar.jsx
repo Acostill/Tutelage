@@ -12,9 +12,24 @@ class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      signedIn: true,
-      user: {}
-    };
+      unreadMessages: [],
+      loginMount: true
+    }
+  }
+  timer = 0
+  getUnreadMessages = () => {
+    this.timer++;
+    console.log(this.timer)
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
+        this.setState({
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
+        console.log("Error caught", err)
+      })
   }
 
   onLoadNav = () => {
@@ -23,11 +38,12 @@ class NavBar extends Component {
         <Link id="app-name" to="/"> Tutelage </Link>
         {" "}
         <div className="nav-right">
-          <Link to="/login"  > Log In </Link>
+        Loading...
+          {/* <Link to="/login"  > Log In </Link>
           {" "}
           <Link to="/register" > Register </Link>
           {" "}
-          <Link to="/aboutus" > About Us </Link>
+          <Link to="/aboutus" > About Us </Link> */}
         </div>
       </nav>
     )
@@ -53,7 +69,29 @@ class NavBar extends Component {
   }
 
   loggedInNav = () => {
-    const { user, logOut } = this.props
+    const { unreadMessages, loginMount } = this.state;
+    const { user, logOut } = this.props;
+    // const newMessages = setTimeout(() => {
+    //   this.timer++;
+    //   console.log(this.timer)
+    //   axios
+    //     .get('/users/unread_messages')
+    //     .then(res => {
+    //       this.setState({
+    //         unreadMessages: res.data.unreadMessages
+    //       })
+    //     })
+    //     .catch(err => {
+    //       console.log("Error caught", err)
+    //     })
+    
+    // }, 150000);
+    // const clearNewMessages = () => {
+    //   clearTimeout(newMessages);
+    //   // this.timer=0;
+    // }
+    // clearNewMessages();
+    if (loginMount) this.getUnreadMessages();
     return (
       <nav id='navigation-bar'>
       <Link id="app-name" to="/"> Tutelage </Link>
@@ -61,7 +99,7 @@ class NavBar extends Component {
       <div className="nav-right-loggedin">
         <Link to="/search"  > Search </Link>
         {" "}
-        <Link to="/inbox"  > Messages </Link>
+        <Link to="/inbox"  > <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/423449-200.png" height="40px" /> {unreadMessages.length ? unreadMessages.length : ''} </Link>
         {" "}
         <Link to={`/users/${user.username}`} > Profile </Link>
         {" "}
