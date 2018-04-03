@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import Profile from './Profile';
+import RandomUser from './RandomUser';
 import EditProfile from './EditProfile'
-import RandomUser from './randomUsers';
+
 
 class Users extends Component {
   render() {
