@@ -463,9 +463,9 @@ const getThreadMessages = (req, res, next) => {
     });
 }
 
-const updateMessageRead = (req, res, next) => {
+const confirmRead = (req, res, next) => {
   db
-    .none("UPDATE messages SET isread = TRUE WHERE id = ${id}", { id: req.body.messageId })
+    .none("UPDATE messages SET isread = TRUE WHERE id = ${id} AND sender != ${username}", { id: req.body.messageId, username: req.user.username })
     .then(() => {
       res.send("Message marked as read")
     })
@@ -548,7 +548,7 @@ module.exports = {
   getAllLocations: getAllLocations,
   getUserThreads: getUserThreads,
   getThreadMessages: getThreadMessages,
-  updateMessageRead: updateMessageRead,
+  confirmRead: confirmRead,
   getUnreadMessages: getUnreadMessages,
   registerUser: registerUser,
   getUserInterests: getUserInterests,
