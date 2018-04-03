@@ -11,6 +11,24 @@ class Home extends Component {
     super(props);
   }
 
+
+  handleMentorButton = (event) => {
+    // console.log('The next stop on this train is the register page');
+    // browserHistory.push('/register');
+    this.props.history.push("/register");
+
+  }
+
+  
+  handleMenteeButton = (event) => {
+    // console.log("mentee button pressed");
+    this.props.history.push("/register");
+
+
+  }
+
+
+
   render() {
     return (
       // <div>

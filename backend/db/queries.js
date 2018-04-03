@@ -39,6 +39,27 @@ const getSingleUserById = (req, res, next) => {
     });
 };
 
+// Eddie's function to grab user bio info:
+// const updateUserBio = (req, res, next) => {
+//     let {
+//         bio,
+//         occupation,
+//         credentials,
+//         hobbies,
+//         interests
+//     } = req.body;
+
+//     let query = 
+//         "UPDATE"
+
+// }
+
+
+/**
+ * @author Greg
+ * @function updateSingleUser Edits the profile of a user.
+ * @arg {array of objects}
+ */
 updateSingleUser = (req, res, next) => {
   // const hash = authHelpers.createHash(req.body.password);
   db
@@ -58,7 +79,6 @@ updateSingleUser = (req, res, next) => {
         gender: req.body.gender,
         imgurl: req.body.imgurl,
         id: req.user.id
-
       }
     )
     .then((data) => {
