@@ -20,7 +20,7 @@ class NavBar extends Component {
   timer = 0
   getUnreadMessages = () => {
     this.timer++;
-    console.log(this.timer)
+    //console.log(this.timer)
     axios
       .get('/users/unread_messages')
       .then(res => {
