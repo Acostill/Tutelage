@@ -63,11 +63,13 @@ class FilterSideBar extends Component {
       selectedOptions: {
         gender: "",
         age_group: "",
-        expertise: "",
-        years_in_field: ""
+        occupation: "",
+        language: ""
       },
     };
   }
+
+
 
   handleSelect = e => {
     const { selectedOptions } = this.state;
