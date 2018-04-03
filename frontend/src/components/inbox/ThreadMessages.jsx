@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SingleMessage from './SingleMessage';
 
 class Thread extends Component {
   constructor() {
@@ -49,25 +50,20 @@ class Thread extends Component {
   }
 
   componentWillMount() {
-    this.getMessages();
+    // this.getMessages();
   }
 
   render() {
-    const { user, messages, userMessage } = this.state;
-    
     const { handleTextarea, clearMessage, sendMessage } = this;
+    const { user, messages, userMessage } = this.state;
+    // const { getUnreadMessages } = this.props;
+    console.log('ThreadMessages ln 60', this)
     let thread_id = this.props.match.params.thread_id;
 
     return (
       <div>
         Thread ID: {thread_id}
-        {messages.map(message =>
-          <div className='threadmessage' >
-            <div>Date: {message.date_sent}</div>
-            <div>Sender: {message.sender}</div>
-            <div>Body: {message.body}</div>
-          </div>)
-        }
+        {messages.map(message => <SingleMessage message={message} /> )}
         <div className="background-banner orange-background">
           <div id="chat-box" className="margin-top">
             <label>
