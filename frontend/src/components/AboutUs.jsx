@@ -30,7 +30,7 @@ class AboutUs extends Component {
 
                     <p></p>
 
-                    <h2 className="missionParagraphs">Reach Out To Your Full Potential.</h2>
+                    <h2 className="missionParagraphs">Reach Out To Your Full Potential.&trade;</h2>
                 </div>
 
                 <div id="mainDiv">
@@ -79,6 +79,7 @@ class AboutUs extends Component {
                             <img src="./images/CarolinaPic2.jpeg" alt="Design Lead" />
                         </div>
                         <div className="teamMemberCaption">
+                            <p><em><strong>“Mentorship is someone who can see and guide you to the best version of yourself even when you haven’t reached your fullest potential yet.”</strong></em></p>
                             <p>Carolina had a curiosity of tech since she was a teen. She wasn’t sure what she could do with tech, but Carolina did know she wanted to help others. Through her career in social services, Carolina still felt like she was missing something. After various talks with her brothers, they helped her realize that she had the capability to help others on a larger scale. Learning all these skills to be the best web developer/problem solver she could be has been the one of the greatest and most fulfilling experiences of Carolina's life.</p>
                             <div className="personalGithubLink">
                                 <a href="https://github.com/crestrepo12">
