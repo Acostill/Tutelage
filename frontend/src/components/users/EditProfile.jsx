@@ -1,7 +1,16 @@
 import React, { Component } from "react";
-import { Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
+import Select from "./Select";
 import "../../css/EditProfile.css";
+import {
+  Image,
+  Video,
+  Transformation,
+  CloudinaryContext
+} from "cloudinary-react";
+import cloudinary from "cloudinary-core";
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: "tutelage" });
 
 class EditProfile extends Component {
   constructor(props) {
@@ -23,12 +32,43 @@ class EditProfile extends Component {
       newHobbies: this.props.user.hobbies,
       newCredentials: this.props.user.credentials,
       gender: "",
-      doneEditting: false
+      doneEditing: false
     };
+
+    this.areasOfExpertise = [
+      "Business",
+      "Design",
+      "Engineer",
+      "Development",
+      "Entrepreneur",
+      "Social Services"
+    ];
   }
 
+  makeWidget = () => {
+    window.cloudinary.openUploadWidget(
+      {
+        cloud_name: "tutelage",
+        public_id: this.props.user.username,
+        upload_preset: "wpcjhnmk",
+        tags: ["users", "tutelage"]
+      },
+      function(error, result) {
+        console.log("REZULTTT:", result[0].secure_url);
+        console.log("REZULTTT:", result);
+      }
+    );
+  };
+
+  getPhotos = () => {
+    axios.get("http://res.cloudinary.com/tutelage").then(res => {
+      console.log(res);
+      // this.setState({gallery: res.data.resources});
+    });
+  };
+
   getUser = () => {
-    let username = this.props.user.username
+    let username = this.props.user.username;
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
@@ -57,32 +97,55 @@ class EditProfile extends Component {
   };
 
   handleInputChange = e => {
-    console.log("changing values:", e.target.value)
-    console.log("original values:", this.props.user.firstname)
+    console.log("changing values:", e.target.value);
+    console.log("original values:", this.props.user.firstname);
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-  
+
   handleRadioChange = e => {
-    console.log("changing genders:", e.target.value)
-    
+    console.log("changing genders:", e.target.value);
+
     this.setState({
       [e.target.name]: e.target.value
+    });
+  };
+
+  handleSelect = e => {
+    console.log("valszz", this.props.values);
+    console.log("TARGET VALUE:", e.target.value);
+    this.setState({
+      newOccupation: e.target.value
     });
   };
 
   editProfileSubmitForm = e => {
     e.preventDefault();
     e.stopPropagation();
-    const { user } = this.props
+    const { user } = this.props;
 
     //finish defining vars from state
-    let { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL, gender, newHobbies, newCredentials } = this.state;
-    console.log("STATE IN EDITPROOOOFILEE", this.state)
+    let {
+      newUserName,
+      newFirstName,
+      newLastName,
+      newEmail,
+      newIsmentor,
+      newAge,
+      newBio,
+      newOccupation,
+      newZipcode,
+      newGender,
+      newImgURL,
+      gender,
+      newHobbies,
+      newCredentials
+    } = this.state;
+    console.log("STATE IN EDITPROOOOFILEE", this.state);
 
     axios
-      .patch('/users/edit', {
+      .patch("/users/edit", {
         username: newUserName,
         firstname: newFirstName,
         lastname: newLastName,
@@ -99,48 +162,94 @@ class EditProfile extends Component {
       })
       .then(res => {
         this.setState({
-          message: 'User Profile updated!'
-        })
+          message: "User Profile updated!"
+        });
       })
       .catch(e => {
-        console.log(e)
+        console.log(e);
         this.setState({
-          message: 'Error updating profile'
-        })
-      })
-  }
+          message: "Error updating profile"
+        });
+      });
+  };
+
   fireRedirect = () => {
-    const {doneEditting} = this.state;
+    const { doneEditing } = this.state;
     setTimeout(() => {
       this.setState({
-        doneEditting: !this.state.doneEditting
-      })
-    },100)
-  }
+        doneEditing: !this.state.doneEditing
+      });
+    }, 10);
+  };
+
   componentDidMount() {
     this.getUser();
+    this.getPhotos();
   }
 
   render() {
-    const { clearMessage, handleTextArea, handleInputChange, handleRadioChange, editProfileSubmitForm, fireRedirect } = this;
-    const { userMessage, newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, occupation, newZipcode, newGender, newImgURL, hobbies, credentials, doneEditting } = this.state;
-    console.log("the state here in edit:", this.state)
-    const { user } = this.props
-    console.log("props in the render:", this.props)
+    const {
+      clearMessage,
+      handleTextArea,
+      handleInputChange,
+      handleRadioChange,
+      handleSelect,
+      editProfileSubmitForm,
+      fireRedirect,
+      areasOfExpertise,
+      makeWidget
+    } = this;
+    const {
+      userMessage,
+      newUserName,
+      newFirstName,
+      newLastName,
+      newEmail,
+      newIsmentor,
+      newAge,
+      newBio,
+      occupation,
+      newZipcode,
+      newGender,
+      newImgURL,
+      hobbies,
+      credentials,
+      doneEditing
+    } = this.state;
+    // console.log("the state here in edit PROFILE IS:", this.state);
+    const { user } = this.props;
     let Interests = "";
 
-    if (doneEditting) {
+    if (doneEditing) {
+      window.location.reload();
       return <Redirect to={`/users/${user.username}`} />;
     }
     return (
-
       <div id="user-profile" className="margin">
         <form onSubmit={editProfileSubmitForm} id="input-container">
           <div className="background-banner">
-
             <div id="user-banner">
               <div className="image-crop margin">
-                <img src={`../${user.imgurl}`} alt="profile picture" className="img" />
+                <button id="upload_widget_opener" onClick={makeWidget}>
+                  <Image
+                    cloudName="tutelage"
+                    publicId={user.username}
+                    width="300"
+                    // crop="scale"
+                  >
+                    {/* <Transformation
+                      width="900"
+                      height="900"
+                      background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black"
+                      crop="pad"
+                    /> */}
+                  </Image>
+                </button>
+                {/* <img
+                  src={`../${user.imgurl}`}
+                  alt="profile picture"
+                  className="img"
+                /> */}
               </div>
               <div id="user-basic-info">
                 <h1 className="user-header">
@@ -163,13 +272,13 @@ class EditProfile extends Component {
                 <h3> Gender: {user.gender} </h3>
                 <h3> Zipcode: {user.zipcode} </h3>
                 <h3> Occupation: {user.occupation} </h3>
-                <input
+                {/* <input
                   type="text"
                   name="imgURL"
                   placeholder="Link of Image"
                   value={newImgURL}
                   onChange={handleInputChange}
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -184,43 +293,50 @@ class EditProfile extends Component {
                 value={newZipcode}
                 onChange={handleInputChange}
               />
-              <div> Gender: {user.gender}
-                < br />
+              <div>
+                {" "}
+                Gender: {user.gender}
+                <br />
                 <input
                   type="radio"
                   name="gender"
                   value="Male"
                   onChange={handleRadioChange}
-                />
-                {" "}Male {" "}
+                />{" "}
+                Male{" "}
                 <input
                   type="radio"
                   name="gender"
                   value="Female"
                   onChange={handleRadioChange}
-                />
-
-                {" "}Female </div>
+                />{" "}
+                Female{" "}
+              </div>
               <div> Occupation: {user.occupation} </div>
-              <input
+              <Select
+                values={areasOfExpertise}
+                selectedValue={occupation}
+                handleSelect={handleSelect}
+              />
+              {/* <input
                 type="text"
                 placeholder="Occupation"
                 name="newOccupation"
                 value={occupation}
                 onChange={handleInputChange}
-              />
+              /> */}
             </div>
-            <div className="margin-top">
-              Interests: {Interests} </div>
-
-              Hobbies: {user.hobbies}<input
+            <div className="margin-top">Interests: {Interests} </div>
+            Hobbies: {user.hobbies}
+            <input
               type="text"
               placeholder="hobbies"
               name="newHobbies"
               value={hobbies}
               onChange={handleInputChange}
             />
-              Credentials: {user.credentials}<input
+            Credentials: {user.credentials}
+            <input
               type="text"
               placeholder="credentials"
               name="newCredentials"
@@ -236,8 +352,7 @@ class EditProfile extends Component {
               onChange={handleInputChange}
             />
           </div>
-          <input type="submit" onClick={fireRedirect}/>
-
+          <input type="submit" onClick={fireRedirect} />
         </form>
         <div className="background-banner orange-background">
           <div id="chat-box" className="margin-top">
@@ -263,16 +378,12 @@ class EditProfile extends Component {
                 {" "}
                 Clear{" "}
               </button>
-
             </div>
-
           </div>
         </div>
-
       </div>
     );
   }
 }
 
 export default EditProfile;
-
