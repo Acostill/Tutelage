@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.5",
+    "@fortawesome/fontawesome-free-solid": "^5.0.9",
+    "@fortawesome/react-fontawesome": "0.0.18",
     "ajv": "^6.3.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
+    "browser-history": "^1.0.1",
     "cloudinary-core": "^2.5.0",
     "cloudinary-react": "^1.0.6",
     "google-maps-react": "^1.1.6",

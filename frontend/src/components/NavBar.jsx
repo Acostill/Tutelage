@@ -6,15 +6,31 @@ import Home from './Home';
 // import Profile from './Profile';
 import SearchUsers from './users/SearchUsers';
 import { Redirect } from 'react-router';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 
 class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      signedIn: true,
-      user: {}
-    };
+      unreadMessages: [],
+      loginMount: true
+    }
+  }
+  timer = 0
+  getUnreadMessages = () => {
+    this.timer++;
+    console.log(this.timer)
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
+        this.setState({
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
+        console.log("Error caught", err)
+      })
   }
 
   onLoadNav = () => {
@@ -23,11 +39,12 @@ class NavBar extends Component {
         <Link id="app-name" to="/"> Tutelage </Link>
         {" "}
         <div className="nav-right">
-          <Link to="/login"  > Log In </Link>
+        Loading...
+          {/* <Link to="/login"  > Log In </Link>
           {" "}
           <Link to="/register" > Register </Link>
           {" "}
-          <Link to="/aboutus" > About Us </Link>
+          <Link to="/aboutus" > About Us </Link> */}
         </div>
       </nav>
     )
@@ -41,9 +58,7 @@ class NavBar extends Component {
         {" "}
         <div className="nav-right">
         <Link to="/login"  > Log In </Link>
-        {" "}
-        {/* <Link to="/register" > Register </Link> */}
-        {" "}
+
         <Link to="/aboutus" > About Us </Link>
         </div>
       </nav>
@@ -53,19 +68,47 @@ class NavBar extends Component {
   }
 
   loggedInNav = () => {
-    const { user, logOut } = this.props
+    const { unreadMessages, loginMount } = this.state;
+    const { user, logOut } = this.props;
+    // const newMessages = setTimeout(() => {
+    //   this.timer++;
+    //   console.log(this.timer)
+    //   axios
+    //     .get('/users/unread_messages')
+    //     .then(res => {
+    //       this.setState({
+    //         unreadMessages: res.data.unreadMessages
+    //       })
+    //     })
+    //     .catch(err => {
+    //       console.log("Error caught", err)
+    //     })
+    
+    // }, 150000);
+    // const clearNewMessages = () => {
+    //   clearTimeout(newMessages);
+    //   // this.timer=0;
+    // }
+    // clearNewMessages();
+    if (loginMount) this.getUnreadMessages();
     return (
       <nav id='navigation-bar'>
       <Link id="app-name" to="/"> Tutelage </Link>
       {" "}
       <div className="nav-right-loggedin">
-        <Link to="/search"  > Search </Link>
-        {" "}
-        <Link to="/inbox"  > Messages </Link>
-        {" "}
-        <Link to={`/users/${user.username}`} > Profile </Link>
-        {" "}
-        {" "}
+        <Link to="/search"  >
+        <FontAwesomeIcon icon={["fas", "search"]} size="2x" />
+        </Link>
+
+        <Link to="/inbox" className="inbox-link" > 
+        <FontAwesomeIcon icon={["fas", "envelope"]} size="2x" />
+         { unreadMessages.length ? <div className="red">{ unreadMessages.length } </div> : ''} 
+         </Link>
+      
+        <Link to={`/users/${user.username}`} > 
+        <FontAwesomeIcon icon={["fas", "user-circle"]} size="2x" />
+        </Link>
+        
         <Link to={`/survey`} > Tutelage Survey </Link>
         {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>

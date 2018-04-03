@@ -9,6 +9,10 @@
     justify-content: center;
 }
 
+#confetti-container {
+    padding-top: 50px;
+}
+
 #register-container,
 #is-member-link {
     display: flex;
