@@ -17,14 +17,16 @@
 .sq2 {
     display: flex;
     justify-content: center;
-    background-color: rgb(253, 143, 38);
+    background-color: #f46524;
     width: 100%;
     height: 250px;
     margin-bottom: -250px;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
 }
 
 #user-banner {
+    border: 2px solid #f46524;
+    border-radius: 20px 20px;
     display: flex;
     justify-content: space-around;
 }
@@ -90,6 +92,10 @@
     justify-content: center;
 }
 
+#message-box {
+    border: 4px solid #f46524;
+}
+
 #message-box,
 #message-box::placeholder {
     font-size: 16px;
@@ -106,7 +112,8 @@
 .button-size {
     width: 230px;
     height: 45px;
-    font-size: 16px;
+    font-size: 18px;
+    border-radius: 30px;
     border: none;
     color: white;
     text-align: center;
@@ -131,4 +138,9 @@
 .clear:hover {
     background-color: #fff;
     color: rgb(53, 53, 53);
+}
+
+.center-chatbox {
+    display: flex;
+    justify-content: center;
 }

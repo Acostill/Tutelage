@@ -16,7 +16,8 @@ class Profile extends Component {
     super(props);
     this.state = {
       profileUser: {},
-      userMessage: ""
+      userMessage: "",
+      showChatBox: false
     };
   }
 
@@ -81,9 +82,16 @@ class Profile extends Component {
     }
   };
 
+  showChatBoxHandle = () => {
+    const {showChatBox} = this.state;
+    this.setState({
+      showChatBox: !showChatBox
+    });
+  }
+
   render() {
-    const { clearMessage, handleTextarea, checkReload } = this;
-    const { profileUser, userMessage } = this.state;
+    const { clearMessage, handleTextarea, checkReload, showChatBoxHandle } = this;
+    const { profileUser, userMessage, showChatBox } = this.state;
     const { user } = this.props;
     let currentURL = this.props.match.url
     console.log("THIS.PROPS...SMH", this.props)
@@ -99,12 +107,12 @@ class Profile extends Component {
           <div id="user-banner">
             { 
             <div className="image-crop margin">
-              <Link to = {`/users/${profileUser.username}/edit`} refresh = "true">
+              <Link to = {`/users/${profileUser.username}/edit`} refresh = "true"> 
                 <img
                   src={profileUser.imgurl}
                   alt="profile picture"
                   className="img-profile"
-                />
+                /> 
               </Link>
             </div>
             }
@@ -116,29 +124,27 @@ class Profile extends Component {
                 </strong>
               </h1>
               <h3> {profileUser.gender} </h3>
+              <h3> gender: {profileUser.gender} </h3>
               <h3> zipcode: {profileUser.zipcode} </h3>
               <h3> Occupation: {profileUser.occupation} </h3>
-              <div className="margin-top"> Bio: {profileUser.bio} </div>
               {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
             </div>
           </div>
         </div>
 
         <div className="user-info-content">
-          <div id="quick-user-info" className="margin-top">
-            <div> location: {profileUser.zipcode} </div>
-            <div> gender: {profileUser.gender} </div>
-            <div> occupation: {profileUser.occupation} </div>
-          </div>
-          <div className="margin-top">Common Interests: {commonInterests}</div>
+          <div id="quick-user-info" >
+          <div className="margin-top">Interests: {profileUser.commonInterests}</div>
           <div className="margin-top"> Hobbies: {profileUser.hobbies} </div>
+          <div className="margin-top"> Bio: {profileUser.bio}</div>
+          </div>
           <div className="margin-top">
-            {" "}
             Credentials: {profileUser.credentials}{" "}
           </div>
         </div>
-
-        <div className="center">
+        {/* Chat box will display once they click Let's talk */}
+        { showChatBox ? 
+        (<div className="center">
           <div id="chat-box" className="margin-top">
             <label>
               <h2> Let's connect: </h2>
@@ -164,7 +170,15 @@ class Profile extends Component {
               </button>
             </div>
           </div>
-        </div>
+        </div>) : (
+          <div className="center-chatbox">
+            <button 
+            className="submit button-size"
+            onClick={showChatBoxHandle}
+            > Let's Talk!
+            </button>
+          </div>
+        )}
       </div>
     );
   }

@@ -91,14 +91,14 @@ class FilterSideBar extends Component {
     return (
       <div className="filter-sidebar">
         <div className="custom-filter">
-          <h2> Tutelage Custom Filter: </h2>
+          <h2 className="custom-filter-title" > Custom Filter: </h2>
           {this.props.currentUser.ismentor ? (
             <button
               id="custom-search-btn"
               className="search-btn"
               onClick={this.props.handleSubmit}
             >
-             Find Your Tutelage Mentee
+             Mentee Match
             </button>
           ) : (
             <button
@@ -106,7 +106,7 @@ class FilterSideBar extends Component {
               className="search-btn"
               onClick={this.props.handleSubmit}
             >
-              Find Your Tutelage Mentor
+              Mentor Match
             </button>
           )}
         </div>

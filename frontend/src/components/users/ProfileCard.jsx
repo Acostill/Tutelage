@@ -18,10 +18,10 @@ const ProfileCard = ({ user }) => {
             <img src={ imgurl ? imgurl : 'https://i.imgur.com/pZ9jX8v.png'} alt="user_pic" className="img-profile-card" />{" "}
           </div>
           <div className="user-info">
-            <h2 id="username">{username}</h2>{" "}
-            <h3 id="firstname-lastname">
+            <p id="username">{username}</p>{" "}
+            <p id="firstname-lastname">
               {firstname} {lastname}
-            </h3>
+            </p>
             <p id="location"> {location} </p>
           </div>
         </div>
