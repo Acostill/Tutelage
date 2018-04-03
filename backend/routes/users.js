@@ -22,7 +22,7 @@ router.post("/getUserById", loginRequired, db.getSingleUserById); /**Greg */
 
 /******************PATCH ROUTES********************* */
 router.patch("/edit", loginRequired, db.updateSingleUser); /** Greg */
-router.patch("/confirm_read", loginRequired, db.updateMessageRead)  /** Gerson */
+router.patch("/confirm_read", loginRequired, db.updateMessageRead) /** Gerson */
 
 /******************GET ROUTES********************* */
 // router.get("/survey", db.getAllSurveyQuestions);
@@ -31,7 +31,7 @@ router.get("/logout", loginRequired, db.logoutuser); /** Greg */
 router.get("/survey", db.getAllSurveyQuestionsAndAnswers); /** Greg */
 router.get("/userinfo", loginRequired, db.getSingleUser) /** Gerson */
 router.get("/getuser/:username", db.getUserByUsername); /** Gerson */
-router.get("/unread_messages", loginRequired, db.getUnreadMessages) //** Gerson */
+// router.get("/unread_messages", loginRequired, db.getUnreadMessages) //** Gerson */
 router.get("/search", db.getAllUsers); /** Carolina */
 router.get("/all_zipcodes", db.getAllLocations); /** Greg */
 router.get("/userthreads", loginRequired, db.getUserThreads); /** Gerson */

@@ -99,7 +99,7 @@ class Profile extends Component {
           <div id="user-banner">
             { 
             <div className="image-crop margin">
-              <Link to = {`/users/${profileUser.username}/edit`}>
+              <Link to = {`/users/${profileUser.username}/edit`} refresh = "true">
                 <img
                   src={profileUser.imgurl}
                   alt="profile picture"

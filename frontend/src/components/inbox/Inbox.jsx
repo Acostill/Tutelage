@@ -26,20 +26,20 @@ class Inbox extends Component {
       })
   }
 
-  getUnreadMessages = () => {
-    axios
-      .get('/users/unread_messages')
-      .then(res => {
-        this.setState({
-          unreadMessages: res.data.unreadMessages
-        })
-      })
-      .catch(err => {
-        this.setState({
-          error: `Error Caught: ${err}`
-        })
-      })
-  }
+  // getUnreadMessages = () => {
+  //   axios
+  //     .get('/users/unread_messages')
+  //     .then(res => {
+  //       this.setState({
+  //         unreadMessages: res.data.unreadMessages
+  //       })
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         error: `Error Caught: ${err}`
+  //       })
+  //     })
+  // }
 
   renderInbox = () => {
     const { userThreads, unreadMessages } = this.state;
@@ -71,8 +71,8 @@ class Inbox extends Component {
   }
 
   componentDidMount() {
-    this.getUserThreads();
-    this.getUnreadMessages();
+    // this.getUserThreads();
+    // this.getUnreadMessages();
   }
   render() {
     const { renderInbox, getUnreadMessages } = this;

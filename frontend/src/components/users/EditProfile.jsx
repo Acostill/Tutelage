@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect} from "react-router-dom";
 import axios from "axios";
 import "../../css/EditProfile.css";
 
@@ -19,8 +20,10 @@ class EditProfile extends Component {
       newZipcode: this.props.user.zipcode,
       newGender: this.props.user.gender,
       newImgURL: this.props.user.imgurl,
-      Male: "",
-      Female: ""
+      newHobbies: this.props.user.hobbies,
+      newCredentials: this.props.user.credentials,
+      gender: "",
+      doneEditting: false
     };
   }
 
@@ -75,7 +78,7 @@ class EditProfile extends Component {
     const { user } = this.props
 
     //finish defining vars from state
-    let { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL, Male, Female } = this.state;
+    let { newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL, gender, newHobbies, newCredentials } = this.state;
     console.log("STATE IN EDITPROOOOFILEE", this.state)
 
     axios
@@ -89,8 +92,10 @@ class EditProfile extends Component {
         bio: newBio,
         occupation: newOccupation,
         zipcode: newZipcode,
-        gender: Male ? Male : Female,
-        imgurl: newImgURL
+        gender: gender === "Male" ? "Male" : "Female",
+        imgurl: newImgURL,
+        hobbies: newHobbies,
+        credentials: newCredentials
       })
       .then(res => {
         this.setState({
@@ -104,20 +109,29 @@ class EditProfile extends Component {
         })
       })
   }
-
+  fireRedirect = () => {
+    const {doneEditting} = this.state;
+    setTimeout(() => {
+      this.setState({
+        doneEditting: !this.state.doneEditting
+      })
+    },100)
+  }
   componentDidMount() {
     this.getUser();
   }
 
   render() {
-    const { clearMessage, handleTextArea, handleInputChange, handleRadioChange, editProfileSubmitForm } = this;
-    const { userMessage, newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, newOccupation, newZipcode, newGender, newImgURL } = this.state;
+    const { clearMessage, handleTextArea, handleInputChange, handleRadioChange, editProfileSubmitForm, fireRedirect } = this;
+    const { userMessage, newUserName, newFirstName, newLastName, newEmail, newIsmentor, newAge, newBio, occupation, newZipcode, newGender, newImgURL, hobbies, credentials, doneEditting } = this.state;
     console.log("the state here in edit:", this.state)
     const { user } = this.props
     console.log("props in the render:", this.props)
-
     let Interests = "";
 
+    if (doneEditting) {
+      return <Redirect to={`/users/${user.username}`} />;
+    }
     return (
 
       <div id="user-profile" className="margin">
@@ -174,14 +188,14 @@ class EditProfile extends Component {
                 < br />
                 <input
                   type="radio"
-                  name="Male"
+                  name="gender"
                   value="Male"
                   onChange={handleRadioChange}
                 />
                 {" "}Male {" "}
                 <input
                   type="radio"
-                  name="Female"
+                  name="gender"
                   value="Female"
                   onChange={handleRadioChange}
                 />
@@ -192,12 +206,27 @@ class EditProfile extends Component {
                 type="text"
                 placeholder="Occupation"
                 name="newOccupation"
-                value={newOccupation}
+                value={occupation}
                 onChange={handleInputChange}
               />
             </div>
             <div className="margin-top">
               Interests: {Interests} </div>
+
+              Hobbies: {user.hobbies}<input
+              type="text"
+              placeholder="hobbies"
+              name="newHobbies"
+              value={hobbies}
+              onChange={handleInputChange}
+            />
+              Credentials: {user.credentials}<input
+              type="text"
+              placeholder="credentials"
+              name="newCredentials"
+              value={credentials}
+              onChange={handleInputChange}
+            />
             <div className="margin-top"> Bio: {user.bio} </div>
             <input
               type="text"
@@ -207,7 +236,7 @@ class EditProfile extends Component {
               onChange={handleInputChange}
             />
           </div>
-          <input type="submit" />
+          <input type="submit" onClick={fireRedirect}/>
 
         </form>
         <div className="background-banner orange-background">
