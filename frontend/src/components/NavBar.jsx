@@ -13,24 +13,7 @@ class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      unreadMessages: [],
-      loginMount: true
     }
-  }
-  timer = 0
-  getUnreadMessages = () => {
-    this.timer++;
-    console.log(this.timer)
-    axios
-      .get('/users/unread_messages')
-      .then(res => {
-        this.setState({
-          unreadMessages: res.data.unreadMessages
-        })
-      })
-      .catch(err => {
-        console.log("Error caught", err)
-      })
   }
 
   onLoadNav = () => {
@@ -40,11 +23,6 @@ class NavBar extends Component {
         {" "}
         <div className="nav-right">
         Loading...
-          {/* <Link to="/login"  > Log In </Link>
-          {" "}
-          <Link to="/register" > Register </Link>
-          {" "}
-          <Link to="/aboutus" > About Us </Link> */}
         </div>
       </nav>
     )
@@ -68,16 +46,9 @@ class NavBar extends Component {
   }
 
   loggedInNav = () => {
-    const { unreadMessages, loginMount } = this.state;
-    const { user, logOut } = this.props;
-    let messageInterval = setInterval(this.getUnreadMessages, 15000);
-    clearInterval(messageInterval);
-    if (loginMount) {
-      this.getUnreadMessages();
-      this.setState({
-        loginMount: false
-      })
-    }
+    const { user, logOut, unreadMessages } = this.props;
+    console.log({unreadMessages});
+
     return (
       <nav id='navigation-bar'>
       <Link id="app-name" to="/"> Tutelage </Link>
@@ -102,6 +73,19 @@ class NavBar extends Component {
       </div>
     </nav>
     ) 
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { getUnreadMessages } = this.props;
+
+    if (nextProps.signedIn && !this.props.signedIn) {
+      getUnreadMessages();
+     this.interval = setInterval(getUnreadMessages, 15000);  
+    }
+
+    if (!nextProps.signedIn && this.props.signedIn) {
+      clearInterval(this.interval);
+    }
   }
 
   componentDidMount() {
