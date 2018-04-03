@@ -29,7 +29,7 @@ class NavBar extends Component {
         })
       })
       .catch(err => {
-        console.log("Error caught", err)
+        // console.log("Error caught", err)
       })
   }
 

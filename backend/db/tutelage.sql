@@ -16,7 +16,7 @@ CREATE TABLE users
   occupation VARCHAR,
 	zipcode VARCHAR,
   gender VARCHAR,
-	imgurl VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png',
+	imgurl VARCHAR DEFAULT 'http://res.cloudinary.com/tutelage/image/upload/v1522734450/defaultpic.png',
   hobbies VARCHAR,
   credentials VARCHAR
 );
@@ -107,19 +107,19 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('carolina1', 'Carolina', 'Restrepo', NULL, '../images/CarolinaPic2.jpeg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
+  ('carolina1', 'Carolina', 'Restrepo', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/CarolinaPic2.jpg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('eddie1', 'Eddie', 'Harmon', NULL, '../images/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
+  ('eddie1', 'Eddie', 'Harmon', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('nick1', 'Nicholas', 'Chavez', NULL, '../images/NickCropped.jpg', 'nick@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('nick1', 'Nicholas', 'Chavez', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/NickCropped.jpg', 'nick@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('gerson1', 'Gerson', 'Castillo', NULL, '../images/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
+  ('gerson1', 'Gerson', 'Castillo', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
@@ -127,16 +127,28 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('jcrest', 'Jason', 'Crest', NULL, 'https://upload.wikimedia.org/wikipedia/commons/c/cd/MFettes-headshot.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('jcrest', 'Jason', 'Crest', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/jcrestCropped.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
 values
-  ('adelle1', 'Adelle', 'Anderson', '90210', '../images/adelleprofilepic.jpeg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
-
-
-
-
-
+  ('adelle1', 'Adelle', 'Anderson', '90210', 'http://res.cloudinary.com/tutelage/image/upload/v1522734135/adelleprofilepic.jpg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  
+INSERT INTO questions
+  (the_question, answer_1, answer_2, answer_3, answer_4)
+values
+  ('Do you like Math?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Math');
+INSERT INTO questions
+  (the_question, answer_1, answer_2, answer_3, answer_4)
+values
+  ('Do you like Reading?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Reading');
+INSERT INTO questions
+  (the_question, answer_1, answer_2, answer_3, answer_4)
+values
+  ('Do you like to exercise?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Exercising');
+INSERT INTO questions
+  (the_question, answer_1, answer_2, answer_3, answer_4)
+values
+  ('Are you a psychopathic murderer lacking remorse and empathy?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Evility');
 INSERT INTO questions
   (the_question, answer_1, answer_2, answer_3, answer_4)
 values

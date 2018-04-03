@@ -36,7 +36,7 @@ class FilterSideBar extends Component {
           "Engineer",
           "Development",
           "Entrepreneur",
-          "Social Service"
+          "Social Services"
         ]
       },
       {
