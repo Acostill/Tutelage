@@ -80,7 +80,6 @@ updateSingleUser = (req, res, next) => {
         hobbies: req.body.hobbies,
         credentials: req.body.credentials,
         id: req.user.id
-
       }
     )
     .then((data) => {
