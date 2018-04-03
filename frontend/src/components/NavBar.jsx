@@ -70,27 +70,14 @@ class NavBar extends Component {
   loggedInNav = () => {
     const { unreadMessages, loginMount } = this.state;
     const { user, logOut } = this.props;
-    // const newMessages = setTimeout(() => {
-    //   this.timer++;
-    //   console.log(this.timer)
-    //   axios
-    //     .get('/users/unread_messages')
-    //     .then(res => {
-    //       this.setState({
-    //         unreadMessages: res.data.unreadMessages
-    //       })
-    //     })
-    //     .catch(err => {
-    //       console.log("Error caught", err)
-    //     })
-    
-    // }, 150000);
-    // const clearNewMessages = () => {
-    //   clearTimeout(newMessages);
-    //   // this.timer=0;
-    // }
-    // clearNewMessages();
-    if (loginMount) this.getUnreadMessages();
+    let messageInterval = setInterval(this.getUnreadMessages, 15000);
+    clearInterval(messageInterval);
+    if (loginMount) {
+      this.getUnreadMessages();
+      this.setState({
+        loginMount: false
+      })
+    }
     return (
       <nav id='navigation-bar'>
       <Link id="app-name" to="/"> Tutelage </Link>

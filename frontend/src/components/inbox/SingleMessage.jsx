@@ -11,7 +11,7 @@ class SingleMessage extends Component {
     axios.patch('/users/confirm_read', {messageId: message.id});
   }
   componentDidMount() {
-    // this.confirmRead();
+    this.confirmRead();
     // this.props.getUnreadMessages();
   }
   render () {
