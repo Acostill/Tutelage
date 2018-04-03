@@ -65,90 +65,77 @@ CREATE TABLE messages(
   Hash: $2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS 
 */
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test0', 'William', 'Wallace', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522771900/WilliamWallace.jpg', 'me@u.we0', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('test0', 'William', 'Wallace', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522771900/WilliamWallace.jpg', 'me@u.we0', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '57', 'male');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test1', 'Claudia', 'Baker', '91932', 'http://res.cloudinary.com/tutelage/image/upload/v1522772709/ClaudiaBaker.jpg', 'me@u.we1', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
+  ('test1', 'Claudia', 'Baker', '91932', 'http://res.cloudinary.com/tutelage/image/upload/v1522772709/ClaudiaBaker.jpg', 'me@u.we1', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '49', 'female');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test2', 'Joshua', 'Henderson', '10001', 'http://res.cloudinary.com/tutelage/image/upload/v1522772822/JoshuaHenderson.jpg', 'me@u.we2', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
+  ('test2', 'Joshua', 'Henderson', '10001', 'http://res.cloudinary.com/tutelage/image/upload/v1522772822/JoshuaHenderson.jpg', 'me@u.we2', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '43', 'male');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test3', 'Angie', 'Perkins', '11219', 'http://res.cloudinary.com/tutelage/image/upload/v1522772990/AngiePerkins.jpg', 'me@u.we3', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
+  ('test3', 'Angie', 'Perkins', '11219', 'http://res.cloudinary.com/tutelage/image/upload/v1522772990/AngiePerkins.jpg', 'me@u.we3', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'female');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test4', 'Courtney', 'Mayfield', '10023', 'http://res.cloudinary.com/tutelage/image/upload/v1522771547/CourtneyMayfield.jpg', 'me@u.we4', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
+  ('test4', 'Courtney', 'Mayfield', '10023', 'http://res.cloudinary.com/tutelage/image/upload/v1522771547/CourtneyMayfield.jpg', 'me@u.we4', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '30', 'male');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test5', 'Ashley', 'Thompson', '10002', 'http://res.cloudinary.com/tutelage/image/upload/v1522772488/AshleyThompson.jpg', 'me@u.we5', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('test5', 'Ashley', 'Thompson', '10002', 'http://res.cloudinary.com/tutelage/image/upload/v1522772488/AshleyThompson.jpg', 'me@u.we5', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '31', 'female');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test6', 'John', 'Baker', '10028', 'http://res.cloudinary.com/tutelage/image/upload/v1522773173/JohnBaker.jpg', 'me@u.we6', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('test6', 'John', 'Baker', '10028', 'http://res.cloudinary.com/tutelage/image/upload/v1522773173/JohnBaker.jpg', 'me@u.we6', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '62', 'male');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test7', 'Voletta', 'Greene', '10456', 'http://res.cloudinary.com/tutelage/image/upload/v1522771748/VolettaGreene.jpg', 'me@u.we7', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('test7', 'Voletta', 'Greene', '10456', 'http://res.cloudinary.com/tutelage/image/upload/v1522771748/VolettaGreene.jpg', 'me@u.we7', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '26', 'female');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
   ('test8', 'Steven', 'McDougal', '10192', 'http://res.cloudinary.com/tutelage/image/upload/v1522773579/StevenMcDougal.jpg', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('test9', 'Jill', 'Watson', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522773737/JillWatson.jpg', 'me@u.we9', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('test9', 'Jill', 'Watson', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522773737/JillWatson.jpg', 'me@u.we9', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '48', 'female');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
   ('carolina1', 'Carolina', 'Restrepo', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/CarolinaPic2.jpg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
   ('eddie1', 'Eddie', 'Harmon', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
   ('nick1', 'Nicholas', 'Chavez', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/NickCropped.jpg', 'nick@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
   ('gerson1', 'Gerson', 'Castillo', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
   ('greg1', 'Gregory', 'Davis', NULL, '../images/gregcropped.jpg', 'greg@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('jcrest', 'Jason', 'Crest', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/jcrestCropped.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('jcrest', 'Jason', 'Crest', NULL, 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/jcrestCropped.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '44', 'male');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender)
 values
-  ('adelle1', 'Adelle', 'Anderson', '90210', 'http://res.cloudinary.com/tutelage/image/upload/v1522734135/adelleprofilepic.jpg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false');
+  ('adelle1', 'Adelle', 'Anderson', '90210', 'http://res.cloudinary.com/tutelage/image/upload/v1522734135/adelleprofilepic.jpg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'female');
   
-INSERT INTO questions
-  (the_question, answer_1, answer_2, answer_3, answer_4)
-values
-  ('Do you like Math?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Math');
-INSERT INTO questions
-  (the_question, answer_1, answer_2, answer_3, answer_4)
-values
-  ('Do you like Reading?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Reading');
-INSERT INTO questions
-  (the_question, answer_1, answer_2, answer_3, answer_4)
-values
-  ('Do you like to exercise?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Exercising');
-INSERT INTO questions
-  (the_question, answer_1, answer_2, answer_3, answer_4)
-values
-  ('Are you a psychopathic murderer lacking remorse and empathy?', 'a little bit', 'Im learning to like it', 'yes I like it', 'I love love Evility');
+
+
+
 INSERT INTO questions
   (the_question, answer_1, answer_2, answer_3, answer_4)
 values

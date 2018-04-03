@@ -12,7 +12,6 @@ class Inbox extends Component {
     this.state = {
       userThreads: [],
       username: "",
-      unreadMessages: []
     }
   }
 
@@ -26,23 +25,9 @@ class Inbox extends Component {
       })
   }
 
-  getUnreadMessages = () => {
-    axios
-      .get('/users/unread_messages')
-      .then(res => {
-        this.setState({
-          unreadMessages: res.data.unreadMessages
-        })
-      })
-      .catch(err => {
-        this.setState({
-          error: `Error Caught: ${err}`
-        })
-      })
-  }
-
   renderInbox = () => {
-    const { userThreads, unreadMessages } = this.state;
+    const { userThreads } = this.state;
+    const { unreadMessages } = this.props;
     const unreadThreadIds = unreadMessages.map(message => message.thread_id);
     const styleRead = {color: 'black', border: '1px solid black', backgroundColor: 'white'}
     const styleUnread = {color: 'black', border: '1px solid black', backgroundColor: 'pink'}
@@ -70,19 +55,26 @@ class Inbox extends Component {
     )
   }
 
+  renderThreadMessages = (props) => {
+    const { getUnreadMessages } = this.props;
+    return <ThreadMessages thread_id={props.match.params.thread_id} getUnreadMessages={getUnreadMessages} />
+  }
+
   componentDidMount() {
-    this.getUserThreads();
-    this.getUnreadMessages();
+    const { getUserThreads } = this;
+    const { getUnreadMessages } = this.props
+    getUserThreads();
+    getUnreadMessages();
   }
   render() {
-    const { renderInbox, getUnreadMessages } = this;
+    const { renderInbox, getUnreadMessages, renderThreadMessages } = this;
     const { userThreads, threadClicked } = this.state;
 
     return (
       <div>
         <Switch>
           <Route exact path='/inbox' render={renderInbox} />
-          <Route path='/inbox/:thread_id' component={ThreadMessages}/>
+          <Route path='/inbox/:thread_id' render={renderThreadMessages}/>
         </Switch>
       </div>
     )
