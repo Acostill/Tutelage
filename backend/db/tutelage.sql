@@ -16,7 +16,9 @@ CREATE TABLE users
   occupation VARCHAR,
 	zipcode VARCHAR,
   gender VARCHAR,
-	imgurl VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png'
+	imgurl VARCHAR DEFAULT 'https://i.imgur.com/pZ9jX8v.png',
+  hobbies VARCHAR,
+  credentials VARCHAR
 );
 
 CREATE TABLE interests (

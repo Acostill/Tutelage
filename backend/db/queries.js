@@ -64,8 +64,7 @@ updateSingleUser = (req, res, next) => {
   // const hash = authHelpers.createHash(req.body.password);
   db
     .none(
-      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, age = ${age}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl} WHERE id = ${id}",
-      {
+      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, age = ${age}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl}, hobbies = ${hobbies}, credentials = ${credentials} WHERE id = ${id}", {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -78,7 +77,10 @@ updateSingleUser = (req, res, next) => {
         zipcode: req.body.zipcode,
         gender: req.body.gender,
         imgurl: req.body.imgurl,
+        hobbies: req.body.hobbies,
+        credentials: req.body.credentials,
         id: req.user.id
+
       }
     )
     .then((data) => {
@@ -234,7 +236,7 @@ const createUser = (req, res, next) => {
   console.log("createuser hash: ", hash);
   db
     .none(
-      "INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, age, password_digest, ismentor) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${age}, ${bio}, ${occupation}, ${password}, ${gender}, ${ismentor})", {
+      "INSERT INTO users (username, firstname, lastname, zipcode, imgurl, email, age, password_digest, ismentor, hobbies, credentials) VALUES (${username}, ${firstname}, ${lastname}, ${zipcode}, ${imgURL}, ${email}, ${age}, ${bio}, ${occupation}, ${password}, ${gender}, ${ismentor}, ${hobbies}, ${credentials})", {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -246,6 +248,8 @@ const createUser = (req, res, next) => {
         occupation: req.body.occupation,
         zipcode: req.body.zipcode,
         gender: req.body.gender,
+        hobbies: req.body.hobbies,
+        credentials: req.body.credentials,
         imgurl: req.body.imgurl,
       }
     )
@@ -293,7 +297,7 @@ function registerUser(req, res, next) {
 function getUserByUsername(req, res, next) {
   db
     .one(
-      "SELECT id, username, firstname, lastname, zipcode, imgURL, email, ismentor FROM users WHERE LOWER(username) = LOWER(${username})",
+      "SELECT * FROM users WHERE LOWER(username) = LOWER(${username})",
       req.params
     )
     .then(function (data) {

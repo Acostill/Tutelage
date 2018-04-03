@@ -22,7 +22,7 @@ router.post("/getUserById", loginRequired, db.getSingleUserById); /**Greg */
 
 /******************PATCH ROUTES********************* */
 router.patch("/edit", loginRequired, db.updateSingleUser); /** Greg */
-router.patch("/confirm_read", loginRequired, db.updateMessageRead)  /** Gerson */
+router.patch("/confirm_read", loginRequired, db.updateMessageRead) /** Gerson */
 
 /******************GET ROUTES********************* */
 // router.get("/survey", db.getAllSurveyQuestions);

@@ -50,7 +50,7 @@ class Thread extends Component {
   }
 
   componentWillMount() {
-    this.getMessages();
+    // this.getMessages();
   }
 
   render() {
