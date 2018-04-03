@@ -109,7 +109,7 @@ INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
 values
   ('carolina1', 'Carolina', 'Restrepo', '07110', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/CarolinaPic2.jpg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '26', 'Female', 'N.A.S.A. Astronaut', 'Sculpting', NULL);
-INSERT INTO users, bio
+INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
 values
   ('eddie1', 'Eddie', 'Harmon', '60628', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'Male', 'Aquamarine Palentologist', 'Filming Documentaries', NULL);

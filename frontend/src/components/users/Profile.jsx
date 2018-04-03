@@ -84,7 +84,7 @@ class Profile extends Component {
     const { clearMessage, handleTextarea, checkReload } = this;
     const { profileUser, userMessage } = this.state;
     const { user } = this.props;
-    console.log("USER HERERRR", profileUser.imgurl)
+    console.log("USER ID Here in profile jsx:", profileUser.public_id)
     let currentURL = this.props.match.url
     let commonInterests = "";
 
@@ -97,7 +97,7 @@ class Profile extends Component {
             { 
             <div className="image-crop margin">
               <Link to = {`/users/${profileUser.username}/edit`}>
-              <Image cloudName="tutelage" publicId={"v4dwjhyt6wiyzstsjeju.jpg"} /*width="300" crop="scale" */ className="img-profile"/>
+              <Image cloudName="tutelage" publicId={profileUser.public_id+".jpg"} /*width="300" crop="scale" */ className="img-profile"/>
                 {/* <img
                   src={profileUser.imgurl}
                   alt="profile picture"

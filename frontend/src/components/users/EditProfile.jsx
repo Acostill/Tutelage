@@ -17,7 +17,7 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       user: {},
-      public_id: "",
+      public_id: this.props.user.public_id,
       userMessage: "",
       newUserName: this.props.user.username,
       newFirstName: this.props.user.firstname,
@@ -50,13 +50,16 @@ class EditProfile extends Component {
     window.cloudinary.openUploadWidget(
       {
         cloud_name: "tutelage",
-        public_id: this.state.public_id,
+        // public_id: this.state.public_id,
         upload_preset: "wpcjhnmk",
         tags: ["users", "tutelage"]
       },
       (error, result) => {
-        console.log("public id REZULTTT of make widget:", result[0].public_id);
-        console.log("REZULTTT img of make widget:", result[0].url);
+        // console.log("public id REZULTTT of make widget:", result[0].public_id);
+        console.log("REZULTTT img of make widget:", result);
+        console.log("the public_ID:",result[0].public_id)
+        console.log("the url:",result[0].url)
+        
         this.setState({
           newImgURL: result[0].url,
           public_id: result[0].public_id
@@ -145,7 +148,8 @@ class EditProfile extends Component {
       newImgURL,
       gender,
       newHobbies,
-      newCredentials
+      newCredentials,
+      public_id
     } = this.state;
     console.log("STATE IN EDITPROOOOFILEE", this.state);
 
@@ -163,7 +167,8 @@ class EditProfile extends Component {
         gender: gender === "Male" ? "Male" : "Female",
         imgurl: newImgURL,
         hobbies: newHobbies,
-        credentials: newCredentials
+        credentials: newCredentials,
+        public_id: public_id
       })
       .then(res => {
         this.setState({
@@ -205,6 +210,7 @@ class EditProfile extends Component {
       makeWidget
     } = this;
     const {
+      user,
       userMessage,
       newUserName,
       newFirstName,
@@ -219,11 +225,12 @@ class EditProfile extends Component {
       newImgURL,
       hobbies,
       credentials,
-      doneEditing
+      doneEditing,
+      public_id
     } = this.state;
-    console.log("user", user)
-    // console.log("the IMG here in edit PROFILE IS:", this.state.newImgURL);
-    const { user } = this.props;
+    // console.log("the publick id:", public_id, "the image URL:", newImgURL)
+    console.log("The User in Editprofile", user)
+    
     let Interests = "";
 
     if (doneEditing) {
