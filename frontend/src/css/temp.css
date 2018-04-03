@@ -103,6 +103,11 @@ div.nav-right-loggedin {
     display: inline-flex;
     justify-content: baseline;
     align-self: baseline;
+    text-decoration-line: none;
+}
+
+.inbox-link:link {
+    text-decoration: none;
 }
 
 .red {
