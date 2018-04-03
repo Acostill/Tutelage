@@ -11,7 +11,8 @@ class Inbox extends Component {
     super();
     this.state = {
       userThreads: [],
-      username: ""
+      username: "",
+      unreadMessages: []
     }
   }
 
@@ -19,27 +20,47 @@ class Inbox extends Component {
     axios
       .get('/users/userthreads')
       .then(res => {
-
         this.setState({
           userThreads: res.data.threads,
-          resData: res.data.threads,
-          temp: [{id: 1}, {id:3}]
+        })
+      })
+  }
+
+  getUnreadMessages = () => {
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
+        this.setState({
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
+        this.setState({
+          error: `Error Caught: ${err}`
         })
       })
   }
 
   renderInbox = () => {
-    const { userThreads } = this.state;
+    const { userThreads, unreadMessages } = this.state;
+    const unreadThreadIds = unreadMessages.map(message => message.thread_id);
+    const styleRead = {color: 'black', border: '1px solid black', backgroundColor: 'white'}
+    const styleUnread = {color: 'black', border: '1px solid black', backgroundColor: 'pink'}
+    let style;
+    let read = '';
+
     return (
       <div className="inbox-container">
-        Inbox
+        Inbox {unreadMessages.length} Unread messages
         {userThreads.map(thread => {
+          unreadThreadIds.includes(thread.id) ? style = styleUnread : style = styleRead
+          style === styleUnread ? read = 'Unread' : read = ''
           return (         
           <Link to={`/inbox/${thread.id}`} style={{textDecoration: 'none'}}>
-            <div style={{color: 'black', border: '1px solid black'}} >
-              Thread ID: {thread.id}
+            <div style={style} >
+              Thread ID: {thread.id} <b>{read}</b>
               <br />
-              Subject: {thread.subject}         
+              Subject: {thread.subject} 
             </div>
           </Link>
           )
@@ -51,11 +72,12 @@ class Inbox extends Component {
 
   componentDidMount() {
     this.getUserThreads();
+    this.getUnreadMessages();
   }
   render() {
+    const { renderInbox, getUnreadMessages } = this;
     const { userThreads, threadClicked } = this.state;
-    const { renderInbox } = this;
-    console.log({inboxState: this.state})
+
     return (
       <div>
         <Switch>

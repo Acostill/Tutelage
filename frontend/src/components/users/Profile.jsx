@@ -11,7 +11,7 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      user: {},
+      profileUser: {},
       userMessage: ""
     };
   }
@@ -26,18 +26,14 @@ class Profile extends Component {
   }
   
 
-  getUser = () => {
+  getProfileUser = () => {
     let username = this.props.match.params.username;
-    console.log('props:', this.props)
-    console.log('I AM BEING CALLED')
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
-        let user = res.data.user;
-        console.log('user:', user)
-        console.log('response: ', res)
+        let profileUser = res.data.user;
         this.setState({
-          user: user
+          profileUser: profileUser
         });
       })
       .catch(err => {
@@ -58,8 +54,7 @@ class Profile extends Component {
     }
 
   componentDidMount() {
-    this.getUser();
-    // this.getPhotos();
+    this.getProfileUser();
   }
 
   handleTextarea = e => {
@@ -75,14 +70,15 @@ class Profile extends Component {
   };
 
   checkReload = () => {
-    if(this.props.match.params.username !== this.state.user.username) {
-      this.getUser();
+    if(this.props.match.params.username !== this.state.profileUser.username) {
+      this.getProfileUser();
     }
   }
 
   render() {
-    const { user, userMessage } = this.state;
-    const { clearMessage, handleTextarea, checkReload} = this;
+    const { clearMessage, handleTextarea, checkReload } = this;
+    const { profileUser, userMessage } = this.state;
+    const { user } = this.props;
 
     let commonInterests = "";
 
@@ -99,25 +95,32 @@ class Profile extends Component {
                 <Transformation width="900" height="900" background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black" crop="pad"/>
               </Image>
             </button> } */}
-              <img src={user.imgurl} alt="profile picture" className="img-profile" />
+              <img src={profileUser.imgurl} alt="profile picture" className="img-profile" />
             </div>
             <div id="user-basic-info">
               <h1 className="user-header">
-                <strong>{`${user.firstname} ${user.lastname}`}</strong>
+                <strong>{`${profileUser.firstname} ${profileUser.lastname}`}</strong>
               </h1>
-              <h3> Male/Female {user.gender} </h3>
-              <h3> 90210 {user.location} </h3>
-              <h3> Software Developer {user.occupation} </h3>
+              <h3> Male/Female {profileUser.gender} </h3>
+              <h3> 90210 {profileUser.location} </h3>
+              <h3> Software Developer {profileUser.occupation} </h3>
             {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
             </div>
           </div>
         </div>
 
         <div className="user-info-content">
-          <div className="margin-top">Common Interests: {commonInterests}</div>
-          <div className="margin-top"> Hobbies: {user.hobbies} </div>
-          <div className="margin-top"> Bio: {user.bio} </div>
-          <div className="margin-top margin-bottom"> Credentials: {user.credentials} </div>
+          <div id="quick-user-info" className="margin-top">
+            <div> location: {profileUser.location} </div>
+            <div> gender: {profileUser.gender} </div>
+            <div> occupation: {profileUser.occupation} </div>
+          </div>
+          <div className="margin-top">
+            Common Interests: {commonInterests}
+          </div>
+          <div className="margin-top"> Hobbies: {profileUser.hobbies} </div>
+          <div className="margin-top"> Bio: {profileUser.bio} </div>
+          <div className="margin-top"> Credentials: {profileUser.credentials} </div>
         </div>
 
         <div className="center">

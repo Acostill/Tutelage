@@ -1,62 +1,26 @@
-/* -- Styling side bar displayed in Search Page -- */
-ul#qualities_list {
+.filter-sidebar {
+    color: #fff;
+    width: 260px;
+    height: 100v;
     list-style-type: none;
     font-size: 13pt;
     margin: 0;
     padding: 15px;
-    padding-left: 25px;
-    width: 230px;
-    background-color: rgb(232, 241, 242);
-    height: 100%;
-    overflow: auto;
+    background-color: rgb(53, 53, 53);
 }
 
-li#statement1,
-li#statement2,
-li#statement3,
-li#statement4,
-li#statement5,
-li#statement6,
-li#statement7 {
-    margin-bottom: 10px;
+.custom-filter {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
-li#statement1 > p,
-li#statement2 > p,
-li#statement3 > p,
-li#statement4 > p,
-li#statement5 > p,
-li#statement6 > p,
-li#statement7 > p {
-    margin-bottom: 0;
-}
-
-li#statement1 > div.choices,
-li#statement2 > div.choices,
-li#statement3 > div.choices,
-li#statement4 > div.choices,
-li#statement5 > div.choices,
-li#statement6 > div.choices,
-li#statement7 > div.choices {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* ---- align radio buttons with text ---- */
-.choices > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: baseline;
-}
-
-.choices > div > input {
-    margin-right: 15px;
-    margin-bottom: 10px;
+.search-btn {
+    width: 200px;
+    /* height: 34px; */
+    font-size: 15px;
+    background-color: rgb(253, 170, 62);
+    border-radius: 15px;
+    border: none;
+    text-align: center;
 }
