@@ -54,7 +54,7 @@ class EditProfile extends Component {
         tags: ["users", "tutelage"]
       },
       function(error, result) {
-        console.log("REZULTTT:", result[0].secure_url);
+        // console.log("REZULTTT:", result[0].secure_url);
         console.log("REZULTTT:", result);
       }
     );

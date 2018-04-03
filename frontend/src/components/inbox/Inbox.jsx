@@ -61,10 +61,25 @@ class Inbox extends Component {
   }
 
   componentDidMount() {
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     const { getUserThreads } = this;
     const { getUnreadMessages } = this.props
     getUserThreads();
     getUnreadMessages();
+=======
+    // this.getUserThreads();
+    // this.getUnreadMessages();
+>>>>>>> Stashed changes
+=======
+    // this.getUserThreads();
+    // this.getUnreadMessages();
+>>>>>>> Stashed changes
+=======
+    // this.getUserThreads();
+    // this.getUnreadMessages();
+>>>>>>> Stashed changes
   }
   render() {
     const { renderInbox, getUnreadMessages, renderThreadMessages } = this;

@@ -12,7 +12,18 @@ class Thread extends Component {
   }
 
   getMessages = () => {
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     let thread_id = this.props.thread_id;
+=======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+    let thread = this.props.thread;
+    let thread_id = this.props.match.params.thread_id;
+>>>>>>> Stashed changes
     axios
       .post('/users/threadmessages', { thread_id: thread_id })
       .then(res => {
@@ -69,7 +80,19 @@ class Thread extends Component {
   render() {
     const { handleTextarea, clearMessage, sendMessage, confirmRead } = this;
     const { user, messages, userMessage } = this.state;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     let thread_id = this.props.thread_id;
+=======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+    const { getUnreadMessages } = this.props;
+    console.log('ThreadMessages ln 60', this)
+    let thread_id = this.props.match.params.thread_id;
+>>>>>>> Stashed changes
 
     return (
       <div>

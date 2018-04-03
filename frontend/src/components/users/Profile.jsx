@@ -95,7 +95,7 @@ class Profile extends Component {
           <div id="user-banner">
             { 
             <div className="image-crop margin">
-              <Link to = {`/users/${profileUser.username}/edit`} refresh = "true">
+              <Link to = {`/users/${profileUser.username}/edit`}>
               <Image cloudName="tutelage" publicId={`${profileUser.username}.jpg`} /*width="300" crop="scale" */ className="img-profile"/>
                 {/* <img
                   src={profileUser.imgurl}

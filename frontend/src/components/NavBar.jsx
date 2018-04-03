@@ -15,6 +15,25 @@ class NavBar extends Component {
     this.state = {
     }
   }
+<<<<<<< Updated upstream
+=======
+  timer = 0
+
+  getUnreadMessages = () => {
+    this.timer++;
+    // console.log(this.timer)
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
+        this.setState({
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
+        // console.log("Error caught", err)
+      })
+  }
+>>>>>>> Stashed changes
 
   onLoadNav = () => {
     return (
