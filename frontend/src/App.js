@@ -30,10 +30,14 @@ class App extends Component {
     axios
       .get('/users/userinfo')
       .then(res => {
-        this.setState({
-          signedIn: true,
-          user: res.data.userInfo
-        })
+        const user = res.data.userInfo;
+        const currentUser = this.state.username;
+        if (!this.state.signedIn) {
+          this.setState({
+            signedIn: true,
+            user: user
+          })
+        }
       })
       .catch(err => {
         this.setState({
@@ -125,6 +129,10 @@ class App extends Component {
       });
   };
 
+  componentDidMount() {
+    this.getUserInfo();
+  }
+
   render() {
     const { user, signedIn, username, password, message, unreadMessages } = this.state;
     const {
@@ -185,7 +193,7 @@ class App extends Component {
             component={() => <SearchUsers currentUser={user} />}
           />
           <Route path="/aboutus" component={AboutUs} />
-          <Route path="/users" component={() => <Users user={user} />} />
+          <Route path="/users" render={() => <Users user={user} />} />
           {/* <Route path="/aboutMe" component={AboutMe} /> */}
           <Route path="/survey" component={() => <Survey user={user} />} />
         </Switch>

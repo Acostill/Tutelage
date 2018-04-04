@@ -13,6 +13,7 @@ class NavBar extends Component {
   constructor() {
     super();
     this.state = {
+      unreadMessages: []
     }
   }
 
@@ -75,21 +76,35 @@ class NavBar extends Component {
     ) 
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { getUnreadMessages } = this.props;
-
-    if (nextProps.signedIn && !this.props.signedIn) {
-      getUnreadMessages();
-     this.interval = setInterval(getUnreadMessages, 15000);  
-    }
-
-    if (!nextProps.signedIn && this.props.signedIn) {
-      clearInterval(this.interval);
-    }
+  getUnreadMessages = () => {
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
+        this.setState({
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
+        this.setState({
+          error: `Error Caught: ${err}`
+        })
+      })
   }
+  // componentWillReceiveProps(nextProps) {
+  //   const { getUnreadMessages } = this.props;
+
+  //   if (nextProps.signedIn && !this.props.signedIn) {
+  //     getUnreadMessages();
+  //    this.interval = setInterval(getUnreadMessages, 1000);  
+  //   }
+
+  //   if (!nextProps.signedIn && this.props.signedIn) {
+  //     clearInterval(this.interval);
+  //   }
+  // }
 
   componentDidMount() {
-    this.props.getUserInfo();
+    // this.props.getUserInfo();
   }
 
   render() {
@@ -100,7 +115,6 @@ class NavBar extends Component {
       return onLoadNav()
     }
     if (!signedIn) {
-      console.log('NOT SIGNED IN!')
       return loggedOutNav()
     }
     return loggedInNav()
