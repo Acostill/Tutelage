@@ -1,0 +1,25 @@
+#thread-messages-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.thread-message-title {
+    text-align: center;
+    color: #f46524;
+}
+
+.conversation {
+    height: 100%;
+    margin: 0 20px 0 20px;
+    box-shadow: 0px 0px 7px 0px lightgray;
+    padding: 40px;
+    font-size: 16px;
+    border-radius: 50px 50px;
+}
+
+.chatbox-thread {
+    display: flex;
+    align-self: flex-end;
+}
