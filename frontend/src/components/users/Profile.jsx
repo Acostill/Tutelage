@@ -16,7 +16,8 @@ class Profile extends Component {
     super(props);
     this.state = {
       profileUser: {},
-      userMessage: ""
+      subject: '',
+      userMessage: ''
     };
   }
 
@@ -68,6 +69,18 @@ class Profile extends Component {
     });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    const { profileUser, subject, userMessage } = this.state;
+    axios
+      .post('/users/fetch_new_thread', {username2: profileUser.username, subject: subject})
+      .then(res => {
+        console.log('returned ID', res.data.thread.id)
+        let thread_id = res.data.thread.id;
+        axios.post('/users/send_message', {thread_id: thread_id, body: userMessage})
+      })
+  }
+
   clearMessage = () => {
     this.setState({
       userMessage: ""
@@ -81,11 +94,9 @@ class Profile extends Component {
   };
 
   render() {
-    const { clearMessage, handleTextarea, checkReload } = this;
+    const { clearMessage, handleTextarea, handleSubmit, checkReload } = this;
     const { profileUser, userMessage } = this.state;
     const { user } = this.props;
-    console.log("USER ID Here in profile jsx:", profileUser.public_id);
-    console.log("userrerrreree", profileUser);
     let currentURL = this.props.match.url;
     let commonInterests = "";
 
@@ -159,7 +170,7 @@ class Profile extends Component {
               onChange={handleTextarea}
             />
             <div className="chat-buttons">
-              <input
+              <input onClick={handleSubmit}
                 type="submit"
                 value="Submit Message"
                 className="submit button-size"
