@@ -15,12 +15,20 @@
     text-align: center;
 }
 
+.custom-filter-title {
+    margin: auto;
+}
+
+div.custom-filter > .custom-filter-title {
+    margin-bottom: 25px;
+}
+
 .search-btn {
     width: 200px;
-    /* height: 34px; */
     font-size: 15px;
-    background-color: rgb(253, 170, 62);
+    background-color: #f46524;
     border-radius: 15px;
     border: none;
     text-align: center;
+    padding: 10px;
 }
