@@ -190,12 +190,12 @@ class App extends Component {
           />
           <Route
             path="/search"
-            component={() => <SearchUsers currentUser={user} />}
+            render={() => <SearchUsers currentUser={user} />}
           />
-          <Route path="/aboutus" component={AboutUs} />
-          <Route path="/users" render={() => <Users user={user} />} />
-          {/* <Route path="/aboutMe" component={AboutMe} /> */}
-          <Route path="/survey" component={() => <Survey user={user} />} />
+          <Route path="/aboutus" render={AboutUs} />
+          <Route path="/users" render={(props) => <Users {...props} currentUser={user} />} />
+          {/* <Route path="/aboutMe" render={AboutMe} /> */}
+          <Route path="/survey" render={() => <Survey user={user} />} />
         </Switch>
       </div>
     );

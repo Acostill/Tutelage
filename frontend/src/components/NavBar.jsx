@@ -90,18 +90,18 @@ class NavBar extends Component {
         })
       })
   }
-  // componentWillReceiveProps(nextProps) {
-  //   const { getUnreadMessages } = this.props;
+  componentWillReceiveProps(nextProps) {
+    const { getUnreadMessages } = this.props;
 
-  //   if (nextProps.signedIn && !this.props.signedIn) {
-  //     getUnreadMessages();
-  //    this.interval = setInterval(getUnreadMessages, 1000);  
-  //   }
+    if (nextProps.signedIn && !this.props.signedIn) {
+      getUnreadMessages();
+     this.interval = setInterval(getUnreadMessages, 3000);  
+    }
 
-  //   if (!nextProps.signedIn && this.props.signedIn) {
-  //     clearInterval(this.interval);
-  //   }
-  // }
+    if (!nextProps.signedIn && this.props.signedIn) {
+      clearInterval(this.interval);
+    }
+  }
 
   componentDidMount() {
     // this.props.getUserInfo();

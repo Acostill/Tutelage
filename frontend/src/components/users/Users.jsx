@@ -5,12 +5,13 @@ import EditProfile from './EditProfile'
 
 class Users extends Component {
   render() {
-    const { user } = this.props
-    console.log('Hello!')
+    const { currentUser } = this.props
+    console.log('Hello Users Component!');
+    console.log(currentUser)
     return (
       <Switch>
-        <Route exact path='/users/:username' component={Profile}/>
-        <Route path='/users/:username/edit' component={() => <EditProfile user={user} />}/>
+        <Route exact path='/users/:username' render={(props) => <Profile {...props} />}/>
+        <Route ecact path='/users/:username/edit' render={(props) => <EditProfile {...props} currentUser={currentUser} />}/>
       </Switch>
     );
   }

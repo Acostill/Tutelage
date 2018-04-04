@@ -18,19 +18,19 @@ class EditProfile extends Component {
     this.state = {
       user: {},
       userMessage: "",
-      newUserName: this.props.user.username,
-      newFirstName: this.props.user.firstname,
-      newLastName: this.props.user.lastname,
-      newEmail: this.props.user.email,
-      newIsmentor: this.props.user.ismentor,
-      newAge: this.props.user.age,
-      newBio: this.props.user.bio,
-      newOccupation: this.props.user.occupation,
-      newZipcode: this.props.user.zipcode,
-      newGender: this.props.user.gender,
-      newImgURL: this.props.user.imgurl,
-      newHobbies: this.props.user.hobbies,
-      newCredentials: this.props.user.credentials,
+      newUserName: '',
+      newFirstName: '',
+      newLastName: '',
+      newEmail: '',
+      newIsmentor: '',
+      newAge: '',
+      newBio: '',
+      newOccupation: '',
+      newZipcode: '',
+      newGender: '',
+      newImgURL: '',
+      newHobbies: '',
+      newCredentials: '',
       gender: "",
       doneEditing: false
     };
@@ -68,13 +68,14 @@ class EditProfile extends Component {
   };
 
   getUser = () => {
-    let username = this.props.user.username;
+    console.log('EditProfile', this.props)
+    let username = this.props.match.params.username;
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
-        let user = res.data.user;
+        let currentUser = res.data.user;
         this.setState({
-          user: user
+          currentUser: currentUser
         });
       })
       .catch(err => {
@@ -84,6 +85,29 @@ class EditProfile extends Component {
       });
   };
 
+  setUser = (currentUser) => {
+    console.log('Hello setUser!')
+    // console.log(this.props.currentUser);
+    // const { currentUser } = this.nexProps.currentUser;
+    const { username, firstname, lastname, email,
+            ismentor, age, bio, occupation, zipcode,
+            gender, imgurl, hobbies, credentials } = currentUser;
+    this.setState({
+      newUserName: username,
+      newFirstName: firstname,
+      newLastName: lastname,
+      newEmail: email,
+      newIsmentor: ismentor,
+      newAge: age,
+      newBio: bio,
+      newOccupation: occupation,
+      newZipcode: zipcode,
+      newGender: gender,
+      newImgURL: imgurl,
+      newHobbies: hobbies,
+      newCredentials: credentials,
+    })
+  }
   handleTextArea = e => {
     this.setState({
       userMessage: e.target.value
@@ -98,7 +122,7 @@ class EditProfile extends Component {
 
   handleInputChange = e => {
     console.log("changing values:", e.target.value);
-    console.log("original values:", this.props.user.firstname);
+    // console.log("original values:", this.props.user.firstname);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -123,7 +147,7 @@ class EditProfile extends Component {
   editProfileSubmitForm = e => {
     e.preventDefault();
     e.stopPropagation();
-    const { user } = this.props;
+    // const { user } = this.props;
 
     //finish defining vars from state
     let {
@@ -182,8 +206,24 @@ class EditProfile extends Component {
     }, 10);
   };
 
+  componentWillReceiveProps(nextProps) {
+    // const { getUnreadMessages } = this.props;
+    console.log('Next props:', nextProps.currentUser)
+    console.log('Current User:', this.props.currentUser)
+
+    // if (nextProps.signedIn && !this.props.signedIn) {
+    //   this.setUser();
+    // }
+  
+    if (nextProps.currentUser.username !== this.props.currentUser.username) {
+      console.log('correct condition')
+      this.setUser(nextProps.currentUser);
+    }
+  }
+
   componentDidMount() {
     this.getUser();
+    // this.setUser();
     this.getPhotos();
   }
 
@@ -217,12 +257,12 @@ class EditProfile extends Component {
       doneEditing
     } = this.state;
     // console.log("the state here in edit PROFILE IS:", this.state);
-    const { user } = this.props;
+    const { currentUser } = this.props;
     let Interests = "";
 
     if (doneEditing) {
       window.location.reload();
-      return <Redirect to={`/users/${user.username}`} />;
+      return <Redirect to={`/users/${currentUser.username}`} />;
     }
     return (
       <div id="user-profile" className="margin">
@@ -233,7 +273,7 @@ class EditProfile extends Component {
                 <button id="upload_widget_opener" onClick={makeWidget}>
                   <Image
                     cloudName="tutelage"
-                    publicId={user.username}
+                    publicId={currentUser.username}
                     width="300"
                     // crop="scale"
                   >
@@ -253,7 +293,7 @@ class EditProfile extends Component {
               </div>
               <div id="user-basic-info">
                 <h1 className="user-header">
-                  {`${user.firstname} ${user.lastname}`}
+                  {`${currentUser.firstname} ${currentUser.lastname}`}
                   <input
                     type="text"
                     placeholder="First Name"
@@ -269,9 +309,9 @@ class EditProfile extends Component {
                     onChange={handleInputChange}
                   />
                 </h1>
-                <h3> Gender: {user.gender} </h3>
-                <h3> Zipcode: {user.zipcode} </h3>
-                <h3> Occupation: {user.occupation} </h3>
+                <h3> Gender: {currentUser.gender} </h3>
+                <h3> Zipcode: {currentUser.zipcode} </h3>
+                <h3> Occupation: {currentUser.occupation} </h3>
                 {/* <input
                   type="text"
                   name="imgURL"
@@ -285,7 +325,7 @@ class EditProfile extends Component {
 
           <div className="user-info-content">
             <div id="quick-user-info" className="margin-top">
-              <div> Zipcode: {user.zipcode} </div>
+              <div> Zipcode: {currentUser.zipcode} </div>
               <input
                 type="text"
                 placeholder="Zipcode"
@@ -295,7 +335,7 @@ class EditProfile extends Component {
               />
               <div>
                 {" "}
-                Gender: {user.gender}
+                Gender: {currentUser.gender}
                 <br />
                 <input
                   type="radio"
@@ -312,7 +352,7 @@ class EditProfile extends Component {
                 />{" "}
                 Female{" "}
               </div>
-              <div> Occupation: {user.occupation} </div>
+              <div> Occupation: {currentUser.occupation} </div>
               <Select
                 values={areasOfExpertise}
                 selectedValue={occupation}
@@ -327,7 +367,7 @@ class EditProfile extends Component {
               /> */}
             </div>
             <div className="margin-top">Interests: {Interests} </div>
-            Hobbies: {user.hobbies}
+            Hobbies: {currentUser.hobbies}
             <input
               type="text"
               placeholder="hobbies"
@@ -335,7 +375,7 @@ class EditProfile extends Component {
               value={hobbies}
               onChange={handleInputChange}
             />
-            Credentials: {user.credentials}
+            Credentials: {currentUser.credentials}
             <input
               type="text"
               placeholder="credentials"
@@ -343,7 +383,7 @@ class EditProfile extends Component {
               value={credentials}
               onChange={handleInputChange}
             />
-            <div className="margin-top"> Bio: {user.bio} </div>
+            <div className="margin-top"> Bio: {currentUser.bio} </div>
             <input
               type="text"
               placeholder="Bio"
