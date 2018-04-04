@@ -13,24 +13,7 @@ class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      unreadMessages: [],
-      loginMount: true
     }
-  }
-  timer = 0
-  getUnreadMessages = () => {
-    this.timer++;
-    //console.log(this.timer)
-    axios
-      .get('/users/unread_messages')
-      .then(res => {
-        this.setState({
-          unreadMessages: res.data.unreadMessages
-        })
-      })
-      .catch(err => {
-        // console.log("Error caught", err)
-      })
   }
 
   onLoadNav = () => {
@@ -40,11 +23,6 @@ class NavBar extends Component {
         {" "}
         <div className="nav-right">
         Loading...
-          {/* <Link to="/login"  > Log In </Link>
-          {" "}
-          <Link to="/register" > Register </Link>
-          {" "}
-          <Link to="/aboutus" > About Us </Link> */}
         </div>
       </nav>
     )
@@ -68,29 +46,9 @@ class NavBar extends Component {
   }
 
   loggedInNav = () => {
-    const { unreadMessages, loginMount } = this.state;
-    const { user, logOut } = this.props;
-    // const newMessages = setTimeout(() => {
-    //   this.timer++;
-    //   console.log(this.timer)
-    //   axios
-    //     .get('/users/unread_messages')
-    //     .then(res => {
-    //       this.setState({
-    //         unreadMessages: res.data.unreadMessages
-    //       })
-    //     })
-    //     .catch(err => {
-    //       console.log("Error caught", err)
-    //     })
-    
-    // }, 150000);
-    // const clearNewMessages = () => {
-    //   clearTimeout(newMessages);
-    //   // this.timer=0;
-    // }
-    // clearNewMessages();
-    if (loginMount) this.getUnreadMessages();
+    const { user, logOut, unreadMessages } = this.props;
+    console.log({unreadMessages});
+
     return (
       <nav id='navigation-bar'>
       <Link id="app-name" to="/"> Tutelage </Link>
@@ -109,13 +67,28 @@ class NavBar extends Component {
         <FontAwesomeIcon icon={["fas", "user-circle"]} size="2x" />
         </Link>
         
-        <Link to={`/survey`} > Tutelage Survey </Link>
+        <Link to={`/survey`} >
+        <FontAwesomeIcon icon={["fas", "clipboard-list"]} size="2x" />
+        </Link>
         {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
       </div>
     </nav>
     ) 
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   const { getUnreadMessages } = this.props;
+
+  //   if (nextProps.signedIn && !this.props.signedIn) {
+  //     getUnreadMessages();
+  //    this.interval = setInterval(getUnreadMessages, 15000);  
+  //   }
+
+  //   if (!nextProps.signedIn && this.props.signedIn) {
+  //     clearInterval(this.interval);
+  //   }
+  // }
 
   componentDidMount() {
     this.props.getUserInfo();

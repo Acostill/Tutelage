@@ -45,7 +45,6 @@ class Profile extends Component {
         });
       })
       .catch(err => {
-        console.log("Your shit ain't work:", err);
         this.setState({
           message: err
         });
@@ -85,10 +84,9 @@ class Profile extends Component {
     const { clearMessage, handleTextarea, checkReload } = this;
     const { profileUser, userMessage } = this.state;
     const { user } = this.props;
-    let currentURL = this.props.match.url
-    console.log("THIS.PROPS...SMH", this.props)
-    console.log("profiel USER:::", profileUser)
-    console.log("profiel USER occupaion:::", profileUser.occupation)
+    console.log("USER ID Here in profile jsx:", profileUser.public_id);
+    console.log("userrerrreree", profileUser);
+    let currentURL = this.props.match.url;
     let commonInterests = "";
 
     checkReload();
@@ -97,30 +95,37 @@ class Profile extends Component {
         <div className="background-banner">
           <div className="sq2" />
           <div id="user-banner">
-            { 
-            <div className="image-crop margin">
-              <Link to = {`/users/${profileUser.username}/edit`} refresh = "true">
-              <Image cloudName="tutelage" publicId={`${profileUser.username}.jpg`} /*width="300" crop="scale" */ className="img-profile"/>
-                {/* <img
-                  src={profileUser.imgurl}
-                  alt="profile picture"
-                  className="img-profile"
-                /> */}
-              </Link>
-            </div>
+            {
+              <div className="image-crop margin">
+                <Link to={`/users/${profileUser.username}/edit`} title="Click to edit Profile.">
+                  {profileUser.public_id ? (
+                    <Image
+                      className="img-profile"
+                      cloudName="tutelage"
+                      publicId={profileUser.public_id + ".jpg"}
+                      crop="scale"
+                      /*width="300"  */ 
+                    />
+                  ) : (
+                    <img
+                      src={profileUser.imgurl}
+                      alt="profile picture"
+                      className="img-profile"
+                    />
+                  )}
+                </Link>
+              </div>
             }
             <div id="user-basic-info">
               <h1 className="user-header">
-                <strong>{`${profileUser.firstname} ${
-                  profileUser.lastname
-                }`}
+                <strong>
+                  {`${profileUser.firstname} ${profileUser.lastname}`}
                 </strong>
               </h1>
               <h3> {profileUser.gender} </h3>
               <h3> zipcode: {profileUser.zipcode} </h3>
               <h3> Occupation: {profileUser.occupation} </h3>
               <div className="margin-top"> Bio: {profileUser.bio} </div>
-              {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
             </div>
           </div>
         </div>

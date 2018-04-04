@@ -21,7 +21,8 @@ class App extends Component {
       signedIn: null,
       username: "",
       password: "",
-      message: ""
+      message: "",
+      unreadMessages: []
     };
   }
 
@@ -92,6 +93,21 @@ class App extends Component {
     });
   };
 
+  getUnreadMessages = () => {
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
+        this.setState({
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
+        this.setState({
+          error: `Error Caught: ${err}`
+        })
+      })
+  }
+
   logOut = () => {
     axios
       .get(`/users/logout`)
@@ -110,14 +126,15 @@ class App extends Component {
   };
 
   render() {
-    const { user, signedIn, username, password, message } = this.state;
+    const { user, signedIn, username, password, message, unreadMessages } = this.state;
     const {
       getUserInfo,
       logOut,
       handleInputChange,
       submitLoginForm,
       frontendRegister,
-      appLogIn
+      appLogIn,
+      getUnreadMessages
     } = this;
 
     return (
@@ -127,10 +144,17 @@ class App extends Component {
           signedIn={signedIn}
           getUserInfo={getUserInfo}
           logOut={logOut}
+          getUnreadMessages={getUnreadMessages}
+          unreadMessages={unreadMessages}
         />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/inbox" component={Inbox} />
+          <Route path="/inbox" render={(props) => 
+            <Inbox 
+              getUnreadMessages={getUnreadMessages} 
+              {...props} 
+              unreadMessages={unreadMessages}
+              />} />
           <Route
             path="/login"
             render={() => (

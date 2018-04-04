@@ -64,7 +64,7 @@ updateSingleUser = (req, res, next) => {
   // const hash = authHelpers.createHash(req.body.password);
   db
     .none(
-      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, age = ${age}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl}, hobbies = ${hobbies}, credentials = ${credentials} WHERE id = ${id}", {
+      "UPDATE users SET username = ${username}, firstname = ${firstname}, lastname = ${lastname}, email = ${email}, ismentor = ${ismentor}, age = ${age}, bio = ${bio}, occupation = ${occupation}, zipcode = ${zipcode}, gender = ${gender}, imgurl = ${imgurl}, hobbies = ${hobbies}, credentials = ${credentials}, public_id= ${public_id} WHERE id = ${id}", {
         username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -79,8 +79,8 @@ updateSingleUser = (req, res, next) => {
         imgurl: req.body.imgurl,
         hobbies: req.body.hobbies,
         credentials: req.body.credentials,
+        public_id: req.body.public_id,
         id: req.user.id
-
       }
     )
     .then((data) => {
@@ -463,9 +463,9 @@ const getThreadMessages = (req, res, next) => {
     });
 }
 
-const updateMessageRead = (req, res, next) => {
+const confirmRead = (req, res, next) => {
   db
-    .none("UPDATE messages SET isread = TRUE WHERE id = ${id}", { id: req.body.messageId })
+    .none("UPDATE messages SET isread = TRUE WHERE id = ${id} AND sender != ${username}", { id: req.body.messageId, username: req.user.username })
     .then(() => {
       res.send("Message marked as read")
     })
@@ -548,7 +548,7 @@ module.exports = {
   getAllLocations: getAllLocations,
   getUserThreads: getUserThreads,
   getThreadMessages: getThreadMessages,
-  updateMessageRead: updateMessageRead,
+  confirmRead: confirmRead,
   getUnreadMessages: getUnreadMessages,
   registerUser: registerUser,
   getUserInterests: getUserInterests,

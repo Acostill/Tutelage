@@ -17,6 +17,7 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       user: {},
+      public_id: this.props.user.public_id,
       userMessage: "",
       newUserName: this.props.user.username,
       newFirstName: this.props.user.firstname,
@@ -49,22 +50,26 @@ class EditProfile extends Component {
     window.cloudinary.openUploadWidget(
       {
         cloud_name: "tutelage",
-        public_id: this.props.user.username,
         upload_preset: "wpcjhnmk",
         tags: ["users", "tutelage"]
       },
-      function(error, result) {
-        console.log("REZULTTT:", result[0].secure_url);
-        console.log("REZULTTT:", result);
+      (error, result) => {
+        result.map(elem => {
+          if (!elem.public_id) {
+            return "sample";
+          } else {
+            console.log("elemmmm:", elem);
+            console.log("REZULTTT img of make widget:", result);
+            console.log("the public_ID:", result[0].public_id);
+            console.log("the url:", result[0].url);
+            this.setState({
+              newImgURL: result[0].url,
+              public_id: result[0].public_id
+            });
+          }
+        });
       }
     );
-  };
-
-  getPhotos = () => {
-    axios.get("http://res.cloudinary.com/tutelage").then(res => {
-      console.log(res);
-      // this.setState({gallery: res.data.resources});
-    });
   };
 
   getUser = () => {
@@ -97,24 +102,18 @@ class EditProfile extends Component {
   };
 
   handleInputChange = e => {
-    console.log("changing values:", e.target.value);
-    console.log("original values:", this.props.user.firstname);
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
   handleRadioChange = e => {
-    console.log("changing genders:", e.target.value);
-
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
   handleSelect = e => {
-    console.log("valszz", this.props.values);
-    console.log("TARGET VALUE:", e.target.value);
     this.setState({
       newOccupation: e.target.value
     });
@@ -140,9 +139,9 @@ class EditProfile extends Component {
       newImgURL,
       gender,
       newHobbies,
-      newCredentials
+      newCredentials,
+      public_id
     } = this.state;
-    console.log("STATE IN EDITPROOOOFILEE", this.state);
 
     axios
       .patch("/users/edit", {
@@ -158,7 +157,8 @@ class EditProfile extends Component {
         gender: gender === "Male" ? "Male" : "Female",
         imgurl: newImgURL,
         hobbies: newHobbies,
-        credentials: newCredentials
+        credentials: newCredentials,
+        public_id: public_id
       })
       .then(res => {
         this.setState({
@@ -184,7 +184,6 @@ class EditProfile extends Component {
 
   componentDidMount() {
     this.getUser();
-    this.getPhotos();
   }
 
   render() {
@@ -200,6 +199,7 @@ class EditProfile extends Component {
       makeWidget
     } = this;
     const {
+      user,
       userMessage,
       newUserName,
       newFirstName,
@@ -214,10 +214,10 @@ class EditProfile extends Component {
       newImgURL,
       hobbies,
       credentials,
-      doneEditing
+      doneEditing,
+      public_id
     } = this.state;
-    // console.log("the state here in edit PROFILE IS:", this.state);
-    const { user } = this.props;
+
     let Interests = "";
 
     if (doneEditing) {
@@ -230,26 +230,25 @@ class EditProfile extends Component {
           <div className="background-banner">
             <div id="user-banner">
               <div className="image-crop margin">
-                <button id="upload_widget_opener" onClick={makeWidget}>
-                  <Image
-                    cloudName="tutelage"
-                    publicId={user.username}
-                    width="300"
-                    // crop="scale"
-                  >
-                    {/* <Transformation
-                      width="900"
-                      height="900"
-                      background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black"
-                      crop="pad"
-                    /> */}
-                  </Image>
-                </button>
-                {/* <img
-                  src={`../${user.imgurl}`}
-                  alt="profile picture"
-                  className="img"
-                /> */}
+                {this.state.public_id ? (
+                  <button id="upload_widget_opener" onClick={makeWidget}>
+                    <Image
+                      cloudName="tutelage"
+                      publicId={this.state.public_id}
+                      width="300"
+                      crop="scale"
+                    />
+                  </button>
+                ) : (
+                  <button id="upload_widget_opener" onClick={makeWidget}>
+                    <Image
+                      cloudName="tutelage"
+                      publicId={"defaultpic"}
+                      width="300"
+                      crop="scale"
+                    />
+                  </button>
+                )}
               </div>
               <div id="user-basic-info">
                 <h1 className="user-header">
