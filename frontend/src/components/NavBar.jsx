@@ -102,7 +102,6 @@ class NavBar extends Component {
       return onLoadNav()
     }
     if (!signedIn) {
-      console.log('NOT SIGNED IN!')
       return loggedOutNav()
     }
     return loggedInNav()
