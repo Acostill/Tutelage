@@ -134,14 +134,10 @@ class SearchUsers extends Component {
   filterBy = ( gender, ageGroup, expertise, language ) => {
     const filteredMentees = this.state.allMentees.filter( user => {
        return user.gender.toLowerCase() === gender.toLowerCase()
-        console.log(user.gender);
-        console.log(gender)
       } )
 
     const filteredMentors = this.state.allMentors.filter( user => {
      return user.gender.toLowerCase() === gender.toLowerCase()
-      console.log(user.gender);
-      console.log(gender)
     })
 
     this.setState({
