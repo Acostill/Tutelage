@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import Select from "./Select";
 import "../../css/EditProfile.css";
+import {
+  Image,
+  Video,
+  Transformation,
+  CloudinaryContext
+} from "cloudinary-react";
+import cloudinary from "cloudinary-core";
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: "tutelage" });
 
 class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {},
+      public_id: this.props.user.public_id,
       userMessage: "",
       newUserName: this.props.user.username,
       newFirstName: this.props.user.firstname,
@@ -23,9 +33,44 @@ class EditProfile extends Component {
       newHobbies: this.props.user.hobbies,
       newCredentials: this.props.user.credentials,
       gender: "",
-      doneEditting: false
+      doneEditing: false
     };
+
+    this.areasOfExpertise = [
+      "Business",
+      "Design",
+      "Engineer",
+      "Development",
+      "Entrepreneur",
+      "Social Services"
+    ];
   }
+
+  makeWidget = () => {
+    window.cloudinary.openUploadWidget(
+      {
+        cloud_name: "tutelage",
+        upload_preset: "wpcjhnmk",
+        tags: ["users", "tutelage"]
+      },
+      (error, result) => {
+        result.map(elem => {
+          if (!elem.public_id) {
+            return "sample";
+          } else {
+            console.log("elemmmm:", elem);
+            console.log("REZULTTT img of make widget:", result);
+            console.log("the public_ID:", result[0].public_id);
+            console.log("the url:", result[0].url);
+            this.setState({
+              newImgURL: result[0].url,
+              public_id: result[0].public_id
+            });
+          }
+        });
+      }
+    );
+  };
 
   getUser = () => {
     let username = this.props.user.username;
@@ -57,18 +102,20 @@ class EditProfile extends Component {
   };
 
   handleInputChange = e => {
-    console.log("changing values:", e.target.value);
-    console.log("original values:", this.props.user.firstname);
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
   handleRadioChange = e => {
-    console.log("changing genders:", e.target.value);
-
     this.setState({
       [e.target.name]: e.target.value
+    });
+  };
+
+  handleSelect = e => {
+    this.setState({
+      newOccupation: e.target.value
     });
   };
 
@@ -92,9 +139,9 @@ class EditProfile extends Component {
       newImgURL,
       gender,
       newHobbies,
-      newCredentials
+      newCredentials,
+      public_id
     } = this.state;
-    console.log("STATE IN EDITPROOOOFILEE", this.state);
 
     axios
       .patch("/users/edit", {
@@ -110,7 +157,8 @@ class EditProfile extends Component {
         gender: gender === "Male" ? "Male" : "Female",
         imgurl: newImgURL,
         hobbies: newHobbies,
-        credentials: newCredentials
+        credentials: newCredentials,
+        public_id: public_id
       })
       .then(res => {
         this.setState({
@@ -124,14 +172,16 @@ class EditProfile extends Component {
         });
       });
   };
+
   fireRedirect = () => {
-    const { doneEditting } = this.state;
+    const { doneEditing } = this.state;
     setTimeout(() => {
       this.setState({
-        doneEditting: !this.state.doneEditting
+        doneEditing: !this.state.doneEditing
       });
-    }, 100);
+    }, 10);
   };
+
   componentDidMount() {
     this.getUser();
   }
@@ -142,10 +192,14 @@ class EditProfile extends Component {
       handleTextArea,
       handleInputChange,
       handleRadioChange,
+      handleSelect,
       editProfileSubmitForm,
-      fireRedirect
+      fireRedirect,
+      areasOfExpertise,
+      makeWidget
     } = this;
     const {
+      user,
       userMessage,
       newUserName,
       newFirstName,
@@ -160,14 +214,14 @@ class EditProfile extends Component {
       newImgURL,
       hobbies,
       credentials,
-      doneEditting
+      doneEditing,
+      public_id
     } = this.state;
-    console.log("the state here in edit:", this.state);
-    const { user } = this.props;
-    console.log("props in the render:", this.props);
+
     let Interests = "";
 
-    if (doneEditting) {
+    if (doneEditing) {
+      window.location.reload();
       return <Redirect to={`/users/${user.username}`} />;
     }
     return (
@@ -175,14 +229,29 @@ class EditProfile extends Component {
         <form onSubmit={editProfileSubmitForm} id="input-container">
           <div className="background-banner">
             <div className="sq2-edit" />
-            <div id="user-banner">
+            <div id="user-banner-edit">
               <div className="image-crop margin">
-                <img
-                  src={`../${user.imgurl}`}
-                  alt="profile picture"
-                  className="img"
-                />
+                {this.state.public_id ? (
+                  <button id="upload_widget_opener" onClick={makeWidget}>
+                    <Image
+                      cloudName="tutelage"
+                      publicId={this.state.public_id}
+                      width="250"
+                      crop="scale"
+                    />
+                  </button>
+                ) : (
+                  <button id="upload_widget_opener" onClick={makeWidget}>
+                    <Image
+                      cloudName="tutelage"
+                      publicId={"defaultpic"}
+                      width="250"
+                      crop="scale"
+                    />
+                  </button>
+                )}
               </div>
+                
               <div id="user-basic-info-edit">
                 <div className="user-header-edit">
                   <div>
@@ -220,8 +289,9 @@ class EditProfile extends Component {
             </div>
           </div>
 
+{/* fix around here - make sure user-info-content has closing div */}
           <div className="user-info-content">
-            <div id="quick-user-info" className="margin-top">
+            <div id="quick-user-info" >
               <div>
                 {" "}
                 Gender:
@@ -242,29 +312,31 @@ class EditProfile extends Component {
                 />{" "}
                 Female{" "}
               </div>
+
+{/*==== mine changes =====*/}
               <div className="margin-top">
-                {/* {user.zipcode}  */}
+                Zipcode:
+                <br />
                 <input
                   type="text"
                   placeholder="Zipcode"
                   name="newZipcode"
                   value={newZipcode}
                   onChange={handleInputChange}
-                  className="input-box-edit"
+                  className="input-box-edit "
                 />
               </div>
-              <div className="margin-top">
-                {/* {user.occupation}  */}
-                <input
-                  type="text"
-                  placeholder="Occupation"
-                  name="newOccupation"
-                  value={occupation}
-                  onChange={handleInputChange}
-                  className="input-box-edit"
-                />
-              </div>
+{/*just added this into my branch changes*/}
+              <div className="margin-top"> Occupation: </div>
+              <Select
+                values={areasOfExpertise}
+                selectedValue={occupation}
+                handleSelect={handleSelect}
+                className="margin-top"
+              />
             </div>
+
+            {/* </div> */}
             <div className="margin-top">Interests: {Interests}</div>
 
             <div className="margin-top">
@@ -297,10 +369,10 @@ class EditProfile extends Component {
                 className="input-box-edit"
               />
             </div>
-            <input type="submit" onClick={fireRedirect} className="button-size submit"/>
+            <input type="submit" onClick={fireRedirect} className="button-size submit center-submit"/>
           </div>
         </form>
-      </div>
+</div>
     );
   }
 }

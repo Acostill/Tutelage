@@ -21,19 +21,19 @@ class Profile extends Component {
     };
   }
 
-  makeWidget = () => {
-    window.cloudinary.openUploadWidget(
-      {
-        cloud_name: "tutelage",
-        public_id: "newUser",
-        upload_preset: "wpcjhnmk",
-        tags: ["users"]
-      },
-      function(error, result) {
-        console.log(result);
-      }
-    );
-  };
+  // makeWidget = () => {
+  //   window.cloudinary.openUploadWidget(
+  //     {
+  //       cloud_name: "tutelage",
+  //       public_id: "newUser",
+  //       upload_preset: "wpcjhnmk",
+  //       tags: ["users"]
+  //     },
+  //     function(error, result) {
+  //       console.log(result);
+  //     }
+  //   );
+  // };
 
   getProfileUser = () => {
     let username = this.props.match.params.username;
@@ -46,19 +46,18 @@ class Profile extends Component {
         });
       })
       .catch(err => {
-        console.log("Your shit ain't work:", err);
         this.setState({
           message: err
         });
       });
   };
 
-  getPhotos = () => {
-    axios.get("http://res.cloudinary.com/tutelage").then(res => {
-      console.log(res);
-      // this.setState({gallery: res.data.resources});
-    });
-  };
+  // getPhotos = () => {
+  //   axios.get("http://res.cloudinary.com/tutelage").then(res => {
+  //     console.log(res);
+  //     // this.setState({gallery: res.data.resources});
+  //   });
+  // };
 
   componentDidMount() {
     this.getProfileUser();
@@ -98,10 +97,9 @@ class Profile extends Component {
     } = this;
     const { profileUser, userMessage, showChatBox } = this.state;
     const { user } = this.props;
+    console.log("USER ID Here in profile jsx:", profileUser.public_id);
+    console.log("userrerrreree", profileUser);
     let currentURL = this.props.match.url;
-    console.log("THIS.PROPS...SMH", this.props);
-    console.log("profiel USER:::", profileUser);
-    console.log("profiel USER occupaion:::", profileUser.occupation);
     let commonInterests = "";
 
     checkReload();
@@ -110,30 +108,38 @@ class Profile extends Component {
         <div className="background-banner">
           <div className="color-sq2" />
           <div id="user-banner">
+{/* mine */}
             <div className="user-pic-info">
-              {
-                <div className="image-crop margin">
-                  <Link
-                    to={`/users/${profileUser.username}/edit`}
-                    refresh="true"
-                  >
+              
+                
+              <div className="image-crop margin">
+                <Link to={`/users/${profileUser.username}/edit`} title="Click to edit Profile.">
+                  {profileUser.public_id ? (
+                    <Image
+                      className="img-profile"
+                      cloudName="tutelage"
+                      publicId={profileUser.public_id + ".jpg"}
+                      crop="scale"
+                      /*width="300"  */ 
+                    />
+                  ) : (
+
                     <img
                       src={profileUser.imgurl}
                       alt="profile picture"
                       className="img-profile"
-                    />
+                  /> )}
                   </Link>
                 </div>
-              }
+              
               <div id="user-basic-info">
                 <div>
                   <h1 className="user-header-name" ><strong>
                     {`${profileUser.firstname} ${profileUser.lastname}`}
                   </strong></h1>
-                
+
                 <h3> {profileUser.gender} </h3>
-                <h3> gender: {profileUser.gender} </h3>
-                <h3> zipcode: {profileUser.zipcode} </h3>
+                <h3> Zipcode: {profileUser.zipcode} </h3>
                 <h3> Occupation: {profileUser.occupation} </h3>
                 {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
               </div>

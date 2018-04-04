@@ -25,7 +25,7 @@
   border-radius: 20px;
 }
 
-#user-banner {
+#user-banner-edit {
     display: flex;
     justify-content: space-around;
 }
@@ -37,8 +37,8 @@
 /* ---- faux crop image of user ---- */
 
 .image-crop {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     background-color: #fff;
     display: flex;
@@ -47,8 +47,8 @@
 }
 
 .img-profile {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   margin: auto;
   background-color: rgb(232, 241, 242);
   object-fit: cover;
@@ -56,7 +56,7 @@
 
 #user-basic-info-edit {
   width: 40%;
-  margin-top: -100px;
+  margin-top: -50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,7 +72,7 @@
 }
 
 .margin-top {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .margin-bottom {
@@ -118,4 +118,8 @@
   border-radius: 30px;
   border: 2px solid lightgrey;
   text-indent: 10px;
+}
+
+input.center-submit {
+  margin: auto;
 }

@@ -12,14 +12,15 @@ class Thread extends Component {
   }
 
   getMessages = () => {
-    // let thread = this.props.thread;
-    let thread_id = this.props.match.params.thread_id;
+    let thread_id = this.props.thread_id;
     axios
       .post('/users/threadmessages', { thread_id: thread_id })
       .then(res => {
+        const messages = res.data.threadMessages;
         this.setState({
-          messages: res.data.threadMessages
+          messages: messages
         })
+        this.confirmRead(messages);
       })
   }
 
@@ -37,7 +38,7 @@ class Thread extends Component {
 
   sendMessage = () => {
     const { userMessage } = this.state;
-    const threadID = this.props.match.params.thread_id;
+    const threadID = this.props.thread_id;
     if (!userMessage) return;
     axios
       .post('/users/send_message', {threadID: threadID, body: userMessage})
@@ -49,21 +50,33 @@ class Thread extends Component {
       })
   }
 
-  componentWillMount() {
-    // this.getMessages();
+  confirmRead = (messages) => {
+    const { getUnreadMessages } = this.props;
+    const requests = messages.map(message =>  axios.patch('/users/confirm_read', {messageId: message.id}))
+    Promise.all(requests).then(() => {
+      console.log('All promises resolved')
+      getUnreadMessages();
+    })
+  }
+
+  componentDidMount() {
+    const {  getUnreadMessages } = this.props;
+    this.getMessages();
+    getUnreadMessages();
+
   }
 
   render() {
-    const { handleTextarea, clearMessage, sendMessage } = this;
+    const { handleTextarea, clearMessage, sendMessage, confirmRead } = this;
     const { user, messages, userMessage } = this.state;
-    // const { getUnreadMessages } = this.props;
-    console.log('ThreadMessages ln 60', this)
-    let thread_id = this.props.match.params.thread_id;
+    let thread_id = this.props.thread_id;
 
     return (
       <div>
+        THREAD MESSAGES!!
         Thread ID: {thread_id}
-        {messages.map(message => <SingleMessage message={message} /> )}
+        {messages.map(message => <SingleMessage message={message} confirmRead={confirmRead} /> )}
+
         <div className="background-banner orange-background">
           <div id="chat-box" className="margin-top">
             <label>
