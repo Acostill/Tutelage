@@ -78,7 +78,10 @@ class FilterSideBar extends Component {
         ...selectedOptions,
         [e.target.name]: e.target.value
       }
-    });
+    }, () => { 
+      console.log(this.state);
+      this.props.handleSelect(this.state.selectedOptions.gender)
+    }); 
   };
 
   render() {
