@@ -16,6 +16,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       profileUser: {},
+      subject: '',
       userMessage: "",
       showChatBox: false
     };
@@ -69,9 +70,22 @@ class Profile extends Component {
     });
   };
 
-  clearMessage = () => {
+  handleSubmit = e => {
+    e.preventDefault();
+    const { profileUser, subject, userMessage } = this.state;
+    axios
+      .post('/users/fetch_new_thread', {username2: profileUser.username, subject: subject})
+      .then(res => {
+        console.log('returned ID', res.data.thread.id)
+        let thread_id = res.data.thread.id;
+        axios.post('/users/send_message', {thread_id: thread_id, body: userMessage})
+      })
+  }
+
+  cancelMessage = () => {
     this.setState({
-      userMessage: ""
+      userMessage: "",
+      showChatBox: false
     });
   };
 
@@ -90,9 +104,10 @@ class Profile extends Component {
 
   render() {
     const {
-      clearMessage,
+      cancelMessage,
       handleTextarea,
       checkReload,
+      handleSubmit,
       showChatBoxHandle
     } = this;
     const { profileUser, userMessage, showChatBox } = this.state;
@@ -183,11 +198,12 @@ class Profile extends Component {
                 <input
                   type="submit"
                   value="Submit Message"
+                  onClick={handleSubmit}
                   className="submit button-size"
                 />
-                <button className="clear button-size" onClick={clearMessage}>
+                <button className="clear button-size" onClick={cancelMessage}>
                   {" "}
-                  Clear{" "}
+                  Cancel{" "}
                 </button>
               </div>
             </div>
