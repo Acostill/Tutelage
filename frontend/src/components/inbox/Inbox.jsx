@@ -34,7 +34,7 @@ class Inbox extends Component {
       border: "4px solid #f46524",
       backgroundColor: "white",
       borderRadius: "70px 70px",
-      margin: "40px 20px 40px 20px",
+      margin: "40px 80px 40px 80px",
       fontSize: "20px",
       padding: "20px",
       paddingLeft: "50px"
@@ -46,7 +46,7 @@ class Inbox extends Component {
       border: "4px solid #f46524",
       backgroundColor: "lightcoral",
       borderRadius: "70px 70px",
-      margin: "40px 20px 40px 20px",
+      margin: "40px 80px 40px 80px",
       fontSize: "20px",
       padding: "20px",
       paddingLeft: "50px"
