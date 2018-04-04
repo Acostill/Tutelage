@@ -97,8 +97,6 @@ class Profile extends Component {
     } = this;
     const { profileUser, userMessage, showChatBox } = this.state;
     const { user } = this.props;
-    console.log("USER ID Here in profile jsx:", profileUser.public_id);
-    console.log("userrerrreree", profileUser);
     let currentURL = this.props.match.url;
     let commonInterests = "";
 

@@ -85,8 +85,6 @@ class FilterSideBar extends Component {
     const { currentUser, handleSubmit } = this.props;
     const { categories, handleSelect} = this;
     const { selectedOptions } = this.state;
-    console.log("this =>>", this);
-    console.log("this.state =>", this.state);
 
     return (
       <div className="filter-sidebar">
