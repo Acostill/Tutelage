@@ -126,14 +126,17 @@ class Profile extends Component {
               
                 
               <div className="image-crop margin">
-                <Link to={`/users/${profileUser.username}/edit`} title="Click to edit Profile.">
+                <Link
+                  to={`/users/${profileUser.username}/edit`}
+                  title="Click to edit Profile."
+                >
                   {profileUser.public_id ? (
                     <Image
                       className="img-profile"
                       cloudName="tutelage"
                       publicId={profileUser.public_id + ".jpg"}
                       crop="scale"
-                      /*width="300"  */ 
+                      /*width="300"  */
                     />
                   ) : (
 

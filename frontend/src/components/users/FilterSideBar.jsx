@@ -19,12 +19,7 @@ class FilterSideBar extends Component {
         id: "2",
         title: "Age-group",
         name: "age_group",
-        options: [
-          "18 - 28",
-          "29 - 39",
-          "40 - 49",
-          "50 +",
-        ]
+        options: ["18 - 28", "29 - 39", "40 - 49", "50 +"]
       },
       {
         id: "3",
@@ -65,11 +60,9 @@ class FilterSideBar extends Component {
         age_group: "",
         occupation: "",
         language: ""
-      },
+      }
     };
   }
-
-
 
   handleSelect = e => {
     const { selectedOptions } = this.state;
@@ -82,8 +75,8 @@ class FilterSideBar extends Component {
   };
 
   render() {
-    const { currentUser, handleSubmit } = this.props;
-    const { categories, handleSelect} = this;
+    const { currentUser, handleSubmit, handleGenderSelect } = this.props;
+    const { categories, handleSelect } = this;
     const { selectedOptions } = this.state;
 
     return (
@@ -109,7 +102,7 @@ class FilterSideBar extends Component {
           )}
         </div>
 
-          <SelectGroup
+        <SelectGroup
           categories={categories}
           selectedOptions={selectedOptions}
           handleSelect={handleSelect}

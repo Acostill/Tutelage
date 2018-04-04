@@ -125,7 +125,6 @@ class SearchUsers extends Component {
 
   componentDidMount() {
     this.getUserList();
-    // this.getAllMentorsOrMentees();
   }
 
   render() {
@@ -149,6 +148,24 @@ class SearchUsers extends Component {
       height: "200px"
     };
     return (
+      <div className="search-container">
+<nav role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <ul id="menu">
+      <a href="#"><li>Home</li></a>
+      <a href="#"><li>About</li></a>
+      <a href="#"><li>Info</li></a>
+      <a href="#"><li>Contact</li></a>
+      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+    </ul>
+  </div>
+</nav>
       <div id="search-page">
         {this.props.currentUser.ismentor ? (
           <div id="search-header" className="font-large">
@@ -167,6 +184,7 @@ class SearchUsers extends Component {
             id="filter-sidebar"
             currentUser={currentUser}
             handleSubmit={this.getBestUsers}
+            handleGenderSelect={this.getGender}
           />
 
           <div id="results-map">
@@ -189,6 +207,7 @@ class SearchUsers extends Component {
             </div> */}
           </div>
         </div>
+      </div>
       </div>
     );
   }

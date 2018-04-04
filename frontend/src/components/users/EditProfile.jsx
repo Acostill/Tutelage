@@ -54,6 +54,7 @@ class EditProfile extends Component {
         tags: ["users", "tutelage"]
       },
       (error, result) => {
+        console.log("INCOMING result NOW IS:", result)
         result.map(elem => {
           if (!elem.public_id) {
             return "sample";
@@ -274,7 +275,7 @@ class EditProfile extends Component {
                       className="input-box-edit"
                     />
                   </div>
-                  <div className="margin-top">
+                  {/* <div className="margin-top">
                     {"Link of Image:"}
                     <input
                       type="text"
@@ -283,7 +284,7 @@ class EditProfile extends Component {
                       onChange={handleInputChange}
                       className="input-box-edit"
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
