@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,400i,600,600i%7CPlayfair+Display:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,600|Roboto:400,700');
+
+/* 
+font-family: 'Roboto', sans-serif; //for headers
+font-family: 'IBM Plex Serif', serif; //for overall
+*/
 
 body > div {
   margin: 0;
@@ -10,7 +15,7 @@ body h1,
 body h2,
 body h3,
 body h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #missionStatement {
@@ -21,5 +26,4 @@ body h4 {
 .missionParagraphs {
   text-align: center;
   font-family: 'IBM Plex Serif', serif;
-
 }
