@@ -1,3 +1,19 @@
+html {
+    width: 100%!important;
+}
+
+body {
+    width: 100%;
+}
+
+#root {
+    width: 100%;
+}
+
+.app {
+    width: 100%;
+}
+
 #app-name {
     font-size: 44px;
     font-family: "Lobster", cursive;
@@ -43,7 +59,8 @@ div.nav-right {
     text-decoration: none;
 }
 
-@media screen and (min-width: 601px) {
+
+/* @media screen and (min-width: 601px) {
     #navigation-bar {
         display: block;
     }
@@ -66,4 +83,4 @@ div.nav-right {
     nav[role="navigation"] {
         display: block;
     }
-}
+} */

@@ -4,7 +4,7 @@ import "../css/temp.css";
 import axios from "axios";
 import Home from "./Home";
 // import Profile from './Profile';
-import SearchUsers from "./users/SearchUsers";
+// import SearchUsers from "./users/SearchUsers";
 import { Redirect } from "react-router";
 import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 

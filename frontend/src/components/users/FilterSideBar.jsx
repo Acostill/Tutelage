@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "../../css/FilterSideBar.css";
+import "../../css/hamburger.css";
+import { slide as Menu } from "react-burger-menu";
 import SelectGroup from "./SelectGroup";
 
 class FilterSideBar extends Component {
@@ -66,14 +68,17 @@ class FilterSideBar extends Component {
 
   handleSelect = e => {
     const { selectedOptions } = this.state;
-    this.setState({
-      selectedOptions: {
-        ...selectedOptions,
-        [e.target.name]: e.target.value
+    this.setState(
+      {
+        selectedOptions: {
+          ...selectedOptions,
+          [e.target.name]: e.target.value
+        }
+      },
+      () => {
+        this.props.handleSelect(this.state.selectedOptions.gender);
       }
-    }, () => { 
-      this.props.handleSelect(this.state.selectedOptions.gender)
-    }); 
+    );
   };
 
   render() {
@@ -82,33 +87,63 @@ class FilterSideBar extends Component {
     const { selectedOptions } = this.state;
 
     return (
-      <div className="filter-sidebar">
-        <div className="custom-filter">
-          <h2 className="custom-filter-title" > Custom Filter: </h2>
-          {this.props.currentUser.ismentor ? (
-            <button
-              id="custom-search-btn"
-              className="search-btn"
-              onClick={this.props.handleSubmit}
-            >
-             Mentee Match
-            </button>
-          ) : (
-            <button
-              id="custom-search-btn"
-              className="search-btn"
-              onClick={this.props.handleSubmit}
-            >
-              Mentor Match
-            </button>
-          )}
+      <div>
+        <div className="filter-sidebar" id="main-filter-sidebar">
+          <div className="custom-filter">
+            <h2 className="custom-filter-title"> Custom Filter: </h2>
+            {this.props.currentUser.ismentor ? (
+              <button
+                id="custom-search-btn"
+                className="search-btn"
+                onClick={this.props.handleSubmit}
+              >
+                Mentee Match
+              </button>
+            ) : (
+              <button
+                id="custom-search-btn"
+                className="search-btn"
+                onClick={this.props.handleSubmit}
+              >
+                Mentor Match
+              </button>
+            )}
+            <SelectGroup
+              categories={categories}
+              selectedOptions={selectedOptions}
+              handleSelect={handleSelect}
+            />
+          </div>
         </div>
-
-        <SelectGroup
-          categories={categories}
-          selectedOptions={selectedOptions}
-          handleSelect={handleSelect}
-        />
+        <Menu left width={ 280 }>
+          <div><div className="filter-sidebar2" id="main-filter-sidebar2">
+          <div className="custom-filter">
+            <h2 className="custom-filter-title"> Custom Filter: </h2>
+            {this.props.currentUser.ismentor ? (
+              <button
+                id="custom-search-btn"
+                className="search-btn"
+                onClick={this.props.handleSubmit}
+              >
+                Mentee Match
+              </button>
+            ) : (
+              <button
+                id="custom-search-btn"
+                className="search-btn"
+                onClick={this.props.handleSubmit}
+              >
+                Mentor Match
+              </button>
+            )}
+            <SelectGroup
+              categories={categories}
+              selectedOptions={selectedOptions}
+              handleSelect={handleSelect}
+            />
+          </div>
+        </div></div>
+        </Menu>
       </div>
     );
   }

@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar";
 import Inbox from "./components/inbox/Inbox";
 import Survey from "./components/survey/Survey";
 import axios from "axios";
+import Hamburger from './components/users/Hamburger';
 
 class App extends Component {
   constructor() {
@@ -156,6 +157,7 @@ class App extends Component {
           getUnreadMessages={getUnreadMessages}
           unreadMessages={unreadMessages}
         />
+        {/* <Hamburger /> */}
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/inbox" render={(props) => 
