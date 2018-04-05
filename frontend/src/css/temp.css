@@ -1,4 +1,4 @@
-#app-name {
+.app-name {
     font-size: 44px;
     font-family: 'Lobster', cursive;
     color: #f46524ff;
@@ -10,13 +10,39 @@
 #navigation-bar {
     width: 100%;
     background-color: #fff;
-    /* display: flex; */
+    display: flex;
     /* z-index: 9999; */
-    /* overflow: auto; */
-    /* position: relative; */
-    /* align-items: center; */
-    /* justify-content: space-between; */
-    /* top: 0; */
+    overflow: auto;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+}
+
+div.navbar-header {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+div.nav-bar .nav_toggle {
+    float: right;
+}
+
+#logout-button {
+    display: inline-flex;
+}
+
+#myNavbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-items {
+    display: inline-flex;
+    justify-content: flex-end
 }
 
 #navigation-bar-loggedin {
@@ -28,7 +54,12 @@
     justify-content: space-between;
 }
 
-#app-name {
+.app-name-container {
+    display: inline-flex;
+}
+
+.app-name {
+    float: left;
     margin-left: 20px;
     align-self: flex-start;
 }
@@ -43,6 +74,15 @@ div.nav-right {
     justify-content: space-around;
     align-items: center;
 }
+
+
+/* nav-right-items {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    justify-content: space-between;
+}
+ */
 
 .nav-right>a {
     color: rgb(53, 53, 53);
@@ -83,6 +123,15 @@ div.nav-right-loggedin {
     text-decoration: none;
 }
 
+.container-fluid {
+    /* background-color: white; */
+    border: none;
+}
+
+.nnavbar-inverse {
+    border: none;
+}
+
 #logout-button {
     width: 110px;
     background-color: #f46524ff;
@@ -117,7 +166,7 @@ div.nav-right-loggedin {
     padding: 2px;
     font-size: 16px;
     margin-left: -6px;
-    margin-top:-5px;
+    margin-top: -5px;
     color: white;
     background-color: red;
     border-radius: 50%;
