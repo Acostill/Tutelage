@@ -69,7 +69,8 @@ class Thread extends Component {
 
   render() {
     const { handleTextarea, clearMessage, sendMessage, confirmRead } = this;
-    const { user, messages, userMessage } = this.state;
+    const { user, messages, userMessage} = this.state;
+    const { currentUser } = this.props;
     let thread_id = this.props.thread_id;
 
     console.log("===>", this.state)
@@ -81,8 +82,8 @@ class Thread extends Component {
         
         <h2 className="center margin"> Thread ID: {thread_id} </h2>
         <div className="conversation center" >
-        {/* use if else in the map on which user to position on what side */}
-        {messages.map(message => <SingleMessage message={message} confirmRead={confirmRead} /> )}
+
+        {messages.map(message => <SingleMessage message={message} confirmRead={confirmRead} currentUser={currentUser} /> )}
         </div>
 
         <div className="center margin">

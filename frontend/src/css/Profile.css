@@ -157,3 +157,7 @@ div.user-pic-info>.image-crop>a>.img-profile {
     justify-content: center;
     margin-top: 20px;
 }
+
+#editButton {
+    margin-left: 490px;
+}
