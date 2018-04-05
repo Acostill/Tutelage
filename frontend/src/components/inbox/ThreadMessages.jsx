@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SingleMessage from './SingleMessage';
+import "../../css/ThreadMessages.css";
 
 class Thread extends Component {
   constructor() {
@@ -71,14 +72,21 @@ class Thread extends Component {
     const { user, messages, userMessage } = this.state;
     let thread_id = this.props.thread_id;
 
-    return (
-      <div>
-        THREAD MESSAGES!!
-        Thread ID: {thread_id}
-        {messages.map(message => <SingleMessage message={message} confirmRead={confirmRead} /> )}
+    console.log("===>", this.state)
 
-        <div className="background-banner orange-background">
-          <div id="chat-box" className="margin-top">
+    return (
+      <div id="thread-messages-container" >
+        <h1 className="thread-message-title" > 
+        MESSAGES </h1>
+        
+        <h2 className="center margin"> Thread ID: {thread_id} </h2>
+        <div className="conversation center" >
+        {/* use if else in the map on which user to position on what side */}
+        {messages.map(message => <SingleMessage message={message} confirmRead={confirmRead} /> )}
+        </div>
+
+        <div className="center margin">
+          <div id="chat-box" className="margin-top chatbox-thread">
             <label>
               <h2> Let's chat: </h2>
             </label>
