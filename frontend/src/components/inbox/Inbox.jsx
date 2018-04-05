@@ -58,7 +58,6 @@ class Inbox extends Component {
       textDecoration: "none"
     };
 
-    console.log("state =>>>", this.state)
     return (
       <div className="inbox-container">
         <h1 className="inbox-title" > Messages </h1>
@@ -89,11 +88,12 @@ class Inbox extends Component {
   };
 
   renderThreadMessages = props => {
-    const { getUnreadMessages } = this.props;
+    const { getUnreadMessages, currentUser } = this.props;
     return (
       <ThreadMessages
         thread_id={props.match.params.thread_id}
         getUnreadMessages={getUnreadMessages}
+        currentUser={currentUser}
       />
     );
   };
