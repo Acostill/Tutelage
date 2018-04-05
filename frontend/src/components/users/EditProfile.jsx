@@ -58,10 +58,7 @@ class EditProfile extends Component {
           if (!elem.public_id) {
             return "sample";
           } else {
-            console.log("elemmmm:", elem);
-            console.log("REZULTTT img of make widget:", result);
-            console.log("the public_ID:", result[0].public_id);
-            console.log("the url:", result[0].url);
+
             this.setState({
               newImgURL: result[0].url,
               public_id: result[0].public_id
@@ -73,7 +70,6 @@ class EditProfile extends Component {
   };
 
   getUser = () => {
-    console.log('EditProfile', this.props)
     let username = this.props.match.params.username;
     axios
       .get(`/users/getuser/${username}`)
@@ -91,9 +87,6 @@ class EditProfile extends Component {
   };
 
   setUser = (currentUser) => {
-    console.log('Hello setUser!')
-    // console.log(this.props.currentUser);
-    // const { currentUser } = this.nexProps.currentUser;
     const { username, firstname, lastname, email,
       ismentor, age, bio, occupation, zipcode,
       gender, imgurl, hobbies, credentials } = currentUser;
@@ -126,8 +119,6 @@ class EditProfile extends Component {
   };
 
   handleInputChange = e => {
-    console.log("changing values:", e.target.value);
-    // console.log("original values:", this.props.user.firstname);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -148,9 +139,6 @@ class EditProfile extends Component {
   editProfileSubmitForm = e => {
     e.preventDefault();
     e.stopPropagation();
-    // const { user } = this.props;
-
-    //finish defining vars from state
     let {
       newUserName,
       newFirstName,
@@ -192,7 +180,6 @@ class EditProfile extends Component {
         });
       })
       .catch(e => {
-        console.log(e);
         this.setState({
           message: "Error updating profile"
         });
@@ -209,24 +196,13 @@ class EditProfile extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    // const { getUnreadMessages } = this.props;
-    console.log('Next props:', nextProps.currentUser)
-    console.log('Current User:', this.props.currentUser)
-
-    // if (nextProps.signedIn && !this.props.signedIn) {
-    //   this.setUser();
-    // }
-
     if (nextProps.currentUser.username !== this.props.currentUser.username) {
-      console.log('correct condition')
       this.setUser(nextProps.currentUser);
     }
   }
 
   componentDidMount() {
     this.getUser();
-    // this.setUser();
-    // this.getPhotos();
   }
 
   render() {
