@@ -80,7 +80,8 @@ class Thread extends Component {
         MESSAGES </h1>
         
         <h2 className="center margin"> Thread ID: {thread_id} </h2>
-        <div className="conversation">
+        <div className="conversation center" >
+        {/* use if else in the map on which user to position on what side */}
         {messages.map(message => <SingleMessage message={message} confirmRead={confirmRead} /> )}
         </div>
 
