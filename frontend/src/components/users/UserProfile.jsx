@@ -88,7 +88,7 @@ class UserProfile extends Component {
               </div>
             </div>
             <Link to={`/users/${currentUser.username}/edit`} >
-              <button className="" >Edit</button>
+              <button className="button-size submit" id="editButton" >Edit</button>
             </Link>
             <div className="box-two">
               <div className="user-info-content">
