@@ -101,7 +101,7 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('RichArt', 'Richard', 'Artoul', '10192', '../images/richard.jpeg', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '38', 'Male', 'Senior Developer', 'Solving Sudoku Puzzles', 'I enjoy coding and building these applications. I was grateful that I entered this field and want to help others succeed in this field. I make it my goal to help others and show that this career choice would be the best one they chose.', 'Bachelor of Science and Computer Science');
+  ('RichArt', 'Richard', 'Artoul', '10192', '../images/richard.jpeg', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '38', 'Male', 'Senior Developer', 'Solving Sudoku Puzzles', 'I enjoy coding and building these applications. I was grateful that I entered this field and want to help others succeed in this field. I joined other sites to find mentees but none of them seemed to work and I never really recieved a mentee. I make it my goal to help others and show that this career choice would be the best one they chose.', 'Bachelor of Science and Computer Science');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
@@ -321,10 +321,13 @@ INSERT INTO interests
 values('greg1', 'Motorcycles');
 INSERT INTO interests
   (username, interest)
-values('carolina1', 'Skiing');
+values('carolina1', 'Coding');
 INSERT INTO interests
   (username, interest)
 values('carolina1', 'Camping');
+INSERT INTO interests
+  (username, interest)
+values('carolina1', 'Computer Science');
 INSERT INTO interests
   (username, interest)
 values('carolina1', 'Swimming');
@@ -355,6 +358,9 @@ values('RichArt', 'Sudoku');
 INSERT INTO interests
   (username, interest)
 values('RichArt', 'Computer Science');
+INSERT INTO interests
+  (username, interest)
+values('RichArt', 'Cook');
 
 
 
