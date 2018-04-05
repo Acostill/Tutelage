@@ -113,15 +113,15 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('eddie1', 'Eddie', 'Harmon', '60628', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'Male', 'Aquamarine Palentologist', 'Filming Documentaries', NULL, NULL);
+  ('eddie1', 'Eddie', 'Harmon', '60628', 'http://res.cloudinary.com/tutelage/image/upload/v1522803875/t4ud3mf0v4fahfpu1cs0.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'Male', 'Aquamarine Palentologist', 'Filming Documentaries', NULL, NULL);
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('nick1', 'Nicholas', 'Chavez', '11226', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/NickCropped.jpg', 'nick@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Male', 'Video Game Software Designer', 'Playing Videogames', NULL, NULL);
+  ('nick1', 'Nicholas', 'Chavez', '11226', 'http://res.cloudinary.com/tutelage/image/upload/v1522799854/aktqfqevrooa1rry11vx.jpg', 'nick@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Male', 'Video Game Software Designer', 'Playing Videogames', NULL, NULL);
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('gerson1', 'Gerson', 'Castillo', '10452', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '26', 'Male', 'Senior Architect', 'Swimming', NULL, NULL);
+  ('gerson1', 'Gerson', 'Castillo', '10452', 'http://res.cloudinary.com/tutelage/image/upload/v1522799965/uigofjebpaxcdlohdpyb.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '26', 'Male', 'Senior Architect', 'Swimming', NULL, NULL);
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
@@ -129,11 +129,11 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('jcrest', 'Jason', 'Crest', '10128', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/jcrestCropped.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '44', 'Male', 'Dentist', 'Training For Ironman', NULL, NULL);
+  ('jcrest', 'Jason', 'Crest', '10128', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/jcrest.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '44', 'Male', 'Dentist', 'Training For Ironman', NULL, NULL);
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('adelle1', 'Adelle', 'Anderson', '90210', 'http://res.cloudinary.com/tutelage/image/upload/v1522734135/adelleprofilepic.jpg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Female', 'Physical Science Grad Student', 'Roller Skating', 'Born on the West Coast, I moved to sunny Florida when I was 9 years-old. That was when I saw my very first space shuttle launch taking off from Cape Canaveral. Ever since then, I have been inspired to see the space and stars for myself. I grew up admiring Mae Jemison and want to follow in her footsteps someday!', NULL);
+  ('adelle1', 'Adelle', 'Anderson', '90210', 'http://res.cloudinary.com/tutelage/image/upload/v1522799717/apyst02piyn3c7alvnyr.jpg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Female', 'Physical Science Grad Student', 'Roller Skating', 'Born on the West Coast, I moved to sunny Florida when I was 9 years-old. That was when I saw my very first space shuttle launch taking off from Cape Canaveral. Ever since then, I have been inspired to see the space and stars for myself. I grew up admiring Mae Jemison and want to follow in her footsteps someday!', NULL);
   
 
 
