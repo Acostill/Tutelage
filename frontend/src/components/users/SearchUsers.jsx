@@ -129,8 +129,6 @@ class SearchUsers extends Component {
 
   componentDidMount() {
     this.getUserList();
-<<<<<<< HEAD
-=======
   }
 
   filterBy = ( gender, ageGroup, expertise, language ) => {
@@ -146,7 +144,6 @@ class SearchUsers extends Component {
       filteredMentees: filteredMentees,
       filteredMentors: filteredMentors
     })
->>>>>>> ffc59996e82c0621fb0479cd43e583ab88240e6c
   }
 
   render() {
@@ -208,11 +205,8 @@ class SearchUsers extends Component {
             id="filter-sidebar"
             currentUser={currentUser}
             handleSubmit={this.getBestUsers}
-<<<<<<< HEAD
             handleGenderSelect={this.getGender}
-=======
             handleSelect={this.filterBy}
->>>>>>> ffc59996e82c0621fb0479cd43e583ab88240e6c
           />
 
           <div id="results-map">
