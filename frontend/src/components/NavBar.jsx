@@ -50,23 +50,6 @@ class NavBar extends Component {
   loggedOutNav = () => {
     return (
       <div className="navBar-logOut">
-
-        <nav role="navigation">
-          <div id="menuToggle">
-            <input type="checkbox" />
-            <span />
-            <span />
-            <span />
-
-            <ul id="menu">
-              <Link className="app-name" to="/">
-                Tutelage
-              </Link>
-              <Link to="/login"> Log In </Link>
-              <Link to="/aboutus"> About Us </Link>
-            </ul>
-          </div>
-        </nav>
         {/**REGULAR */}
         <div>
           <nav id="navigation-bar">
