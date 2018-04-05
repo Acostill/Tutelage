@@ -310,7 +310,6 @@ class EditProfile extends Component {
             </div>
           </div>
 
-          {/* fix around here - make sure user-info-content has closing div */}
           <div className="user-info-content">
                 <div id="quick-user-info" >
                   <div>

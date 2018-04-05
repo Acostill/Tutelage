@@ -176,9 +176,10 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/inbox" render={(props) => 
             <Inbox 
-              getUnreadMessages={getUnreadMessages} 
               {...props} 
+              getUnreadMessages={getUnreadMessages} 
               unreadMessages={unreadMessages}
+              currentUser={user}
               />} />
           <Route
             path="/login"

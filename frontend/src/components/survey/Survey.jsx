@@ -133,7 +133,6 @@ class Survey extends React.Component {
               <fieldset>
                 <legend> Select one answer </legend>
                 <InlineRadioGroup
-                  // className="questionChoice"
                   name={`${question.id}`}
                   values={[
                     question.answer_1,
