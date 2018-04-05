@@ -4,9 +4,7 @@ import "../../css/SelectGroup.css"
 const SelectGroup = ({ categories, selectedOptions, handleSelect }) => {
   return (
     <div>
-      <hr/>
-      <h2 className="separate-or" > Or </h2>
-      <hr/>
+      <div className="divider" ><hr/></div>
       <h2 className="filter-title"> Filter By: </h2>
       {categories.map(category => {
         return (

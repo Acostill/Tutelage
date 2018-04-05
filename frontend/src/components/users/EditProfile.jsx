@@ -17,6 +17,7 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       user: {},
+      public_id: this.props.currentUser.public_id,
       userMessage: "",
       newUserName: '',
       newFirstName: '',
@@ -49,22 +50,26 @@ class EditProfile extends Component {
     window.cloudinary.openUploadWidget(
       {
         cloud_name: "tutelage",
-        public_id: this.props.user.username,
         upload_preset: "wpcjhnmk",
         tags: ["users", "tutelage"]
       },
-      function(error, result) {
-        console.log("REZULTTT:", result[0].secure_url);
-        console.log("REZULTTT:", result);
+      (error, result) => {
+        result.map(elem => {
+          if (!elem.public_id) {
+            return "sample";
+          } else {
+            console.log("elemmmm:", elem);
+            console.log("REZULTTT img of make widget:", result);
+            console.log("the public_ID:", result[0].public_id);
+            console.log("the url:", result[0].url);
+            this.setState({
+              newImgURL: result[0].url,
+              public_id: result[0].public_id
+            });
+          }
+        });
       }
     );
-  };
-
-  getPhotos = () => {
-    axios.get("http://res.cloudinary.com/tutelage").then(res => {
-      console.log(res);
-      // this.setState({gallery: res.data.resources});
-    });
   };
 
   getUser = () => {
@@ -90,8 +95,8 @@ class EditProfile extends Component {
     // console.log(this.props.currentUser);
     // const { currentUser } = this.nexProps.currentUser;
     const { username, firstname, lastname, email,
-            ismentor, age, bio, occupation, zipcode,
-            gender, imgurl, hobbies, credentials } = currentUser;
+      ismentor, age, bio, occupation, zipcode,
+      gender, imgurl, hobbies, credentials } = currentUser;
     this.setState({
       newUserName: username,
       newFirstName: firstname,
@@ -129,16 +134,12 @@ class EditProfile extends Component {
   };
 
   handleRadioChange = e => {
-    console.log("changing genders:", e.target.value);
-
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
   handleSelect = e => {
-    console.log("valszz", this.props.values);
-    console.log("TARGET VALUE:", e.target.value);
     this.setState({
       newOccupation: e.target.value
     });
@@ -164,9 +165,9 @@ class EditProfile extends Component {
       newImgURL,
       gender,
       newHobbies,
-      newCredentials
+      newCredentials,
+      public_id
     } = this.state;
-    console.log("STATE IN EDITPROOOOFILEE", this.state);
 
     axios
       .patch("/users/edit", {
@@ -182,7 +183,8 @@ class EditProfile extends Component {
         gender: gender === "Male" ? "Male" : "Female",
         imgurl: newImgURL,
         hobbies: newHobbies,
-        credentials: newCredentials
+        credentials: newCredentials,
+        public_id: public_id
       })
       .then(res => {
         this.setState({
@@ -214,7 +216,7 @@ class EditProfile extends Component {
     // if (nextProps.signedIn && !this.props.signedIn) {
     //   this.setUser();
     // }
-  
+
     if (nextProps.currentUser.username !== this.props.currentUser.username) {
       console.log('correct condition')
       this.setUser(nextProps.currentUser);
@@ -224,7 +226,7 @@ class EditProfile extends Component {
   componentDidMount() {
     this.getUser();
     // this.setUser();
-    this.getPhotos();
+    // this.getPhotos();
   }
 
   render() {
@@ -240,6 +242,7 @@ class EditProfile extends Component {
       makeWidget
     } = this;
     const {
+      user,
       userMessage,
       newUserName,
       newFirstName,
@@ -254,7 +257,8 @@ class EditProfile extends Component {
       newImgURL,
       hobbies,
       credentials,
-      doneEditing
+      doneEditing,
+      public_id
     } = this.state;
     // console.log("the state here in edit PROFILE IS:", this.state);
     const { currentUser } = this.props;
@@ -268,162 +272,149 @@ class EditProfile extends Component {
       <div id="user-profile" className="margin">
         <form onSubmit={editProfileSubmitForm} id="input-container">
           <div className="background-banner">
-            <div id="user-banner">
+            <div className="sq2-edit" />
+            <div id="user-banner-edit">
               <div className="image-crop margin">
-                <button id="upload_widget_opener" onClick={makeWidget}>
-                  <Image
-                    cloudName="tutelage"
-                    publicId={currentUser.username}
-                    width="300"
-                    // crop="scale"
-                  >
-                    {/* <Transformation
-                      width="900"
-                      height="900"
-                      background="auto:predominant_gradient:6:palette_orange_white_orange_red_orange_black"
-                      crop="pad"
-                    /> */}
-                  </Image>
-                </button>
-                {/* <img
-                  src={`../${user.imgurl}`}
-                  alt="profile picture"
-                  className="img"
-                /> */}
+                {/*  Incoming */}
+                {this.state.public_id ? (
+                  <button id="upload_widget_opener" onClick={makeWidget}>
+                    <Image
+                      cloudName="tutelage"
+                      publicId={this.state.public_id}
+                      width="250"
+                      crop="scale"
+                    />
+                  </button>
+                ) : (
+                    <button id="upload_widget_opener" onClick={makeWidget}>
+                      <Image
+                        cloudName="tutelage"
+                        publicId={"defaultpic"}
+                        width="250"
+                        crop="scale"
+                      />
+                    </button>
+                  )}
               </div>
-              <div id="user-basic-info">
-                <h1 className="user-header">
-                  {`${currentUser.firstname} ${currentUser.lastname}`}
-                  <input
-                    type="text"
-                    placeholder="First Name"
-                    name="newFirstName"
-                    value={newFirstName}
-                    onChange={handleInputChange}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Last Name"
-                    name="newLastName"
-                    value={newLastName}
-                    onChange={handleInputChange}
-                  />
-                </h1>
-                <h3> Gender: {currentUser.gender} </h3>
-                <h3> Zipcode: {currentUser.zipcode} </h3>
-                <h3> Occupation: {currentUser.occupation} </h3>
-                {/* <input
-                  type="text"
-                  name="imgURL"
-                  placeholder="Link of Image"
-                  value={newImgURL}
-                  onChange={handleInputChange}
-                /> */}
+              <div id="user-basic-info-edit">
+                <div className="user-header-edit">
+                  <div>
+                    <input
+                      type="text"
+                      name="newFirstName"
+                      value={newFirstName}
+                      onChange={handleInputChange}
+                      placeholder="First Name"
+                      className="input-box-edit"
+                    />
+                  </div>
+                  <div className="margin-top">
+                    <input
+                      type="text"
+                      name="newLastName"
+                      value={newLastName}
+                      onChange={handleInputChange}
+                      placeholder="Last Name"
+                      className="input-box-edit"
+                    />
+                  </div>
+                  <div className="margin-top">
+                    {"Link of Image:"}
+                    <input
+                      type="text"
+                      name="imgURL"
+                      value={newImgURL}
+                      onChange={handleInputChange}
+                      className="input-box-edit"
+                    />
+                  </div>
+                </div>
+                {/* End Incoming */}
               </div>
             </div>
           </div>
 
+          {/* fix around here - make sure user-info-content has closing div */}
           <div className="user-info-content">
-            <div id="quick-user-info" className="margin-top">
-              <div> Zipcode: {currentUser.zipcode} </div>
-              <input
-                type="text"
-                placeholder="Zipcode"
-                name="newZipcode"
-                value={newZipcode}
-                onChange={handleInputChange}
-              />
-              <div>
-                {" "}
-                Gender: {currentUser.gender}
+                <div id="quick-user-info" >
+                  <div>
+                    {" "}
+                    Gender:
+                {/* {user.gender} */}
+                    <br />
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Male"
+                      onChange={handleRadioChange}
+                    />{" "}
+                    Male{" "}
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Female"
+                      onChange={handleRadioChange}
+                    />{" "}
+                    Female{" "}
+                  </div>
+                  <div className="margin-top">
+                    Zipcode:
                 <br />
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Male"
-                  onChange={handleRadioChange}
-                />{" "}
-                Male{" "}
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Female"
-                  onChange={handleRadioChange}
-                />{" "}
-                Female{" "}
-              </div>
-              <div> Occupation: {currentUser.occupation} </div>
-              <Select
-                values={areasOfExpertise}
-                selectedValue={occupation}
-                handleSelect={handleSelect}
-              />
-              {/* <input
-                type="text"
-                placeholder="Occupation"
-                name="newOccupation"
-                value={occupation}
-                onChange={handleInputChange}
-              /> */}
-            </div>
-            <div className="margin-top">Interests: {Interests} </div>
-            Hobbies: {currentUser.hobbies}
-            <input
-              type="text"
-              placeholder="hobbies"
-              name="newHobbies"
-              value={hobbies}
-              onChange={handleInputChange}
-            />
-            Credentials: {currentUser.credentials}
-            <input
-              type="text"
-              placeholder="credentials"
-              name="newCredentials"
-              value={credentials}
-              onChange={handleInputChange}
-            />
-            <div className="margin-top"> Bio: {currentUser.bio} </div>
-            <input
-              type="text"
-              placeholder="Bio"
-              name="newBio"
-              value={newBio}
-              onChange={handleInputChange}
-            />
-          </div>
-          <input type="submit" onClick={fireRedirect} />
-        </form>
-        <div className="background-banner orange-background">
-          <div id="chat-box" className="margin-top">
-            <label>
-              <h2> Let's chat: </h2>
-            </label>
-            <textarea
-              name="message"
-              id="message-box"
-              cols="30"
-              rows="5"
-              placeholder="Write your message here ..."
-              value={userMessage}
-              onChange={handleTextArea}
-            />
-            <div className="chat-buttons">
-              <input
-                type="submit"
-                value="Submit Message"
-                className="submit button-size"
-              />
-              <button className="clear button-size" onClick={clearMessage}>
-                {" "}
-                Clear{" "}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+                    <input
+                      type="text"
+                      placeholder="Zipcode"
+                      name="newZipcode"
+                      value={newZipcode}
+                      onChange={handleInputChange}
+                      className="input-box-edit "
+                    />
+                  </div>
+                  <div className="margin-top"> Occupation: </div>
+                  <Select
+                    values={areasOfExpertise}
+                    selectedValue={occupation}
+                    handleSelect={handleSelect}
+                    className="margin-top"
+                  />
+                </div>
+                <div className="margin-top">Interests: {Interests}</div>
 
-export default EditProfile;
+                <div className="margin-top">
+                  <textarea
+                    placeholder="Hobbies"
+                    cols="70"
+                    name="newHobbies"
+                    value={hobbies}
+                    onChange={handleInputChange}
+                    className="input-box-edit"
+                  />
+                </div>
+            <div className="margin-top">
+              <textarea
+                    placeholder="Credentials"
+                    cols="70"
+                    name="newCredentials"
+                    value={credentials}
+                    onChange={handleInputChange}
+                    className="input-box-edit"
+                    />
+                </div>
+                <div className="margin-top">
+                  <textarea
+                    placeholder="Bio"
+                    cols="70"
+                    name="newBio"
+                    value={newBio}
+                    onChange={handleInputChange}
+                    className="input-box-edit"
+                  />
+                </div>
+                <input type="submit" onClick={fireRedirect} className="button-size submit center-submit" />
+              </div>
+        </form>
+          </div>
+          );
+        }
+      }
+      
+      export default EditProfile;

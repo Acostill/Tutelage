@@ -68,7 +68,9 @@ class NavBar extends Component {
         <FontAwesomeIcon icon={["fas", "user-circle"]} size="2x" />
         </Link>
         
-        <Link to={`/survey`} > Tutelage Survey </Link>
+        <Link to={`/survey`} >
+        <FontAwesomeIcon icon={["fas", "clipboard-list"]} size="2x" />
+        </Link>
         {" "}
         <button type="button" id="logout-button" onClick={logOut}> Log Out </button>
       </div>
@@ -97,11 +99,19 @@ class NavBar extends Component {
       getUnreadMessages();
      this.interval = setInterval(getUnreadMessages, 3000);  
     }
-
-    if (!nextProps.signedIn && this.props.signedIn) {
-      clearInterval(this.interval);
-    }
   }
+  // componentWillReceiveProps(nextProps) {
+  //   const { getUnreadMessages } = this.props;
+
+  //   if (nextProps.signedIn && !this.props.signedIn) {
+  //     getUnreadMessages();
+  //    this.interval = setInterval(getUnreadMessages, 15000);  
+  //   }
+
+  //   if (!nextProps.signedIn && this.props.signedIn) {
+  //     clearInterval(this.interval);
+  //   }
+  // }
 
   componentDidMount() {
     // this.props.getUserInfo();

@@ -13,11 +13,12 @@ const passport = require("../auth/local");
 router.post("/login", db.loginUser) /** Gerson - I commented out the other '/login' route */
 router.post("/create", db.registerUser); /** Greg */
 router.post("/survey", db.getAnswersFromUsers); /** Greg */
-router.post("/message", loginRequired, db.fetchNewThread); /** Greg */
+router.post("/fetch_new_thread", loginRequired, db.fetchNewThread); /** Greg */
 router.post("/send_message", loginRequired, db.submitMessage); //** Greg */
 router.post("/get_messages", db.getAllMessages); /** Greg */
 router.post("/threadmessages", loginRequired, db.getThreadMessages); /** Gerson */
 router.post("/getUserById", loginRequired, db.getSingleUserById); /**Greg */
+router.post("/interests", loginRequired, db.getUserInterests); /** nick */
 
 
 /******************PATCH ROUTES********************* */
@@ -35,7 +36,6 @@ router.get("/unread_messages", loginRequired, db.getUnreadMessages) //** Gerson 
 router.get("/search", db.getAllUsers); /** Carolina */
 router.get("/all_zipcodes", db.getAllLocations); /** Greg */
 router.get("/userthreads", loginRequired, db.getUserThreads); /** Gerson */
-router.get("/interests", loginRequired, db.getUserInterests); /** nick */
 router.get("/magic", loginRequired, db.getSameAnswers) /**Greg */
 
 

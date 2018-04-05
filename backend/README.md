@@ -28,6 +28,7 @@ Frontend
 * [HTML]()
 * [React.js](https://reactjs.org/)
 * [React Router](https://www.npmjs.com/package/react-router)
+* [React Bootstrap](https://react-bootstrap.github.io/components/carousel/)
 
 ## Credits
 
