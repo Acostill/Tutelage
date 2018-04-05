@@ -1,42 +1,86 @@
-#app-name {
-  font-size: 44px;
-  font-family: 'Lobster', cursive;
-  color: #f46524ff;
+html {
+    width: 100%!important;
 }
+
+body {
+    width: 100%;
+}
+
+#root {
+    width: 100%;
+}
+
+.app {
+    width: 100%;
+}
+
+#app-name {
+    font-size: 44px;
+    font-family: "Lobster", cursive;
+    color: #f46524ff;
+}
+
 
 /*---- Navigation bar ---- */
+
 #navigation-bar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #app-name {
-  margin-left: 20px;
-  align-self: flex-start;
+    margin-left: 20px;
+    align-self: flex-start;
 }
 
 div.nav-right {
-  font-size: 15px;
-  width: 300px;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  justify-content: space-around;
+    font-size: 15px;
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    justify-content: space-around;
 }
 
-.nav-right > a {
-  color:rgb(53, 53, 53);
+.nav-right>a {
+    color: rgb(53, 53, 53);
 }
 
-.nav-right > a:link,
-.nav-right > a:visited {
-  color:rgba(#353535);
+.nav-right>a:link,
+.nav-right>a:visited {
+    color: rgba(#353535);
 }
 
-.nav-right > a:hover {
-  color: rgb(222, 88, 64);
-  text-decoration: none;
+.nav-right>a:hover {
+    color: rgb(222, 88, 64);
+    text-decoration: none;
 }
+
+
+/* @media screen and (min-width: 601px) {
+    #navigation-bar {
+        display: block;
+    }
+    nav[role="navigation"] {
+        display: none;
+    }
+    .navRole {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #navigation-bar {
+        display: none;
+    }
+    .mobile-logged-In {
+        margin-top: -50px;
+        display: none;
+    }
+    nav[role="navigation"] {
+        display: block;
+    }
+} */

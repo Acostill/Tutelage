@@ -47,7 +47,7 @@
 
 /* ---- faux crop image of user ---- */
 
-div#user-banner > div.user-pic-info > .image-crop {
+div#user-banner>div.user-pic-info>.image-crop {
     width: 230px;
     height: 230px;
     border-radius: 50%;
@@ -57,7 +57,7 @@ div#user-banner > div.user-pic-info > .image-crop {
     border: 8px solid #fff;
 }
 
-div.user-pic-info > .image-crop > a > .img-profile {
+div.user-pic-info>.image-crop>a>.img-profile {
     width: 230px;
     height: 230px;
     margin: auto;
@@ -88,7 +88,7 @@ div.user-pic-info > .image-crop > a > .img-profile {
 }
 
 .margin-bottom {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .center {
@@ -115,7 +115,7 @@ div.user-pic-info > .image-crop > a > .img-profile {
 
 .chat-buttons {
     margin: 20px;
-    margin-top:20px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     justify-content: space-around;

@@ -1,28 +1,27 @@
 #user-profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .margin {
-  margin: 20px;
+    margin: 20px;
 }
 
-
 .background-banner {
-  width: 850px;
-  border-radius: 50px;
-  margin: auto;
+    width: 850px;
+    border-radius: 50px;
+    margin: auto;
 }
 
 .sq2-edit {
-  display: flex;
-  justify-content: center;
-  border: 5px solid #f46524;
-  width: 100%;
-  height: 250px;
-  margin-bottom: -250px;
-  border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    border: 5px solid #f46524;
+    width: 100%;
+    height: 250px;
+    margin-bottom: -250px;
+    border-radius: 20px;
 }
 
 #user-banner-edit {
@@ -31,8 +30,9 @@
 }
 
 .user-header-edit {
-  font-size: 20px;
+    font-size: 20px;
 }
+
 
 /* ---- faux crop image of user ---- */
 
@@ -47,19 +47,19 @@
 }
 
 .img-profile {
-  width: 250px;
-  height: 250px;
-  margin: auto;
-  background-color: rgb(232, 241, 242);
-  object-fit: cover;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    background-color: rgb(232, 241, 242);
+    object-fit: cover;
 }
 
 #user-basic-info-edit {
-  width: 40%;
-  margin-top: -50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    width: 40%;
+    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .user-info-content {
@@ -76,12 +76,12 @@
 }
 
 .margin-bottom {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .center {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .button-size {
@@ -115,11 +115,17 @@
 }
 
 .input-box-edit {
-  border-radius: 30px;
-  border: 2px solid lightgrey;
-  text-indent: 10px;
+    border-radius: 30px;
+    border: 2px solid lightgrey;
+    text-indent: 10px;
 }
 
 input.center-submit {
-  margin: auto;
+    margin: auto;
+}
+
+@media only screen and (min-width: 320) and (max-width: 767px) {
+    #user-banner {
+        width: 50px;
+    }
 }

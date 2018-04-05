@@ -169,6 +169,7 @@ class SearchUsers extends Component {
       height: "200px"
     };
     return (
+      <div className="search-container">
       <div id="search-page">
         {this.props.currentUser.ismentor ? (
           <div id="search-header" className="font-large">
@@ -187,6 +188,7 @@ class SearchUsers extends Component {
             id="filter-sidebar"
             currentUser={currentUser}
             handleSubmit={this.getBestUsers}
+            handleGenderSelect={this.getGender}
             handleSelect={this.filterBy}
           />
 
@@ -210,6 +212,7 @@ class SearchUsers extends Component {
             </div> */}
           </div>
         </div>
+      </div>
       </div>
     );
   }
