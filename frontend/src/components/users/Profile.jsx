@@ -20,7 +20,8 @@ class Profile extends Component {
       profileUser: {},
       userMessage: "",
       showChatBox: false,
-      interests: []
+      interests: [],
+      currentUserInterests: []
     };
   }
 
@@ -119,9 +120,12 @@ class Profile extends Component {
     let { currentUser } = this.props;
     // let currentURL = this.props.match.url;
     profileUser = {...profileUser, interests}
-    let commonInterests = [];
+    let commonInterests = currentUser.interests ? 
+                            (profileUser.interests.filter(interest => currentUser.interests.includes(interest))) :
+                            (['Loading']);
+    if (currentUser.interests && profileUser.interests && commonInterests.length === 0) commonInterests = ['Nothing in common'];
     let isCurrentUserProfile = currentUser.id === profileUser.id;
-
+    console.log({commonInterests})
     checkReload();
     return (
       <div>
@@ -171,6 +175,12 @@ class Profile extends Component {
                 <div className="box-two">
                   <div className="user-info-content">
                     <div id="quick-user-info">
+                      <div className="margin-top">
+                        <h2><strong>Common Interests</strong></h2>
+                        {commonInterests.map(interest =>
+                          <p className='interest' >{interest}</p>
+                        )}
+                      </div>
                       <div className="margin-top">
                         <h2><strong>Interests</strong></h2>
                         {profileUser.interests.map(interest =>

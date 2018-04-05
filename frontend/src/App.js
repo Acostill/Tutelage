@@ -30,10 +30,19 @@ class App extends Component {
     axios
       .get('/users/userinfo')
       .then(res => {
-        this.setState({
-          signedIn: true,
-          user: res.data.userInfo
-        })
+        let user = res.data.userInfo;
+
+        axios
+          .post('/users/interests', {username: user.username})
+          .then(res => {
+            let interests = res.data.interests
+            user = {...user, interests: interests};
+            console.log('axios user', user)
+            this.setState({
+              signedIn: true,
+              user: user
+            })
+          })
       })
       .catch(err => {
         this.setState({
