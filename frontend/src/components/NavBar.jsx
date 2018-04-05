@@ -11,7 +11,10 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 class NavBar extends Component {
   constructor() {
     super();
-    this.state = {};
+
+    this.state = {
+      unreadMessages: []
+    }
   }
 
   onLoadNav = () => {
@@ -134,6 +137,28 @@ class NavBar extends Component {
     );
   };
 
+  getUnreadMessages = () => {
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
+        this.setState({
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
+        this.setState({
+          error: `Error Caught: ${err}`
+        })
+      })
+  }
+  componentWillReceiveProps(nextProps) {
+    const { getUnreadMessages } = this.props;
+
+    if (nextProps.signedIn && !this.props.signedIn) {
+      getUnreadMessages();
+     this.interval = setInterval(getUnreadMessages, 3000);  
+    }
+  }
   // componentWillReceiveProps(nextProps) {
   //   const { getUnreadMessages } = this.props;
 
@@ -148,7 +173,7 @@ class NavBar extends Component {
   // }
 
   componentDidMount() {
-    this.props.getUserInfo();
+    // this.props.getUserInfo();
   }
 
   render() {

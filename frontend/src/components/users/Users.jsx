@@ -7,11 +7,11 @@ import EditProfile from './EditProfile'
 class Users extends Component {
   render() {
     const { currentUser } = this.props
-    console.log('Hello!')
     return (
       <Switch>
         <Route exact path='/users/:username' component={(props) => <Profile {...props} currentUser={currentUser} />}/>
         <Route path='/users/:username/edit' component={() => <EditProfile user={currentUser} />}/>
+
       </Switch>
     );
   }

@@ -17,21 +17,21 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       user: {},
-      public_id: this.props.user.public_id,
+      public_id: this.props.currentUser.public_id,
       userMessage: "",
-      newUserName: this.props.user.username,
-      newFirstName: this.props.user.firstname,
-      newLastName: this.props.user.lastname,
-      newEmail: this.props.user.email,
-      newIsmentor: this.props.user.ismentor,
-      newAge: this.props.user.age,
-      newBio: this.props.user.bio,
-      newOccupation: this.props.user.occupation,
-      newZipcode: this.props.user.zipcode,
-      newGender: this.props.user.gender,
-      newImgURL: this.props.user.imgurl,
-      newHobbies: this.props.user.hobbies,
-      newCredentials: this.props.user.credentials,
+      newUserName: '',
+      newFirstName: '',
+      newLastName: '',
+      newEmail: '',
+      newIsmentor: '',
+      newAge: '',
+      newBio: '',
+      newOccupation: '',
+      newZipcode: '',
+      newGender: '',
+      newImgURL: '',
+      newHobbies: '',
+      newCredentials: '',
       gender: "",
       doneEditing: false
     };
@@ -59,10 +59,7 @@ class EditProfile extends Component {
           if (!elem.public_id) {
             return "sample";
           } else {
-            console.log("elemmmm:", elem);
-            console.log("REZULTTT img of make widget:", result);
-            console.log("the public_ID:", result[0].public_id);
-            console.log("the url:", result[0].url);
+
             this.setState({
               newImgURL: result[0].url,
               public_id: result[0].public_id
@@ -74,13 +71,13 @@ class EditProfile extends Component {
   };
 
   getUser = () => {
-    let username = this.props.user.username;
+    let username = this.props.match.params.username;
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
-        let user = res.data.user;
+        let currentUser = res.data.user;
         this.setState({
-          user: user
+          currentUser: currentUser
         });
       })
       .catch(err => {
@@ -90,6 +87,26 @@ class EditProfile extends Component {
       });
   };
 
+  setUser = (currentUser) => {
+    const { username, firstname, lastname, email,
+      ismentor, age, bio, occupation, zipcode,
+      gender, imgurl, hobbies, credentials } = currentUser;
+    this.setState({
+      newUserName: username,
+      newFirstName: firstname,
+      newLastName: lastname,
+      newEmail: email,
+      newIsmentor: ismentor,
+      newAge: age,
+      newBio: bio,
+      newOccupation: occupation,
+      newZipcode: zipcode,
+      newGender: gender,
+      newImgURL: imgurl,
+      newHobbies: hobbies,
+      newCredentials: credentials,
+    })
+  }
   handleTextArea = e => {
     this.setState({
       userMessage: e.target.value
@@ -123,9 +140,6 @@ class EditProfile extends Component {
   editProfileSubmitForm = e => {
     e.preventDefault();
     e.stopPropagation();
-    const { user } = this.props;
-
-    //finish defining vars from state
     let {
       newUserName,
       newFirstName,
@@ -167,7 +181,6 @@ class EditProfile extends Component {
         });
       })
       .catch(e => {
-        console.log(e);
         this.setState({
           message: "Error updating profile"
         });
@@ -182,6 +195,12 @@ class EditProfile extends Component {
       });
     }, 10);
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentUser.username !== this.props.currentUser.username) {
+      this.setUser(nextProps.currentUser);
+    }
+  }
 
   componentDidMount() {
     this.getUser();
@@ -218,12 +237,13 @@ class EditProfile extends Component {
       doneEditing,
       public_id
     } = this.state;
-
+    // console.log("the state here in edit PROFILE IS:", this.state);
+    const { currentUser } = this.props;
     let Interests = "";
 
     if (doneEditing) {
       window.location.reload();
-      return <Redirect to={`/users/${user.username}`} />;
+      return <Redirect to={`/users/${currentUser.username}`} />;
     }
     return (
       <div id="user-profile" className="margin">
@@ -232,6 +252,7 @@ class EditProfile extends Component {
             <div className="sq2-edit" />
             <div id="user-banner-edit">
               <div className="image-crop margin">
+                {/*  Incoming */}
                 {this.state.public_id ? (
                   <button id="upload_widget_opener" onClick={makeWidget}>
                     <Image
@@ -242,17 +263,16 @@ class EditProfile extends Component {
                     />
                   </button>
                 ) : (
-                  <button id="upload_widget_opener" onClick={makeWidget}>
-                    <Image
-                      cloudName="tutelage"
-                      publicId={"defaultpic"}
-                      width="250"
-                      crop="scale"
-                    />
-                  </button>
-                )}
+                    <button id="upload_widget_opener" onClick={makeWidget}>
+                      <Image
+                        cloudName="tutelage"
+                        publicId={"defaultpic"}
+                        width="250"
+                        crop="scale"
+                      />
+                    </button>
+                  )}
               </div>
-                
               <div id="user-basic-info-edit">
                 <div className="user-header-edit">
                   <div>
@@ -286,96 +306,92 @@ class EditProfile extends Component {
                     />
                   </div> */}
                 </div>
+                {/* End Incoming */}
               </div>
             </div>
           </div>
 
-{/* fix around here - make sure user-info-content has closing div */}
+          {/* fix around here - make sure user-info-content has closing div */}
           <div className="user-info-content">
-            <div id="quick-user-info" >
-              <div>
-                {" "}
-                Gender:
+                <div id="quick-user-info" >
+                  <div>
+                    {" "}
+                    Gender:
                 {/* {user.gender} */}
+                    <br />
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Male"
+                      onChange={handleRadioChange}
+                    />{" "}
+                    Male{" "}
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Female"
+                      onChange={handleRadioChange}
+                    />{" "}
+                    Female{" "}
+                  </div>
+                  <div className="margin-top">
+                    Zipcode:
                 <br />
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Male"
-                  onChange={handleRadioChange}
-                />{" "}
-                Male{" "}
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Female"
-                  onChange={handleRadioChange}
-                />{" "}
-                Female{" "}
+                    <input
+                      type="text"
+                      placeholder="Zipcode"
+                      name="newZipcode"
+                      value={newZipcode}
+                      onChange={handleInputChange}
+                      className="input-box-edit "
+                    />
+                  </div>
+                  <div className="margin-top"> Occupation: </div>
+                  <Select
+                    values={areasOfExpertise}
+                    selectedValue={occupation}
+                    handleSelect={handleSelect}
+                    className="margin-top"
+                  />
+                </div>
+                <div className="margin-top">Interests: {Interests}</div>
+
+                <div className="margin-top">
+                  <textarea
+                    placeholder="Hobbies"
+                    cols="70"
+                    name="newHobbies"
+                    value={hobbies}
+                    onChange={handleInputChange}
+                    className="input-box-edit"
+                  />
+                </div>
+            <div className="margin-top">
+              <textarea
+                    placeholder="Credentials"
+                    cols="70"
+                    name="newCredentials"
+                    value={credentials}
+                    onChange={handleInputChange}
+                    className="input-box-edit"
+                    />
+                </div>
+                <div className="margin-top">
+                  <textarea
+                    placeholder="Bio"
+                    cols="70"
+                    name="newBio"
+                    value={newBio}
+                    onChange={handleInputChange}
+                    className="input-box-edit"
+                  />
+                </div>
+                <input type="submit" onClick={fireRedirect} className="button-size submit center-submit" />
               </div>
-
-{/*==== mine changes =====*/}
-              <div className="margin-top">
-                Zipcode:
-                <br />
-                <input
-                  type="text"
-                  placeholder="Zipcode"
-                  name="newZipcode"
-                  value={newZipcode}
-                  onChange={handleInputChange}
-                  className="input-box-edit "
-                />
-              </div>
-{/*just added this into my branch changes*/}
-              <div className="margin-top"> Occupation: </div>
-              <Select
-                values={areasOfExpertise}
-                selectedValue={occupation}
-                handleSelect={handleSelect}
-                className="margin-top"
-              />
-            </div>
-
-            {/* </div> */}
-            <div className="margin-top">Interests: {Interests}</div>
-
-            <div className="margin-top">
-              <textarea
-                placeholder="Hobbies"
-                cols="70"
-                name="newHobbies"
-                value={hobbies}
-                onChange={handleInputChange}
-                className="input-box-edit"
-              />
-            </div>
-            <div className="margin-top">
-              <textarea
-                placeholder="Credentials"
-                cols="70"
-                name="newCredentials"
-                value={credentials}
-                onChange={handleInputChange}
-                className="input-box-edit"
-              />
-            </div>
-            <div className="margin-top">
-              <textarea
-                placeholder="Bio"
-                cols="70"
-                name="newBio"
-                value={newBio}
-                onChange={handleInputChange}
-                className="input-box-edit"
-              />
-            </div>
-            <input type="submit" onClick={fireRedirect} className="button-size submit center-submit"/>
-          </div>
         </form>
-</div>
-    );
-  }
-}
-
-export default EditProfile;
+          </div>
+          );
+        }
+      }
+      
+      export default EditProfile;
