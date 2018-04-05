@@ -15,14 +15,16 @@ class SearchUsers extends Component {
     this.state = {
       users: [],
       allMentors: [],
+      filteredMentors: [],
       allMentees: [],
+      filteredMentees: [],
       tutelegeUserList: [],
       tutMentors: [],
       tutMentees: [],
       zip_codes: [],
       lat_longs: [],
       message: "",
-      isFiltering: false
+      isFiltering: false,
     };
   }
 
@@ -103,7 +105,9 @@ class SearchUsers extends Component {
         this.setState({
           users: res.data.data,
           allMentees: allMentees,
+          filteredMentees: allMentees,
           allMentors: allMentors,
+          filteredMentors: allMentors,
           zip_codes: zipz
         });
       })
@@ -125,6 +129,24 @@ class SearchUsers extends Component {
 
   componentDidMount() {
     this.getUserList();
+<<<<<<< HEAD
+=======
+  }
+
+  filterBy = ( gender, ageGroup, expertise, language ) => {
+    const filteredMentees = this.state.allMentees.filter( user => {
+       return user.gender.toLowerCase() === gender.toLowerCase()
+      } )
+
+    const filteredMentors = this.state.allMentors.filter( user => {
+     return user.gender.toLowerCase() === gender.toLowerCase()
+    })
+
+    this.setState({
+      filteredMentees: filteredMentees,
+      filteredMentors: filteredMentors
+    })
+>>>>>>> ffc59996e82c0621fb0479cd43e583ab88240e6c
   }
 
   render() {
@@ -132,7 +154,9 @@ class SearchUsers extends Component {
     const {
       users,
       allMentors,
+      filteredMentors,
       allMentees,
+      filteredMentees,
       tutMentors,
       tutMentees,
       lat_longs,
@@ -184,15 +208,19 @@ class SearchUsers extends Component {
             id="filter-sidebar"
             currentUser={currentUser}
             handleSubmit={this.getBestUsers}
+<<<<<<< HEAD
             handleGenderSelect={this.getGender}
+=======
+            handleSelect={this.filterBy}
+>>>>>>> ffc59996e82c0621fb0479cd43e583ab88240e6c
           />
 
           <div id="results-map">
             {!isFiltering ? (
               <div id="search-results">
                 {this.props.currentUser.ismentor
-                  ? allMentees.map(user => <ProfileCard user={user} />)
-                  : allMentors.map(user => <ProfileCard user={user} />)}
+                  ? filteredMentees.map(user => <ProfileCard user={user} />)
+                  : filteredMentors.map(user => <ProfileCard user={user} />)}
               </div>
             ) : (
               <div id="search-results">
