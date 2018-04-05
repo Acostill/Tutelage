@@ -289,7 +289,6 @@ class EditProfile extends Component {
             </div>
           </div>
 
-{/* fix around here - make sure user-info-content has closing div */}
           <div className="user-info-content">
             <div id="quick-user-info" >
               <div>
@@ -313,7 +312,6 @@ class EditProfile extends Component {
                 Female{" "}
               </div>
 
-{/*==== mine changes =====*/}
               <div className="margin-top">
                 Zipcode:
                 <br />
@@ -326,7 +324,7 @@ class EditProfile extends Component {
                   className="input-box-edit "
                 />
               </div>
-{/*just added this into my branch changes*/}
+
               <div className="margin-top"> Occupation: </div>
               <Select
                 values={areasOfExpertise}
@@ -336,7 +334,6 @@ class EditProfile extends Component {
               />
             </div>
 
-            {/* </div> */}
             <div className="margin-top">Interests: {Interests}</div>
 
             <div className="margin-top">

@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import "../../css/SingleMessage.css";
 
-const SingleMessage = ({message}) => {
+const SingleMessage = ({ message, currentUser }) => {
+  const messageClass =
+    message.sender === currentUser.username
+      ? "currentUserMessage"
+      : "otherUserMessage";
 
   return (
-    <div className='threadmessage' >
-      <div>Date: {message.date_sent}</div>
-      <div>Sender: {message.sender}</div>
-      <div>Body: {message.body}</div>
-    </div>   
-  )
-}
+    <div className={messageClass}>
+      <div className="message-header">
+        <div className="message-date">{message.date_sent}</div>
+        <div className="message-sender">{message.sender}</div>
+      </div>
+      <div className="message-body-container">
+        <div className="message-body-content">{message.body}</div>
+      </div>
+    </div>
+  );
+};
 
 export default SingleMessage;
