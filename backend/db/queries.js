@@ -492,14 +492,14 @@ const getUserInterests = (req, res, next) => {
   db
     .any(
       "SELECT interest FROM interests WHERE username = ${username}",
-      req.user
+      {username: req.body.username}
     )
     .then(data => {
       res
         .status(200)
         .json({
           status: "success",
-          interests: data,
+          interests: data.map(obj => obj.interest),
           message: `Retrieved all user interests`
         })
         .catch(err => {
