@@ -76,7 +76,10 @@ class Profile extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { profileUser, subject, userMessage } = this.state;
+    const { profileUser, userMessage } = this.state;
+    let { currentUser } = this.props;
+    console.log(currentUser);
+    const subject = `Hey ${profileUser.firstname}, ${currentUser.firstname} wants to chat!`
     axios
       .post('/users/fetch_new_thread', { username2: profileUser.username, subject: subject })
       .then(res => {

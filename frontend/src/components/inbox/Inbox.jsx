@@ -30,9 +30,9 @@ class Inbox extends Component {
     const styleRead = {
       display: "flex",
       flexDirection: "column",
-      color: "black",
-      border: "4px solid #f46524",
-      backgroundColor: "white",
+      color: "white",
+      border: "4px solid #7E7E7E",
+      backgroundColor: "#7E7E7E",
       borderRadius: "70px 70px",
       margin: "40px 80px 40px 80px",
       fontSize: "20px",
@@ -44,7 +44,7 @@ class Inbox extends Component {
       flexDirection: "column",
       color: "black",
       border: "4px solid #f46524",
-      backgroundColor: "lightcoral",
+      backgroundColor: "#f46524",
       borderRadius: "70px 70px",
       margin: "40px 80px 40px 80px",
       fontSize: "20px",
@@ -52,7 +52,7 @@ class Inbox extends Component {
       paddingLeft: "50px"
     };
     let style;
-    let read = "";
+    let isRead = isRead;
 
     const inboxStyle = {
       textDecoration: "none"
@@ -71,13 +71,13 @@ class Inbox extends Component {
             unreadThreadIds.includes(thread.id)
               ? (style = styleUnread)
               : (style = styleRead);
-            style === styleUnread ? (read = "Unread") : (read = "");
+            style === styleUnread ? (isRead = "Unread") : (isRead = null);
             return (
               <Link to={`/inbox/${thread.id}`} style={inboxStyle}>
-                <div style={style}>
-                  Thread ID: {thread.id} <b>{read}</b>
-                  <br />
-                  Subject: {thread.subject}
+                <div style={style} className="hover-thread-message" >
+                  <strong>{isRead}</strong>
+                  <div className="subject-thread"> 
+                  Subject:{" "} {thread.subject} </div>
                 </div>
               </Link>
             );

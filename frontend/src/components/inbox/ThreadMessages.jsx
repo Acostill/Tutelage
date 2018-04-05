@@ -80,7 +80,6 @@ class Thread extends Component {
         <h1 className="thread-message-title" > 
         MESSAGES </h1>
         
-        <h2 className="center margin"> Thread ID: {thread_id} </h2>
         <div className="conversation center" >
 
         {messages.map(message => <SingleMessage message={message} confirmRead={confirmRead} currentUser={currentUser} /> )}

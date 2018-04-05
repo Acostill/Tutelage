@@ -8,6 +8,9 @@
 .thread-message-title {
     text-align: center;
     color: #f46524;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 30px;
 }
 
 .conversation {
