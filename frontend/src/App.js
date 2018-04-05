@@ -30,7 +30,18 @@ class App extends Component {
     axios
       .get('/users/userinfo')
       .then(res => {
+        // Current
         let user = res.data.userInfo;
+        let currentUser = this.state.username;
+        if (!this.state.signedIn) {
+          this.setState({
+            signedIn: true,
+            user: user
+          })
+        }
+        // End Current
+        // Incoming
+        // let user = res.data.userInfo;
 
         axios
           .post('/users/interests', {username: user.username})
@@ -43,6 +54,7 @@ class App extends Component {
               user: user
             })
           })
+          // End Incoming
       })
       .catch(err => {
         this.setState({
@@ -134,6 +146,10 @@ class App extends Component {
       });
   };
 
+  componentDidMount() {
+    this.getUserInfo();
+  }
+
   render() {
     const { user, signedIn, username, password, message, unreadMessages } = this.state;
     const {
@@ -192,12 +208,12 @@ class App extends Component {
           />
           <Route
             path="/search"
-            component={() => <SearchUsers currentUser={user} />}
+            render={() => <SearchUsers currentUser={user} />}
           />
-          <Route path="/aboutus" component={AboutUs} />
-          <Route path="/users" component={() => <Users currentUser={user} />} />
-          {/* <Route path="/aboutMe" component={AboutMe} /> */}
-          <Route path="/survey" component={() => <Survey user={user} />} />
+          <Route path="/aboutus" render={AboutUs} />
+          <Route path="/users" render={(props) => <Users {...props} currentUser={user} />} />
+          {/* <Route path="/aboutMe" render={AboutMe} /> */}
+          <Route path="/survey" render={() => <Survey user={user} />} />
         </Switch>
       </div>
     );
