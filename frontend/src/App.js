@@ -15,230 +15,218 @@ import axios from "axios";
 import Hamburger from './components/users/Hamburger';
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: {},
-            signedIn: null,
+  constructor() {
+    super();
+    this.state = {
+      user: {},
+      signedIn: null,
+      username: "",
+      password: "",
+      message: "",
+      unreadMessages: []
+    };
+  }
+
+  getUserInfo = () => {
+    axios
+      .get('/users/userinfo')
+      .then(res => {
+        // Current
+        let user = res.data.userInfo;
+        let currentUser = this.state.username;
+        if (!this.state.signedIn) {
+          this.setState({
+            signedIn: true,
+            user: user
+          })
+        }
+        // End Current
+        // Incoming
+        // let user = res.data.userInfo;
+
+        axios
+          .post('/users/interests', { username: user.username })
+          .then(res => {
+            let interests = res.data.interests
+            user = { ...user, interests: interests };
+            console.log('axios user', user)
+            this.setState({
+              signedIn: true,
+              user: user
+            })
+          })
+        // End Incoming
+      })
+      .catch(err => {
+        this.setState({
+          signedIn: false
+        })
+      })
+  }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  submitLoginForm = e => {
+    e.preventDefault();
+    const { username, password, message } = this.state;
+    axios
+      .post("/users/login", {
+        username: username,
+        password: password
+      })
+      .then(res => {
+        // redirect to user's profile
+        this.setState({
+          signedIn: true,
+          user: res.data,
+          username: "",
+          password: "",
+          message: ""
+        });
+      })
+      .catch(err => {
+        if (username === "" && password === "") {
+          this.setState({
+            message: "* Fill out Username & Password"
+          });
+        } else {
+          this.setState({
             username: "",
             password: "",
-            message: "",
-            unreadMessages: []
-        };
-    }
+            message: "* Username / Password Incorrect"
+          });
+        }
+      });
+  };
 
-    getUserInfo = () => {
-        axios
-            .get('/users/userinfo')
-            .then(res => {
-                // Current
-                let user = res.data.userInfo;
-                let currentUser = this.state.username;
-                if (!this.state.signedIn) {
-                    this.setState({
-                        signedIn: true,
-                        user: user
-                    })
-                }
-                // End Current
-                // Incoming
-                // let user = res.data.userInfo;
+  frontendRegister = user => {
+    this.setState({
+      user: { username: user.username }
+    });
+  };
 
-                axios
-                    .post('/users/interests', { username: user.username })
-                    .then(res => {
-                        let interests = res.data.interests
-                        user = {...user, interests: interests };
-                        console.log('axios user', user)
-                        this.setState({
-                            signedIn: true,
-                            user: user
-                        })
-                    })
-                    // End Incoming
-            })
-            .catch(err => {
-                this.setState({
-                    signedIn: false
-                })
-            })
-    }
+  appLogIn = () => {
+    this.setState({
+      signedIn: true
+    });
+  };
 
-    handleInputChange = e => {
+  getUnreadMessages = () => {
+    axios
+      .get('/users/unread_messages')
+      .then(res => {
         this.setState({
-            [e.target.name]: e.target.value
-        });
-    };
-
-    submitLoginForm = e => {
-        e.preventDefault();
-        const { username, password, message } = this.state;
-        axios
-            .post("/users/login", {
-                username: username,
-                password: password
-            })
-            .then(res => {
-                // redirect to user's profile
-                this.setState({
-                    signedIn: true,
-                    user: res.data,
-                    username: "",
-                    password: "",
-                    message: ""
-                });
-            })
-            .catch(err => {
-                if (username === "" && password === "") {
-                    this.setState({
-                        message: "* Fill out Username & Password"
-                    });
-                } else {
-                    this.setState({
-                        username: "",
-                        password: "",
-                        message: "* Username / Password Incorrect"
-                    });
-                }
-            });
-    };
-
-    frontendRegister = user => {
+          unreadMessages: res.data.unreadMessages
+        })
+      })
+      .catch(err => {
         this.setState({
-            user: { username: user.username }
-        });
-    };
+          error: `Error Caught: ${err}`
+        })
+      })
+  }
 
-    appLogIn = () => {
+  logOut = () => {
+    axios
+      .get(`/users/logout`)
+      .then(res => {
         this.setState({
-            signedIn: true
+          // redirect to home page
+          signedIn: false,
+          user: { username: null }
         });
-    };
+      })
+      .catch(err => {
+        this.setState({
+          message: err
+        });
+      });
+  };
 
-    getUnreadMessages = () => {
-        axios
-            .get('/users/unread_messages')
-            .then(res => {
-                this.setState({
-                    unreadMessages: res.data.unreadMessages
-                })
-            })
-            .catch(err => {
-                this.setState({
-                    error: `Error Caught: ${err}`
-                })
-            })
-    }
+  componentDidMount() {
+    this.getUserInfo();
+  }
 
-    logOut = () => {
-        axios
-            .get(`/users/logout`)
-            .then(res => {
-                this.setState({
-                    // redirect to home page
-                    signedIn: false,
-                    user: { username: null }
-                });
-            })
-            .catch(err => {
-                this.setState({
-                    message: err
-                });
-            });
-    };
+  render() {
+    const { user, signedIn, username, password, message, unreadMessages } = this.state;
+    const {
+      getUserInfo,
+      logOut,
+      handleInputChange,
+      submitLoginForm,
+      frontendRegister,
+      appLogIn,
+      getUnreadMessages
+    } = this;
 
-    componentDidMount() {
-        this.getUserInfo();
-    }
+    return (
+      <div className="App" >
+        <NavBar user={user}
+          signedIn={signedIn}
+          getUserInfo={getUserInfo}
+          logOut={logOut}
+          getUnreadMessages={getUnreadMessages}
+          unreadMessages={unreadMessages}
+        /> { /* <Hamburger /> */}
+        <Switch>
+          <Route exact path="/"
+            component={Home}
+          />
+          <Route path="/inbox" render={(props) =>
+            <Inbox {...props}
+              getUnreadMessages={getUnreadMessages}
+              unreadMessages={unreadMessages}
+              currentUser={user}
+            />} />
+          <Route
+            path="/login"
+            render={
+              () => (<
+                LoginUser handleInputChange={handleInputChange}
+                submitLoginForm={submitLoginForm}
+                user={user}
+                username={username}
+                password={password}
+                message={message}
+                signedIn={signedIn}
+              />
+              )
+            }
+          />
+          <Route
+            path="/register"
+            render={
+              () => {
+                return (<
+                  RegisterUser frontendRegister={frontendRegister}
+                  appLogIn={appLogIn}
+                />
+                );
+              }
+            }
+          />
+          <Route
+            path="/search"
+            render={
+              () => < SearchUsers currentUser={user}
+              />} />
+          <Route path="/aboutus"
+            render={AboutUs}
+          />
+          <Route path="/users"
+            render={
+              (props) => < Users {...props}
+                currentUser={user}
+              />} /> { /* <Route path="/aboutMe" render={AboutMe} /> */}
+          <Route path="/survey" render={() => < Survey user={user} />} />
+        </Switch>
+      </div>
+    );
+  }
+}
 
-    render() {
-            const { user, signedIn, username, password, message, unreadMessages } = this.state;
-            const {
-                getUserInfo,
-                logOut,
-                handleInputChange,
-                submitLoginForm,
-                frontendRegister,
-                appLogIn,
-                getUnreadMessages
-            } = this;
-
-            return ( <
-                    div className = "App" >
-                    <
-                    NavBar user = { user }
-                    signedIn = { signedIn }
-                    getUserInfo = { getUserInfo }
-                    logOut = { logOut }
-                    getUnreadMessages = { getUnreadMessages }
-                    unreadMessages = { unreadMessages }
-                    /> { /* <Hamburger /> */ } <
-                    Switch >
-                    <
-                    Route exact path = "/"
-                    component = { Home }
-                    /> <
-                    Route path = "/inbox"
-                    render = {
-                        (props) =>
-                        <
-                        Inbox {...props }
-                        getUnreadMessages = { getUnreadMessages }
-                        unreadMessages = { unreadMessages }
-                        currentUser = { user }
-                        />} / >
-                        <
-                        Route
-                        path = "/login"
-                        render = {
-                            () => ( <
-                                LoginUser handleInputChange = { handleInputChange }
-                                submitLoginForm = { submitLoginForm }
-                                user = { user }
-                                username = { username }
-                                password = { password }
-                                message = { message }
-                                signedIn = { signedIn }
-                                />
-                            )
-                        }
-                        /> <
-                        Route
-                        path = "/register"
-                        render = {
-                            () => {
-                                return ( <
-                                    RegisterUser frontendRegister = { frontendRegister }
-                                    appLogIn = { appLogIn }
-                                    />
-                                );
-                            }
-                        }
-                        /> <
-                        Route
-                        path = "/search"
-                        render = {
-                            () => < SearchUsers currentUser = { user }
-                            />} /
-                            >
-                            <
-                            Route path = "/aboutus"
-                            render = { AboutUs }
-                            /> <
-                            Route path = "/users"
-                            render = {
-                                (props) => < Users {...props }
-                                currentUser = { user }
-                                />} / > { /* <Route path="/aboutMe" render={AboutMe} /> */ } <
-                                Route path = "/survey"
-                                render = {
-                                    () => < Survey user = { user }
-                                    />} / >
-                                    <
-                                    /Switch> <
-                                    /div>
-                                );
-                            }
-                        }
-
-                        export default App;
+export default App;
