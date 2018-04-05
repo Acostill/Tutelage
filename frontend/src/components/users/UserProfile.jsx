@@ -32,7 +32,7 @@ class UserProfile extends Component {
 
   componentDidMount() {
     const { getInterests } = this;
-    getInterests();
+    // getInterests();
   }
   render() {
     const {

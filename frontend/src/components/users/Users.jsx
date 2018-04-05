@@ -9,8 +9,8 @@ class Users extends Component {
     const { currentUser } = this.props
     return (
       <Switch>
-        <Route exact path='/users/:username' component={(props) => <Profile {...props} currentUser={currentUser} />}/>
-        <Route path='/users/:username/edit' component={() => <EditProfile user={currentUser} />}/>
+        <Route exact path='/users/:username' render={(props) => <Profile {...props} currentUser={currentUser} />}/>
+        <Route path='/users/:username/edit' render={() => <EditProfile user={currentUser} />}/>
       </Switch>
     );
   }

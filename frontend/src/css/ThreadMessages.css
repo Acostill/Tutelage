@@ -27,3 +27,33 @@
     display: flex;
     align-self: flex-end;
 }
+
+@media only screen and (max-width: 767px) {
+    #thread-messages-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .conversation {
+        color: red;
+        width: 75%;
+        height: 1%;
+    }
+    #message-box {
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 2em;
+    }
+    .chat-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    div.body {
+        width: 11em;
+        border: 1px solid #000000;
+        word-wrap: break-word;
+    }
+}

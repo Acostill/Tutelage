@@ -50,7 +50,7 @@ div.custom-filter>.custom-filter-title {
     }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 300px) {
     #main-filter-sidebar,
     .navBar-loggedIn {
         display: none;
