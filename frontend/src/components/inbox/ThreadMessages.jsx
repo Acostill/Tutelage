@@ -38,10 +38,10 @@ class Thread extends Component {
 
   sendMessage = () => {
     const { userMessage } = this.state;
-    const threadID = this.props.thread_id;
+    const thread_id = this.props.thread_id;
     if (!userMessage) return;
     axios
-      .post('/users/send_message', {threadID: threadID, body: userMessage})
+      .post('/users/send_message', {thread_id: thread_id, body: userMessage})
       .then(res => {
         this.setState({
           userMessage: ''

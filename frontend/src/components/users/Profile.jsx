@@ -18,6 +18,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       profileUser: {},
+      subject: '',
       userMessage: "",
       showChatBox: false,
       interests: [],
@@ -73,9 +74,22 @@ class Profile extends Component {
     });
   };
 
-  clearMessage = () => {
+  handleSubmit = e => {
+    e.preventDefault();
+    const { profileUser, subject, userMessage } = this.state;
+    axios
+      .post('/users/fetch_new_thread', { username2: profileUser.username, subject: subject })
+      .then(res => {
+        console.log('returned ID', res.data.thread.id)
+        let thread_id = res.data.thread.id;
+        axios.post('/users/send_message', { thread_id: thread_id, body: userMessage })
+      })
+  }
+
+  cancelMessage = () => {
     this.setState({
-      userMessage: ""
+      userMessage: "",
+      showChatBox: false
     });
   };
 
@@ -110,22 +124,23 @@ class Profile extends Component {
 
   render() {
     const {
-      clearMessage,
+      cancelMessage,
       handleTextarea,
       checkReload,
       showChatBoxHandle,
-      renderProfile
+      renderProfile,
+      handleSubmit
     } = this;
     let { profileUser, userMessage, showChatBox, interests } = this.state;
     let { currentUser } = this.props;
     // let currentURL = this.props.match.url;
-    profileUser = {...profileUser, interests}
-    let commonInterests = currentUser.interests ? 
-                            (profileUser.interests.filter(interest => currentUser.interests.includes(interest))) :
-                            (['Loading']);
+    profileUser = { ...profileUser, interests }
+    let commonInterests = currentUser.interests ?
+      (profileUser.interests.filter(interest => currentUser.interests.includes(interest))) :
+      (['Loading']);
     if (currentUser.interests && profileUser.interests && commonInterests.length === 0) commonInterests = ['Nothing in common'];
     let isCurrentUserProfile = currentUser.id === profileUser.id;
-    console.log({commonInterests})
+    console.log({ commonInterests })
     checkReload();
     return (
       <div>
@@ -221,11 +236,12 @@ class Profile extends Component {
                     <input
                       type="submit"
                       value="Submit Message"
+                      onClick={handleSubmit}
                       className="submit button-size"
                     />
-                    <button className="clear button-size" onClick={clearMessage}>
+                    <button className="clear button-size" onClick={cancelMessage}>
                       {" "}
-                      Clear{" "}
+                      Cancel{" "}
                     </button>
                   </div>
                 </div>

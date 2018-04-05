@@ -104,16 +104,17 @@ updateSingleUser = (req, res, next) => {
 
 const fetchNewThread = (req, res, next) => {
   let query =
-    "INSERT INTO threads (user_1, user_2) VALUES (${username1}, ${username2}) RETURNING ID";
+    "INSERT INTO threads (user_1, user_2, subject) VALUES (${username1}, ${username2}, ${subject}) RETURNING ID";
   db
-    .any(query, {
-      username1: req.body.username1,
-      username2: req.body.username2
+    .one(query, {
+      username1: req.user.username,
+      username2: req.body.username2,
+      subject: req.body.subject
     })
     .then(function (data) {
       res.status(200).json({
         status: "success",
-        data: data,
+        thread: data,
         message: "data is the thread ID."
       });
     })
@@ -156,11 +157,11 @@ const getAllMessages = (req, res, next) => {
  */
 const submitMessage = (req, res, next) => {
   let query =
-    "INSERT INTO messages (thread_id, sender, receiver, body) VALUES (${threadID}, ${sender}, ${receiver}, ${body})";
+    "INSERT INTO messages (thread_id, sender, receiver, body) VALUES (${thread_id}, ${sender}, ${receiver}, ${body})";
   db
     .any(query, {
-      threadID: req.body.threadID,
-      sender: req.body.sender,
+      thread_id: req.body.thread_id,
+      sender: req.user.username,
       receiver: req.body.receiver,
       body: req.body.body
     })
