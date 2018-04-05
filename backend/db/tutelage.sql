@@ -67,73 +67,73 @@ CREATE TABLE messages(
   Hash: $2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS 
 */
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test0', 'William', 'Wallace', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522771900/WilliamWallace.jpg', 'me@u.we0', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '57', 'Male', 'Pilot, Aeroswift Aeronautics Agency', 'Stamp Collecting', NULL);
+  ('WillWall', 'William', 'Wallace', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522771900/WilliamWallace.jpg', 'me@u.we0', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '57', 'Male', 'Pilot, Aeroswift Aeronautics Agency', 'Stamp Collecting and RC Plane Build', 'Hi I am Will, Will I am. My father was a pilot for World War II and Ive always looked up to him. When I was young I admired his photos with him and his aircraft and wanted to be just like him. He taught me how to pilot a plane and aircrafts at a young age and it became my career. Now Im looking foward to pilot a helicopter', NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test1', 'Claudia', 'Baker', '91932', 'http://res.cloudinary.com/tutelage/image/upload/v1522772709/ClaudiaBaker.jpg', 'me@u.we1', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '49', 'Female', 'President, IMG Insurance Agency', 'Crocheting', NULL);
+  ('Cloudia', 'Claudia', 'Baker', '91932', 'http://res.cloudinary.com/tutelage/image/upload/v1522772709/ClaudiaBaker.jpg', 'me@u.we1', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '49', 'Female', 'President, IMG Insurance Agency', 'Crocheting', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test2', 'Joshua', 'Henderson', '10001', 'http://res.cloudinary.com/tutelage/image/upload/v1522772822/JoshuaHenderson.jpg', 'me@u.we2', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '43', 'Male', 'Sports Agent', 'Playing Fantasy Baseball', NULL);
+  ('Joshua75', 'Joshua', 'Henderson', '10001', 'http://res.cloudinary.com/tutelage/image/upload/v1522772822/JoshuaHenderson.jpg', 'me@u.we2', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '43', 'Male', 'Sports Agent', 'Playing Fantasy Baseball', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test3', 'Angie', 'Perkins', '11219', 'http://res.cloudinary.com/tutelage/image/upload/v1522772990/AngiePerkins.jpg', 'me@u.we3', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'Female', 'CEO, All-Star Public Relations Firm ', 'Karaoke', NULL);
+  ('PerksAng', 'Angie', 'Perkins', '11219', 'http://res.cloudinary.com/tutelage/image/upload/v1522772990/AngiePerkins.jpg', 'me@u.we3', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'Female', 'CEO, All-Star Public Relations Firm ', 'Karaoke', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test4', 'Courtney', 'Mayfield', '10023', 'http://res.cloudinary.com/tutelage/image/upload/v1522771547/CourtneyMayfield.jpg', 'me@u.we4', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '30', 'Male', 'Sound Engineer/Jazz Musician', 'Restoring Vintage Automobiles', NULL);
+  ('Tyrone88', 'Tyrone', 'Mayfield', '10023', 'http://res.cloudinary.com/tutelage/image/upload/v1522771547/CourtneyMayfield.jpg', 'me@u.we4', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '30', 'Male', 'Sound Engineer/Jazz Musician', 'Restoring Vintage Automobiles', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test5', 'Ashley', 'Thompson', '10002', 'http://res.cloudinary.com/tutelage/image/upload/v1522772488/AshleyThompson.jpg', 'me@u.we5', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '31', 'Female', 'Author/Novelist', 'Scrabble Competitions', NULL);
+  ('AshleeT', 'Ashley', 'Thompson', '10002', 'http://res.cloudinary.com/tutelage/image/upload/v1522772488/AshleyThompson.jpg', 'me@u.we5', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '31', 'Female', 'Author/Novelist', 'Scrabble Competitions', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test6', 'John', 'Baker', '10028', 'http://res.cloudinary.com/tutelage/image/upload/v1522773173/JohnBaker.jpg', 'me@u.we6', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '62', 'Male', 'Financial Accountant', 'Woodworking', NULL);
+  ('JohnnyBake', 'John', 'Baker', '10028', 'http://res.cloudinary.com/tutelage/image/upload/v1522773173/JohnBaker.jpg', 'me@u.we6', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '62', 'Male', 'Financial Accountant', 'Woodworking', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test7', 'Voletta', 'Greene', '10456', 'http://res.cloudinary.com/tutelage/image/upload/v1522771748/VolettaGreene.jpg', 'me@u.we7', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '26', 'Female', 'Motivational Speaker', 'Chess', NULL);
+  ('VioletGreene', 'Voletta', 'Greene', '10456', 'http://res.cloudinary.com/tutelage/image/upload/v1522771748/VolettaGreene.jpg', 'me@u.we7', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '26', 'Female', 'Motivational Speaker', 'Chess', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test8', 'Steven', 'McDougal', '10192', 'http://res.cloudinary.com/tutelage/image/upload/v1522773579/StevenMcDougal.jpg', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '38', 'Male', 'Photgrapher', 'Collecting Sports Memorabilia', NULL);
+  ('RichArt', 'Richard', 'Artoul', '10192', '../images/richard.jpeg', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '38', 'Male', 'Senior Developer', 'Solving Sudoku Puzzles', 'I enjoy coding and building these applications. I was grateful that I entered this field and want to help others succeed in this field. I make it my goal to help others and show that this career choice would be the best one they chose.', 'Bachelor of Science and Computer Science');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('test9', 'Jill', 'Watson', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522773737/JillWatson.jpg', 'me@u.we9', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '48', 'Female', 'Chef', 'Painting', NULL);
+  ('Jill70', 'Jill', 'Watson', '11215', 'http://res.cloudinary.com/tutelage/image/upload/v1522773737/JillWatson.jpg', 'me@u.we9', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '48', 'Female', 'Chef', 'Painting', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('carolina1', 'Carolina', 'Restrepo', '07110', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/CarolinaPic2.jpg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '26', 'Female', 'N.A.S.A. Astronaut', 'Sculpting', NULL);
+  ('carolina1', 'Carolina', 'Restrepo', '07110', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/CarolinaPic2.jpg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '26', 'Female', 'Junior Developer', 'Sculpting', 'As a Junior Developer coming into the Tech World, I feel a bit uneasy with the interview process. The white boarding scares me the most and I plan to find someone who can help me with that.', 'Associates in Fine Arts and Bachelors in Social and Behavioral Sciences and C4Q ');
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('eddie1', 'Eddie', 'Harmon', '60628', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'Male', 'Aquamarine Palentologist', 'Filming Documentaries', NULL);
+  ('eddie1', 'Eddie', 'Harmon', '60628', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/EddieCropped.jpg', 'eddie@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '28', 'Male', 'Aquamarine Palentologist', 'Filming Documentaries', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('nick1', 'Nicholas', 'Chavez', '11226', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/NickCropped.jpg', 'nick@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Male', 'Video Game Software Designer', 'Playing Videogames', NULL);
+  ('nick1', 'Nicholas', 'Chavez', '11226', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/NickCropped.jpg', 'nick@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Male', 'Video Game Software Designer', 'Playing Videogames', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('gerson1', 'Gerson', 'Castillo', '10452', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '26', 'Male', 'Senior Architect', 'Swimming', NULL);
+  ('gerson1', 'Gerson', 'Castillo', '10452', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/GersonCropped.jpg', 'gerson@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '26', 'Male', 'Senior Architect', 'Swimming', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('greg1', 'Gregory', 'Davis', '10001', '../images/gregcropped.jpg', 'greg@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '28', 'Male', 'Ducati Mechanical Engineer', 'Racing', NULL);
+  ('greg1', 'Gregory', 'Davis', '10001', '../images/gregcropped.jpg', 'greg@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '28', 'Male', 'Ducati Mechanical Engineer', 'Racing', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('jcrest', 'Jason', 'Crest', '10128', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/jcrestCropped.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '44', 'Male', 'Dentist', 'Training For Ironman', NULL);
+  ('jcrest', 'Jason', 'Crest', '10128', 'http://res.cloudinary.com/tutelage/image/upload/v1522734137/jcrestCropped.jpg', 'jason@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '44', 'Male', 'Dentist', 'Training For Ironman', NULL, NULL);
 INSERT INTO users
-  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio)
+  (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('adelle1', 'Adelle', 'Anderson', '90210', 'http://res.cloudinary.com/tutelage/image/upload/v1522734135/adelleprofilepic.jpg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Female', 'Physical Science Grad Student', 'Roller Skating', 'Born on the West Coast, I moved to sunny Florida when I was 9 years-old. That was when I saw my very first space shuttle launch taking off from Cape Canaveral. Ever since then, I have been inspired to see the space and stars for myself. I grew up admiring Mae Jemison and want to follow in her footsteps someday!');
+  ('adelle1', 'Adelle', 'Anderson', '90210', 'http://res.cloudinary.com/tutelage/image/upload/v1522734135/adelleprofilepic.jpg', 'adelle@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '24', 'Female', 'Physical Science Grad Student', 'Roller Skating', 'Born on the West Coast, I moved to sunny Florida when I was 9 years-old. That was when I saw my very first space shuttle launch taking off from Cape Canaveral. Ever since then, I have been inspired to see the space and stars for myself. I grew up admiring Mae Jemison and want to follow in her footsteps someday!', NULL);
   
 
 
@@ -285,58 +285,58 @@ values
 
 INSERT INTO interests
   (username, interest)
-values('gerson1', 'coding');
+values('gerson1', 'Coding');
 INSERT INTO interests
   (username, interest)
-values('gerson1', 'music');
+values('gerson1', 'Music');
 INSERT INTO interests
   (username, interest)
-values('gerson1', 'fishing');
+values('gerson1', 'Fishing');
 INSERT INTO interests
   (username, interest)
-values('nick1', 'driving');
+values('nick1', 'Driving');
 INSERT INTO interests
   (username, interest)
-values('nick1', 'music');
+values('nick1', 'Music');
 INSERT INTO interests
   (username, interest)
-values('nick1', 'hangout');
+values('nick1', 'Hangout');
 INSERT INTO interests
   (username, interest)
-values('eddie1', 'reading');
+values('eddie1', 'Reading');
 INSERT INTO interests
   (username, interest)
-values('eddie1', 'basketball');
+values('eddie1', 'Basketball');
 INSERT INTO interests
   (username, interest)
-values('eddie1', 'archery');
+values('eddie1', 'Archery');
 INSERT INTO interests
   (username, interest)
-values('greg1', 'coding');
+values('greg1', 'Coding');
 INSERT INTO interests
   (username, interest)
-values('greg1', 'sports');
+values('greg1', 'Sports');
 INSERT INTO interests
   (username, interest)
-values('greg1', 'motorcycles');
+values('greg1', 'Motorcycles');
 INSERT INTO interests
   (username, interest)
-values('carolina1', 'roasting');
+values('carolina1', 'Skiing');
 INSERT INTO interests
   (username, interest)
-values('carolina1', 'camping');
+values('carolina1', 'Camping');
 INSERT INTO interests
   (username, interest)
-values('carolina1', 'swimming');
+values('carolina1', 'Swimming');
 INSERT INTO interests
   (username, interest)
-values('jcrest', 'business');
+values('jcrest', 'Business');
 INSERT INTO interests
   (username, interest)
-values('jcrest', 'finance');
+values('jcrest', 'Finance');
 INSERT INTO interests
   (username, interest)
-values('jcrest', 'fishing');
+values('jcrest', 'Fishing');
 INSERT INTO interests
   (username, interest)
 values('adelle1', 'Stargazing');
@@ -346,6 +346,15 @@ values('adelle1', 'Binging On Netflix');
 INSERT INTO interests
   (username, interest)
 values('adelle1', 'Backpacking In Foreign Countries');
+INSERT INTO interests
+  (username, interest)
+values('RichArt', 'Coding');
+INSERT INTO interests
+  (username, interest)
+values('RichArt', 'Sudoku');
+INSERT INTO interests
+  (username, interest)
+values('RichArt', 'Computer Science');
 
 
 
