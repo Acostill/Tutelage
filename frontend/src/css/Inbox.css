@@ -1,3 +1,25 @@
 .inbox-container {
-    padding-top: 70px;
+    margin: 40px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.one-inbox {
+    margin: 0 20px 20px 0;
+}
+
+.inbox-title {
+    display: flex;
+    justify-content: center;
+    color: #f46524;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.inbox-unread-title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
