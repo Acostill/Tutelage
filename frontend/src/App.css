@@ -21,20 +21,17 @@ body {
     color: #f46524ff;
 }
 
-<<<<<<< HEAD
 a.app-name {
     color: #f46524ff !important;
 }
 
 
-=======
 @media only screen and (max-width: 767px) {
     body {
         width: 100%;
         margin-top: 140px !important;
     }
 }
->>>>>>> 4302d72fac914e02c016ca0c7c4baea389c23cc0
 /*---- Navigation bar ---- */
 
 /* #navigation-bar {
