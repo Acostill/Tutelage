@@ -21,6 +21,11 @@ body {
     color: #f46524ff;
 }
 
+a.app-name {
+    color: #f46524ff !important;
+}
+
+
 @media only screen and (max-width: 767px) {
     body {
         width: 100%;

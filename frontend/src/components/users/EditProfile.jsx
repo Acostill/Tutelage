@@ -54,7 +54,6 @@ class EditProfile extends Component {
         tags: ["users", "tutelage"]
       },
       (error, result) => {
-        console.log("INCOMING result NOW IS:", result)
         result.map(elem => {
           if (!elem.public_id) {
             return "sample";
@@ -248,10 +247,10 @@ class EditProfile extends Component {
     return (
       <div id="user-profile" className="margin">
         <form onSubmit={editProfileSubmitForm} id="input-container">
-          <div className="background-banner">
-            <div className="sq2-edit" />
-            <div id="user-banner-edit">
-              <div className="image-crop margin">
+          <div id="user-banner-edit"className="background-banner sq2-edit">
+            {/* <div className="sq2-edit" /> */}
+            {/* <div id="user-banner-edit"> */}
+              <div className="image-crop margin" id="user_image">
                 {/*  Incoming */}
                 {this.state.public_id ? (
                   <button id="upload_widget_opener" onClick={makeWidget}>
@@ -275,7 +274,7 @@ class EditProfile extends Component {
               </div>
               <div id="user-basic-info-edit">
                 <div className="user-header-edit">
-                  <div>
+                  <div className="user-info-text">
                     <input
                       type="text"
                       name="newFirstName"
@@ -295,25 +294,16 @@ class EditProfile extends Component {
                       className="input-box-edit"
                     />
                   </div>
-                  {/* <div className="margin-top">
-                    {"Link of Image:"}
-                    <input
-                      type="text"
-                      name="imgURL"
-                      value={newImgURL}
-                      onChange={handleInputChange}
-                      className="input-box-edit"
-                    />
-                  </div> */}
                 </div>
                 {/* End Incoming */}
               </div>
             </div>
-          </div>
+          {/* </div> */}
 
+          {/* fix around here - make sure user-info-content has closing div */}
           <div className="user-info-content">
                 <div id="quick-user-info" >
-                  <div>
+                  <div className = "quick-user-options">
                     {" "}
                     Gender:
                 {/* {user.gender} */}
@@ -392,5 +382,4 @@ class EditProfile extends Component {
           );
         }
       }
-      
-      export default EditProfile;
+export default EditProfile;
