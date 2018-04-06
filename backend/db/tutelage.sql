@@ -125,7 +125,7 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('greg1', 'Gregory', 'Davis', '10001', '../images/gregcropped.jpg', 'greg@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '28', 'Male', 'Ducati Mechanical Engineer', 'Racing', NULL, NULL);
+  ('greg1', 'Gregory', 'Davis', '10001', 'http://res.cloudinary.com/tutelage/image/upload/v1522977999/a1wovuhk7fvqop3e4euj.jpg', 'greg@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '28', 'Male', 'Ducati Mechanical Engineer', 'Racing', NULL, NULL);
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values

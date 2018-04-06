@@ -20,6 +20,10 @@ body {
     color: #f46524ff;
 }
 
+a.app-name:hover {
+    color: #f46524ff !important;
+}
+
 
 /*---- Navigation bar ---- */
 
