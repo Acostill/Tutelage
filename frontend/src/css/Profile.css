@@ -9,7 +9,7 @@
 }
 
 .background-banner {
-    width: 850px;
+    /* width: 850px; */
     border-radius: 50px;
     margin: auto;
 }
@@ -20,7 +20,7 @@
     background-color: #f46524;
     width: 100%;
     height: 180px;
-    margin-bottom: -180px;
+    margin-bottom: -190px;
     border-radius: 20px 20px 0 0;
 }
 
@@ -74,14 +74,15 @@ div.user-pic-info>.image-crop>a>.img-profile {
     /* align-items: flex-start; */
 }
 
-.user-info-content {
+
+/* #on-profile {
     width: 850px;
     margin: auto;
     padding: 20px;
     font-size: 2em;
     display: flex;
     flex-direction: column;
-}
+} */
 
 .margin-top {
     margin-top: 20px;
@@ -97,7 +98,7 @@ div.user-pic-info>.image-crop>a>.img-profile {
 }
 
 #chat-box {
-    width: 850px;
+    /* width: 850px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
