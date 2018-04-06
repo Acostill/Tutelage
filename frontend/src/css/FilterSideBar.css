@@ -1,7 +1,7 @@
 .filter-sidebar,
 .filter-sidebar2 {
     color: #fff;
-    width: 260px;
+    width: 250px;
     height: 100vmax;
     list-style-type: none;
     font-size: 13pt;
@@ -14,6 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     text-align: center;
+    justify-content: center;
 }
 
 .custom-filter-title {
@@ -32,38 +33,4 @@ div.custom-filter>.custom-filter-title {
     border: none;
     text-align: center;
     padding: 10px;
-}
-
-@media only screen and (max-width: 767px) {
-    #main-filter-sidebar,
-    .app-name {
-        display: none;
-    }
-    /* .navBar-loggedIn { */
-    #results-map {
-        flex-direction: row;
-        flex-wrap: nowrap;
-    }
-    .mobile-logged-In {
-        margin-top: -50px;
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 300px) {
-    #main-filter-sidebar,
-    .navBar-loggedIn {
-        display: none;
-    }
-    #results-map {
-        flex-direction: row;
-        flex-wrap: nowrap;
-    }
-    .mobile-logged-In {
-        margin-top: -50px;
-        display: none;
-    }
-    div#search-header {
-        font-size: 20px;
-    }
 }

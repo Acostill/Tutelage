@@ -4,6 +4,7 @@ import axios from "axios";
 import "../../css/Profile.css";
 // import "../../css/EditProfile.css";
 import UserProfile from './UserProfile';
+import Swal from "sweetalert2";
 
 import {
   Image,
@@ -88,6 +89,18 @@ class Profile extends Component {
         let thread_id = res.data.thread.id;
         axios.post('/users/send_message', { thread_id: thread_id, body: userMessage })
       })
+
+      Swal({
+        title: `🎉 Congratulations ${
+          currentUser.firstname
+        }, you just sent a message to ${profileUser.firstname}.
+        Allow time for ${profileUser.firstname} to respond.`,
+        width: 600,
+        padding: 100,
+        background: `#fff`,
+        confirmButtonText: `OK`,
+        confirmButtonColor: `#FD8F26`
+      });
   }
 
   cancelMessage = () => {

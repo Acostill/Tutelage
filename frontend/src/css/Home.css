@@ -1,35 +1,31 @@
 #myCarousel {
     /* width:900px; */
-    height: 500px;
-    margin: auto;
+    /* height: 500px; */
+    /* margin: auto; */
     /* overflow: hidden; */
     /* background-color: black; */
 }
 
 
 /* This can change the carousel height to allow button visability without scrolling. */
+#myCarousel {
+    margin-top: -25px;
+}
 
 .mentorCarousel {
-    height: 600px;
-}
-
-@media (max-width: 900px) {
-    #myCarousel {
-        width: auto;
-        height: auto;
-    }
+    height: 500px;
 }
 
 
-/* .carousel-caption {
-  top: 36%;
-} */
+.carousel-caption {
+  top: 46%;
+}
 
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
     .carousel-caption {
         top: 43%;
     }
-}
+} */
 
 #signUpChoice {
     display: flex;
@@ -126,4 +122,47 @@ ol.carousel-indicators {
 
 .captionTwo {
     color: white;
+}
+
+@media (max-width: 700px) {
+    /* #myCarousel {
+        width: auto;
+        height: auto;
+    } */
+    .mentorCarousel {
+        height: 190px;
+    }
+
+    .carousel-caption {
+        top: 20%;
+    }
+
+    .captionOne {
+        font-size: 20px;
+        color: white;
+        text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue
+    }
+    .captionTwo {
+        font-size: 10px;
+        color: white;
+    }
+    .buttons {
+        margin: 15px;
+        width: 200px;
+        height: 50px;
+        justify-content: center;
+        padding: 0;
+        font-size: 20px
+    }
+    #signUpChoice {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    #mentorButton {
+        margin: 30px;
+    }
+    h3.signUpEnticers {
+        font-size: 16px;
+    }
 }

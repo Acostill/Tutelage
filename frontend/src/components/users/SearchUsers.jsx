@@ -133,16 +133,24 @@ class SearchUsers extends Component {
 
   filterBy = ( gender, ageGroup, expertise, language ) => {
     const filteredMentees = this.state.allMentees.filter( user => {
-       return user.gender.toLowerCase() === gender.toLowerCase()
+       if( !gender ) {
+        return user;
+       } else if ( gender ) {
+         return user.gender.toLowerCase() === gender.toLowerCase();
+       } 
       } )
 
     const filteredMentors = this.state.allMentors.filter( user => {
-     return user.gender.toLowerCase() === gender.toLowerCase()
+      if( !gender ) {
+        return user;
+      } else if ( gender ) {
+        return user.gender.toLowerCase() === gender.toLowerCase();
+      }
     })
 
     this.setState({
       filteredMentees: filteredMentees,
-      filteredMentors: filteredMentors
+      filteredMentors: filteredMentors,
     })
   }
 
@@ -188,7 +196,7 @@ class SearchUsers extends Component {
             id="filter-sidebar"
             currentUser={currentUser}
             handleSubmit={this.getBestUsers}
-            handleGenderSelect={this.getGender}
+            // handleGenderSelect={this.getGender}
             handleSelect={this.filterBy}
           />
 
