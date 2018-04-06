@@ -63,13 +63,24 @@
 }
 
 .user-info-content {
-    width: 850px;
+    /* width: 850px; */
     margin: auto;
     padding: 20px;
     font-size: 2em;
     display: flex;
     flex-direction: column;
 }
+
+
+/* 
+#on-profile {
+    width: 850px;
+    margin: auto;
+    padding: 20px;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+} */
 
 .margin-top {
     margin-top: 20px;
@@ -124,8 +135,91 @@ input.center-submit {
     margin: auto;
 }
 
-@media only screen and (min-width: 320) and (max-width: 767px) {
-    #user-banner {
-        width: 50px;
+@media only screen and (max-width: 767px) {
+    div.margin-top {
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 750px;
+    }
+    #on-profile {
+        height: 100vh;
+    }
+    div#on-profile.user-info-content {
+        display: flex;
+        justify-content: center;
+    }
+    #edit-user-profile-container {
+        display: flex;
+        justify-content: center;
+    }
+    #user-profile {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 277px;
+    }
+    div.background-banner {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        border-radius: 50px;
+        margin: 0 auto;
+    }
+    div.color-sq2 {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        margin-right: -414px;
+        display: flex;
+        background-color: #f46524;
+        height: 180px;
+        margin-bottom: -190px;
+        border-radius: 20px 20px 0 0;
+    }
+    div#user-banner {
+        width: 100vw;
+        height: 805px;
+    }
+    .user-info-text {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    div.user .user-pic-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .user-info-content {
+        height: 677px;
+    }
+    .submit {
+        padding-right: 15px;
+    }
+    button#editButton {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        margin-top: 270px;
+        margin-bottom: -235px;
+    }
+    .color-sq2 {
+        display: flex;
+        justify-content: center;
+    }
+    .img-profile {
+        display: flex;
+        justify-content: center;
+    }
+    #quick-user-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 235px;
+    }
+    form#input-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
 }

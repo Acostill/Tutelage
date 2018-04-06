@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
-// import "../../css/Profile.css";
+import "../../css/Profile.css";
+// import "../../css/EditProfile.css";
 import UserProfile from './UserProfile';
 
 import {
@@ -146,7 +147,7 @@ class Profile extends Component {
     console.log({ commonInterests })
     checkReload();
     return (
-      <div>
+      <div id="edit-user-profile-container">
         {isCurrentUserProfile ?
           <UserProfile currentUser={currentUser} />
           : <div id="user-profile" className="margin">
@@ -191,7 +192,7 @@ class Profile extends Component {
                   </div>
                 </div>
                 <div className="box-two">
-                  <div className="user-info-content">
+                  <div className="user-info-content"  id="on-profile">
                     <div id="quick-user-info">
                       <div className="margin-top">
                         <h2><strong>Common Interests</strong></h2>
@@ -210,9 +211,9 @@ class Profile extends Component {
                         Hobbies: {profileUser.hobbies}{" "}
                       </div>
                       <div className="margin-top"> Bio: {profileUser.bio}</div>
-                    </div>
                     <div className="margin-top">
                       Credentials: {profileUser.credentials}{" "}
+                    </div>
                     </div>
                   </div>
                 </div>
