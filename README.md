@@ -37,4 +37,3 @@ Frontend
 * [Gregory Davis, Product Manager](https://github.com/davisgreg1)
 * [Eddie Harmon, Demo Lead](https://github.com/EddieHarmonJr)
 * [Carolina Restrepo, Design Lead](https://github.com/crestrepo12)
-
