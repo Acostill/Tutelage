@@ -20,7 +20,7 @@ body {
     color: #f46524ff;
 }
 
-a.app-name:hover {
+a.app-name {
     color: #f46524ff !important;
 }
 
