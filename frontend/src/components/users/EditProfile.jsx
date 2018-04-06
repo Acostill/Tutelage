@@ -13,13 +13,11 @@ import cloudinary from "cloudinary-core";
 const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: "tutelage" });
 
 class EditProfile extends Component {
-
   constructor(props) {
     super(props);
-
     this.state = {
       user: {},
-      public_id: "",
+      public_id: this.props.currentUser.public_id,
       userMessage: "",
       newUserName: '',
       newFirstName: '',
@@ -56,15 +54,14 @@ class EditProfile extends Component {
         tags: ["users", "tutelage"]
       },
       (error, result) => {
-        console.log("INCOMING result NOW IS:", result)
         result.map(elem => {
-          if (!elem) {
-            this.setState({
-              message: "Nothing found"
-            })
+          if (!elem.public_id) {
+            return "sample";
           } else {
+
             this.setState({
-           message: elem
+              newImgURL: result[0].url,
+              public_id: result[0].public_id
             });
           }
         });
@@ -73,7 +70,7 @@ class EditProfile extends Component {
   };
 
   getUser = () => {
-    let username = this.state.newUserName;
+    let username = this.props.match.params.username;
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
@@ -92,7 +89,7 @@ class EditProfile extends Component {
   setUser = (currentUser) => {
     const { username, firstname, lastname, email,
       ismentor, age, bio, occupation, zipcode,
-      gender, imgurl, hobbies, credentials, public_id } = currentUser;
+      gender, imgurl, hobbies, credentials } = currentUser;
     this.setState({
       newUserName: username,
       newFirstName: firstname,
@@ -107,10 +104,8 @@ class EditProfile extends Component {
       newImgURL: imgurl,
       newHobbies: hobbies,
       newCredentials: credentials,
-      public_id: public_id
     })
   }
-  
   handleTextArea = e => {
     this.setState({
       userMessage: e.target.value
@@ -200,18 +195,17 @@ class EditProfile extends Component {
     }, 10);
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser.username !== this.props.currentUser.username) {
       this.setUser(nextProps.currentUser);
     }
   }
 
-  UNSAFE_componentDidMount() {
+  componentDidMount() {
     this.getUser();
   }
 
   render() {
-    console.log("the state:", this.state)
     const {
       clearMessage,
       handleTextArea,
@@ -316,6 +310,7 @@ class EditProfile extends Component {
             </div>
           </div>
 
+          {/* fix around here - make sure user-info-content has closing div */}
           <div className="user-info-content">
                 <div id="quick-user-info" >
                   <div>
@@ -397,5 +392,4 @@ class EditProfile extends Component {
           );
         }
       }
-      
-      export default EditProfile;
+export default EditProfile;
