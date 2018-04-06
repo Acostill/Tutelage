@@ -65,6 +65,11 @@
 
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
+    margin-top: -40px;
+}
+
+.bm-menu-wrap {
+    margin-top: -40px;
 }
 
 @media screen and (min-width: 768px) {

@@ -8,6 +8,9 @@
 
 
 /* This can change the carousel height to allow button visability without scrolling. */
+#myCarousel {
+    margin-top: -25px;
+}
 
 .mentorCarousel {
     height: 500px;
