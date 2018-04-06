@@ -123,15 +123,16 @@ class Survey extends React.Component {
     return (
       <form className="survey-form" onSubmit={this.handleSubmit}>
         <h1 id="survey-title">
-          {" "}
           <strong>Let's Help You Make A Match </strong>
         </h1>
         <div id="questions">
           {questions.map((question, idx) => (
             <div className="question-card">
-              <h1>{question.the_question}</h1>
+           
+              <h1 className="the-question" > {question.the_question} </h1>
+             
+              <legend></legend>
               <fieldset>
-                <legend> Select one answer </legend>
                 <InlineRadioGroup
                   name={`${question.id}`}
                   values={[
