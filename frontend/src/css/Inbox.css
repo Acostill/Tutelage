@@ -27,3 +27,22 @@
     background-color: #fff !important;
     color: #f46524 !important;
 }
+
+@media only screen and (max-width: 700px ) {
+  div.one-inbox > a > div.hover-thread-message {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border: 4px solid rgb(126, 126, 126);
+    background-color: rgb(126, 126, 126);
+    border-radius: 20px !important;
+    font-size: 20px !important;
+    padding: 10px 20px !important;
+    margin: 15px 0 !important;
+  }
+
+  .one-inbox {
+    margin: 0 0 0 0;
+}
+
+}

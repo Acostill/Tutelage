@@ -4,6 +4,9 @@
     color: #f46524ff;
 }
 
+.app-name:hover {
+    color: #f46524ff
+}
 
 /*---- Navigation bar ---- */
 
@@ -175,4 +178,38 @@ div.nav-right-loggedin {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 767px) {
+    #main-filter-sidebar,
+    .app-name {
+        display: none;
+    }
+    /* .navBar-loggedIn { */
+    #results-map {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .mobile-logged-In {
+        margin-top: -50px;
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    /* #main-filter-sidebar,
+    .navBar-loggedIn {
+        display: none;
+    } */
+    #results-map {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .mobile-logged-In {
+        margin-top: -50px;
+        display: none;
+    }
+    div#search-header {
+        font-size: 20px;
+    }
 }
