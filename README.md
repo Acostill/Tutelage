@@ -1,6 +1,6 @@
 **Tutelage**
 <!-- Logo will go here -->
-![alt text](./Tutelage/TutelageLogo.png "Tutelage Logo")
+![alt text](./Tutelage/frontend/public/images/TutelageLogo.png "Tutelage Logo")
 
 ## Description
 
