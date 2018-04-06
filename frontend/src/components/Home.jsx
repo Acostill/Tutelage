@@ -84,46 +84,6 @@ class Home extends Component {
           </Carousel.Item>
         </Carousel>
 
-        {/* <div class="carousel-inner">
-    <div class="item active">
-      <img src="https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg" alt="Los Angeles" />
-    </div>
-
-    <div class="item">
-      <img src="http://r.ddmcdn.com/w_830/s_f/o_1/cx_20/cy_1463/cw_2528/ch_1422/APL/uploads/2014/11/puppy-cam-veer-2893191.jpg" alt="Office Meeting" />
-    </div>
-
-    <div class="item">
-      <img src="http://dynaimage.cdn.turner.com/gns/gns/e_trim/180213130413-westminster-dog-show-5.jpg" alt="Coffee Shop" />
-    </div>
-
-     <div class="item">
-      <img src="http://www.mamawantsthis.com/wp-content/uploads/2017/06/pexels-photo-67660.jpeg" alt="Group Setting" />
-    </div>
-
-     <div class="item">
-      <img src="http://dogsaholic.com/wp-content/uploads/2015/05/Puppy-exercise-and-play-with-ball.jpg" alt="Walk and Talk" />
-    </div>
-
-     <div class="item">
-      <img src="https://www.healthypawspetinsurance.com/Images/V3/DogAndPuppyInsurance/Dog_CTA_Desktop_HeroImage.jpg" alt="Tablet Demo" />
-    </div>
-
-        
-  </div> */}
-
-        {/* <!-- Left and right controls --> */}
-        {/* <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a> */}
-        {/* </div> */}
-
-
         <div id="signUpChoice">
           <div id="mentorButton">
           <Link to="/register" ><button className="buttons" type="button">Become A Mentor</button></Link>

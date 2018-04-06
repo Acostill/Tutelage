@@ -71,15 +71,14 @@ class NavBar extends Component {
 
   loggedInNav = () => {
     const { user, logOut, unreadMessages } = this.props;
-    console.log({ unreadMessages });
 
     return (
       <div className="navBar-loggedIn">
         <nav id="navigation-bar">
           <Link className="app-name" to="/">
-            {" "}
-            Tutelage{" "}
-          </Link>{" "}
+            Tutelage
+          </Link>
+
           <div className="nav-right-loggedin">
           {/* <div className="nav-right-items"> */}
             <Link to="/search">
@@ -107,10 +106,9 @@ class NavBar extends Component {
               <div title="Tutelage Survey">
                 <FontAwesomeIcon icon={["fas", "clipboard-list"]} size="2x" />
               </div>
-            </Link>{" "}
+            </Link>
             <button type="button" id="logout-button" onClick={logOut}>
-              {" "}
-              Log Out{" "}
+              Log Out
             </button>
             {/* </div> */}
           </div>
@@ -141,18 +139,6 @@ class NavBar extends Component {
      this.interval = setInterval(getUnreadMessages, 3000);  
     }
   }
-  // componentWillReceiveProps(nextProps) {
-  //   const { getUnreadMessages } = this.props;
-
-  //   if (nextProps.signedIn && !this.props.signedIn) {
-  //     getUnreadMessages();
-  //    this.interval = setInterval(getUnreadMessages, 15000);
-  //   }
-
-  //   if (!nextProps.signedIn && this.props.signedIn) {
-  //     clearInterval(this.interval);
-  //   }
-  // }
 
   componentDidMount() {
     // this.props.getUserInfo();

@@ -215,7 +215,7 @@ class App extends Component {
               () => < SearchUsers currentUser={user}
               />} />
           <Route path="/aboutus"
-            render={AboutUs}
+            render={(props) => <AboutUs {...props} />}
           />
           <Route path="/users"
             render={
