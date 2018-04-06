@@ -101,7 +101,7 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('RichArt', 'Richard', 'Artoul', '10192', '../images/richard.jpeg', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '38', 'Male', 'Senior Developer', 'Solving Sudoku Puzzles', 'I enjoy coding and building these applications. I was grateful that I entered this field and want to help others succeed in this field. I joined other sites to find mentees but none of them seemed to work and I never really recieved a mentee. I make it my goal to help others and show that this career choice would be the best one they chose.', 'Bachelor of Science and Computer Science');
+  ('RichArt', 'Richard', 'Artoul', '10192', 'http://res.cloudinary.com/tutelage/image/upload/v1523045174/richie.jpg', 'me@u.we8', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'true', '38', 'Male', 'Senior Developer', 'Solving Sudoku Puzzles', 'I enjoy coding and building web applications. I love to give back to the developer community. I joined other sites to find mentees but none of them seemed to work and I never really recieved a mentee. I make it my goal to help others and show that this career choice would be the best one they chose.', 'Bachelor of Science and Computer Science');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
@@ -109,7 +109,7 @@ values
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
-  ('carolina1', 'Carolina', 'Restrepo', '07110', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/CarolinaPic2.jpg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '26', 'Female', 'Junior Developer', 'Sculpting', 'As a Junior Developer coming into the Tech World, I feel a bit uneasy with the interview process. The white boarding scares me the most and I plan to find someone who can help me with that.', 'Associates in Fine Arts and Bachelors in Social and Behavioral Sciences and C4Q ');
+  ('carolina1', 'Carolina', 'Restrepo', '07110', 'http://res.cloudinary.com/tutelage/image/upload/v1522734136/CarolinaPic2.jpg', 'carolina@up.start', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'false', '26', 'Female', 'Junior Developer', 'Sculpting', 'As a Junior Developer coming into the Tech World, I feel a bit uneasy with the interview process. The white boarding interview process scares me the most and I plan to find someone who can help me with that.', 'Associates in Fine Arts and Bachelors in Social and Behavioral Sciences and C4Q ');
 INSERT INTO users
   (username, firstname, lastname, zipcode, imgURL, email, password_digest, ismentor, age, gender, occupation, hobbies, bio, credentials)
 values
