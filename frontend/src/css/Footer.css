@@ -21,6 +21,7 @@
 .hqSection {
     text-align: left;
     margin-left: 60px;
+    font-weight: bold;
     /* border: solid; */
 }
 
@@ -49,6 +50,7 @@
 #rights {
     text-align: left;
     margin-left: 60px;
+    font-weight: bold;
     /* border: solid; */
 }
 
