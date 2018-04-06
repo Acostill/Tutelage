@@ -1,5 +1,6 @@
 **Tutelage**
-![alt text](./public/TutelageLogo.png "Tutelage Logo")
+<!-- Logo will go here -->
+![alt text](./Tutelage/TutelageLogo.png "Tutelage Logo")
 
 ## Description
 
@@ -8,6 +9,8 @@ Tutelage is a web application that allows individuals to find mentorship in a ca
 ## How does it work?
 
 Tutelage works by allowing a "mentor" and a "mentee" to sign up for their accounts, respectively. Utilizing a matching algorithm, a mentee is paired with an ideal mentor to form a long-term, professional, mentoring relationship that will enrich the mentee's career path.
+
+## How to run "Tutelage" locally:
 
 
 ##Technologies
@@ -34,4 +37,3 @@ Frontend
 * [Gregory Davis, Product Manager](https://github.com/davisgreg1)
 * [Eddie Harmon, Demo Lead](https://github.com/EddieHarmonJr)
 * [Carolina Restrepo, Design Lead](https://github.com/crestrepo12)
-
