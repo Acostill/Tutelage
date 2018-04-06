@@ -11,7 +11,7 @@ class Footer extends Component {
 
     render() {
         return (
-                    <span className="footerSection">
+                    <div className="footerSection">
                         <span id="copyright">Tutelage Inc.&trade; Copyright © 2018 Until Infinity</span>
                         <span id="rights">All Rights Reserved</span>
                         <span className="hqSection">
@@ -27,7 +27,7 @@ class Footer extends Component {
                         </div>
                         <div id="tagline">Reach out to your full potential.&trade;</div>
 
-                    </span>
+                    </div>
         )
     }
 

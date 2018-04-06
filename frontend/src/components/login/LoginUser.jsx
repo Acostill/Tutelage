@@ -97,7 +97,7 @@ class LoginUser extends Component {
           </div>
 
         
-        <Footer />
+        {/* <Footer /> */}
       </div>
 
     );

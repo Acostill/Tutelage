@@ -233,7 +233,7 @@ class RegisterUser extends Component {
           </div>
         </div>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

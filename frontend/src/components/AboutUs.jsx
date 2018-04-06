@@ -11,7 +11,7 @@ class AboutUs extends Component {
     render() {
         return (
             <div className="aboutUs-container">
-
+                
                 <div id="missionStatementSection">
                     <h1 id="missionStatement">Mission Statement</h1>
                     <h2 className="missionParagraphs">Our mission at Tutelage is to serve as a tool to spark a connection, preferably a meaningful, mutually beneficial, long-term one between a mentor with significant experience and a mentee. Whether you are seeking to gain new skills from someone who has already travelled on the road of the journey you are just beginning, or if you are a seasoned professional seeking to give back by donating time, resources, advice and expertise to a younger version of yourself, Tutelage fosters an environment for professional life enrichment. </h2>
@@ -155,7 +155,8 @@ class AboutUs extends Component {
 
                 </div>
 
-                
+
+                {/* <Footer /> */}
             </div>
 
 
