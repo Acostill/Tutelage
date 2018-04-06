@@ -133,7 +133,7 @@ class NavBar extends Component {
         })
       })
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { getUnreadMessages } = this.props;
 
     if (nextProps.signedIn && !this.props.signedIn) {
@@ -155,7 +155,7 @@ class NavBar extends Component {
   // }
 
   componentDidMount() {
-    // this.props.getUserInfo();
+    this.props.getUserInfo();
   }
 
   render() {

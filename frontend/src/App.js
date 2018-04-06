@@ -12,7 +12,7 @@ import NavBar from "./components/NavBar";
 import Inbox from "./components/inbox/Inbox";
 import Survey from "./components/survey/Survey";
 import axios from "axios";
-import Hamburger from './components/users/Hamburger';
+import Hamburger from "./components/users/Hamburger";
 
 class App extends Component {
   constructor() {

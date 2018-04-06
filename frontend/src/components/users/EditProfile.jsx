@@ -13,11 +13,13 @@ import cloudinary from "cloudinary-core";
 const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: "tutelage" });
 
 class EditProfile extends Component {
+
   constructor(props) {
     super(props);
+
     this.state = {
       user: {},
-      public_id: this.props.currentUser.public_id,
+      public_id: "",
       userMessage: "",
       newUserName: '',
       newFirstName: '',
@@ -56,13 +58,13 @@ class EditProfile extends Component {
       (error, result) => {
         console.log("INCOMING result NOW IS:", result)
         result.map(elem => {
-          if (!elem.public_id) {
-            return "sample";
-          } else {
-
+          if (!elem) {
             this.setState({
-              newImgURL: result[0].url,
-              public_id: result[0].public_id
+              message: "Nothing found"
+            })
+          } else {
+            this.setState({
+           message: elem
             });
           }
         });
@@ -71,7 +73,7 @@ class EditProfile extends Component {
   };
 
   getUser = () => {
-    let username = this.props.match.params.username;
+    let username = this.state.newUserName;
     axios
       .get(`/users/getuser/${username}`)
       .then(res => {
@@ -90,7 +92,7 @@ class EditProfile extends Component {
   setUser = (currentUser) => {
     const { username, firstname, lastname, email,
       ismentor, age, bio, occupation, zipcode,
-      gender, imgurl, hobbies, credentials } = currentUser;
+      gender, imgurl, hobbies, credentials, public_id } = currentUser;
     this.setState({
       newUserName: username,
       newFirstName: firstname,
@@ -105,8 +107,10 @@ class EditProfile extends Component {
       newImgURL: imgurl,
       newHobbies: hobbies,
       newCredentials: credentials,
+      public_id: public_id
     })
   }
+  
   handleTextArea = e => {
     this.setState({
       userMessage: e.target.value
@@ -196,17 +200,18 @@ class EditProfile extends Component {
     }, 10);
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser.username !== this.props.currentUser.username) {
       this.setUser(nextProps.currentUser);
     }
   }
 
-  componentDidMount() {
+  UNSAFE_componentDidMount() {
     this.getUser();
   }
 
   render() {
+    console.log("the state:", this.state)
     const {
       clearMessage,
       handleTextArea,
