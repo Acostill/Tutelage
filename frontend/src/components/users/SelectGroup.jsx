@@ -20,6 +20,9 @@ const SelectGroup = ({ categories, selectedOptions, handleSelect }) => {
                 onChange={handleSelect}
               >
                 {["", ...category.options].map(option => {
+                  if(option === "") {
+                    return <option value=""> Any </option>
+                  }
                   return <option value={option}>{option}</option>;
                 })})
               </select>
