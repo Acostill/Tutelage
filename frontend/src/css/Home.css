@@ -1,7 +1,7 @@
 #myCarousel {
     /* width:900px; */
-    height: 500px;
-    margin: auto;
+    /* height: 500px; */
+    /* margin: auto; */
     /* overflow: hidden; */
     /* background-color: black; */
 }
@@ -10,7 +10,7 @@
 /* This can change the carousel height to allow button visability without scrolling. */
 
 .mentorCarousel {
-    height: 600px;
+    height: 500px;
 }
 
 @media (max-width: 900px) {
@@ -21,15 +21,15 @@
 }
 
 
-/* .carousel-caption {
-  top: 36%;
-} */
+.carousel-caption {
+  top: 46%;
+}
 
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
     .carousel-caption {
         top: 43%;
     }
-}
+} */
 
 #signUpChoice {
     display: flex;

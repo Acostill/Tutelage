@@ -2,10 +2,10 @@
 
 .bm-burger-button {
     position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 0;
-    top: 17%;
+    width: 20px;
+    height: 20px;
+    left: 13px;
+    top: 19%;
     z-index: 9999;
 }
 
@@ -40,7 +40,7 @@
 /* General sidebar styles */
 
 .bm-menu {
-    background: #373a47;
+    background: #353535;
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
 }
