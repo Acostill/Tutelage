@@ -12,7 +12,7 @@ body {
 }
 
 .app {
-    width: 100%;    
+    width: 100%;
 }
 
 #app-name {
@@ -25,14 +25,16 @@ a.app-name {
     color: #f46524ff !important;
 }
 
-
 @media only screen and (max-width: 767px) {
     body {
         width: 100%;
         margin-top: 140px !important;
     }
 }
+
+
 /*---- Navigation bar ---- */
+
 
 /* #navigation-bar {
     width: 100%;
