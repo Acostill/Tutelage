@@ -48,6 +48,7 @@ class Thread extends Component {
           userMessage: ''
         })
         this.getMessages();
+        console.log("message Sent!")
       })
   }
 
@@ -63,7 +64,7 @@ class Thread extends Component {
   componentDidMount() {
     const {  getUnreadMessages } = this.props;
     this.getMessages();
-    getUnreadMessages();
+   getUnreadMessages();
 
   }
 

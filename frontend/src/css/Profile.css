@@ -162,3 +162,5 @@ div.user-pic-info>.image-crop>a>.img-profile {
 #editButton {
     margin-left: 490px;
 }
+
+@media only screen and (max-width: 767px) {}
