@@ -69,16 +69,27 @@ div.nav-bar .nav_toggle {
 }
 
 div.nav-right {
-    font-size: 15px;
-    width: 200px;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    justify-content: space-around;
-    align-items: center;
+  font-size: 15px;
+  width: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  justify-content: space-around;
+  align-items: center;
 }
 
+div.nav-left {
+  display: flex;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+#nav-torch {
+  height: 60px;
+  /* margin-top: 10px; */
+  float: left;
+}
 
 /* nav-right-items {
     display: inline-flex;
@@ -87,6 +98,10 @@ div.nav-right {
     justify-content: space-between;
 }
  */
+.nav-mid {
+  position: relative;
+  margin-left: 15%;
+}
 
 .nav-right>a {
     color: rgb(53, 53, 53);
@@ -104,7 +119,7 @@ div.nav-right {
 
 div.nav-right-loggedin {
     font-size: 15px;
-    width: 550px;
+    width: 410px;
     padding: 10px;
     display: flex;
     flex-direction: row;
@@ -213,6 +228,9 @@ div.nav-right-loggedin {
     }
     .mobile-logged-In {
         margin-top: -50px;
+        display: none;
+    }
+    .nav-mid {
         display: none;
     }
 }

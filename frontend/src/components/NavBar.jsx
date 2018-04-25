@@ -19,7 +19,7 @@ class NavBar extends Component {
   onLoadNav = () => {
     return (
       <div className="navBar-onLoad">
-     
+
         <nav role="navigation">
           <div id="menuToggle">
             <input type="checkbox" />
@@ -75,12 +75,17 @@ class NavBar extends Component {
     return (
       <div className="navBar-loggedIn">
         <nav id="navigation-bar">
-          <Link className="app-name" to="/">
-            Tutelage
+          <div className="nav-left">
+            <Link className="app-name" to="/">
+              Tutelage
           </Link>
+          </div>
+          <div className='nav-mid' >
+            <img id='nav-torch' src='../images/torch-greyhands.svg' />
+          </div>
 
           <div className="nav-right-loggedin">
-          {/* <div className="nav-right-items"> */}
+            {/* <div className="nav-right-items"> */}
             <Link to="/search">
               <div title="Search">
                 <FontAwesomeIcon icon={["fas", "search"]} size="2x" />
@@ -94,8 +99,8 @@ class NavBar extends Component {
               {unreadMessages.length ? (
                 <div className="red">{unreadMessages.length} </div>
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </Link>
             <Link to={`/users/${user.username}`}>
               <div title="Profile">
@@ -131,12 +136,12 @@ class NavBar extends Component {
         })
       })
   }
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { getUnreadMessages } = this.props;
 
     if (nextProps.signedIn && !this.props.signedIn) {
       getUnreadMessages();
-     this.interval = setInterval(getUnreadMessages, 3000);  
+      this.interval = setInterval(getUnreadMessages, 3000);
     }
   }
 
