@@ -1,3 +1,7 @@
+#results-map{
+    background-image: "../";
+}
+
 #user-profile {
     display: flex;
     flex-direction: column;
