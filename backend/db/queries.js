@@ -1,5 +1,5 @@
 const pgp = require("pg-promise")({});
-const connectionString = "postgres://localhost/tutelage";
+var connectionString = process.env.DATABASE_URL
 const db = pgp(connectionString);
 
 const authHelpers = require("../auth/helpers");

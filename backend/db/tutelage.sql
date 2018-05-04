@@ -1,7 +1,3 @@
-DROP DATABASE IF EXISTS tutelage;
-CREATE DATABASE tutelage;
-\c tutelage;
-
 CREATE TABLE users
 (
   ID SERIAL PRIMARY KEY,
