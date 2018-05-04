@@ -1,6 +1,10 @@
 {
   "name": "tutelage-backend",
-  "version": "0.0.0",
+  "description": "A cool mentor/mentee app!",
+  "version": "1.0.0",
+  "engines":{
+    "node": "8.6.x"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
