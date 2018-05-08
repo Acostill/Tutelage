@@ -6,7 +6,7 @@ const authHelpers = require("../auth/helpers");
 const passport = require("../auth/local");
 
 /**
- * @author Greg
+ * @author Greg davis
  * @function getSingleUser Grabs a specific user by username.
  * @arg {array of objects}
  */
