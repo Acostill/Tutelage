@@ -29,7 +29,7 @@ class App extends Component {
 
   getUserInfo = () => {
     axios
-      .get('/users/userinfo')
+      .get("/users/userinfo")
       .then(res => {
         // Current
         let user = res.data.userInfo;
@@ -38,31 +38,31 @@ class App extends Component {
           this.setState({
             signedIn: true,
             user: user
-          })
+          });
         }
         // End Current
         // Incoming
         // let user = res.data.userInfo;
 
         axios
-          .post('/users/interests', { username: user.username })
+          .post("/users/interests", { username: user.username })
           .then(res => {
-            let interests = res.data.interests
+            let interests = res.data.interests;
             user = { ...user, interests: interests };
-            console.log('axios user', user)
+            console.log("axios user", user);
             this.setState({
               signedIn: true,
               user: user
-            })
-          })
+            });
+          });
         // End Incoming
       })
       .catch(err => {
         this.setState({
           signedIn: false
-        })
-      })
-  }
+        });
+      });
+  };
 
   handleInputChange = e => {
     this.setState({
@@ -117,18 +117,18 @@ class App extends Component {
 
   getUnreadMessages = () => {
     axios
-      .get('/users/unread_messages')
+      .get("/users/unread_messages")
       .then(res => {
         this.setState({
           unreadMessages: res.data.unreadMessages
-        })
+        });
       })
       .catch(err => {
         this.setState({
           error: `Error Caught: ${err}`
-        })
-      })
-  }
+        });
+      });
+  };
 
   logOut = () => {
     axios
@@ -152,7 +152,14 @@ class App extends Component {
   }
 
   render() {
-    const { user, signedIn, username, password, message, unreadMessages } = this.state;
+    const {
+      user,
+      signedIn,
+      username,
+      password,
+      message,
+      unreadMessages
+    } = this.state;
     const {
       getUserInfo,
       logOut,
@@ -164,29 +171,34 @@ class App extends Component {
     } = this;
 
     return (
-      <div className="App" >
-        <NavBar user={user}
+      <div className="App">
+        <NavBar
+          user={user}
           signedIn={signedIn}
           getUserInfo={getUserInfo}
           logOut={logOut}
           getUnreadMessages={getUnreadMessages}
           unreadMessages={unreadMessages}
-        /> { /* <Hamburger /> */}
+        />{" "}
+        {/* <Hamburger /> */}
         <Switch>
-          <Route exact path="/"
-            component={Home}
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/inbox"
+            render={props => (
+              <Inbox
+                {...props}
+                getUnreadMessages={getUnreadMessages}
+                unreadMessages={unreadMessages}
+                currentUser={user}
+              />
+            )}
           />
-          <Route path="/inbox" render={(props) =>
-            <Inbox {...props}
-              getUnreadMessages={getUnreadMessages}
-              unreadMessages={unreadMessages}
-              currentUser={user}
-            />} />
           <Route
             path="/login"
-            render={
-              () => (<
-                LoginUser handleInputChange={handleInputChange}
+            render={() => (
+              <LoginUser
+                handleInputChange={handleInputChange}
                 submitLoginForm={submitLoginForm}
                 user={user}
                 username={username}
@@ -194,35 +206,29 @@ class App extends Component {
                 message={message}
                 signedIn={signedIn}
               />
-              )
-            }
+            )}
           />
           <Route
             path="/register"
-            render={
-              () => {
-                return (<
-                  RegisterUser frontendRegister={frontendRegister}
+            render={() => {
+              return (
+                <RegisterUser
+                  frontendRegister={frontendRegister}
                   appLogIn={appLogIn}
                 />
-                );
-              }
-            }
+              );
+            }}
           />
           <Route
             path="/search"
-            render={
-              () => < SearchUsers currentUser={user}
-              />} />
-          <Route path="/aboutus"
-            render={(props) => <AboutUs {...props} />}
+            render={() => <SearchUsers currentUser={user} />}
           />
-          <Route path="/users"
-            render={
-              (props) => < Users {...props}
-                currentUser={user}
-              />} /> { /* <Route path="/aboutMe" render={AboutMe} /> */}
-          <Route path="/survey" render={() => < Survey user={user} />} />
+          <Route path="/aboutus" render={props => <AboutUs {...props} />} />
+          <Route
+            path="/users"
+            render={props => <Users {...props} currentUser={user} />}
+          />
+          <Route path="/survey" render={() => <Survey user={user} />} />
         </Switch>
       </div>
     );

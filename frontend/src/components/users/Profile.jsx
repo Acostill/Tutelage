@@ -155,10 +155,13 @@ class Profile extends Component {
       renderProfile,
       handleSubmit
     } = this;
+
     let { profileUser, userMessage, showChatBox, interests } = this.state;
     let { currentUser } = this.props;
+
     // let currentURL = this.props.match.url;
     profileUser = { ...profileUser, interests };
+    
     let commonInterests = currentUser.interests
       ? profileUser.interests.filter(interest =>
           currentUser.interests.includes(interest)
