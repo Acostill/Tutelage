@@ -1,6 +1,6 @@
 ## Tutelage
 
-<img src="./frontend/public/images/TutelageLogo.png" height="400">
+<img src="./client/public/images/TutelageLogo.png" height="400">
 
 ## Description
 
@@ -10,15 +10,15 @@ Tutelage is a web application that allows individuals to find mentorship in a ca
 
 Tutelage works by allowing a "mentor" and a "mentee" to sign up for their accounts, respectively. Utilizing a matching algorithm, a mentee is paired with an ideal mentor to form a long-term, professional, mentoring relationship that will enrich the mentee's career path.
 
-<img src="./frontend/public/images/HomePage.png">
+<img src="./client/public/images/HomePage.png">
 
-<img src="./frontend/public/images/RegisterPage.png">
+<img src="./client/public/images/RegisterPage.png">
 
-<img src="./frontend/public/images/LoginPage.png">
+<img src="./client/public/images/LoginPage.png">
 
-<img src="./frontend/public/images/ProfilePage.png">
+<img src="./client/public/images/ProfilePage.png">
 
-<img src="./frontend/public/images/MentorPage.png">
+<img src="./client/public/images/MentorPage.png">
 
 
 ## How to run "Tutelage" locally:
