@@ -93,13 +93,9 @@ class LoginUser extends Component {
           <p>
             Not a member? <Link to="/register"> Register here. </Link>
           </p>
-
           </div>
-
-        
         <Footer />
       </div>
-
     );
   }
 }
