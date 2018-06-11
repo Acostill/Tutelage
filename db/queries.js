@@ -1,6 +1,6 @@
 const pgp = require("pg-promise")({});
 const connectionString = "postgres://localhost/tutelage";
-const db = pgp(connectionString);
+const db = require("./index")
 
 const authHelpers = require("../auth/helpers");
 const passport = require("../auth/local");

@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "supervisor ./bin/www"
+    "start": "node ./bin/www",
+    "heroku-postbuild":"cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
     "express": "~4.15.5",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
