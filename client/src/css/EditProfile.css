@@ -1,7 +1,13 @@
-#user-profile {
+/* #user-profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
+} */
+
+#input-container{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
 .margin {
@@ -15,12 +21,14 @@
 }
 
 .sq2-edit {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
   border: 5px solid #f46524;
   width: 100%;
-  height: 250px;
-  margin-bottom: -250px;
+  height: 403px;
+  /* margin-bottom: -250px; */
   border-radius: 20px;
 }
 
@@ -31,6 +39,11 @@
 
 .user-header-edit {
   font-size: 20px;
+}
+
+.edit-box{
+  display: flex;
+  /* justify-content: space-around; */
 }
 
 /* ---- faux crop image of user ---- */
@@ -134,7 +147,20 @@ input.center-submit {
 }
 
 @media only screen and (max-width: 767px) {
-
+  .sq2-edit{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 684px;
+  }
+  .image-crop {
+    /* width: 150px; */
+    /* height: 150px; */
+    margin-left: auto;
+}
+/* #user-basic-info-edit{
+  width: 200px;
+} */
   #edit-user-profile-container {
     width: 100vw;
     height: 100vh;
