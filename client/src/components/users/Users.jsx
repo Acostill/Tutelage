@@ -10,6 +10,7 @@ class Users extends Component {
     return (
       <Switch>
         <Route exact path='/users/:username' render={(props) => <Profile {...props} currentUser={currentUser} />}/>
+        
         <Route path='/users/:username/edit' render={(props) => <EditProfile {...props} currentUser={currentUser} />}/>
       </Switch>
     );

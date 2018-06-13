@@ -32,9 +32,10 @@ class UserProfile extends Component {
   }
 
   componentDidMount() {
-    const { getInterests } = this;
-    getInterests();
+    // const { getInterests } = this;
+    // getInterests();
   }
+
   render() {
     const {
       clearMessage,
@@ -42,10 +43,11 @@ class UserProfile extends Component {
       checkReload,
       showChatBoxHandle
     } = this;
-    let { interests } = this.state;
+    // let { interests } = this.state;
     let { currentUser } = this.props;
-    currentUser = { ...currentUser, interests: interests }
-    console.log({ interests })
+    currentUser = { ...currentUser }
+    // currentUser = { ...currentUser, interests: interests }
+    // console.log({ interests })
 
     return (
       <div id="user-profile" className="margin">
@@ -94,12 +96,12 @@ class UserProfile extends Component {
             <div className="box-two">
               <div className="user-info-content">
                 <div id="quick-user-info">
-                  <div className="margin-top">
+                  {/* <div className="margin-top">
                     <h2><strong>Interests</strong></h2>
                     {currentUser.interests.map(interest =>
                       <p className='interest' >{interest}</p>
                     )}
-                  </div>
+                  </div> */}
                   <div className="margin-top">
                     {" "}
                     <h2><strong>Hobbies</strong></h2>

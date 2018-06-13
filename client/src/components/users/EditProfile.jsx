@@ -91,6 +91,7 @@ class EditProfile extends Component {
       ismentor, age, bio, occupation, zipcode,
       gender, imgurl, hobbies, credentials } = currentUser;
     this.setState({
+      currentUser: currentUser,
       newUserName: username,
       newFirstName: firstname,
       newLastName: lastname,
@@ -137,9 +138,11 @@ class EditProfile extends Component {
   };
 
   editProfileSubmitForm = e => {
+    // debugger;
     e.preventDefault();
     e.stopPropagation();
     let {
+      currentUser,
       newUserName,
       newFirstName,
       newLastName,
@@ -159,19 +162,19 @@ class EditProfile extends Component {
 
     axios
       .patch("/users/edit", {
-        username: newUserName,
-        firstname: newFirstName,
-        lastname: newLastName,
-        email: newEmail,
-        ismentor: newIsmentor,
-        age: newAge,
-        bio: newBio,
-        occupation: newOccupation,
-        zipcode: newZipcode,
+        username: newUserName || currentUser.username,
+        firstname: newFirstName || currentUser.firstname,
+        lastname: newLastName || currentUser.lastname,
+        email: newEmail || currentUser.email,
+        ismentor: newIsmentor || currentUser.ismentor,
+        age: newAge || currentUser.age,
+        bio: newBio || currentUser.bio,
+        occupation: newOccupation || currentUser.occupation,
+        zipcode: newZipcode || currentUser.zipcode,
         gender: gender === "Male" ? "Male" : "Female",
-        imgurl: newImgURL,
-        hobbies: newHobbies,
-        credentials: newCredentials,
+        imgurl: newImgURL || currentUser.imgurl,
+        hobbies: newHobbies || currentUser.hobbies,
+        credentials: newCredentials || currentUser.credentials,
         public_id: public_id
       })
       .then(res => {
@@ -202,8 +205,11 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
-    this.getUser();
+    this.setState({
+      currentUser: this.props.currentUser
+    })
   }
+
 
   render() {
     const {
@@ -217,6 +223,7 @@ class EditProfile extends Component {
       areasOfExpertise,
       makeWidget
     } = this;
+
     const {
       user,
       userMessage,
@@ -247,16 +254,13 @@ class EditProfile extends Component {
     return (
       <div id="user-profile" className="margin">
         <form onSubmit={editProfileSubmitForm} id="input-container">
-          <div id="user-banner-edit"className="background-banner sq2-edit">
-            {/* <div className="sq2-edit" /> */}
-            {/* <div id="user-banner-edit"> */}
+          <div className="sq2-edit">
               <div className="image-crop margin" id="user_image">
-                {/*  Incoming */}
-                {this.state.public_id ? (
+                {currentUser.public_id ? (
                   <button id="upload_widget_opener" onClick={makeWidget}>
                     <Image
                       cloudName="tutelage"
-                      publicId={this.state.public_id}
+                      publicId={currentUser.public_id}
                       width="250"
                       crop="scale"
                     />
@@ -278,7 +282,7 @@ class EditProfile extends Component {
                     <input
                       type="text"
                       name="newFirstName"
-                      value={newFirstName}
+                      defaultValue={currentUser.firstname}
                       onChange={handleInputChange}
                       placeholder="First Name"
                       className="input-box-edit"
@@ -288,21 +292,13 @@ class EditProfile extends Component {
                     <input
                       type="text"
                       name="newLastName"
-                      value={newLastName}
+                      defaultValue={currentUser.lastname}
                       onChange={handleInputChange}
                       placeholder="Last Name"
                       className="input-box-edit"
                     />
                   </div>
-                </div>
-                {/* End Incoming */}
-              </div>
-            </div>
-          {/* </div> */}
-
-          {/* fix around here - make sure user-info-content has closing div */}
-          <div className="user-info-content">
-                <div id="quick-user-info" >
+                  <div id="quick-user-info" >
                   <div className = "quick-user-options">
                     {" "}
                     Gender:
@@ -311,14 +307,14 @@ class EditProfile extends Component {
                     <input
                       type="radio"
                       name="gender"
-                      value="Male"
+                      defaultValue="Male"
                       onChange={handleRadioChange}
                     />{" "}
                     Male{" "}
                     <input
                       type="radio"
                       name="gender"
-                      value="Female"
+                      defaultValue="Female"
                       onChange={handleRadioChange}
                     />{" "}
                     Female{" "}
@@ -330,7 +326,7 @@ class EditProfile extends Component {
                       type="text"
                       placeholder="Zipcode"
                       name="newZipcode"
-                      value={newZipcode}
+                      defaultValue={currentUser.zipcode}
                       onChange={handleInputChange}
                       className="input-box-edit "
                     />
@@ -343,6 +339,11 @@ class EditProfile extends Component {
                     className="margin-top"
                   />
                 </div>
+                </div>
+              </div>
+            </div>
+          <div className="user-info-content">
+              
                 <div className="margin-top">Interests: {Interests}</div>
 
                 <div className="margin-top">
@@ -350,7 +351,7 @@ class EditProfile extends Component {
                     placeholder="Hobbies"
                     cols="70"
                     name="newHobbies"
-                    value={hobbies}
+                    defaultValue={currentUser.hobbies}
                     onChange={handleInputChange}
                     className="input-box-edit"
                   />
@@ -360,7 +361,7 @@ class EditProfile extends Component {
                     placeholder="Credentials"
                     cols="70"
                     name="newCredentials"
-                    value={credentials}
+                    defaultValue={currentUser.credentials}
                     onChange={handleInputChange}
                     className="input-box-edit"
                     />
@@ -370,7 +371,7 @@ class EditProfile extends Component {
                     placeholder="Bio"
                     cols="70"
                     name="newBio"
-                    value={newBio}
+                    defaultValue={currentUser.bio}
                     onChange={handleInputChange}
                     className="input-box-edit"
                   />

@@ -155,23 +155,27 @@ class Profile extends Component {
       renderProfile,
       handleSubmit
     } = this;
+
     let { profileUser, userMessage, showChatBox, interests } = this.state;
     let { currentUser } = this.props;
     // let currentURL = this.props.match.url;
     profileUser = { ...profileUser, interests };
-    let commonInterests = currentUser.interests
-      ? profileUser.interests.filter(interest =>
-          currentUser.interests.includes(interest)
-        )
-      : ["Loading"];
-    if (
-      currentUser.interests &&
-      profileUser.interests &&
-      commonInterests.length === 0
-    )
-      commonInterests = ["Nothing in common"];
+    
+    // let commonInterests = currentUser.interests
+    //   ? profileUser.interests.filter(interest =>
+    //       currentUser.interests.includes(interest)
+    //     )
+    //   : ["Loading"];
+    // if (
+    //   currentUser.interests &&
+    //   profileUser.interests &&
+    //   commonInterests.length === 0
+    // )
+    //   commonInterests = ["Nothing in common"];
     let isCurrentUserProfile = currentUser.id === profileUser.id;
-    console.log({ commonInterests });
+
+    // console.log({ commonInterests });
+
     checkReload();
     return (
       <div id="edit-user-profile-container">
@@ -182,7 +186,6 @@ class Profile extends Component {
             <div className="background-banner">
               <div className="color-sq2" />
               <div id="user-banner">
-                {/* mine */}
                 <div className="user-pic-info">
                   <div className="image-crop margin">
                     <Link
@@ -217,7 +220,6 @@ class Profile extends Component {
                       <h3> {profileUser.gender} </h3>
                       <h3> Zipcode: {profileUser.zipcode} </h3>
                       <h3> Occupation: {profileUser.occupation} </h3>
-                      {/* <Link to='/survey'>Click here to edit your survey questions</Link> */}
                     </div>
                   </div>
                 </div>
@@ -228,9 +230,9 @@ class Profile extends Component {
                         <h2>
                           <strong>Common Interests</strong>
                         </h2>
-                        {commonInterests.map(interest => (
+                        {/* {commonInterests.map(interest => (
                           <p className="interest">{interest}</p>
-                        ))}
+                        ))} */}
                       </div>
                       <div className="margin-top">
                         <h2>
