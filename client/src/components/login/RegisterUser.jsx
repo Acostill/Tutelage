@@ -97,7 +97,7 @@ class RegisterUser extends Component {
             this.props.appLogIn();
           })
           .catch(err => {
-            console.log(err);
+            console.err(err);
             this.setState({
               message: "Account Exists Already"
             });

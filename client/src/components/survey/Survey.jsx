@@ -20,7 +20,6 @@ class Survey extends React.Component {
   }
 
   getSurvey = () => {
-    console.log("Component Mounted.");
     const { questions } = this.state;
 
     let survey_questions = [];
@@ -37,7 +36,7 @@ class Survey extends React.Component {
         });
       })
       .catch(err => {
-        console.log("err", err);
+        console.err(err);
       });
   };
 
@@ -49,7 +48,6 @@ class Survey extends React.Component {
      *                  questionID: e.target.name
      *
      */
-    console.log("userNAMEMEMEME", this.props.user.username);
     const { user, userID, answers, questionid, questions } = this.state;
 
     let answerObj = {
@@ -69,30 +67,25 @@ class Survey extends React.Component {
     axios
       .get("/users/userinfo")
       .then(res => {
-        console.log("IS ID HERE?", res.data.userInfo);
         this.setState({
           user: res.data.userInfo,
           userID: res.data.userInfo.id
         });
       })
     .catch(err => {
-      console.log("GET USER INFO ERROR", err);
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("THE STATE:", this.state);
-    console.log("the user", this.props.user);
     axios
       .post("/users/survey", {
         answers: this.state.answers
       })
       .then(function(response) {
-        console.log("Response:", response);
       })
       .catch(function(error) {
-        console.log("HANDLESUBMIT Error", error);
+        console.err("HANDLESUBMIT Error", error);
       });
 
     this.setState({
@@ -101,20 +94,13 @@ class Survey extends React.Component {
   };
 
   componentDidMount() {
-    console.log("Component about to Mount");
     this.getSurvey();
     this.getUserInfo();
   }
 
   render() {
-    console.log("PROPZZZZ:", this.props);
-    console.log(
-      "Component Mounted here first in the Render IN SURVEYY:",
-      this.state
-    );
     const { questions, questionid, submitted } = this.state;
     const user = this.props.user;
-    console.log("userrr", user);
 
     if (submitted) {
       return <Redirect to={`/users/${user.username}`} />;

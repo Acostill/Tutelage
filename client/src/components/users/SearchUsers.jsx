@@ -68,7 +68,7 @@ class SearchUsers extends Component {
                 });
               })
               .catch(error => {
-                console.log("Error getting user by ID:", error);
+                console.err("Error getting user by ID:", error);
               });
           });
         } else {
@@ -85,7 +85,7 @@ class SearchUsers extends Component {
         }
       })
       .catch(err => {
-        console.log("The getBestUsers ", err);
+        console.err("The getBestUsers ", err);
       });
   };
 
@@ -112,7 +112,7 @@ class SearchUsers extends Component {
         });
       })
       .catch(err => {
-        console.log("err", err);
+        console.err("err:", err);
       });
   };
 

@@ -79,7 +79,6 @@ class Profile extends Component {
     e.preventDefault();
     const { profileUser, userMessage } = this.state;
     let { currentUser } = this.props;
-    console.log(currentUser);
     const subject = `Hey ${profileUser.firstname}, ${
       currentUser.firstname
     } wants to chat!`;
@@ -89,7 +88,6 @@ class Profile extends Component {
         subject: subject
       })
       .then(res => {
-        console.log("returned ID", res.data.thread.id);
         let thread_id = res.data.thread.id;
         axios.post("/users/send_message", {
           thread_id: thread_id,
