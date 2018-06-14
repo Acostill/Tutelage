@@ -30,14 +30,13 @@ class LoginUser extends Component {
         password: password
       })
       .then(res => {
-        console.log(res);
         // redirect to user's profile
         this.setState({
           signedIn: true
         });
       })
       .catch(err => {
-        console.log(err);
+        console.err(err);
         if (username === "" && password === "") {
           this.setState({
             message: "* Fill out Username & Password"
@@ -54,10 +53,7 @@ class LoginUser extends Component {
 
   render() {
     // const { username, password, message, signedIn } = this.state;
-    const { handleInputChange, submitLoginForm, username, password, message, signedIn, user } = this.props;
-    console.log("USERRR PLEEEASE:", user)
-    console.log("USERNAME? PLLLEEEASE:", user.username)
-    
+    const { handleInputChange, submitLoginForm, username, password, message, signedIn, user } = this.props;    
     if (signedIn) {
       return( <Redirect to= {`/users/${user.username}`}/>)
     }

@@ -243,7 +243,6 @@ class EditProfile extends Component {
       doneEditing,
       public_id
     } = this.state;
-    // console.log("the state here in edit PROFILE IS:", this.state);
     const { currentUser } = this.props;
     let Interests = "";
 

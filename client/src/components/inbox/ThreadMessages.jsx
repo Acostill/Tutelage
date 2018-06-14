@@ -48,7 +48,6 @@ class Thread extends Component {
           userMessage: ''
         })
         this.getMessages();
-        console.log("message Sent!")
       })
   }
 
@@ -56,7 +55,6 @@ class Thread extends Component {
     const { getUnreadMessages } = this.props;
     const requests = messages.map(message =>  axios.patch('/users/confirm_read', {messageId: message.id}))
     Promise.all(requests).then(() => {
-      console.log('All promises resolved')
       getUnreadMessages();
     })
   }
@@ -74,7 +72,6 @@ class Thread extends Component {
     const { currentUser } = this.props;
     let thread_id = this.props.thread_id;
 
-    console.log("===>", this.state)
 
     return (
       <div id="thread-messages-container" >
