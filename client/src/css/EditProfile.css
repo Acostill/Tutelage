@@ -6,8 +6,8 @@
 
 #input-container{
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .margin {

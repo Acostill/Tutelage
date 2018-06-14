@@ -111,7 +111,6 @@ class RegisterUser extends Component {
 
   render() {
     if (this.state.newUserSignedIn) {
-      console.log("hey");
       return <Redirect to="/survey" />;
     }
 
@@ -128,7 +127,6 @@ class RegisterUser extends Component {
       showConfetti
     } = this.state;
 
-    console.log("window size: ", this.size);
     const { handleInputChange, handleRadioChange, registerNewUserForm } = this;
 
     return (
@@ -138,7 +136,7 @@ class RegisterUser extends Component {
             <Confetti {...this.size} />
           </div>
         ) : (
-          ""
+          null
         )}
         <div id="registerForm">
           <fieldset id="register-container">
@@ -161,68 +159,81 @@ class RegisterUser extends Component {
                 />
                 Mentee
               </div>
-              <input
-                className="input-box text-indent"
-                type="text"
-                placeholder="First Name"
-                name="firstname"
-                value={firstname}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="text"
-                placeholder="Last Name"
-                name="lastname"
-                value={lastname}
-                onChange={handleInputChange}
-                required
-              />{" "}
-              <input
-                className="input-box text-indent"
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={email}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={username}
-                onChange={handleInputChange}
-                minLength="6"
-                maxLength="12"
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                className="input-box text-indent"
-                type="password"
-                placeholder="Confirm Password"
-                name="passwordConfirmation"
-                value={passwordConfirmation}
-                onChange={handleInputChange}
-                required
-              />
+              <div className="firstName">
+                <input
+                  className="input-box text-indent"
+                  type="text"
+                  placeholder="First Name"
+                  name="firstname"
+                  value={firstname}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="lastName">
+                <input
+                  className="input-box text-indent"
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastname"
+                  value={lastname}
+                  onChange={handleInputChange}
+                  required
+                />{" "}
+              </div>
+              <div className="email">
+                <input
+                  className="input-box text-indent"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="username">
+                <input
+                  className="input-box text-indent"
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  value={username}
+                  onChange={handleInputChange}
+                  minLength="6"
+                  maxLength="12"
+                  required
+                />
+              </div>
+              <div className="password">
+                <input
+                  className="input-box text-indent"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={handleInputChange}
+                  required
+                />
+
+                <input
+                  className="input-box text-indent"
+                  type="password"
+                  placeholder="Confirm Password"
+                  name="passwordConfirmation"
+                  value={passwordConfirmation}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
               <div className="register-message">{message}</div>
-              <input
-                className="input-box createAccountButton"
-                type="submit"
-                value="Create Account"
-              />
+              <div className="createAccount">
+                <input
+                  className="input-box createAccountButton"
+                  type="submit"
+                  value="Create Account"
+                />
+              </div>
             </form>
           </fieldset>
 
@@ -232,8 +243,6 @@ class RegisterUser extends Component {
             </p>
           </div>
         </div>
-
-        <Footer />
       </div>
     );
   }
